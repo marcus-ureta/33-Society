@@ -1,13 +1,11 @@
-
-import './App.css'
+import "./index.css";
 
 function App() {
-
   return (
     <>
-      <h1>App.Tsx</h1>
+      <h1 className="">App.Tsx</h1>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
