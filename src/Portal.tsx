@@ -10,6 +10,8 @@ import { Field, FieldDescription, FieldGroup, FieldLabel } from "@/components/ui
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
+import { countries } from './utils/countries.ts'
+
 function loginSignUpPage() {
 
     return(
@@ -108,11 +110,6 @@ function loginPage() {
 }
 
 function signUpPage() {
-    const countries = [
-        { label: "United States", value: "us" },
-        { label: "United Kingdom", value: "uk" },
-        { label: "Canada", value: "ca" },
-    ]
 
     return(
         <>
