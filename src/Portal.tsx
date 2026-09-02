@@ -130,54 +130,75 @@ function signUpPage() {
                     
                     <form className="w-full max-w-sm">
                         <FieldGroup>
-                            <Field>
-                                <FieldLabel htmlFor="form-name">Name</FieldLabel>
-                                <Input id="form-name" type="text" placeholder="Evil Rabbit" required/>
-                            </Field>
+                            <div className="grid grid-cols-2 gap-4">
+                                <Field>
+                                    <FieldLabel htmlFor="form-first-name">First Name</FieldLabel>
+                                    <Input id="form-first-name" type="text" placeholder="Evil Rabbit" required/>
+                                </Field>
 
-                            <Field>
-                                <FieldLabel htmlFor="form-email">Email</FieldLabel>
-                                <Input id="form-email" type="email" placeholder="john@example.com" />
-                                <FieldDescription>We&apos;ll never share your email with anyone.</FieldDescription>
-                            </Field>
+                                <Field>
+                                    <FieldLabel htmlFor="form-last-name">Last Name</FieldLabel>
+                                    <Input id="form-last-name" type="text" placeholder="Rabbit" required/>
+                                </Field>
+                            </div>
+
+                            <div className="grid grid-cols-2 gap-4">
+                                <Field>
+                                    <FieldLabel htmlFor="form-email">Email</FieldLabel>
+                                    <Input id="form-email" type="email" placeholder="john@example.com" required />
+                                </Field>
+
+                                <Field>
+                                    <FieldLabel htmlFor="form-birthday">Birthday</FieldLabel>
+                                    <Input id="form-birthday" type="date" required/>
+                                </Field>
+                            </div>
 
                             <div className="grid grid-cols-2 gap-4">
                                 <Field>
                                     <FieldLabel htmlFor="form-phone">Phone</FieldLabel>
-                                    <Input id="form-phone" type="tel" placeholder="+1 (555) 123-4567" />
+                                    <Input id="form-phone" type="tel" placeholder="+63 (555) 123-4567" required />
                                 </Field>
 
                                 <Field>
                                     <FieldLabel htmlFor="form-country">Country</FieldLabel>
-                                    <Select items={countries} defaultValue="us">
-                                    <SelectTrigger id="form-country">
-                                        <SelectValue />
-                                    </SelectTrigger>
-                                    <SelectContent>
-                                        <SelectGroup>
-                                        {countries.map((country) => (
-                                            <SelectItem key={country.value} value={country.value}>
-                                            {country.label}
-                                            </SelectItem>
-                                        ))}
-                                        </SelectGroup>
-                                    </SelectContent>
+                                    <Select items={countries} defaultValue="ph" required>
+                                        <SelectTrigger id="form-country">
+                                            <SelectValue />
+                                        </SelectTrigger>
+
+                                        <SelectContent>
+                                            <SelectGroup>
+                                            {countries.map((country) => (
+                                                <SelectItem key={country.value} value={country.value}>
+                                                {country.label}
+                                                </SelectItem>
+                                            ))}
+                                            </SelectGroup>
+                                        </SelectContent>
                                     </Select>
                                 </Field>
                             </div>
 
-                            <Field>
-                                <FieldLabel htmlFor="form-address">Address</FieldLabel>
-                                <Input id="form-address" type="text" placeholder="123 Main St" />
-                            </Field>
-                            
-                            <Field orientation="horizontal">
-                                <Button type="button" variant="outline">
-                                    Cancel
-                                </Button>
+                            <div className="grid grid-cols-2 gap-4">
+                                <Field>
+                                    <FieldLabel htmlFor="form-company">Company/Business Name</FieldLabel>
+                                    <Input id="form-company" type="text" placeholder="Acme Inc." required />
+                                </Field>
 
-                                <Button type="submit">Submit</Button>
-                            </Field>
+                                <Field>
+                                    <FieldLabel htmlFor="form-igname">Instagram Handle</FieldLabel>
+                                    <Input id="form-igname" type="text" placeholder="@33_society" required />
+                                </Field>
+                            </div>
+
+                            <div className='flex flex-col items-center justify-center'>
+                                <Button type="submit" variant="outline" className={cn(buttonVariants({ variant: "default", size: "lg" }),
+                                    "bg-schiava-blue text-white shadow-[0_0_13px_1px_var(--color-tristesse-50)] border-2 border-schiava-blue-dark py-4 px-12 rounded-[64px] hover:bg-schiava-blue-dark hover:shadow-[0_0_13px_1px_var(--color-tristesse-50)] hover:scale-102 hover:cursor-pointer transition-all duration-300 font-['Aileron'] font-semibold text-[1rem]",
+                                )}>
+                                    Submit
+                                </Button>
+                            </div>
                         </FieldGroup>
                     </form>
 
