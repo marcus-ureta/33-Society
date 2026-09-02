@@ -150,7 +150,7 @@ function signUpPage() {
 
                                 <Field>
                                     <FieldLabel htmlFor="form-birthday" className='text-selago-0'>Birthday</FieldLabel>
-                                    <Input id="form-birthday" type="date" required className="bg-tristesse-0 border-davys-grey-100"/>
+                                    <Input id="form-birthday" type="date" required className="bg-tristesse-0 border-davys-grey-100 dark:[color-scheme:dark]"/>
                                 </Field>
                             </div>
 
