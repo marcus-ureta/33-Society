@@ -110,7 +110,7 @@ function signUpPage() {
                 <div className="flex flex-col gap-y-4 items-center">
                     <Logo variant="primary" className="size-16 text-selago-100" />
 
-                    <div className="flex gap-x-3 items-center w-[640px]">
+                    <div className="grid grid-cols-8 sm:grid-cols-16 items-center w-[85%] max-w-[820px] gap-x-1.5 gap-y-7">
                         <div className="w-full h-[3px] bg-selago-0 rounded-full shadow-[0_0_16px_1px_var(--color-schiava-blue-dark)]"/>
                         {[...Array(15)].map((_, index) => (
                             <div key={index} className="w-full h-[3px] bg-davys-grey-0 rounded-full shadow-[0_0_16px_1px_var(--color-schiava-blue-dark)]" />
