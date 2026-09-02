@@ -9,8 +9,8 @@ function Portal() {
                 <img className="w-16 h-16" src="/svg/33.svg" alt="Logo" />
 
                 <div className="flex gap-x-3 items-center w-[320px]">
-                    <div className="w-full h-[3px] bg-white rounded-full shadow-[0_0_16px_1px_var(--color-schiava-blue-dark)]" />
-                    <div className="w-full h-[3px] bg-white rounded-full shadow-[0_0_16px_1px_var(--color-schiava-blue-dark)]" />
+                    <div className="w-full h-[3px] bg-selago-0 rounded-full shadow-[0_0_16px_1px_var(--color-schiava-blue-dark)]" />
+                    <div className="w-full h-[3px] bg-davys-grey-0 rounded-full shadow-[0_0_16px_1px_var(--color-schiava-blue-dark)]" />
                 </div>
             </div>
 
