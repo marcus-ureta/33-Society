@@ -6,7 +6,7 @@ import { ArrowRight, ArrowLeft } from "flowbite-react-icons/outline";
 import { Logo } from '@/components/logos/Logo.tsx'
 
 import { Button } from "@/components/ui/button"
-import { Field, FieldDescription, FieldGroup, FieldLabel } from "@/components/ui/field"
+import { Field, FieldGroup, FieldLabel } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
@@ -132,45 +132,45 @@ function signUpPage() {
                         <FieldGroup>
                             <div className="grid grid-cols-2 gap-4">
                                 <Field>
-                                    <FieldLabel htmlFor="form-first-name">First Name</FieldLabel>
-                                    <Input id="form-first-name" type="text" placeholder="Evil Rabbit" required/>
+                                    <FieldLabel htmlFor="form-first-name" className='text-selago-0'>First Name</FieldLabel>
+                                    <Input id="form-first-name" type="text" placeholder="Evil Rabbit" required className="bg-tristesse-0 border-davys-grey-100"/>
                                 </Field>
 
                                 <Field>
-                                    <FieldLabel htmlFor="form-last-name">Last Name</FieldLabel>
-                                    <Input id="form-last-name" type="text" placeholder="Rabbit" required/>
-                                </Field>
-                            </div>
-
-                            <div className="grid grid-cols-2 gap-4">
-                                <Field>
-                                    <FieldLabel htmlFor="form-email">Email</FieldLabel>
-                                    <Input id="form-email" type="email" placeholder="john@example.com" required />
-                                </Field>
-
-                                <Field>
-                                    <FieldLabel htmlFor="form-birthday">Birthday</FieldLabel>
-                                    <Input id="form-birthday" type="date" required/>
+                                    <FieldLabel htmlFor="form-last-name" className='text-selago-0'>Last Name</FieldLabel>
+                                    <Input id="form-last-name" type="text" placeholder="Rabbit" required className="bg-tristesse-0 border-davys-grey-100"/>
                                 </Field>
                             </div>
 
                             <div className="grid grid-cols-2 gap-4">
                                 <Field>
-                                    <FieldLabel htmlFor="form-phone">Phone</FieldLabel>
-                                    <Input id="form-phone" type="tel" placeholder="+63 (555) 123-4567" required />
+                                    <FieldLabel htmlFor="form-email" className='text-selago-0'>Email</FieldLabel>
+                                    <Input id="form-email" type="email" placeholder="john@example.com" required className="bg-tristesse-0 border-davys-grey-100"/>
                                 </Field>
 
                                 <Field>
-                                    <FieldLabel htmlFor="form-country">Country</FieldLabel>
+                                    <FieldLabel htmlFor="form-birthday" className='text-selago-0'>Birthday</FieldLabel>
+                                    <Input id="form-birthday" type="date" required className="bg-tristesse-0 border-davys-grey-100"/>
+                                </Field>
+                            </div>
+
+                            <div className="grid grid-cols-2 gap-4">
+                                <Field>
+                                    <FieldLabel htmlFor="form-phone" className='text-selago-0'>Phone</FieldLabel>
+                                    <Input id="form-phone" type="tel" placeholder="+63 (555) 123-4567" required className="bg-tristesse-0 border-davys-grey-100"/>
+                                </Field>
+
+                                <Field>
+                                    <FieldLabel htmlFor="form-country" className='text-selago-0'>Country</FieldLabel>
                                     <Select items={countries} defaultValue="ph" required>
-                                        <SelectTrigger id="form-country">
+                                        <SelectTrigger id="form-country" className="bg-tristesse-0 border-davys-grey-100">
                                             <SelectValue />
                                         </SelectTrigger>
 
-                                        <SelectContent>
-                                            <SelectGroup>
+                                        <SelectContent className="bg-tristesse-0 border-davys-grey-100 border-2">
+                                            <SelectGroup className="bg-tristesse-0">
                                             {countries.map((country) => (
-                                                <SelectItem key={country.value} value={country.value}>
+                                                <SelectItem key={country.value} value={country.value} className="bg-tristesse-0 border-davys-grey-100/20 text-selago-50 border-b-2">
                                                 {country.label}
                                                 </SelectItem>
                                             ))}
@@ -182,13 +182,13 @@ function signUpPage() {
 
                             <div className="grid grid-cols-2 gap-4">
                                 <Field>
-                                    <FieldLabel htmlFor="form-company">Company/Business Name</FieldLabel>
-                                    <Input id="form-company" type="text" placeholder="Acme Inc." required />
+                                    <FieldLabel htmlFor="form-company" className='text-selago-0'>Company/Business Name</FieldLabel>
+                                    <Input id="form-company" type="text" placeholder="Acme Inc." required className="bg-tristesse-0 border-davys-grey-100"/>
                                 </Field>
 
                                 <Field>
-                                    <FieldLabel htmlFor="form-igname">Instagram Handle</FieldLabel>
-                                    <Input id="form-igname" type="text" placeholder="@33_society" required />
+                                    <FieldLabel htmlFor="form-igname" className='text-selago-0'>Instagram Handle</FieldLabel>
+                                    <Input id="form-igname" type="text" placeholder="@33_society" required className="bg-tristesse-0 border-davys-grey-100"/>
                                 </Field>
                             </div>
 
