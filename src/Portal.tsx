@@ -1,4 +1,7 @@
 
+import { buttonVariants } from './components/ui/button.tsx'
+import { cn } from './lib/utils'
+
 function Portal() {
     return (
         <div className="w-screen h-dvh bg-tristesse-0 flex flex-col pt-8">
@@ -12,8 +15,13 @@ function Portal() {
             </div>
 
             <div className='flex flex-col gap-y-4 items-center justify-center w-full h-full'>
-                <button>Sign-Up</button>
-                <button>Login</button>
+
+                <button className={cn(buttonVariants({ variant: "default", size: "lg" }),
+                    "",
+                )}>
+                    Sign up
+                </button>
+
             </div>
         </div>
     )
