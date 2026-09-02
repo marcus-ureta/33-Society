@@ -11,6 +11,7 @@ import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
 import { countries } from './utils/countries.ts'
+import { useState } from 'react';
 
 function loginSignUpPage() {
 
@@ -101,7 +102,7 @@ function loginPage() {
                 </div>
 
                 <div className='flex flex-col items-center justify-center w-full h-[10%] gap-y-2.5'>
-                    <ArrowLeft className="w-6 h-6 text-davys-grey-0 hover:text-selago-0 border-2 rounded-full mt-2 transition-all duration-200 hover:cursor-pointer"/>
+                    <ArrowLeft className="w-6 h-6 hover:text-schiava-blue-light text-selago-0 border-2 rounded-full mt-2 transition-all duration-200 hover:cursor-pointer"/>
                 </div>
                 
             </div>
@@ -119,7 +120,7 @@ function signUpPage() {
 
                     <div className="flex flex-row items-center w-[75%] max-w-[820px] gap-x-4 gap-y-7">
                         <div className="w-[50%] h-[3px] bg-selago-0 rounded-full shadow-[0_0_16px_1px_var(--color-schiava-blue-dark)]"/>
-                        {[...Array(8)].map((_, index) => (
+                        {[...Array(7)].map((_, index) => (
                             <div key={index} className="w-[50%] h-[3px] bg-davys-grey-0 rounded-full shadow-[0_0_16px_1px_var(--color-schiava-blue-dark)]" />
                         ))}
                     </div>
@@ -205,35 +206,77 @@ function signUpPage() {
                 </div>
 
 
-
-                {/* QUESTIONNAIRE EXAMPLE */}
-
-                {/* <div className='flex flex-col items-center justify-center w-full h-[80%] gap-y-4 sm:gap-y-12 max-w-none prose'>
-                    <h1 className="font-['Cochin'] font-bold text-selago-100 text-6xl sm:text-7xl mx-12 text-center">
-                        What is your name?
-                    </h1>
-
-                    <div className='flex flex-col sm:flex-row items-center justify-center gap-x-2.5 gap-y-2.5 w-full'>
-                        <input name='answer' placeholder='Your Answer' className="border-b-[1px] border-davys-grey-0 text-[2rem] text-davys-grey-0 font-['instrument-serif'] italic pl-[8px] w-[90%] max-w-[660px] mb-0" />
-
-                        <ArrowRight className="w-6 h-6 text-davys-grey-0 hover:text-selago-0 border-2 rounded-full mt-2 transition-all duration-200 hover:cursor-pointer" />
-                    </div>
-                </div> */}
-
                 <div className='flex flex-col items-center justify-center w-full h-[10%] gap-y-2.5'>
-                    <ArrowLeft className="w-6 h-6 text-davys-grey-0 hover:text-selago-0 border-2 rounded-full mt-2 transition-all duration-200 hover:cursor-pointer"/>
+                    <ArrowLeft className="w-6 h-6 hover:text-schiava-blue-light text-selago-0 border-2 rounded-full mt-2 transition-all duration-200 hover:cursor-pointer"/>
                 </div>
             </div> 
         </>
     )
 }
 
-function Portal() {
-    return (
+function QuestionnairePage(){
+
+    const [questionNo, setQuestionNo] = useState<number>(0);
+
+    const questions: string[] = [
+        'What unique value or insight can you contribute to the community?',
+        'What is the primary challenge you are working to solve or scale in your business right now?',
+        'What is your current average monthly revenue',
+        'Society 33 is a community of dedicated founders actively investing in scaling their businesses. If accepted, are you financially prepared to invest in your membership spot?',
+    ]
+
+    const handleNextQuestion = () => {
+        console.log('firing function!');
+
+        if(questionNo <= 2) setQuestionNo(prev => (prev <= questions.length ? prev + 1 : prev));
+    }
+
+    const handlePrevQuestion = () => {
+        if(questionNo > 0) setQuestionNo(prev => (prev <= questions.length ? prev - 1 : prev));
+    }
+
+    return(
         <>
-            {signUpPage()}
+            <div className="w-screen h-dvh bg-tristesse-0 flex flex-col pt-8">
+                <div className="flex flex-col gap-y-4 items-center">
+                    <Logo variant="primary" className="size-16 text-selago-100" />
+
+                    <div className="flex flex-row items-center w-[75%] max-w-[820px] gap-x-4 gap-y-7">
+                        <div className="w-[50%] h-[3px] bg-selago-0 rounded-full shadow-[0_0_16px_1px_var(--color-schiava-blue-dark)]"/>
+                        <div className="w-[50%] h-[3px] bg-selago-0 rounded-full shadow-[0_0_16px_1px_var(--color-schiava-blue-dark)]"/>
+                        {[...Array(6)].map((_, index) => (
+                            <div key={index} className="w-[50%] h-[3px] bg-davys-grey-0 rounded-full shadow-[0_0_16px_1px_var(--color-schiava-blue-dark)]" />
+                        ))}
+                    </div>
+                </div>
+
+                <div className='flex flex-col items-center justify-center w-full h-[80%] gap-y-4 sm:gap-y-12 max-w-none prose'>
+                    <h1 className="font-['Cochin'] font-bold text-selago-100 text-3xl sm:text-4xl mx-12 text-center max-w-[1068px]">
+                        {questions[questionNo]}
+                    </h1>
+
+                    <div className='flex flex-col sm:flex-row items-center justify-center gap-x-2.5 gap-y-2.5 w-full'>
+                        <input name='answer' placeholder='Your Answer' className="border-b-[1px] border-davys-grey-0 text-[2rem] text-davys-grey-0 font-['instrument-serif'] italic pl-[8px] w-[90%] max-w-[660px] mb-0" />
+
+                        <div onClick={() => handleNextQuestion()} className='pointer-events-auto'>
+                            <ArrowRight className="w-6 h-6 text-davys-grey-0 hover:text-selago-0 border-2 rounded-full mt-2 transition-all duration-200 hover:cursor-pointer" />
+                        </div>
+                    </div>
+                </div>
+
+                <div className='flex flex-col items-center justify-center w-full h-[10%] gap-y-2.5'>
+                    <div onClick={() => handlePrevQuestion()} className='pointer-events-auto'>
+                        <ArrowLeft className="w-6 h-6 hover:text-schiava-blue-light text-selago-0 border-2 rounded-full mt-2 transition-all duration-200 hover:cursor-pointer"/>
+                    </div>
+                </div>
+            </div>
         </>
     )
+}
+
+function Portal() {
+
+    return <QuestionnairePage/>;
 }
 
 export default Portal
