@@ -5,6 +5,11 @@ import { cn } from './lib/utils'
 import { ArrowRight, ArrowLeft } from "flowbite-react-icons/outline";
 import { Logo } from '@/components/logos/Logo.tsx'
 
+import { Button } from "@/components/ui/button"
+import { Field, FieldDescription, FieldGroup, FieldLabel } from "@/components/ui/field"
+import { Input } from "@/components/ui/input"
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+
 function loginSignUpPage() {
 
     return(
@@ -103,6 +108,11 @@ function loginPage() {
 }
 
 function signUpPage() {
+    const countries = [
+        { label: "United States", value: "us" },
+        { label: "United Kingdom", value: "uk" },
+        { label: "Canada", value: "ca" },
+    ]
 
     return(
         <>
@@ -118,7 +128,69 @@ function signUpPage() {
                     </div>
                 </div>
 
-                <div className='flex flex-col items-center justify-center w-full h-[80%] gap-y-4 sm:gap-y-12 max-w-none prose'>
+
+                <div className='flex flex-col items-center justify-center w-full h-[80%] gap-y-4 sm:gap-y-8 max-w-none prose mb-0'>
+                    
+                    <form className="w-full max-w-sm">
+                        <FieldGroup>
+                            <Field>
+                                <FieldLabel htmlFor="form-name">Name</FieldLabel>
+                                <Input id="form-name" type="text" placeholder="Evil Rabbit" required/>
+                            </Field>
+
+                            <Field>
+                                <FieldLabel htmlFor="form-email">Email</FieldLabel>
+                                <Input id="form-email" type="email" placeholder="john@example.com" />
+                                <FieldDescription>We&apos;ll never share your email with anyone.</FieldDescription>
+                            </Field>
+
+                            <div className="grid grid-cols-2 gap-4">
+                                <Field>
+                                    <FieldLabel htmlFor="form-phone">Phone</FieldLabel>
+                                    <Input id="form-phone" type="tel" placeholder="+1 (555) 123-4567" />
+                                </Field>
+
+                                <Field>
+                                    <FieldLabel htmlFor="form-country">Country</FieldLabel>
+                                    <Select items={countries} defaultValue="us">
+                                    <SelectTrigger id="form-country">
+                                        <SelectValue />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectGroup>
+                                        {countries.map((country) => (
+                                            <SelectItem key={country.value} value={country.value}>
+                                            {country.label}
+                                            </SelectItem>
+                                        ))}
+                                        </SelectGroup>
+                                    </SelectContent>
+                                    </Select>
+                                </Field>
+                            </div>
+
+                            <Field>
+                                <FieldLabel htmlFor="form-address">Address</FieldLabel>
+                                <Input id="form-address" type="text" placeholder="123 Main St" />
+                            </Field>
+                            
+                            <Field orientation="horizontal">
+                                <Button type="button" variant="outline">
+                                    Cancel
+                                </Button>
+
+                                <Button type="submit">Submit</Button>
+                            </Field>
+                        </FieldGroup>
+                    </form>
+
+                </div>
+
+
+
+                {/* QUESTIONNAIRE EXAMPLE */}
+
+                {/* <div className='flex flex-col items-center justify-center w-full h-[80%] gap-y-4 sm:gap-y-12 max-w-none prose'>
                     <h1 className="font-['Cochin'] font-bold text-selago-100 text-6xl sm:text-7xl mx-12 text-center">
                         What is your name?
                     </h1>
@@ -128,7 +200,7 @@ function signUpPage() {
 
                         <ArrowRight className="w-6 h-6 text-davys-grey-0 hover:text-selago-0 border-2 rounded-full mt-2 transition-all duration-200 hover:cursor-pointer" />
                     </div>
-                </div>
+                </div> */}
 
                 <div className='flex flex-col items-center justify-center w-full h-[10%] gap-y-2.5'>
                     <ArrowLeft className="w-6 h-6 text-davys-grey-0 hover:text-selago-0 border-2 rounded-full mt-2 transition-all duration-200 hover:cursor-pointer"/>
