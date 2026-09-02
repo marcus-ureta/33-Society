@@ -2,8 +2,9 @@
 import { buttonVariants } from './components/ui/button.tsx'
 import { cn } from './lib/utils'
 
-function Portal() {
-    return (
+function loginSignUpPage() {
+
+    return(
         <div className="w-screen h-dvh bg-tristesse-0 flex flex-col pt-8">
             <div className="flex flex-col gap-y-4 items-center">
                 <img className="w-16 h-16" src="/svg/33.svg" alt="Logo" />
@@ -32,6 +33,14 @@ function Portal() {
 
             </div>
         </div>
+    )
+}
+
+function Portal() {
+    return (
+        <>
+            {loginSignUpPage()}
+        </>
     )
 }
 
