@@ -28,17 +28,17 @@ function loginSignUpPage() {
             <div className='flex flex-col items-center justify-center w-full h-[80%]'>
 
                 <div className='grid grid-rows-2 gap-y-4'>
-                    <button className={cn(buttonVariants({ variant: "default", size: "lg" }),
-                        "bg-schiava-blue text-white shadow-[0_0_13px_1px_var(--color-tristesse-50)] border-2 border-schiava-blue-dark py-4 px-12 rounded-[64px] hover:bg-schiava-blue-dark hover:shadow-[0_0_13px_1px_var(--color-tristesse-50)] hover:scale-102 hover:cursor-pointer transition-all duration-300 font-['Aileron'] font-semibold text-[1rem]",
-                    )}>
+                    <Button type="submit" variant="outline" className={cn(buttonVariants({ variant: "default", size: "lg" }),
+                                    "bg-schiava-blue text-white border-2 border-schiava-blue-dark py-5 px-12 rounded-[64px] hover:bg-schiava-blue-dark hover:scale-102 hover:cursor-pointer transition-all duration-300 font-['Aileron'] font-semibold text-[1.575rem]",
+                                )}>
                         SIGN UP
-                    </button>
+                    </Button>
 
-                    <button className={cn(buttonVariants({ variant: "default", size: "lg" }),
-                        "bg-schiava-blue text-white shadow-[0_0_13px_1px_var(--color-tristesse-50)] border-2 border-schiava-blue-dark py-4 px-12 rounded-[64px] hover:bg-schiava-blue-dark hover:shadow-[0_0_13px_1px_var(--color-tristesse-50)] hover:scale-102 hover:cursor-pointer transition-all duration-300 font-['Aileron'] font-semibold text-[1rem]",
-                    )}>
+                    <Button type="submit" variant="outline" className={cn(buttonVariants({ variant: "default", size: "lg" }),
+                                    "bg-schiava-blue text-white border-2 border-schiava-blue-dark py-5 px-12 rounded-[64px] hover:bg-schiava-blue-dark hover:scale-102 hover:cursor-pointer transition-all duration-300 font-['Aileron'] font-semibold text-[1.575rem]",
+                                )}>
                         LOGIN
-                    </button>
+                    </Button>
                 </div>
 
             </div>
@@ -87,11 +87,11 @@ function loginPage() {
                     </div>
 
                     <div className='flex flex-col gap-y-6 items-center'>
-                        <button className={cn(buttonVariants({ variant: "default", size: "lg" }),
-                            "bg-schiava-blue text-white shadow-[0_0_13px_1px_var(--color-tristesse-50)] border-2 border-schiava-blue-dark py-4 px-12 rounded-[64px] hover:bg-schiava-blue-dark hover:shadow-[0_0_13px_1px_var(--color-tristesse-50)] hover:scale-102 hover:cursor-pointer transition-all duration-300 font-['Aileron'] font-semibold text-[1rem]",
-                        )}>
+                        <Button type="submit" variant="outline" className={cn(buttonVariants({ variant: "default", size: "lg" }),
+                                    "bg-schiava-blue text-white border-2 border-schiava-blue-dark py-5 px-12 rounded-[64px] hover:bg-schiava-blue-dark hover:scale-102 hover:cursor-pointer transition-all duration-300 font-['Aileron'] font-semibold text-[1.575rem]",
+                                )}>
                             LOGIN
-                        </button>
+                        </Button>
 
                         <h2 className="text-selago-100 underline transition-colors duration-200 cursor-pointer font-['Aileron'] text-[1rem] hover:text-selago-0">
                             Forget Password
@@ -117,19 +117,19 @@ function signUpPage() {
                 <div className="flex flex-col gap-y-4 items-center">
                     <Logo variant="primary" className="size-16 text-selago-100" />
 
-                    <div className="grid grid-cols-8 sm:grid-cols-16 items-center w-[85%] max-w-[820px] gap-x-1.5 gap-y-7">
-                        <div className="w-full h-[3px] bg-selago-0 rounded-full shadow-[0_0_16px_1px_var(--color-schiava-blue-dark)]"/>
-                        {[...Array(15)].map((_, index) => (
-                            <div key={index} className="w-full h-[3px] bg-davys-grey-0 rounded-full shadow-[0_0_16px_1px_var(--color-schiava-blue-dark)]" />
+                    <div className="flex flex-row items-center w-[75%] max-w-[820px] gap-x-4 gap-y-7">
+                        <div className="w-[50%] h-[3px] bg-selago-0 rounded-full shadow-[0_0_16px_1px_var(--color-schiava-blue-dark)]"/>
+                        {[...Array(8)].map((_, index) => (
+                            <div key={index} className="w-[50%] h-[3px] bg-davys-grey-0 rounded-full shadow-[0_0_16px_1px_var(--color-schiava-blue-dark)]" />
                         ))}
                     </div>
                 </div>
 
 
-                <div className='flex flex-col items-center justify-center w-full h-[80%] gap-y-4 sm:gap-y-8 max-w-none prose mb-0'>
+                <div className='flex flex-col items-center justify-center h-[80%] gap-y-4 sm:gap-y-8 max-w-none prose mb-0'>
                     
-                    <form className="w-full max-w-sm">
-                        <FieldGroup>
+                    <form className="w-full max-w-[548px]">
+                        <FieldGroup className='flex flex-col gap-y-9'>
                             <div className="grid grid-cols-2 gap-4">
                                 <Field>
                                     <FieldLabel htmlFor="form-first-name" className='text-selago-0'>First Name</FieldLabel>
@@ -192,9 +192,9 @@ function signUpPage() {
                                 </Field>
                             </div>
 
-                            <div className='flex flex-col items-center justify-center mt-[3%]'>
+                            <div className='flex flex-col items-center justify-center mt-[4%]'>
                                 <Button type="submit" variant="outline" className={cn(buttonVariants({ variant: "default", size: "lg" }),
-                                    "bg-schiava-blue text-white shadow-[0_0_13px_1px_var(--color-tristesse-50)] border-2 border-schiava-blue-dark py-4 px-12 rounded-[64px] hover:bg-schiava-blue-dark hover:shadow-[0_0_13px_1px_var(--color-tristesse-50)] hover:scale-102 hover:cursor-pointer transition-all duration-300 font-['Aileron'] font-semibold text-[1rem]",
+                                    "bg-schiava-blue text-white border-2 border-schiava-blue-dark py-5 px-12 rounded-[64px] hover:bg-schiava-blue-dark hover:scale-102 hover:cursor-pointer transition-all duration-300 font-['Aileron'] font-semibold text-[1.575rem]",
                                 )}>
                                     Submit
                                 </Button>
