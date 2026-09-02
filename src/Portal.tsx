@@ -102,10 +102,46 @@ function loginPage() {
     )
 }
 
+function signUpPage() {
+
+    return(
+        <>
+            <div className="w-screen h-dvh bg-tristesse-0 flex flex-col pt-8">
+                <div className="flex flex-col gap-y-4 items-center">
+                    <Logo variant="primary" className="size-16 text-selago-100" />
+
+                    <div className="flex gap-x-3 items-center w-[640px]">
+                        <div className="w-full h-[3px] bg-selago-0 rounded-full shadow-[0_0_16px_1px_var(--color-schiava-blue-dark)]"/>
+                        {[...Array(15)].map((_, index) => (
+                            <div key={index} className="w-full h-[3px] bg-davys-grey-0 rounded-full shadow-[0_0_16px_1px_var(--color-schiava-blue-dark)]" />
+                        ))}
+                    </div>
+                </div>
+
+                <div className='flex flex-col items-center justify-center w-full h-[80%] gap-y-12 max-w-none prose'>
+                    <h1 className="font-['Cochin'] font-bold text-selago-100 text-7xl">
+                        What is your name?
+                    </h1>
+
+                    <div className='flex flex-row items-center justify-center gap-x-2.5 w-full'>
+                        <input name='answer' placeholder='Your Answer' className="border-b-[1px] border-davys-grey-0 text-[2rem] text-davys-grey-0 font-['instrument-serif'] italic pl-[8px] w-[90%] max-w-[660px]" />
+
+                        <ArrowRight className="w-6 h-6 text-davys-grey-0 hover:text-selago-0 border-2 rounded-full mt-2 transition-all duration-200 hover:cursor-pointer" />
+                    </div>
+                </div>
+
+                <div className='flex flex-col items-center justify-center w-full h-[10%] gap-y-2.5'>
+                    <ArrowLeft className="w-6 h-6 text-davys-grey-0 hover:text-selago-0 border-2 rounded-full mt-2 transition-all duration-200 hover:cursor-pointer"/>
+                </div>
+            </div> 
+        </>
+    )
+}
+
 function Portal() {
     return (
         <>
-            {loginPage()}
+            {signUpPage()}
         </>
     )
 }
