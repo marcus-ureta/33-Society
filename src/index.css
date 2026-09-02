@@ -1,1 +1,101 @@
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap");
 @import "tailwindcss";
+
+@theme {
+  /* COLOR PALETTE */
+  --color-schiava-blue: #192d68;
+  --color-schiava-blue-dark: #112454;
+  --color-schiava-blue-light: #4f67af;
+
+  --color-selago-0: #ebf1ff;
+  --color-selago-50: #f5f8ff;
+  --color-selago-100: #ffffff;
+
+  --color-davys-grey-0: #4d505a;
+  --color-davys-grey-50: #8d919e;
+  --color-davys-grey-100: #b5b8c2;
+
+  --color-tristesse-0: #0b131c;
+  --color-tristesse-50: #243c57;
+  --color-tristesse-100: #3d6087;
+
+  /* FONTS */
+  --font-instrument-serif: "Instrument Serif", serif;
+  --font-aileron: "Aileron", sans-serif;
+  --font-cochin: "Cochin", serif;
+
+  /* FONT WEIGHTS */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Numeric weight utilities (e.g., font-300, font-500, font-600) */
+  --font-weight-300: 300;
+  --font-weight-400: 400;
+  --font-weight-500: 500;
+  --font-weight-600: 600;
+  --font-weight-700: 700;
+}
+
+@font-face {
+  font-family: "Aileron";
+  src:
+    url("/fonts/Aileron-Bold.woff2") format("woff2"),
+    url("/fonts/Aileron-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Aileron";
+  src:
+    url("/fonts/Aileron-Light.woff2") format("woff2"),
+    url("/fonts/Aileron-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Aileron";
+  src:
+    url("/fonts/Aileron-Regular.woff2") format("woff2"),
+    url("/fonts/Aileron-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Aileron";
+  src:
+    url("/fonts/Aileron-SemiBold.woff2") format("woff2"),
+    url("/fonts/Aileron-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cochin";
+  src:
+    url("/fonts/Cochin-Bold.woff2") format("woff2"),
+    url("/fonts/Cochin-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cochin";
+  src:
+    url("/fonts/Cochin.woff2") format("woff2"),
+    url("/fonts/Cochin.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
