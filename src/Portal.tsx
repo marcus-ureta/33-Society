@@ -118,13 +118,13 @@ function signUpPage() {
                     </div>
                 </div>
 
-                <div className='flex flex-col items-center justify-center w-full h-[80%] gap-y-12 max-w-none prose'>
-                    <h1 className="font-['Cochin'] font-bold text-selago-100 text-7xl">
+                <div className='flex flex-col items-center justify-center w-full h-[80%] gap-y-4 sm:gap-y-12 max-w-none prose'>
+                    <h1 className="font-['Cochin'] font-bold text-selago-100 text-6xl sm:text-7xl mx-12 text-center">
                         What is your name?
                     </h1>
 
-                    <div className='flex flex-row items-center justify-center gap-x-2.5 w-full'>
-                        <input name='answer' placeholder='Your Answer' className="border-b-[1px] border-davys-grey-0 text-[2rem] text-davys-grey-0 font-['instrument-serif'] italic pl-[8px] w-[90%] max-w-[660px]" />
+                    <div className='flex flex-col sm:flex-row items-center justify-center gap-x-2.5 gap-y-2.5 w-full'>
+                        <input name='answer' placeholder='Your Answer' className="border-b-[1px] border-davys-grey-0 text-[2rem] text-davys-grey-0 font-['instrument-serif'] italic pl-[8px] w-[90%] max-w-[660px] mb-0" />
 
                         <ArrowRight className="w-6 h-6 text-davys-grey-0 hover:text-selago-0 border-2 rounded-full mt-2 transition-all duration-200 hover:cursor-pointer" />
                     </div>
