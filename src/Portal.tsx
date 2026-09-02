@@ -14,19 +14,19 @@ function Portal() {
                 </div>
             </div>
 
-            <div className='flex flex-col items-center justify-center w-full h-[85%]'>
+            <div className='flex flex-col items-center justify-center w-full h-[80%]'>
 
                 <div className='grid grid-rows-2 gap-y-4'>
                     <button className={cn(buttonVariants({ variant: "default", size: "lg" }),
                         "bg-schiava-blue text-white shadow-[0_0_13px_1px_var(--color-tristesse-50)] border-2 border-schiava-blue-dark py-4 px-12 rounded-[64px] hover:bg-schiava-blue-dark hover:shadow-[0_0_13px_1px_var(--color-tristesse-50)] hover:scale-102 hover:cursor-pointer transition-all duration-300 font-['Aileron'] font-semibold text-[1rem]",
                     )}>
-                        Sign up
+                        SIGN UP
                     </button>
 
                     <button className={cn(buttonVariants({ variant: "default", size: "lg" }),
                         "bg-schiava-blue text-white shadow-[0_0_13px_1px_var(--color-tristesse-50)] border-2 border-schiava-blue-dark py-4 px-12 rounded-[64px] hover:bg-schiava-blue-dark hover:shadow-[0_0_13px_1px_var(--color-tristesse-50)] hover:scale-102 hover:cursor-pointer transition-all duration-300 font-['Aileron'] font-semibold text-[1rem]",
                     )}>
-                        Login
+                        LOGIN
                     </button>
                 </div>
 
