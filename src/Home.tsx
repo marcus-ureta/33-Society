@@ -26,24 +26,24 @@ function App() {
           <div className=" w-full h-fit flex flex-col items-center pt-32 p-8">
             <div className="prose prose-lg max-w-none w-full flex flex-col items-center">
               <h1 className="font-cochin font-bold text-selago-100 text-7xl w-full max-w-[20ch] text-center mb-2">
-              Sweet topping shortbread jelly beans
-            </h1>
-            <p className="font-aileron text-selago-0 mb-0 text-center">
-              Cheesecake sugar plum marshmallow muffin chocolate cheesecake
-              sweet danish sesame snaps.
-            </p>
-            {/* Hero CTA */}
+                Sweet topping shortbread jelly beans
+              </h1>
+              <p className="font-aileron text-selago-0 mb-0 text-center">
+                Cheesecake sugar plum marshmallow muffin chocolate cheesecake
+                sweet danish sesame snaps.
+              </p>
+              {/* Hero CTA */}
               <div className="mt-12 border-2 border-schiava-blue p-4 rounded-[42px] flex flex-col items-center gap-4">
-              <Button
-                className={
+                <Button
+                  className={
                     "text-selago-0 bg-schiava-blue font-aileron rounded-full text-base px-10 py-4"
-                }
-              >
-                Purchase a Ticket
-              </Button>
-              <p className="leading-0 px-6 text-selago-0">Book a Meeting</p>
+                  }
+                >
+                  Purchase a Ticket
+                </Button>
+                <p className="leading-0 px-6 text-selago-0">Book a Meeting</p>
+              </div>
             </div>
-          </div>
             <div className="flex justify-center h-72 w-full"></div>
           </div>
 
@@ -90,8 +90,6 @@ function App() {
                 chups jelly beans fruitcake.
               </p>
             </div>
-          </div>
-
           </div>
         </div>
       </div>
