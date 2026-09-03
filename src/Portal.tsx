@@ -110,7 +110,7 @@ function SignUpPage({setPage} : {setPage : React.Dispatch<React.SetStateAction<P
 
                     <div className="flex flex-row items-center w-[75%] max-w-[820px] gap-x-4 gap-y-7">
                         <div className="w-[50%] h-[3px] bg-selago-0 rounded-full shadow-[0_0_16px_1px_var(--color-schiava-blue-dark)]"/>
-                        {[...Array(7)].map((_, index) => (
+                        {[...Array(5)].map((_, index) => (
                             <div key={index} className="w-[50%] h-[3px] bg-davys-grey-0 rounded-full shadow-[0_0_16px_1px_var(--color-schiava-blue-dark)]" />
                         ))}
                     </div>
