@@ -208,6 +208,7 @@ function SignUpPage({setPage} : {setPage : React.Dispatch<React.SetStateAction<P
 function QuestionnairePage({setPage} : {setPage : React.Dispatch<React.SetStateAction<Page>>}){
 
     const [questionNo, setQuestionNo] = useState<number>(1);
+    const [inputValue, setInputValue] = useState('');
 
     const questions: string[] = [
         'What unique value or insight can you contribute to the community?',
@@ -216,16 +217,55 @@ function QuestionnairePage({setPage} : {setPage : React.Dispatch<React.SetStateA
         'Society 33 is a community of dedicated founders actively investing in scaling their businesses. If accepted, are you financially prepared to invest in your membership spot?',
     ]
 
-    const handleNextQuestion = () => {
+    interface QuestionFormat {
+        questionNo: number;
+        answer: string;
+    }
+
+
+    const [questionnaireAnswers, setQuestionnaireAnswers] = useState<QuestionFormat[]>([
+        {
+            questionNo: 1,
+            answer: ''
+        },
+
+        {
+            questionNo: 2,
+            answer: ''
+        },
+
+        {
+            questionNo: 3,
+            answer: ''
+        },
+
+        {
+            questionNo: 4,
+            answer: ''
+        }
+    ]);
+
+    const handleNextQuestion = (input : string) => {
         console.log('firing function!');
+
+        setQuestionnaireAnswers((prevQues) => 
+            prevQues.map((ques) => 
+                ques.questionNo === questionNo ? {
+                    ...ques,
+                    answer: input
+                } : ques
+            )
+        )
+
+        console.log(questionnaireAnswers);
 
         if(questionNo <= 3) setQuestionNo(prev => (prev <= questions.length ? prev + 1 : prev))
         else if(questionNo > 1) setPage(Page.accountSetup);
     }
 
-    const handleCheckboxChange = (checked: boolean | "indeterminate") => {
+    const handleCheckboxChange = (checked: boolean | "indeterminate", value : string) => {
         if (checked === true) {
-            handleNextQuestion();
+            handleNextQuestion(value);
         }
     };
 
@@ -257,9 +297,9 @@ function QuestionnairePage({setPage} : {setPage : React.Dispatch<React.SetStateA
 
                     {questionNo <= 2 && (
                         <div className='flex flex-col sm:flex-row items-center justify-center gap-x-2.5 gap-y-2.5 w-full'>
-                            <input name='answer' placeholder='Your Answer' className="border-b-[1px] border-davys-grey-0 text-[2rem] text-davys-grey-0 font-['instrument-serif'] italic pl-[8px] w-[90%] max-w-[660px] mb-0" />
+                            <input name='answer' value={inputValue} onChange={(e) => setInputValue(e.target.value)} placeholder='Your Answer' className="border-b-[1px] border-davys-grey-0 text-[2rem] text-davys-grey-0 font-['instrument-serif'] italic pl-2 w-[90%] max-w-[660px] mb-0" />
 
-                            <div onClick={() => handleNextQuestion()} className='pointer-events-auto'>
+                            <div onClick={() => handleNextQuestion(inputValue)} className='pointer-events-auto'>
                                 <ArrowRight className="w-6 h-6 text-davys-grey-0 hover:text-selago-0 border-2 rounded-full mt-2 transition-all duration-200 hover:cursor-pointer" />
                             </div>
                         </div>
@@ -268,28 +308,28 @@ function QuestionnairePage({setPage} : {setPage : React.Dispatch<React.SetStateA
                     {questionNo === 3 && (
                         <FieldGroup className="grid grid-rows-4 items-center justify-center gap-y-9 max-w-[512px]">
                             <Field orientation="horizontal" className="w-fit justify-center">
-                                <Checkbox id="5k" name="under_5k" className="hover:cursor-pointer size-6 border-selago-0 text-selago-100 mr-1" onCheckedChange={handleCheckboxChange}/>
+                                <Checkbox id="5k" name="under_5k" className="hover:cursor-pointer size-6 border-selago-0 text-selago-100 mr-1" onCheckedChange={(checked) => handleCheckboxChange(checked, "Under $5k")}/>
                                 <FieldLabel htmlFor="5k" className="hover:cursor-pointer text-[1.05rem] text-selago-100 font-['Aileron'] font-semibold">
                                     Under $5k
                                 </FieldLabel>
                             </Field>
 
                             <Field orientation="horizontal" className="w-fit justify-center">
-                                <Checkbox id="5k_10k" name="5k_10k" className="hover:cursor-pointer size-6 border-selago-0 text-selago-100 mr-1" onCheckedChange={handleCheckboxChange}/>
+                                <Checkbox id="5k_10k" name="5k_10k" className="hover:cursor-pointer size-6 border-selago-0 text-selago-100 mr-1" onCheckedChange={(checked) => handleCheckboxChange(checked, "$5k - $10k")}/>
                                 <FieldLabel htmlFor="5k_10k" className="hover:cursor-pointer text-[1.05rem] text-selago-100 font-['Aileron'] font-semibold">
                                     $5k - $10k
                                 </FieldLabel>
                             </Field>
 
                             <Field orientation="horizontal" className="w-fit justify-center">
-                                <Checkbox id="10k_50k" name="10k_50k" className="hover:cursor-pointer size-6 border-selago-0 text-selago-100 mr-1" onCheckedChange={handleCheckboxChange}/>
+                                <Checkbox id="10k_50k" name="10k_50k" className="hover:cursor-pointer size-6 border-selago-0 text-selago-100 mr-1" onCheckedChange={(checked) => handleCheckboxChange(checked, "$10k - $50k")}/>
                                 <FieldLabel htmlFor="10k_50k" className="hover:cursor-pointer text-[1.05rem] text-selago-100 font-['Aileron'] font-semibold">
                                     $10k - $50k
                                 </FieldLabel>
                             </Field>
 
                             <Field orientation="horizontal" className="w-fit justify-center">
-                                <Checkbox id="50k" name="50k" className="hover:cursor-pointer size-6 border-selago-0 text-selago-100 mr-1" onCheckedChange={handleCheckboxChange}/>
+                                <Checkbox id="50k" name="50k" className="hover:cursor-pointer size-6 border-selago-0 text-selago-100 mr-1" onCheckedChange={(checked) => handleCheckboxChange(checked, "$50k+")}/>
                                 <FieldLabel htmlFor="50k" className="hover:cursor-pointer text-[1.05rem] text-selago-100 font-['Aileron'] font-semibold">
                                     $50k+
                                 </FieldLabel>
@@ -300,21 +340,21 @@ function QuestionnairePage({setPage} : {setPage : React.Dispatch<React.SetStateA
                     {questionNo === 4 && (
                         <FieldGroup className="grid grid-rows-4 items-center justify-center gap-y-9 max-w-[512px]">
                             <Field orientation="horizontal" className="w-fit justify-center">
-                                <Checkbox id="offer_accepted" name="offer_accepted" className="hover:cursor-pointer size-6 border-selago-0 text-selago-100 mr-1" onCheckedChange={handleCheckboxChange}/>
+                                <Checkbox id="offer_accepted" name="offer_accepted" className="hover:cursor-pointer size-6 border-selago-0 text-selago-100 mr-1" onCheckedChange={(checked) => handleCheckboxChange(checked, "Yes, I am ready to invest")}/>
                                 <FieldLabel htmlFor="offer_accepted" className="hover:cursor-pointer text-[1.05rem] text-selago-100 font-['Aileron'] font-semibold">
                                     Yes, I am ready to invest
                                 </FieldLabel>
                             </Field>
 
                             <Field orientation="horizontal" className="w-fit justify-center">
-                                <Checkbox id="offer_declined" name="offer_declined" className="hover:cursor-pointer size-6 border-selago-0 text-selago-100 mr-1" onCheckedChange={handleCheckboxChange}/>
+                                <Checkbox id="offer_declined" name="offer_declined" className="hover:cursor-pointer size-6 border-selago-0 text-selago-100 mr-1" onCheckedChange={(checked) => handleCheckboxChange(checked, "No, not at this time")}/>
                                 <FieldLabel htmlFor="offer_declined" className="hover:cursor-pointer text-[1.05rem] text-selago-100 font-['Aileron'] font-semibold">
                                     No, not at this time
                                 </FieldLabel>
                             </Field>
 
                             <Field orientation="horizontal" className="w-fit justify-center">
-                                <Checkbox id="offer_uncertain" name="offer_uncertain" className="hover:cursor-pointer size-6 border-selago-0 text-selago-100 mr-1" onCheckedChange={handleCheckboxChange}/>
+                                <Checkbox id="offer_uncertain" name="offer_uncertain" className="hover:cursor-pointer size-6 border-selago-0 text-selago-100 mr-1" onCheckedChange={(checked) => handleCheckboxChange(checked, "Maybe, will think about it for some time")}/>
                                 <FieldLabel htmlFor="offer_uncertain" className="hover:cursor-pointer text-[1.05rem] text-selago-100 font-['Aileron'] font-semibold">
                                     Maybe, will think about it for some time
                                 </FieldLabel>
