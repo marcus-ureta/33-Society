@@ -1,3 +1,5 @@
+import { LineDivider } from "./components/LineDivider";
+import { HomePillars } from "./components/HomePillars";
 import { Logo } from "./components/logos";
 import "./index.css";
 
@@ -88,6 +90,43 @@ function App() {
                 sweet bonbon tart lemon drops. Muffin cake sugar plum chocolate
                 bar cotton candy sweet jujubes danish. Croissant icing chupa
                 chups jelly beans fruitcake.
+              </p>
+            </div>
+          </div>
+
+          <div className="bg-tristesse-0 h-fit w-full -mt-[15%] flex pt-48 flex-col items-center p-8 prose prose-lg ">
+            <div className="h-fit w-fit flex items-center flex-col">
+              <HomePillars
+                number="01"
+                name="Value of Group"
+                description="Cake candy canes sweet pastry caramels cake icing cheesecake sweet roll cake croissant."
+              />
+              <HomePillars
+                number="02"
+                name="Clarity"
+                description="Marzipan danish chocolate cake candy brownie shortbread chupa chups tootsie roll ice cream."
+              />
+              <HomePillars
+                number="03"
+                name="Lifestyle"
+                description="Sesame snaps apple pie ice cream lemon drops gummies sweet roll jelly oat cake candy."
+              />
+              <HomePillars
+                number="04"
+                name="Business Opportunity"
+                description="Icing halvah ice cream chocolate gingerbread chocolate bar soufflé liquorice jelly beans."
+              />
+            </div>
+
+            <LineDivider fillName="schiava-blue" className="mb-18 w-full" />
+
+            <div className="prose prose-lg h-fit w-fit flex items-center flex-col">
+              <h1 className="text-center font-cochin text-selago-50 mb-0">
+                Guest Speakers
+              </h1>
+              <p className="text-center text-selago-0 font-aileron">
+                Toffee chocolate cake macaroon jujubes cotton candy sweet sesame
+                snaps gummi bears dragée.
               </p>
             </div>
           </div>

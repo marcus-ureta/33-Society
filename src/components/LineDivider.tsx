@@ -9,7 +9,7 @@ export interface LineDividerProps extends HTMLProps<HTMLDivElement> {
 
 export function LineDivider({
   fillName = "selago-0",
-  className = "w-full",
+  className,
   ...props
 }: LineDividerProps) {
   const textFill = `text-${fillName}`;
@@ -18,14 +18,14 @@ export function LineDivider({
   return (
     <div
       className={cn(
+        "w-full h-fit flex flex-row justify-center items-center",
         className,
-        "h-fit flex flex-row justify-center items-center",
       )}
       {...props}
     >
-      <LineCap className={cn(textFill, "translate-x-1")} />
-      <div className={cn(bgFill, "h-0.5 w-full")}></div>
-      <LineCap className={cn(textFill, " -translate-x-1 rotate-180")} />
+      <LineCap className={cn("translate-x-1", textFill)} />
+      <div className={cn("h-0.5 flex-1", bgFill)}></div>
+      <LineCap className={cn("-translate-x-1 rotate-180", textFill)} />
     </div>
   );
 }
