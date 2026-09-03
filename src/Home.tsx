@@ -1,3 +1,6 @@
+import { LineDivider } from "./components/LineDivider";
+import { HomePillars } from "./components/HomePillars";
+import { Logo } from "./components/logos";
 import "./index.css";
 
 import Navbar from "./Navbar";
@@ -5,62 +8,127 @@ import Navbar from "./Navbar";
 import { Button } from "@base-ui/react/button";
 
 function App() {
-  const SVG_WIDTH = 837.5;
-  const SVG_HEIGHT = 181.5;
+  const CROWN_TOP_WIDTH = 837.5;
+  const CROWN_TOP_HEIGHT = 181.5;
 
   // This calculates the aspect ratio (e.g., 200 / 1200 = 0.1666)
-  const HEIGHT_MULTIPLIER = SVG_HEIGHT / SVG_WIDTH;
+  const CROWN_TOP_HEIGHT_MULTIPLIER = CROWN_TOP_HEIGHT / CROWN_TOP_WIDTH;
+
+  const CROWN_BOTTOM_WIDTH = 1000;
+  const CROWN_BOTTOM_HEIGHT = 281.2;
+
+  const CROWN_BOTTOM_HEIGHT_MULTIPLIER =
+    CROWN_BOTTOM_HEIGHT / CROWN_BOTTOM_WIDTH;
 
   return (
     <>
-      <Navbar />
-      <div className="w-full h-fit">
-        <div className="bg-tristesse-0 w-full h-dvh grid grid-rows-[65%_35%] grid-cols-1 justify-center">
-          <div className="prose prose-lg max-w-none flex flex-col items-center self-end">
-            <h1 className="font-cochin font-bold text-selago-100 text-8xl w-full max-w-[20ch] text-center mb-2">
-              Sweet topping shortbread jelly beans
-            </h1>
-            <p className="font-aileron text-selago-0 mb-0 text-center">
-              Cheesecake sugar plum marshmallow muffin chocolate cheesecake
-              sweet danish sesame snaps.
-            </p>
-            {/* Hero CTA */}
-            <div className="mt-12 border-2 border-schiava-blue p-2 rounded-full flex flex-row">
-              <Button
-                className={
-                  "text-selago-0 bg-schiava-blue font-aileron rounded-full text-base px-8 py-2"
-                }
-              >
-                Purchase a Ticket
-              </Button>
-              <p className="leading-0 px-6 text-selago-0">Book a Meeting</p>
+      {/* <Navbar /> */}
+      <div className="w-full h-fit flex justify-center bg-tristesse-0 min-w-80 *:wrap-break-word ">
+        <div className="max-w-480 flex flex-col w-full min-w-80">
+          <div className=" w-full h-fit flex flex-col items-center pt-32 p-8">
+            <div className="prose prose-lg max-w-none w-full flex flex-col items-center">
+              <h1 className="font-cochin font-bold text-selago-100 text-7xl w-full max-w-[20ch] text-center mb-2">
+                Sweet topping shortbread jelly beans
+              </h1>
+              <p className="font-aileron text-selago-0 mb-0 text-center">
+                Cheesecake sugar plum marshmallow muffin chocolate cheesecake
+                sweet danish sesame snaps.
+              </p>
+              {/* Hero CTA */}
+              <div className="mt-12 border-2 border-schiava-blue p-4 rounded-[42px] flex flex-col items-center gap-4">
+                <Button
+                  className={
+                    "text-selago-0 bg-schiava-blue font-aileron rounded-full text-base px-10 py-4"
+                  }
+                >
+                  Purchase a Ticket
+                </Button>
+                <p className="leading-0 px-6 text-selago-0">Book a Meeting</p>
+              </div>
             </div>
-          </div>
-            <div className="flex justify-center h-96 w-full"></div>
+            <div className="flex justify-center h-72 w-full"></div>
           </div>
 
-          <div className="relative w-full @container h-[750px] -mt-36">
+          {/* -mt-36  pushes crown page cut upwards*/}
+          <div className="relative w-full @container h-fit p-8 flex flex-col items-center justify-center">
             <div
-              className="absolute inset-0 bg-[url(/sample.png)] bg-no-repeat bg-size-[100%_100%]"
               className="absolute inset-0 bg-schiava-blue bg-no-repeat bg-size-[100%_100%]"
               style={{
-                maskImage: `url('/svg/CROWN_CROPPED.svg'), linear-gradient(black, black)`,
-                WebkitMaskImage: `url('/svg/CROWN_CROPPED.svg'), linear-gradient(black, black)`,
+                maskImage: `url('/svg/CROWN_CROPPED.svg'), linear-gradient(black, black), url('/svg/BOTTOM_CROWN.svg')`,
+                WebkitMaskImage: `url('/svg/CROWN_CROPPED.svg'), linear-gradient(black, black), url('/svg/BOTTOM_CROWN.svg')`,
 
-                maskRepeat: "no-repeat, no-repeat",
-                WebkitMaskRepeat: "no-repeat, no-repeat",
+                maskRepeat: "no-repeat, no-repeat, no-repeat",
+                WebkitMaskRepeat: "no-repeat, no-repeat, no-repeat",
 
-                // Layer 1: Scale width to 100% and let height adapt naturally.
-                // Layer 2: Fill 100% of the width and height of the container.
-                maskSize: "100% auto, 100% 100%",
-                WebkitMaskSize: "100% auto, 100% 100%",
+                // Layer 1: Scale width to 100% and explicitly match the top crown aspect ratio height.
+                // Layer 2: Fill 100% height minus top crown and bottom crown (with 4px overlap for seams).
+                // Layer 3: Scale width to 100% and explicitly match the bottom crown aspect ratio height.
+                maskSize: `100% auto, 100% calc(100% - (100cqw * ${CROWN_TOP_HEIGHT_MULTIPLIER}) - (100cqw * ${CROWN_BOTTOM_HEIGHT_MULTIPLIER}) + 4px), 100% auto`,
+                WebkitMaskSize: `100% auto, 100% calc(100% - (100cqw * ${CROWN_TOP_HEIGHT_MULTIPLIER}) - (100cqw * ${CROWN_BOTTOM_HEIGHT_MULTIPLIER}) + 4px), 100% auto`,
 
                 // Layer 1: Pin to top left.
-                // Layer 2: Push it down exactly to where the scaled SVG height ends using Container Query Width (cqw).
-                maskPosition: `0 0, 0 calc((100cqw * ${HEIGHT_MULTIPLIER}) - 2px)`,
-                WebkitMaskPosition: `0 0, 0 calc((100cqw * ${HEIGHT_MULTIPLIER}) - 2px)`,
+                // Layer 2: Push down to where the top crown ends (minus 2px to prevent a seam).
+                // Layer 3: Pin to bottom.
+                maskPosition: `0 0, 0 calc((100cqw * ${CROWN_TOP_HEIGHT_MULTIPLIER}) - 2px), 0 bottom`,
+                WebkitMaskPosition: `0 0, 0 calc((100cqw * ${CROWN_TOP_HEIGHT_MULTIPLIER}) - 2px), 0 bottom`,
               }}
             />
+
+            <div
+              className="w-full h-full z-1 relative flex flex-col items-center prose prose-lg"
+              style={{
+                paddingTop: `calc(((100cqw * ${CROWN_TOP_HEIGHT_MULTIPLIER}) - 2px) + 32px)`,
+                paddingBottom: `calc(100cqw * ${CROWN_BOTTOM_HEIGHT_MULTIPLIER})`,
+              }}
+            >
+              <h1 className="font-cochin text-selago-50 mb-0 text-3xl text-center">
+                ABOUT
+              </h1>
+              <Logo variant="mark" className="text-selago-50 size-36"></Logo>
+              <p className="text-center text-selago-0 font-aileron">
+                Oat cake cheesecake caramels shortbread toffee wafer. Tiramisu
+                sweet bonbon tart lemon drops. Muffin cake sugar plum chocolate
+                bar cotton candy sweet jujubes danish. Croissant icing chupa
+                chups jelly beans fruitcake.
+              </p>
+            </div>
+          </div>
+
+          <div className="bg-tristesse-0 h-fit w-full -mt-[15%] flex pt-48 flex-col items-center p-8 prose prose-lg ">
+            <div className="h-fit w-fit flex items-center flex-col">
+              <HomePillars
+                number="01"
+                name="Value of Group"
+                description="Cake candy canes sweet pastry caramels cake icing cheesecake sweet roll cake croissant."
+              />
+              <HomePillars
+                number="02"
+                name="Clarity"
+                description="Marzipan danish chocolate cake candy brownie shortbread chupa chups tootsie roll ice cream."
+              />
+              <HomePillars
+                number="03"
+                name="Lifestyle"
+                description="Sesame snaps apple pie ice cream lemon drops gummies sweet roll jelly oat cake candy."
+              />
+              <HomePillars
+                number="04"
+                name="Business Opportunity"
+                description="Icing halvah ice cream chocolate gingerbread chocolate bar soufflé liquorice jelly beans."
+              />
+            </div>
+
+            <LineDivider fillName="schiava-blue" className="mb-18 w-full" />
+
+            <div className="prose prose-lg h-fit w-fit flex items-center flex-col">
+              <h1 className="text-center font-cochin text-selago-50 mb-0">
+                Guest Speakers
+              </h1>
+              <p className="text-center text-selago-0 font-aileron">
+                Toffee chocolate cake macaroon jujubes cotton candy sweet sesame
+                snaps gummi bears dragée.
+              </p>
+            </div>
           </div>
         </div>
       </div>
