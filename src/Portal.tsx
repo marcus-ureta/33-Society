@@ -276,7 +276,7 @@ function QuestionnairePage({setPage} : {setPage : React.Dispatch<React.SetStateA
 
     return(
         <>
-            <div className="w-screen h-dvh bg-tristesse-0 flex flex-col pt-8">
+            <div className="w-screen h-dvh bg-tristesse-0 flex flex-col pt-8 overflow-hidden">
                 <div className="flex flex-col gap-y-4 items-center">
                     <Logo variant="primary" className="size-16 text-selago-100" />
 
@@ -306,29 +306,29 @@ function QuestionnairePage({setPage} : {setPage : React.Dispatch<React.SetStateA
                     )}
 
                     {questionNo === 3 && (
-                        <FieldGroup className="grid grid-rows-4 items-center justify-center gap-y-9 max-w-[512px]">
-                            <Field orientation="horizontal" className="w-fit justify-center">
+                        <FieldGroup className="grid grid-cols-2 grid-rows-2 items-center justify-items-center gap-y-9 max-w-[512px] translate-x-[13%]">
+                            <Field orientation="horizontal" className="w-full justify-center">
                                 <Checkbox id="5k" name="under_5k" className="hover:cursor-pointer size-6 border-selago-0 text-selago-100 mr-1" onCheckedChange={(checked) => handleCheckboxChange(checked, "Under $5k")}/>
                                 <FieldLabel htmlFor="5k" className="hover:cursor-pointer text-[1.05rem] text-selago-100 font-['Aileron'] font-semibold">
                                     Under $5k
                                 </FieldLabel>
                             </Field>
 
-                            <Field orientation="horizontal" className="w-fit justify-center">
+                            <Field orientation="horizontal" className="w-full justify-center">
                                 <Checkbox id="5k_10k" name="5k_10k" className="hover:cursor-pointer size-6 border-selago-0 text-selago-100 mr-1" onCheckedChange={(checked) => handleCheckboxChange(checked, "$5k - $10k")}/>
                                 <FieldLabel htmlFor="5k_10k" className="hover:cursor-pointer text-[1.05rem] text-selago-100 font-['Aileron'] font-semibold">
                                     $5k - $10k
                                 </FieldLabel>
                             </Field>
 
-                            <Field orientation="horizontal" className="w-fit justify-center">
+                            <Field orientation="horizontal" className="w-full justify-center">
                                 <Checkbox id="10k_50k" name="10k_50k" className="hover:cursor-pointer size-6 border-selago-0 text-selago-100 mr-1" onCheckedChange={(checked) => handleCheckboxChange(checked, "$10k - $50k")}/>
                                 <FieldLabel htmlFor="10k_50k" className="hover:cursor-pointer text-[1.05rem] text-selago-100 font-['Aileron'] font-semibold">
                                     $10k - $50k
                                 </FieldLabel>
                             </Field>
 
-                            <Field orientation="horizontal" className="w-fit justify-center">
+                            <Field orientation="horizontal" className="w-full justify-center">
                                 <Checkbox id="50k" name="50k" className="hover:cursor-pointer size-6 border-selago-0 text-selago-100 mr-1" onCheckedChange={(checked) => handleCheckboxChange(checked, "$50k+")}/>
                                 <FieldLabel htmlFor="50k" className="hover:cursor-pointer text-[1.05rem] text-selago-100 font-['Aileron'] font-semibold">
                                     $50k+
@@ -338,7 +338,7 @@ function QuestionnairePage({setPage} : {setPage : React.Dispatch<React.SetStateA
                     )}
 
                     {questionNo === 4 && (
-                        <FieldGroup className="grid grid-rows-4 items-center justify-center gap-y-9 max-w-[512px]">
+                        <FieldGroup className="grid sm:grid-cols-3 items-center justify-center gap-y-9 max-w-[880px] ">
                             <Field orientation="horizontal" className="w-fit justify-center">
                                 <Checkbox id="offer_accepted" name="offer_accepted" className="hover:cursor-pointer size-6 border-selago-0 text-selago-100 mr-1" onCheckedChange={(checked) => handleCheckboxChange(checked, "Yes, I am ready to invest")}/>
                                 <FieldLabel htmlFor="offer_accepted" className="hover:cursor-pointer text-[1.05rem] text-selago-100 font-['Aileron'] font-semibold">
