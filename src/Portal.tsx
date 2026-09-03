@@ -13,6 +13,8 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectVa
 import { countries } from './utils/countries.ts'
 import { useState } from 'react';
 
+import crown from '/svg/CROWN_CROPPED.svg'
+
 function loginSignUpPage() {
 
     return(
@@ -65,7 +67,7 @@ function passWordPage() {
 
                 <ArrowRight className="w-6 h-6 text-davys-grey-0 hover:text-selago-0 border-2 rounded-full mt-2 transition-all duration-200 hover:cursor-pointer" />
             </div>
-            
+
         </div>
     )
 }
@@ -110,7 +112,15 @@ function loginPage() {
     )
 }
 
-function signUpPage() {
+
+// |____________________________________| \\
+// |------------------------------------| \\
+// |------   FULL SIGN UP PAGE    ------| \\
+// |------------------------------------| \\
+// |____________________________________| \\
+
+
+function SignUpPage() {
 
     return(
         <>
@@ -274,9 +284,59 @@ function QuestionnairePage(){
     )
 }
 
+function AccountSetup(){
+    return (
+        <div className="relative w-screen h-dvh bg-tristesse-0 flex flex-col pt-8 overflow-hidden">
+
+            <div className="flex flex-col gap-y-4 items-center mt-[3%]">
+                <div className="flex flex-row gap-x-8 w-full h-full mx-[5%] items-center justify-center my-8">
+                    <form className="w-[90%] max-w-[548px]">
+                        <h1 className="text-white font-['Cochin'] text-5xl font-bold">
+                            Account Setup
+                        </h1>
+
+                        <FieldGroup className="flex flex-col gap-y-6 my-[5%]">
+                            <Field>
+                                <Input id="email_address" type="email" placeholder="33society@gmail.com" required className="bg-tristesse-0 border-davys-grey-100 text-selago-0 !text-[17px] h-fit py-[6px] px-2"
+                                />
+                            </Field>
+
+                            <Field>
+                                <Input id="password" type="password" placeholder="Setup Your Password" required className="bg-tristesse border-davys-grey-100 text-selago-0 !text-[17px] h-fit py-[6px] px-2"
+                                />
+                            </Field>
+                        </FieldGroup>
+
+                            <div className='flex flex-col items-center justify-center mt-[4%] pointer-events-auto'>
+                                <Button type="submit" variant="outline" className={cn(buttonVariants({ variant: "default", size: "lg" }),
+                                    "bg-schiava-blue text-white border-2 border-schiava-blue-dark py-5 px-12 rounded-[64px] hover:bg-schiava-blue-dark hover:scale-102 hover:cursor-pointer transition-all duration-300 font-['Aileron'] font-semibold text-[1.575rem] pointer-events-auto",
+                                )}>
+                                    Register Account
+                                </Button>
+                            </div>
+                    </form>
+
+                    <Logo
+                        variant="stacked"
+                        className="size-128 text-selago-100 hidden sm:block"
+                    />
+                </div>
+            </div>
+
+            <div className="absolute bottom-0 left-0 w-full h-[600px] max-h-[750px] overflow-hidden md:translate-y-[clamp(0px,4vw,500px)] pointer-events-none select-none">
+                <img
+                    src={crown}
+                    className="absolute bottom-0 left-0 w-full h-auto select-none"
+                />
+            </div>
+
+        </div>
+    );  
+}
+
 function Portal() {
 
-    return <QuestionnairePage/>;
+    return <AccountSetup/>;
 }
 
 export default Portal
