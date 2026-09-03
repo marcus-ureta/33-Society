@@ -1,3 +1,5 @@
+import { LineDivider } from "./components/LineDivider";
+import { HomePillars } from "./components/HomePillars";
 import { Logo } from "./components/logos";
 import "./index.css";
 
@@ -92,6 +94,7 @@ function App() {
             </div>
           </div>
 
+          <div className="bg-tristesse-0 h-fit w-full -mt-[15%] flex pt-48 flex-col items-center p-8 prose prose-lg ">
           </div>
         </div>
       </div>
