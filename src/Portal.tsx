@@ -13,46 +13,24 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectVa
 import { countries } from './utils/countries.ts'
 import { useState } from 'react';
 
-import crown from '/svg/CROWN_CROPPED.svg'
+import crown from '/svg/CROWN_CROPPED.svg';
 
-function LoginSignUpPage() {
+const Page = {
+    password: 'Password',
+    portal: 'Portal',
+    signup: 'Signup',
+    questionnaire: 'Questionnaire',
+    accountSetup: 'AccountSetup',
+    congratulations: 'Congratulations',
+    login: 'Login',
+} as const;
 
+type Page = typeof Page[keyof typeof Page];
+
+
+function PasswordPage({setPage} : {setPage : React.Dispatch<React.SetStateAction<Page>>}){
     return(
-        <div className="w-screen h-dvh bg-tristesse-0 flex flex-col pt-8">
-            <div className="flex flex-col gap-y-4 items-center">
-                <Logo variant="primary" className="size-16 text-selago-100" />
-
-                <div className="flex gap-x-3 items-center w-[320px]">
-                    <div className="w-full h-[3px] bg-selago-0 rounded-full shadow-[0_0_16px_1px_var(--color-schiava-blue-dark)]" />
-                    <div className="w-full h-[3px] bg-davys-grey-0 rounded-full shadow-[0_0_16px_1px_var(--color-schiava-blue-dark)]" />
-                </div>
-            </div>
-
-            <div className='flex flex-col items-center justify-center w-full h-[80%]'>
-
-                <div className='grid grid-rows-2 gap-y-4'>
-                    <Button type="submit" variant="outline" className={cn(buttonVariants({ variant: "default", size: "lg" }),
-                                    "bg-schiava-blue text-white border-2 border-schiava-blue-dark py-5 px-12 rounded-[64px] hover:bg-schiava-blue-dark hover:scale-102 hover:cursor-pointer transition-all duration-300 font-['Aileron'] font-semibold text-[1.575rem]",
-                                )}>
-                        SIGN UP
-                    </Button>
-
-                    <Button type="submit" variant="outline" className={cn(buttonVariants({ variant: "default", size: "lg" }),
-                                    "bg-schiava-blue text-white border-2 border-schiava-blue-dark py-5 px-12 rounded-[64px] hover:bg-schiava-blue-dark hover:scale-102 hover:cursor-pointer transition-all duration-300 font-['Aileron'] font-semibold text-[1.575rem]",
-                                )}>
-                        LOGIN
-                    </Button>
-                </div>
-
-            </div>
-        </div>
-    )
-}
-
-function PasswordPage() {
-    return(
-        <div className="w-screen h-dvh bg-tristesse-0 flex flex-col pt-8">
-            
+        <>
             <div className="flex flex-col gap-y-4 items-center">
                 <Logo variant="primary" className="size-16 text-selago-100" />
 
@@ -65,12 +43,12 @@ function PasswordPage() {
             <div className='flex flex-col sm:flex-row items-center justify-center w-full h-[80%] gap-x-2.5 gap-y-2.5'>
                 <input name='password'placeholder='Password' className="border-b-[1px] border-davys-grey-0 text-[2rem] text-davys-grey-0 font-['instrument-serif'] italic pl-[8px]" />
 
-                <ArrowRight className="w-6 h-6 text-davys-grey-0 hover:text-selago-0 border-2 rounded-full mt-2 transition-all duration-200 hover:cursor-pointer" />
+                <ArrowRight className="w-6 h-6 text-davys-grey-0 hover:text-selago-0 border-2 rounded-full mt-2 transition-all duration-200 hover:cursor-pointer" onClick={() => setPage(Page.portal)}/>
             </div>
-
-        </div>
+        </>
     )
 }
+
 
 function LoginPage() {
     return(
@@ -354,7 +332,49 @@ function CongratulationsPage() {
 
 function Portal() {
 
-    return <PasswordPage/>;
+    const [page, setPage] = useState<Page>(Page.password);
+
+    return (
+
+        <div className="w-screen h-dvh bg-tristesse-0 flex flex-col pt-8">
+
+            {page === Page.password && (
+                <PasswordPage setPage={setPage}/>
+            )}
+
+            {page === Page.portal && (
+                <>
+                    <div className="flex flex-col gap-y-4 items-center">
+                        <Logo variant="primary" className="size-16 text-selago-100" />
+
+                        <div className="flex gap-x-3 items-center w-[320px]">
+                            <div className="w-full h-[3px] bg-selago-0 rounded-full shadow-[0_0_16px_1px_var(--color-schiava-blue-dark)]" />
+                            <div className="w-full h-[3px] bg-davys-grey-0 rounded-full shadow-[0_0_16px_1px_var(--color-schiava-blue-dark)]" />
+                        </div>
+                    </div>
+
+                    <div className='flex flex-col items-center justify-center w-full h-[80%]'>
+
+                        <div className='grid grid-rows-2 gap-y-4'>
+                            <Button type="submit" variant="outline" className={cn(buttonVariants({ variant: "default", size: "lg" }),
+                                            "bg-schiava-blue text-white border-2 border-schiava-blue-dark py-5 px-12 rounded-[64px] hover:bg-schiava-blue-dark hover:scale-102 hover:cursor-pointer transition-all duration-300 font-['Aileron'] font-semibold text-[1.575rem]",
+                                        )}>
+                                SIGN UP
+                            </Button>
+
+                            <Button type="submit" variant="outline" className={cn(buttonVariants({ variant: "default", size: "lg" }),
+                                            "bg-schiava-blue text-white border-2 border-schiava-blue-dark py-5 px-12 rounded-[64px] hover:bg-schiava-blue-dark hover:scale-102 hover:cursor-pointer transition-all duration-300 font-['Aileron'] font-semibold text-[1.575rem]",
+                                        )}>
+                                LOGIN
+                            </Button>
+                        </div>
+
+                    </div>
+                </>
+            )}
+
+        </div>
+    );
 }
 
 export default Portal
