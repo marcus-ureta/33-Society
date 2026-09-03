@@ -7,6 +7,7 @@ import { Logo } from '@/components/logos/Logo.tsx'
 
 import { Button } from "@/components/ui/button"
 import { Field, FieldGroup, FieldLabel } from "@/components/ui/field"
+import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
@@ -222,6 +223,12 @@ function QuestionnairePage({setPage} : {setPage : React.Dispatch<React.SetStateA
         else if(questionNo > 1) setPage(Page.accountSetup);
     }
 
+    const handleCheckboxChange = (checked: boolean | "indeterminate") => {
+        if (checked === true) {
+            handleNextQuestion();
+        }
+    };
+
     const handlePrevQuestion = () => {
         if(questionNo > 1) setQuestionNo(prev => (prev <= questions.length ? prev - 1 : prev))
         else setPage(Page.signup);
@@ -243,17 +250,77 @@ function QuestionnairePage({setPage} : {setPage : React.Dispatch<React.SetStateA
                 </div>
 
                 <div className='flex flex-col items-center justify-center w-full h-[80%] gap-y-4 sm:gap-y-12 max-w-none prose'>
+                    
                     <h1 className="font-['Cochin'] font-bold text-selago-100 text-3xl sm:text-4xl mx-12 text-center max-w-[1068px]">
                         {questions[questionNo - 1]}
                     </h1>
 
-                    <div className='flex flex-col sm:flex-row items-center justify-center gap-x-2.5 gap-y-2.5 w-full'>
-                        <input name='answer' placeholder='Your Answer' className="border-b-[1px] border-davys-grey-0 text-[2rem] text-davys-grey-0 font-['instrument-serif'] italic pl-[8px] w-[90%] max-w-[660px] mb-0" />
+                    {questionNo <= 2 && (
+                        <div className='flex flex-col sm:flex-row items-center justify-center gap-x-2.5 gap-y-2.5 w-full'>
+                            <input name='answer' placeholder='Your Answer' className="border-b-[1px] border-davys-grey-0 text-[2rem] text-davys-grey-0 font-['instrument-serif'] italic pl-[8px] w-[90%] max-w-[660px] mb-0" />
 
-                        <div onClick={() => handleNextQuestion()} className='pointer-events-auto'>
-                            <ArrowRight className="w-6 h-6 text-davys-grey-0 hover:text-selago-0 border-2 rounded-full mt-2 transition-all duration-200 hover:cursor-pointer" />
+                            <div onClick={() => handleNextQuestion()} className='pointer-events-auto'>
+                                <ArrowRight className="w-6 h-6 text-davys-grey-0 hover:text-selago-0 border-2 rounded-full mt-2 transition-all duration-200 hover:cursor-pointer" />
+                            </div>
                         </div>
-                    </div>
+                    )}
+
+                    {questionNo === 3 && (
+                        <FieldGroup className="grid grid-rows-4 items-center justify-center gap-y-9 max-w-[512px]">
+                            <Field orientation="horizontal" className="w-fit justify-center">
+                                <Checkbox id="5k" name="under_5k" className="hover:cursor-pointer size-6 border-selago-0 text-selago-100 mr-1" onCheckedChange={handleCheckboxChange}/>
+                                <FieldLabel htmlFor="5k" className="hover:cursor-pointer text-[1.05rem] text-selago-100 font-['Aileron'] font-semibold">
+                                    Under $5k
+                                </FieldLabel>
+                            </Field>
+
+                            <Field orientation="horizontal" className="w-fit justify-center">
+                                <Checkbox id="5k_10k" name="5k_10k" className="hover:cursor-pointer size-6 border-selago-0 text-selago-100 mr-1" onCheckedChange={handleCheckboxChange}/>
+                                <FieldLabel htmlFor="5k_10k" className="hover:cursor-pointer text-[1.05rem] text-selago-100 font-['Aileron'] font-semibold">
+                                    $5k - $10k
+                                </FieldLabel>
+                            </Field>
+
+                            <Field orientation="horizontal" className="w-fit justify-center">
+                                <Checkbox id="10k_50k" name="10k_50k" className="hover:cursor-pointer size-6 border-selago-0 text-selago-100 mr-1" onCheckedChange={handleCheckboxChange}/>
+                                <FieldLabel htmlFor="10k_50k" className="hover:cursor-pointer text-[1.05rem] text-selago-100 font-['Aileron'] font-semibold">
+                                    $10k - $50k
+                                </FieldLabel>
+                            </Field>
+
+                            <Field orientation="horizontal" className="w-fit justify-center">
+                                <Checkbox id="50k" name="50k" className="hover:cursor-pointer size-6 border-selago-0 text-selago-100 mr-1" onCheckedChange={handleCheckboxChange}/>
+                                <FieldLabel htmlFor="50k" className="hover:cursor-pointer text-[1.05rem] text-selago-100 font-['Aileron'] font-semibold">
+                                    $50k+
+                                </FieldLabel>
+                            </Field>
+                        </FieldGroup>
+                    )}
+
+                    {questionNo === 4 && (
+                        <FieldGroup className="grid grid-rows-4 items-center justify-center gap-y-9 max-w-[512px]">
+                            <Field orientation="horizontal" className="w-fit justify-center">
+                                <Checkbox id="offer_accepted" name="offer_accepted" className="hover:cursor-pointer size-6 border-selago-0 text-selago-100 mr-1" onCheckedChange={handleCheckboxChange}/>
+                                <FieldLabel htmlFor="offer_accepted" className="hover:cursor-pointer text-[1.05rem] text-selago-100 font-['Aileron'] font-semibold">
+                                    Yes, I am ready to invest
+                                </FieldLabel>
+                            </Field>
+
+                            <Field orientation="horizontal" className="w-fit justify-center">
+                                <Checkbox id="offer_declined" name="offer_declined" className="hover:cursor-pointer size-6 border-selago-0 text-selago-100 mr-1" onCheckedChange={handleCheckboxChange}/>
+                                <FieldLabel htmlFor="offer_declined" className="hover:cursor-pointer text-[1.05rem] text-selago-100 font-['Aileron'] font-semibold">
+                                    No, not at this time
+                                </FieldLabel>
+                            </Field>
+
+                            <Field orientation="horizontal" className="w-fit justify-center">
+                                <Checkbox id="offer_uncertain" name="offer_uncertain" className="hover:cursor-pointer size-6 border-selago-0 text-selago-100 mr-1" onCheckedChange={handleCheckboxChange}/>
+                                <FieldLabel htmlFor="offer_uncertain" className="hover:cursor-pointer text-[1.05rem] text-selago-100 font-['Aileron'] font-semibold">
+                                    Maybe, will think about it for some time
+                                </FieldLabel>
+                            </Field>
+                        </FieldGroup>
+                    )}
                 </div>
 
                 <div className='flex flex-col items-center justify-center w-full h-[10%] gap-y-2.5'>
@@ -346,6 +413,8 @@ function Portal() {
                 <PasswordPage setPage={setPage}/>
             )}
 
+            {/* FROM THIS POINT FORWARD, FORCE USER TO ANSWER THE PASSWORD BEFORE PROCEEDING */}
+            
             {page === Page.portal && (
                 <>
                     <div className="flex flex-col gap-y-4 items-center">
@@ -380,6 +449,7 @@ function Portal() {
             {page === Page.login && (
                 <LoginPage setPage={setPage}/>
             )}
+
 
             {page === Page.signup && (
                 <SignUpPage setPage={setPage}/>
