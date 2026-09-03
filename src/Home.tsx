@@ -28,24 +28,24 @@ function App() {
           <div className=" w-full h-fit flex flex-col items-center pt-32 p-8">
             <div className="prose prose-lg max-w-none w-full flex flex-col items-center">
               <h1 className="font-cochin font-bold text-selago-100 text-7xl w-full max-w-[20ch] text-center mb-2">
-              Sweet topping shortbread jelly beans
-            </h1>
-            <p className="font-aileron text-selago-0 mb-0 text-center">
-              Cheesecake sugar plum marshmallow muffin chocolate cheesecake
-              sweet danish sesame snaps.
-            </p>
-            {/* Hero CTA */}
+                Sweet topping shortbread jelly beans
+              </h1>
+              <p className="font-aileron text-selago-0 mb-0 text-center">
+                Cheesecake sugar plum marshmallow muffin chocolate cheesecake
+                sweet danish sesame snaps.
+              </p>
+              {/* Hero CTA */}
               <div className="mt-12 border-2 border-schiava-blue p-4 rounded-[42px] flex flex-col items-center gap-4">
-              <Button
-                className={
+                <Button
+                  className={
                     "text-selago-0 bg-schiava-blue font-aileron rounded-full text-base px-10 py-4"
-                }
-              >
-                Purchase a Ticket
-              </Button>
-              <p className="leading-0 px-6 text-selago-0">Book a Meeting</p>
+                  }
+                >
+                  Purchase a Ticket
+                </Button>
+                <p className="leading-0 px-6 text-selago-0">Book a Meeting</p>
+              </div>
             </div>
-          </div>
             <div className="flex justify-center h-72 w-full"></div>
           </div>
 
@@ -95,6 +95,40 @@ function App() {
           </div>
 
           <div className="bg-tristesse-0 h-fit w-full -mt-[15%] flex pt-48 flex-col items-center p-8 prose prose-lg ">
+            <div className="h-fit w-fit flex items-center flex-col">
+              <HomePillars
+                number="01"
+                name="Value of Group"
+                description="Cake candy canes sweet pastry caramels cake icing cheesecake sweet roll cake croissant."
+              />
+              <HomePillars
+                number="02"
+                name="Clarity"
+                description="Marzipan danish chocolate cake candy brownie shortbread chupa chups tootsie roll ice cream."
+              />
+              <HomePillars
+                number="03"
+                name="Lifestyle"
+                description="Sesame snaps apple pie ice cream lemon drops gummies sweet roll jelly oat cake candy."
+              />
+              <HomePillars
+                number="04"
+                name="Business Opportunity"
+                description="Icing halvah ice cream chocolate gingerbread chocolate bar soufflé liquorice jelly beans."
+              />
+            </div>
+
+            <LineDivider fillName="schiava-blue" className="mb-18 w-full" />
+
+            <div className="prose prose-lg h-fit w-fit flex items-center flex-col">
+              <h1 className="text-center font-cochin text-selago-50 mb-0">
+                Guest Speakers
+              </h1>
+              <p className="text-center text-selago-0 font-aileron">
+                Toffee chocolate cake macaroon jujubes cotton candy sweet sesame
+                snaps gummi bears dragée.
+              </p>
+            </div>
           </div>
         </div>
       </div>
