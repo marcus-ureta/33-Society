@@ -334,9 +334,32 @@ function AccountSetup(){
     );  
 }
 
+function CongratulationsPage() {
+
+    return(
+        <div className="w-screen h-dvh bg-tristesse-0 flex flex-col pt-8">
+            <div className='flex flex-col items-center justify-center w-full h-full'>
+                
+                <div className='flex flex-col max-w-[820px] items-center mx-[5%]'>
+
+                    <h1 className="text-[2.5rem] sm:text-[3.5rem] text-selago-0 font-['Cochin'] text-center font-bold mb-[3%]">Congratulations! You may now proceed to the home page</h1>
+
+                    <Button type="submit" variant="outline" className={cn(buttonVariants({ variant: "default", size: "lg" }),
+                        "bg-schiava-blue text-white border-2 border-schiava-blue-dark py-5 px-12 rounded-[64px] hover:bg-schiava-blue-dark hover:scale-102 hover:cursor-pointer transition-all duration-300 font-['Aileron'] font-semibold text-[1.575rem] w-fit",
+                    )}>
+                        Go Home Page
+                    </Button>
+
+                </div>
+
+            </div>
+        </div>
+    )
+}
+
 function Portal() {
 
-    return <AccountSetup/>;
+    return <CongratulationsPage/>;
 }
 
 export default Portal
