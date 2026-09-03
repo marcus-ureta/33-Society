@@ -15,7 +15,7 @@ import { useState } from 'react';
 
 import crown from '/svg/CROWN_CROPPED.svg'
 
-function loginSignUpPage() {
+function LoginSignUpPage() {
 
     return(
         <div className="w-screen h-dvh bg-tristesse-0 flex flex-col pt-8">
@@ -49,7 +49,7 @@ function loginSignUpPage() {
     )
 }
 
-function passWordPage() {
+function PasswordPage() {
     return(
         <div className="w-screen h-dvh bg-tristesse-0 flex flex-col pt-8">
             
@@ -72,7 +72,7 @@ function passWordPage() {
     )
 }
 
-function loginPage() {
+function LoginPage() {
     return(
         <>
             <div className="w-screen h-dvh bg-tristesse-0 flex flex-col pt-8">
@@ -137,7 +137,7 @@ function SignUpPage() {
                 </div>
 
 
-                <div className='flex flex-col items-center justify-center h-[80%] gap-y-4 sm:gap-y-8 max-w-none prose mb-0'>
+                <div className='flex flex-col items-center justify-center h-[80%] gap-y-4 sm:gap-y-8 max-w-none prose mb-0 mx-[5%]'>
                     
                     <form className="w-full max-w-[548px]">
                         <FieldGroup className='flex flex-col gap-y-9'>
@@ -288,38 +288,33 @@ function AccountSetup(){
     return (
         <div className="relative w-screen h-dvh bg-tristesse-0 flex flex-col pt-8 overflow-hidden">
 
-            <div className="flex flex-col gap-y-4 items-center mt-[3%]">
-                <div className="flex flex-row gap-x-8 w-full h-full mx-[5%] items-center justify-center my-8">
-                    <form className="w-[90%] max-w-[548px]">
-                        <h1 className="text-white font-['Cochin'] text-5xl font-bold">
-                            Account Setup
-                        </h1>
+            <div className="flex flex-col gap-y-4 items-center mt-[5%]">
+                <div className="w-full max-w-6xl flex items-center justify-center gap-8">
+            
+                <form className="w-full max-w-[548px] mx-[5%]">
+                    <h1 className="text-white font-['Cochin'] text-5xl font-bold">Account Setup</h1>
 
-                        <FieldGroup className="flex flex-col gap-y-6 my-[5%]">
-                            <Field>
-                                <Input id="email_address" type="email" placeholder="33society@gmail.com" required className="bg-tristesse-0 border-davys-grey-100 text-selago-0 !text-[17px] h-fit py-[6px] px-2"
-                                />
-                            </Field>
+                    <FieldGroup className="flex flex-col gap-y-6 my-[5%]">
+                        <Field>
+                            <Input id="email_address" type="email" placeholder="33society@gmail.com" required className="bg-tristesse-0 border-davys-grey-100 text-selago-0 !text-[17px] h-fit py-[6px] px-2"/>
+                        </Field>
 
-                            <Field>
-                                <Input id="password" type="password" placeholder="Setup Your Password" required className="bg-tristesse border-davys-grey-100 text-selago-0 !text-[17px] h-fit py-[6px] px-2"
-                                />
-                            </Field>
-                        </FieldGroup>
+                        <Field>
+                            <Input id="password" type="password" placeholder="Setup Your Password" required className="bg-tristesse-0 border-davys-grey-100 text-selago-0 !text-[17px] h-fit py-[6px] px-2"/>
+                        </Field>
+                    </FieldGroup>
 
-                            <div className='flex flex-col items-center justify-center mt-[4%] pointer-events-auto'>
-                                <Button type="submit" variant="outline" className={cn(buttonVariants({ variant: "default", size: "lg" }),
-                                    "bg-schiava-blue text-white border-2 border-schiava-blue-dark py-5 px-12 rounded-[64px] hover:bg-schiava-blue-dark hover:scale-102 hover:cursor-pointer transition-all duration-300 font-['Aileron'] font-semibold text-[1.575rem] pointer-events-auto",
-                                )}>
-                                    Register Account
-                                </Button>
-                            </div>
-                    </form>
+                    <div className="flex justify-center mt-[4%]">
+                        <Button type="submit" variant="outline" className={cn(buttonVariants({variant: "default", size: "lg",}),
+                            "bg-schiava-blue text-white border-2 border-schiava-blue-dark py-5 px-12 rounded-[64px] hover:bg-schiava-blue-dark hover:scale-102 transition-all duration-300 font-['Aileron'] font-semibold text-[1.575rem]"
+                        )}
+                    >
+                            Register Account
+                        </Button>
+                    </div>
+                </form>
 
-                    <Logo
-                        variant="stacked"
-                        className="size-128 text-selago-100 hidden sm:block"
-                    />
+                    <Logo variant="stacked" className="hidden sm:block size-64 lg:size-96 xl:size-[28rem] text-selago-100 shrink-0"/>
                 </div>
             </div>
 
@@ -359,7 +354,7 @@ function CongratulationsPage() {
 
 function Portal() {
 
-    return <CongratulationsPage/>;
+    return <PasswordPage/>;
 }
 
 export default Portal
