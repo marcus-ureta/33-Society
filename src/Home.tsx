@@ -7,6 +7,8 @@ import Navbar from "./Navbar";
 
 import { Button } from "@base-ui/react/button";
 
+import HomeActivities from "./components/HomeActivities";
+
 import FastMarquee from "react-fast-marquee";
 
 // Vite/Rolldown CJS interop workaround for react-fast-marquee
@@ -26,6 +28,18 @@ function App() {
 
   const CROWN_BOTTOM_HEIGHT_MULTIPLIER =
     CROWN_BOTTOM_HEIGHT / CROWN_BOTTOM_WIDTH;
+
+  const ARC_WIDTH = 1000;
+  const ARC_HEIGHT = 32;
+  const ARC_HEIGHT_MULTIPLIER = ARC_HEIGHT / ARC_WIDTH;
+
+  const INVERTED_ARC_WIDTH = 1000;
+  const INVERTED_ARC_HEIGHT = 32;
+  const INVERTED_ARC_HEIGHT_MULTIPLIER =
+    INVERTED_ARC_HEIGHT / INVERTED_ARC_WIDTH;
+
+  const invertedArcSvg = `data:image/svg+xml;utf8,<svg viewBox="0 0 1000 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M 0,0 A 725 725 0 0 0 1000,0 L 1000,200 L 0,200 Z" fill="white"/></svg>`;
+  const arcSvg = `data:image/svg+xml;utf8,<svg viewBox="0 0 1000 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M 0,0 A 725 725 0 0 0 1000,0 Z" fill="white"/></svg>`;
 
   return (
     <>
@@ -139,6 +153,41 @@ function App() {
                 <div className="h-96 w-48 bg-white mr-8"></div>
               </Marquee>
             </div>
+          </div>
+
+          <div
+            className="bg-schiava-blue flex flex-col items-center p-8 prose prose-lg w-full h-fit max-w-none pt-24 @container pb-16"
+            style={{
+              maskImage: `url('${invertedArcSvg}'), linear-gradient(black, black), url('${arcSvg}')`,
+              WebkitMaskImage: `url('${invertedArcSvg}'), linear-gradient(black, black), url('${arcSvg}')`,
+
+              maskRepeat: "no-repeat, no-repeat, no-repeat",
+              WebkitMaskRepeat: "no-repeat, no-repeat, no-repeat",
+
+              maskSize: `100% 32px, 100% calc(100% - 64px), 100% 32px`,
+              WebkitMaskSize: `100% 32px, 100% calc(100% - 64px), 100% 32px`,
+
+              maskPosition: `0 0, 0 32px, 0 bottom`,
+              WebkitMaskPosition: `0 0, 0 32px, 0 bottom`,
+            }}
+          >
+            <h1 className="text-center font-cochin text-selago-50 mb-16">
+              What to expect inside the <br />
+              Yacht
+            </h1>
+            <HomeActivities description="Tart chocolate danish candy shortbread chupa chups chocolate pastry."></HomeActivities>
+            <HomeActivities description="Cupcake tiramisu pastry croissant chocolate bar danish gummies."></HomeActivities>
+            <HomeActivities description="Candy canes cotton candy powder jelly-o gummi bears toffee."></HomeActivities>
+            <HomeActivities description="Toffee cake carrot cake wafer jujubes marshmallow icing pudding."></HomeActivities>
+            <HomeActivities description="Ice cream chupa chups cake sesame snaps toffee danish marshmallow."></HomeActivities>
+            <iframe
+              className="w-screen h-auto aspect-video mt-8"
+              src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?si=ugKjYpsBKxPG9So0"
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            ></iframe>
           </div>
         </div>
       </div>
