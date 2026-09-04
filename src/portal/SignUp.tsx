@@ -19,6 +19,7 @@ import './Portal.css';
 import { useEffect, useState } from 'react';
 
 import QuestionnairePage from '@/portal/questionnaire/Questionnaire.tsx';
+import AccountSetup from '@/portal/accountSetup/AccountSetup.tsx';
 
 export type FormAnswers = {
     firstName: string;
@@ -207,7 +208,7 @@ function SignUp({page, setPage} : {page: Page, setPage : React.Dispatch<React.Se
     return(
         <>
             <div className="w-screen h-dvh bg-tristesse-0 flex flex-col pt-8 overflow-hidden">
-                <div className="flex flex-col gap-y-4 items-center">
+                <div className={`flex flex-col gap-y-4 items-center ${page === Page.accountSetup ? 'hidden' : ''} `}>
                     <Logo variant="primary" className="size-16 text-selago-100" />
 
                     <div className="flex flex-row items-center w-[75%] max-w-[820px] gap-x-4 gap-y-7">
@@ -219,6 +220,9 @@ function SignUp({page, setPage} : {page: Page, setPage : React.Dispatch<React.Se
                     </div>
                 </div>
 
+                {page === Page.accountSetup && (
+                    <AccountSetup setPage={setPage} email={formAnswers.email}/>
+                )}
 
                 {page === Page.questionnaire && (
                     <QuestionnairePage setPage={setPage} questionNo={questionNo} setQuestionNo={setQuestionNo} formAnswers={formAnswers} setFormAnswers={setFormAnswers}/>

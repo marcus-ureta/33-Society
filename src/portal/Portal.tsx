@@ -6,15 +6,11 @@ import { ArrowRight, ArrowLeft } from "flowbite-react-icons/outline";
 import { Logo } from '@/components/logos/Logo.tsx'
 
 import { Button } from "@/components/ui/button"
-import { Field, FieldGroup} from "@/components/ui/field"
-import { Input } from "@/components/ui/input"
 import { useState } from 'react';
 
 import SignUp from './SignUp.tsx';
 
 import './Portal.css';
-
-import crown from '/svg/CROWN_CROPPED.svg';
 
 export const Page = {
     password: 'Password',
@@ -93,51 +89,6 @@ function LoginPage({setPage} : {setPage : React.Dispatch<React.SetStateAction<Pa
     )
 }
 
-function AccountSetup({setPage} : {setPage : React.Dispatch<React.SetStateAction<Page>>}){
-    return (
-        <div className="relative w-screen h-dvh bg-tristesse-0 flex flex-col pt-8 overflow-hidden">
-
-            <div className="flex flex-col gap-y-4 items-center mt-[5%]">
-                <div className="w-full max-w-6xl flex items-center justify-center gap-8">
-            
-                <form className="w-full max-w-[548px] mx-[5%]">
-                    <h1 className="text-white font-['Cochin'] text-5xl font-bold">Account Setup</h1>
-
-                    <FieldGroup className="flex flex-col gap-y-6 my-[5%]">
-                        <Field>
-                            <Input id="email_address" type="email" placeholder="33society@gmail.com" required className="bg-tristesse-0 border-davys-grey-100 text-selago-0 !text-[17px] h-fit py-[6px] px-2"/>
-                        </Field>
-
-                        <Field>
-                            <Input id="password" type="password" placeholder="Setup Your Password" required className="bg-tristesse-0 border-davys-grey-100 text-selago-0 !text-[17px] h-fit py-[6px] px-2"/>
-                        </Field>
-                    </FieldGroup>
-
-                    <div className="flex justify-center mt-[4%]">
-                        <Button onClick={() => setPage(Page.congratulations)} variant="outline" className={cn(buttonVariants({variant: "default", size: "lg",}),
-                            "bg-schiava-blue text-white border-2 border-schiava-blue-dark py-5 px-12 rounded-[64px] hover:bg-schiava-blue-dark hover:scale-102 transition-all duration-300 font-['Aileron'] font-semibold text-[1.575rem]"
-                        )}
-                    >
-                            Register Account
-                        </Button>
-                    </div>
-                </form>
-
-                    <Logo variant="stacked" className="hidden sm:block size-64 lg:size-96 xl:size-[28rem] text-selago-100 shrink-0"/>
-                </div>
-            </div>
-
-            <div className="absolute bottom-0 left-0 w-full h-[600px] max-h-[750px] overflow-hidden md:translate-y-[clamp(0px,4vw,500px)] pointer-events-none select-none">
-                <img
-                    src={crown}
-                    className="absolute bottom-0 left-0 w-full h-auto select-none"
-                />
-            </div>
-
-        </div>
-    );  
-}
-
 function CongratulationsPage() {
 
     return(
@@ -211,12 +162,8 @@ function Portal() {
             )}
 
 
-            {(page === Page.signup || page === Page.questionnaire) && (
+            {(page === Page.signup || page === Page.questionnaire || page === Page.accountSetup) && (
                 <SignUp page={page} setPage={setPage} />
-            )}
-
-            {page === Page.accountSetup && (
-                <AccountSetup setPage={setPage}/>
             )}
 
             {page === Page.congratulations && (
