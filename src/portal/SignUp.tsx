@@ -134,7 +134,7 @@ function SignUpPage({setPage, setFormAnswers} : SignUpPageProps){
                             <Field>
                                 <FieldLabel htmlFor="form-country" className="text-selago-0 text-[1rem] font-['Aileron'] font-semibold">Country</FieldLabel>
 
-                                <Select value={country} onValueChange={(value) => {if (value !== null) { setCountry(value) ;}}}>
+                                <Select items={countries} defaultValue="ph" onValueChange={(value) => { if (value !== null) { setCountry(value); }}} required>
                                     <SelectTrigger id="form-country" className="input-field">
                                         <SelectValue />
                                     </SelectTrigger>
@@ -173,7 +173,7 @@ function SignUpPage({setPage, setFormAnswers} : SignUpPageProps){
                                 Submit
                             </Button>
                         </div>
-                        
+
                     </FieldGroup>
                 </form>
             </div>
@@ -184,7 +184,6 @@ function SignUpPage({setPage, setFormAnswers} : SignUpPageProps){
         </>
     )
 }
-
 
 function QuestionnairePage({ setPage, questionNo, setQuestionNo, setFormAnswers } : QuestionnairePageProps){
 
@@ -340,6 +339,7 @@ function QuestionnairePage({ setPage, questionNo, setQuestionNo, setFormAnswers 
         </>
     )
 }
+
 
 function SignUp({page, setPage} : {page: Page, setPage : React.Dispatch<React.SetStateAction<Page>>}){
 
