@@ -182,8 +182,7 @@ function QuestionnairePage({ setPage, questionNo, setQuestionNo, formAnswers, se
                                 }
                             />
 
-                            <FieldLabel htmlFor="offer_accepted" className="hover:cursor-pointer text-[1.05rem] text-selago-100 font-['Aileron'] font-semibold"
-                            >
+                            <FieldLabel htmlFor="offer_accepted" className="hover:cursor-pointer text-[1.05rem] text-selago-100 font-['Aileron'] font-semibold">
                                 Yes, I am ready to invest
                             </FieldLabel>
                         </Field>
