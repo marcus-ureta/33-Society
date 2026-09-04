@@ -189,6 +189,36 @@ function App() {
               allowFullScreen
             ></iframe>
           </div>
+
+          <div className="bg-tristesse-0 h-270 w-full flex flex-col items-center p-8 prose prose-lg max-w-none -mt-8 pt-24">
+            <h1 className="font-cochin text-selago-50 mb-0 text-center">
+              Event Details
+            </h1>
+          </div>
+
+          <div
+            className="bg-schiava-blue h-270 w-full flex flex-col items-center p-8 prose prose-lg max-w-none mt-[-15%] pt-24"
+            style={{
+              maskImage: `url('/svg/BOTTOM_CROWN_ROTATED.svg'), linear-gradient(black, black)`,
+              WebkitMaskImage: `url('/svg/BOTTOM_CROWN_ROTATED.svg'), linear-gradient(black, black)`,
+
+              maskRepeat: "no-repeat, no-repeat",
+              WebkitMaskRepeat: "no-repeat, no-repeat",
+
+              maskSize: `100% auto, 100% calc(100% - (100cqw * ${CROWN_BOTTOM_HEIGHT_MULTIPLIER}) + 4px)`,
+              WebkitMaskSize: `100% auto, 100% calc(100% - (100cqw * ${CROWN_BOTTOM_HEIGHT_MULTIPLIER}) + 4px)`,
+
+              maskPosition: `0 0, 0 calc(100cqw * ${CROWN_TOP_HEIGHT_MULTIPLIER})`,
+              WebkitMaskPosition: `0 0, 0 calc(100cqw * ${CROWN_TOP_HEIGHT_MULTIPLIER})`,
+            }}
+          >
+            <h1 className="font-cochin text-selago-100 mb-8 text-center">
+              BEFORE YOU ENTER
+            </h1>
+            <h3 className="font-cochin text-selago-50 mt-0 mb-0 text-center">
+              Everything you need to know about the Society
+            </h3>
+          </div>
         </div>
       </div>
     </>
