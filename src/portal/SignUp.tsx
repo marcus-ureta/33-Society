@@ -47,6 +47,7 @@ interface QuestionnairePageProps {
     questionNo: number;
     setQuestionNo: React.Dispatch<React.SetStateAction<number>>;
 
+    formAnswers: FormAnswers;
     setFormAnswers: React.Dispatch<React.SetStateAction<FormAnswers>>;
 }
 
@@ -187,7 +188,7 @@ function SignUpPage({setPage, formAnswers, setFormAnswers} : SignUpPageProps){
     )
 }
 
-function QuestionnairePage({ setPage, questionNo, setQuestionNo, setFormAnswers } : QuestionnairePageProps) {
+function QuestionnairePage({ setPage, questionNo, setQuestionNo, formAnswers, setFormAnswers } : QuestionnairePageProps) {
 
     const questions: string[] = [
         'What unique value or insight can you contribute to the community?',
@@ -196,44 +197,22 @@ function QuestionnairePage({ setPage, questionNo, setQuestionNo, setFormAnswers 
         'Society 33 is a community of dedicated founders actively investing in scaling their businesses. If accepted, are you financially prepared to invest in your membership spot?',
     ];
 
-    interface QuestionFormat {
-        questionNo: number;
-        answer: string;
-    }
+    const questionKeys: Record<number, keyof Pick<FormAnswers, 'questionOne' | 'questionTwo' | 'questionThree' | 'questionFour' >> = {
+        1: 'questionOne',
+        2: 'questionTwo',
+        3: 'questionThree',
+        4: 'questionFour',
+    };
 
-    const [questionnaireAnswers, setQuestionnaireAnswers] = useState<QuestionFormat[]>([
-        {
-            questionNo: 1,
-            answer: ''
-        },
-
-        {
-            questionNo: 2,
-            answer: ''
-        },
-
-        {
-            questionNo: 3,
-            answer: ''
-        },
-
-        {
-            questionNo: 4,
-            answer: ''
-        }
-    ]);
-
-    const inputValue = questionnaireAnswers.find( (ques) => ques.questionNo === questionNo)?.answer ?? '';
+    const inputValue = formAnswers[questionKeys[questionNo]];
 
     const saveAnswer = (input: string) => {
-        setQuestionnaireAnswers((prevAnswers) =>
-            prevAnswers.map((ques) =>
-                ques.questionNo === questionNo ? {
-                    ...ques,
-                    answer: input
-                } : ques
-            )
-        );
+        const questionKey = questionKeys[questionNo];
+
+        setFormAnswers((prev) => ({
+            ...prev,
+            [questionKey]: input,
+        }));
     };
 
     const handleNextQuestion = (input: string) => {
@@ -243,46 +222,21 @@ function QuestionnairePage({ setPage, questionNo, setQuestionNo, setFormAnswers 
             return;
         }
 
-        const updatedAnswers = questionnaireAnswers.map((ques) =>
-            ques.questionNo === questionNo ? {
-                ...ques,
-                answer: trimmedInput
-            } : ques
-        );
-
-        setQuestionnaireAnswers(updatedAnswers);
-
-        if (questionNo < questions.length) {
-            setQuestionNo((prev) => prev + 1);
-            return;
-        }
+        const key = questionKeys[questionNo];
 
         setFormAnswers(prev => ({
             ...prev,
-
-            questionOne:
-                updatedAnswers.find((answer) => answer.questionNo === 1)
-                    ?.answer ?? '',
-
-            questionTwo:
-                updatedAnswers.find((answer) => answer.questionNo === 2)
-                    ?.answer ?? '',
-
-            questionThree:
-                updatedAnswers.find((answer) => answer.questionNo === 3)
-                    ?.answer ?? '',
-
-            questionFour:
-                updatedAnswers.find((answer) => answer.questionNo === 4)
-                    ?.answer ?? '',
+            [key]: trimmedInput,
         }));
-        setPage(Page.accountSetup);
+
+        if (questionNo < questions.length) {
+            setQuestionNo(prev => prev + 1);
+        } else {
+            setPage(Page.accountSetup);
+        }
     };
 
-    const handleCheckboxChange = (
-        checked: boolean | "indeterminate",
-        value: string
-    ) => {
+    const handleCheckboxChange = (checked: boolean | "indeterminate", value: string) => {
         if (checked === true) {
             handleNextQuestion(value);
         }
@@ -491,7 +445,7 @@ function SignUp({page, setPage} : {page: Page, setPage : React.Dispatch<React.Se
                 </div>
 
                 {page === Page.questionnaire && (
-                    <QuestionnairePage setPage={setPage} questionNo={questionNo} setQuestionNo={setQuestionNo} setFormAnswers={setFormAnswers}/>
+                    <QuestionnairePage setPage={setPage} questionNo={questionNo} setQuestionNo={setQuestionNo} formAnswers={formAnswers} setFormAnswers={setFormAnswers}/>
                 )}
 
                 {page === Page.signup && (
