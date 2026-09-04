@@ -4,7 +4,7 @@ import { auth, database } from "../firebase";
 
 import { type FormAnswers } from '@/portal/SignUp'
 
-export async function signUp(email: string, password: string) {
+export async function createAccount(email: string, password: string) {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
 
     const user = userCredential.user;

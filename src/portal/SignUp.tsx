@@ -221,7 +221,7 @@ function SignUp({page, setPage} : {page: Page, setPage : React.Dispatch<React.Se
                 </div>
 
                 {page === Page.accountSetup && (
-                    <AccountSetup setPage={setPage} email={formAnswers.email}/>
+                    <AccountSetup setPage={setPage} email={formAnswers.email} formAnswers={formAnswers}/>
                 )}
 
                 {page === Page.questionnaire && (
