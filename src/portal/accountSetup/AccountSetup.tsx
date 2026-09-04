@@ -15,6 +15,30 @@ import { Page } from '@/portal/Portal';
 import crown from '/svg/CROWN_CROPPED.svg';
 
 
+function EmailVerification(){
+    return(
+        <>
+            <div className='flex flex-col w-full h-[80%] items-center justify-center gap-y-4'>
+                <h1 className="font-['Cochin'] text-3xl text-selago-0 font-bold text-center">We've sent a verification link to: (email)</h1>
+                <h2 className="font-['Aileron'] text-xl text-selago-0 mb-[16px] text-center">Please verify your email, then click the button below</h2>
+
+                <Button variant="outline" className={cn(buttonVariants({variant: "default", size: "lg",}),
+                        "bg-schiava-blue text-white border-2 border-schiava-blue-dark py-5 px-12 rounded-[64px] hover:bg-schiava-blue-dark hover:scale-102 transition-all duration-300 font-['Aileron'] font-semibold text-[1.575rem] hover:cursor-pointer"
+                    )}
+                >
+                    Check Verification
+                </Button>
+            </div>
+
+            
+
+            <div className="absolute bottom-0 left-0 w-full h-[600px] overflow-hidden pointer-events-none select-none">
+                <img src={crown} className="absolute bottom-0 left-0 w-full h-auto md:translate-y-[clamp(0px,4vw,500px)] select-none"/>
+            </div>
+        </>
+    )
+}
+
 function AccountSetup({setPage, email} : {setPage : React.Dispatch<React.SetStateAction<Page>>, email : string}){
     return (
         <>
@@ -36,7 +60,7 @@ function AccountSetup({setPage, email} : {setPage : React.Dispatch<React.SetStat
 
                     <div className="flex justify-center mt-[4%]">
                         <Button onClick={() => setPage(Page.congratulations)} variant="outline" className={cn(buttonVariants({variant: "default", size: "lg",}),
-                            "bg-schiava-blue text-white border-2 border-schiava-blue-dark py-5 px-12 rounded-[64px] hover:bg-schiava-blue-dark hover:scale-102 transition-all duration-300 font-['Aileron'] font-semibold text-[1.575rem]"
+                            "bg-schiava-blue text-white border-2 border-schiava-blue-dark py-5 px-12 rounded-[64px] hover:bg-schiava-blue-dark hover:scale-102 transition-all duration-300 font-['Aileron'] font-semibold text-[1.575rem] hover:cursor-pointer"
                         )}
                     >
                             Register Account
