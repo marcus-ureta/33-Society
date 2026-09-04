@@ -22,6 +22,7 @@ export const Page = {
 
     signup: 'Signup',
     questionnaire: 'Questionnaire',
+    detailConfirmation: 'DetailConfirmation',
     accountSetup: 'AccountSetup',
     congratulations: 'Congratulations',
 
@@ -211,7 +212,7 @@ function Portal() {
             )}
 
 
-            {(page === Page.signup || page === Page.questionnaire) && (
+            {(page === Page.signup || page === Page.questionnaire || page === Page.detailConfirmation) && (
                 <SignUp page={page} setPage={setPage} />
             )}
 
