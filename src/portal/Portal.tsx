@@ -1,13 +1,12 @@
 
-import { buttonVariants } from './components/ui/button.tsx'
-import { cn } from './lib/utils'
+import { buttonVariants } from '../components/ui/button.tsx'
+import { cn } from '../lib/utils.ts'
 
 import { ArrowRight, ArrowLeft } from "flowbite-react-icons/outline";
 import { Logo } from '@/components/logos/Logo.tsx'
 
 import { Button } from "@/components/ui/button"
-import { Field, FieldGroup, FieldLabel } from "@/components/ui/field"
-import { Checkbox } from "@/components/ui/checkbox"
+import { Field, FieldGroup} from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import { useState } from 'react';
 
@@ -93,14 +92,6 @@ function LoginPage({setPage} : {setPage : React.Dispatch<React.SetStateAction<Pa
         </>
     )
 }
-
-
-// |____________________________________| \\
-// |------------------------------------| \\
-// |------   FULL SIGN UP PAGE    ------| \\
-// |------------------------------------| \\
-// |____________________________________| \\
-
 
 function AccountSetup({setPage} : {setPage : React.Dispatch<React.SetStateAction<Page>>}){
     return (

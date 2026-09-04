@@ -1,6 +1,6 @@
 
-import { buttonVariants } from './components/ui/button.tsx'
-import { cn } from './lib/utils'
+import { buttonVariants } from '../components/ui/button.tsx'
+import { cn } from '../lib/utils.ts'
 
 import { ArrowRight, ArrowLeft } from "flowbite-react-icons/outline";
 import { Logo } from '@/components/logos/Logo.tsx'
@@ -13,87 +13,167 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectVa
 
 import { Page } from "./Portal";
 
-import { countries } from './utils/countries.ts'
+import { countries } from '../utils/countries.ts'
 
 import './Portal.css';
 
 import { useEffect, useState } from 'react';
 
-function SignUpPage({setPage} : {setPage : React.Dispatch<React.SetStateAction<Page>>}){
+export type FormAnswers = {
+    firstName: string;
+    lastName: string;
+    email: string;
+    birthday: string;
+    phone: string;
+    country: string;
+    businessName: string;
+    instagramHandle: string;
+
+    questionOne: string;
+    questionTwo: string;
+    questionThree: string;
+    questionFour: string;
+};
+
+interface SignUpPageProps {
+    setPage: React.Dispatch<React.SetStateAction<Page>>;
+    setFormAnswers: React.Dispatch<React.SetStateAction<FormAnswers>>;
+}
+
+interface QuestionnairePageProps {
+    setPage: React.Dispatch<React.SetStateAction<Page>>;
+    questionNo: number;
+    setQuestionNo: React.Dispatch<React.SetStateAction<number>>;
+
+    setFormAnswers: React.Dispatch<React.SetStateAction<FormAnswers>>;
+}
+
+
+function SignUpPage({setPage, setFormAnswers} : SignUpPageProps){
+
+    const [country, setCountry] = useState("ph");
+
+    async function handleSubmission (event : React.FormEvent<HTMLFormElement>) {
+        event.preventDefault();
+
+        // Input Validation
+
+
+        // Get Form Data
+        const form = event.currentTarget;
+        const formData = new FormData(form);
+
+        const first_name = formData.get('form-first-name');
+        const last_name = formData.get('form-last-name');
+        
+        const email = formData.get('form-email');
+        const birthday = formData.get('form-birthday');
+
+        const phone = formData.get('form-phone');
+
+        const company = formData.get('form-company');
+        const ig_handle = formData.get('form-igname');
+
+        // Prepare for Next Page
+        setFormAnswers(prev => ({
+            ...prev,
+            firstName: first_name?.toString()!,
+            lastName: last_name?.toString()!,
+
+            email: email?.toString()!,
+            birthday: birthday?.toString()!,
+
+            phone: phone?.toString()!,
+            country: country,
+
+            businessName: company?.toString()!,
+            instagramHandle: ig_handle?.toString()!
+        }));
+        setPage(Page.questionnaire);
+    }
+
     return(
         <>
             <div className='flex flex-col items-center justify-center h-[105%] gap-y-4 sm:gap-y-8 max-w-none prose mb-0 mx-[5%]'>
-                <form className="w-full max-w-[548px]">
+                <form onSubmit={handleSubmission} className="w-full max-w-[548px]">
                     <FieldGroup className='flex flex-col gap-y-9'>
+                        
+                        {/* First Name & Last Name */}
                         <div className="grid grid-cols-2 gap-4">
                             <Field>
                                 <FieldLabel htmlFor="form-first-name" className="text-selago-0 text-[1rem] font-['Aileron'] font-semibold">First Name</FieldLabel>
-                                <Input id="form-first-name" type="text" placeholder="John" required className="input-field"/>
+                                <Input name='form-first-name' id="form-first-name" type="text" placeholder="John" required className="input-field"/>
                             </Field>
 
                             <Field>
                                 <FieldLabel htmlFor="form-last-name" className="text-selago-0 text-[1rem] font-['Aileron'] font-semibold">Last Name</FieldLabel>
-                                <Input id="form-last-name" type="text" placeholder="Doe" required className="input-field"/>
+                                <Input name='form-last-name' id="form-last-name" type="text" placeholder="Doe" required className="input-field"/>
                             </Field>
                         </div>
 
+                        {/* Email and Birthday */}
                         <div className="grid grid-cols-2 gap-4">
                             <Field>
                                 <FieldLabel htmlFor="form-email" className="text-selago-0 text-[1rem] font-['Aileron'] font-semibold">Email</FieldLabel>
-                                <Input id="form-email" type="email" placeholder="john@example.com" required className="input-field"/>
+                                <Input name='form-email' id="form-email" type="email" placeholder="john@example.com" required className="input-field"/>
                             </Field>
 
                             <Field>
                                 <FieldLabel htmlFor="form-birthday" className="text-selago-0 text-[1rem] font-['Aileron'] font-semibold">Birthday</FieldLabel>
-                                <Input id="form-birthday" type="date" required className="input-field dark:[color-scheme:dark]"/>
+                                <Input name='form-birthday' id="form-birthday" type="date" required className="input-field dark:[color-scheme:dark]"/>
                             </Field>
                         </div>
 
+                        {/* Phone and Country */}
                         <div className="grid grid-cols-2 gap-4">
                             <Field>
                                 <FieldLabel htmlFor="form-phone" className="text-selago-0 text-[1rem] font-['Aileron'] font-semibold">Phone</FieldLabel>
-                                <Input id="form-phone" type="tel" placeholder="+63 (555) 123-4567" required className="input-field"/>
+                                <Input name='form-phone' id="form-phone" type="tel" placeholder="+63 (555) 123-4567" required className="input-field"/>
                             </Field>
 
                             <Field>
                                 <FieldLabel htmlFor="form-country" className="text-selago-0 text-[1rem] font-['Aileron'] font-semibold">Country</FieldLabel>
-                                <Select items={countries} defaultValue="ph" required>
+
+                                <Select value={country} onValueChange={(value) => {if (value !== null) { setCountry(value) ;}}}>
                                     <SelectTrigger id="form-country" className="input-field">
                                         <SelectValue />
                                     </SelectTrigger>
 
                                     <SelectContent className="input-field border-2">
                                         <SelectGroup className="input-field">
-                                        {countries.map((country) => (
-                                            <SelectItem key={country.value} value={country.value} className="input-field">
-                                            {country.label}
-                                            </SelectItem>
-                                        ))}
+                                            {countries.map((country) => (
+                                                <SelectItem key={country.value} value={country.value} className="input-field">
+                                                    {country.label}
+                                                </SelectItem>
+                                            ))}
                                         </SelectGroup>
                                     </SelectContent>
                                 </Select>
                             </Field>
                         </div>
 
+                        {/* Business Name & Instagram Handle */}
                         <div className="grid grid-cols-2 gap-4">
                             <Field>
                                 <FieldLabel htmlFor="form-company" className="text-selago-0 text-[1rem] font-['Aileron'] font-semibold">Company/Business Name</FieldLabel>
-                                <Input id="form-company" type="text" placeholder="Acme Inc." required className="input-field"/>
+                                <Input name='form-company' id="form-company" type="text" placeholder="Acme Inc." required className="input-field"/>
                             </Field>
 
                             <Field>
                                 <FieldLabel htmlFor="form-igname" className="text-selago-0 text-[1rem] font-['Aileron'] font-semibold">Instagram Handle</FieldLabel>
-                                <Input id="form-igname" type="text" placeholder="@33_society" required className="input-field"/>
+                                <Input name='form-igname' id="form-igname" type="text" placeholder="@33_society" required className="input-field"/>
                             </Field>
                         </div>
 
+                        {/* Submission Button */}
                         <div className='flex flex-col items-center justify-center mt-[4%]'>
-                            <Button onClick={() => setPage(Page.questionnaire)} variant="outline" className={cn(buttonVariants({ variant: "default", size: "lg" }),
+                            <Button type='submit' variant="outline" className={cn(buttonVariants({ variant: "default", size: "lg" }),
                                 "bg-schiava-blue text-white border-2 border-schiava-blue-dark py-5 px-12 rounded-[64px] hover:bg-schiava-blue-dark hover:scale-102 hover:cursor-pointer transition-all duration-300 font-['Aileron'] font-semibold text-[1.575rem]",
                             )}>
                                 Submit
                             </Button>
                         </div>
+                        
                     </FieldGroup>
                 </form>
             </div>
@@ -105,13 +185,8 @@ function SignUpPage({setPage} : {setPage : React.Dispatch<React.SetStateAction<P
     )
 }
 
-interface QuestionnairePageProps {
-    setPage: React.Dispatch<React.SetStateAction<Page>>;
-    questionNo: number;
-    setQuestionNo: React.Dispatch<React.SetStateAction<number>>;
-}
 
-function QuestionnairePage({ setPage, questionNo, setQuestionNo } : QuestionnairePageProps){
+function QuestionnairePage({ setPage, questionNo, setQuestionNo, setFormAnswers } : QuestionnairePageProps){
 
     const [inputValue, setInputValue] = useState('');
 
@@ -269,6 +344,25 @@ function QuestionnairePage({ setPage, questionNo, setQuestionNo } : Questionnair
 function SignUp({page, setPage} : {page: Page, setPage : React.Dispatch<React.SetStateAction<Page>>}){
 
     const [questionNo, setQuestionNo] = useState<number>(1);
+    const [formAnswers, setFormAnswers] = useState<FormAnswers>({
+        firstName: '',
+        lastName: '',
+        email: '',
+        birthday: '',
+        phone: '',
+        country: '',
+        businessName: '',
+        instagramHandle: '',
+
+        questionOne: '',
+        questionTwo: '',
+        questionThree: '',
+        questionFour: '',
+    });
+
+    useEffect(() => {
+        console.log(formAnswers);
+    }, [formAnswers])
 
     return(
         <>
@@ -286,11 +380,11 @@ function SignUp({page, setPage} : {page: Page, setPage : React.Dispatch<React.Se
                 </div>
 
                 {page === Page.questionnaire && (
-                    <QuestionnairePage setPage={setPage} questionNo={questionNo} setQuestionNo={setQuestionNo}/>
+                    <QuestionnairePage setPage={setPage} questionNo={questionNo} setQuestionNo={setQuestionNo} setFormAnswers={setFormAnswers}/>
                 )}
 
                 {page === Page.signup && (
-                    <SignUpPage setPage={setPage}/>
+                    <SignUpPage setPage={setPage} setFormAnswers={setFormAnswers}/>
                 )}
             </div> 
         </>
