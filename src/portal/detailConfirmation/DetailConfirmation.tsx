@@ -27,6 +27,50 @@ function DetailConfirmation({ setPage, formAnswers, setFormAnswers } : DetailCon
 
     const [country, setCountry] = useState(formAnswers.country);
 
+    async function confirmDetails(event : React.FormEvent<HTMLFormElement>){
+        event.preventDefault();
+
+        // Input Validation
+
+
+        // Get Form Data
+        const form = event.currentTarget;
+        const formData = new FormData(form);
+
+        const firstName = formData.get('form-first-name')?.toString() ?? '';
+        const lastName = formData.get('form-last-name')?.toString() ?? '';
+        const email = formData.get('form-email')?.toString() ?? '';
+        const birthday = formData.get('form-birthday')?.toString() ?? '';
+        const phone = formData.get('form-phone')?.toString() ?? '';
+        const company = formData.get('form-company')?.toString() ?? '';
+        const instagramHandle = formData.get('form-igname')?.toString() ?? '';
+
+        const questionOne = formData.get('form-questionOne')?.toString() ?? '';
+        const questionTwo = formData.get('form-questionTwo')?.toString() ?? '';
+        const questionThree = formData.get('questionThree')?.toString() ?? '';
+        const questionFour = formData.get('questionFour')?.toString() ?? '';
+
+        setFormAnswers(prev => ({
+            ...prev,
+
+            firstName,
+            lastName,
+            email,
+            birthday,
+            phone,
+            country,
+
+            businessName: company,
+            instagramHandle,
+
+            questionOne,
+            questionTwo,
+            questionThree,
+            questionFour,
+        }));
+        setPage(Page.accountSetup);
+    }
+
     return(
         <>
             <div className='w-full h-[80%] flex justify-center items-center overflow-hidden'>
@@ -36,7 +80,7 @@ function DetailConfirmation({ setPage, formAnswers, setFormAnswers } : DetailCon
                             <h1 className="font-['Aileron'] font-bold text-[2rem] mb-[6px] text-selago-0">Submitted Details:</h1>
                         </div>
 
-                        <form>
+                        <form onSubmit={confirmDetails}>
                             <FieldGroup className='flex flex-col gap-y-6'>
                                 <Field>
                                     <FieldLabel htmlFor="form-first-name" className="text-selago-0 text-[1.1rem] font-['Aileron'] font-semibold">First Name</FieldLabel>
@@ -143,7 +187,7 @@ function DetailConfirmation({ setPage, formAnswers, setFormAnswers } : DetailCon
                                         </label>
 
                                         <label htmlFor="offer_declined" className="flex cursor-pointer items-center justify-center gap-1">
-                                            <input type="radio" id="offer_declined" name="questionFour" value="No, not at this timek" defaultChecked={formAnswers.questionFour === "No, not at this time"} className="radio-field"/>
+                                            <input type="radio" id="offer_declined" name="questionFour" value="No, not at this time" defaultChecked={formAnswers.questionFour === "No, not at this time"} className="radio-field"/>
                                             <span className="text-center text-selago-100 font-['Aileron'] font-semibold text-[0.95rem]">No</span>
                                         </label>
 
@@ -158,7 +202,7 @@ function DetailConfirmation({ setPage, formAnswers, setFormAnswers } : DetailCon
                                     <Button type='submit' variant="outline" className={cn(buttonVariants({ variant: "default", size: "lg" }),
                                         "bg-schiava-blue text-white border-2 border-schiava-blue-dark py-5 px-12 rounded-[64px] hover:bg-schiava-blue-dark hover:scale-102 hover:cursor-pointer transition-all duration-300 font-['Aileron'] font-semibold text-[1.575rem]",
                                     )}>
-                                        Submit Details
+                                        Confirm Details
                                     </Button>
                                 </div>
 

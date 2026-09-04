@@ -60,6 +60,7 @@ function QuestionnairePage({ setPage, questionNo, setQuestionNo, formAnswers, se
         if (questionNo < questions.length) {
             setQuestionNo(prev => prev + 1);
         } else {
+            setQuestionNo(prev => prev + 1);
             setPage(Page.detailConfirmation);
         }
     };
