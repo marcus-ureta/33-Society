@@ -61,7 +61,7 @@ function QuestionnairePage({ setPage, questionNo, setQuestionNo, formAnswers, se
             setQuestionNo(prev => prev + 1);
         } else {
             setQuestionNo(prev => prev + 1);
-            setPage(Page.detailConfirmation);
+            setPage(Page.accountSetup);
         }
     };
 

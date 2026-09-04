@@ -19,7 +19,6 @@ import './Portal.css';
 import { useEffect, useState } from 'react';
 
 import QuestionnairePage from '@/portal/questionnaire/Questionnaire.tsx';
-import DetailConfirmation from '@/portal/detailConfirmation/DetailConfirmation.tsx';
 
 export type FormAnswers = {
     firstName: string;
@@ -220,9 +219,6 @@ function SignUp({page, setPage} : {page: Page, setPage : React.Dispatch<React.Se
                     </div>
                 </div>
 
-                {page === Page.detailConfirmation && (
-                    <DetailConfirmation setPage={setPage} formAnswers={formAnswers} setFormAnswers={setFormAnswers}/>
-                )}
 
                 {page === Page.questionnaire && (
                     <QuestionnairePage setPage={setPage} questionNo={questionNo} setQuestionNo={setQuestionNo} formAnswers={formAnswers} setFormAnswers={setFormAnswers}/>
