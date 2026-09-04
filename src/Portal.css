@@ -1,0 +1,7 @@
+@reference './index.css';
+
+@layer utilities {
+  .input-field {
+    @apply bg-tristesse-0 border-davys-grey-100 text-davys-grey-0 font-['Aileron'] placeholder:font-['instrument-serif'] placeholder:italic pl-[8px] text-[1rem]!;
+  }
+}

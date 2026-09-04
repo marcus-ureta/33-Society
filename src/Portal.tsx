@@ -14,6 +14,8 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectVa
 import { countries } from './utils/countries.ts'
 import { useState } from 'react';
 
+import './Portal.css';
+
 import crown from '/svg/CROWN_CROPPED.svg';
 
 const Page = {
@@ -118,51 +120,51 @@ function SignUpPage({setPage} : {setPage : React.Dispatch<React.SetStateAction<P
                 </div>
 
 
-                <div className='flex flex-col items-center justify-center h-[80%] gap-y-4 sm:gap-y-8 max-w-none prose mb-0 mx-[5%]'>
+                <div className='flex flex-col items-center justify-center h-[105%] gap-y-4 sm:gap-y-8 max-w-none prose mb-0 mx-[5%]'>
                     
                     <form className="w-full max-w-[548px]">
                         <FieldGroup className='flex flex-col gap-y-9'>
                             <div className="grid grid-cols-2 gap-4">
                                 <Field>
-                                    <FieldLabel htmlFor="form-first-name" className='text-selago-0'>First Name</FieldLabel>
-                                    <Input id="form-first-name" type="text" placeholder="Evil Rabbit" required className="bg-tristesse-0 border-davys-grey-100"/>
+                                    <FieldLabel htmlFor="form-first-name" className="text-selago-0 text-[1rem] font-['Aileron'] font-semibold">First Name</FieldLabel>
+                                    <Input id="form-first-name" type="text" placeholder="John" required className="input-field"/>
                                 </Field>
 
                                 <Field>
-                                    <FieldLabel htmlFor="form-last-name" className='text-selago-0'>Last Name</FieldLabel>
-                                    <Input id="form-last-name" type="text" placeholder="Rabbit" required className="bg-tristesse-0 border-davys-grey-100"/>
-                                </Field>
-                            </div>
-
-                            <div className="grid grid-cols-2 gap-4">
-                                <Field>
-                                    <FieldLabel htmlFor="form-email" className='text-selago-0'>Email</FieldLabel>
-                                    <Input id="form-email" type="email" placeholder="john@example.com" required className="bg-tristesse-0 border-davys-grey-100"/>
-                                </Field>
-
-                                <Field>
-                                    <FieldLabel htmlFor="form-birthday" className='text-selago-0'>Birthday</FieldLabel>
-                                    <Input id="form-birthday" type="date" required className="bg-tristesse-0 border-davys-grey-100 dark:[color-scheme:dark]"/>
+                                    <FieldLabel htmlFor="form-last-name" className="text-selago-0 text-[1rem] font-['Aileron'] font-semibold">Last Name</FieldLabel>
+                                    <Input id="form-last-name" type="text" placeholder="Doe" required className="input-field"/>
                                 </Field>
                             </div>
 
                             <div className="grid grid-cols-2 gap-4">
                                 <Field>
-                                    <FieldLabel htmlFor="form-phone" className='text-selago-0'>Phone</FieldLabel>
-                                    <Input id="form-phone" type="tel" placeholder="+63 (555) 123-4567" required className="bg-tristesse-0 border-davys-grey-100"/>
+                                    <FieldLabel htmlFor="form-email" className="text-selago-0 text-[1rem] font-['Aileron'] font-semibold">Email</FieldLabel>
+                                    <Input id="form-email" type="email" placeholder="john@example.com" required className="input-field"/>
                                 </Field>
 
                                 <Field>
-                                    <FieldLabel htmlFor="form-country" className='text-selago-0'>Country</FieldLabel>
+                                    <FieldLabel htmlFor="form-birthday" className="text-selago-0 text-[1rem] font-['Aileron'] font-semibold">Birthday</FieldLabel>
+                                    <Input id="form-birthday" type="date" required className="input-field dark:[color-scheme:dark]"/>
+                                </Field>
+                            </div>
+
+                            <div className="grid grid-cols-2 gap-4">
+                                <Field>
+                                    <FieldLabel htmlFor="form-phone" className="text-selago-0 text-[1rem] font-['Aileron'] font-semibold">Phone</FieldLabel>
+                                    <Input id="form-phone" type="tel" placeholder="+63 (555) 123-4567" required className="input-field"/>
+                                </Field>
+
+                                <Field>
+                                    <FieldLabel htmlFor="form-country" className="text-selago-0 text-[1rem] font-['Aileron'] font-semibold">Country</FieldLabel>
                                     <Select items={countries} defaultValue="ph" required>
-                                        <SelectTrigger id="form-country" className="bg-tristesse-0 border-davys-grey-100">
+                                        <SelectTrigger id="form-country" className="input-field">
                                             <SelectValue />
                                         </SelectTrigger>
 
-                                        <SelectContent className="bg-tristesse-0 border-davys-grey-100 border-2">
-                                            <SelectGroup className="bg-tristesse-0">
+                                        <SelectContent className="input-field border-2">
+                                            <SelectGroup className="input-field">
                                             {countries.map((country) => (
-                                                <SelectItem key={country.value} value={country.value} className="bg-tristesse-0 border-davys-grey-100/20 text-selago-50 border-b-2">
+                                                <SelectItem key={country.value} value={country.value} className="input-field">
                                                 {country.label}
                                                 </SelectItem>
                                             ))}
@@ -174,13 +176,13 @@ function SignUpPage({setPage} : {setPage : React.Dispatch<React.SetStateAction<P
 
                             <div className="grid grid-cols-2 gap-4">
                                 <Field>
-                                    <FieldLabel htmlFor="form-company" className='text-selago-0'>Company/Business Name</FieldLabel>
-                                    <Input id="form-company" type="text" placeholder="Acme Inc." required className="bg-tristesse-0 border-davys-grey-100"/>
+                                    <FieldLabel htmlFor="form-company" className="text-selago-0 text-[1rem] font-['Aileron'] font-semibold">Company/Business Name</FieldLabel>
+                                    <Input id="form-company" type="text" placeholder="Acme Inc." required className="input-field"/>
                                 </Field>
 
                                 <Field>
-                                    <FieldLabel htmlFor="form-igname" className='text-selago-0'>Instagram Handle</FieldLabel>
-                                    <Input id="form-igname" type="text" placeholder="@33_society" required className="bg-tristesse-0 border-davys-grey-100"/>
+                                    <FieldLabel htmlFor="form-igname" className="text-selago-0 text-[1rem] font-['Aileron'] font-semibold">Instagram Handle</FieldLabel>
+                                    <Input id="form-igname" type="text" placeholder="@33_society" required className="input-field"/>
                                 </Field>
                             </div>
 
