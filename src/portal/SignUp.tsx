@@ -37,6 +37,8 @@ export type FormAnswers = {
 
 interface SignUpPageProps {
     setPage: React.Dispatch<React.SetStateAction<Page>>;
+
+    formAnswers: FormAnswers
     setFormAnswers: React.Dispatch<React.SetStateAction<FormAnswers>>;
 }
 
@@ -49,7 +51,7 @@ interface QuestionnairePageProps {
 }
 
 
-function SignUpPage({setPage, setFormAnswers} : SignUpPageProps){
+function SignUpPage({setPage, formAnswers, setFormAnswers} : SignUpPageProps){
 
     const [country, setCountry] = useState("ph");
 
@@ -102,12 +104,12 @@ function SignUpPage({setPage, setFormAnswers} : SignUpPageProps){
                         <div className="grid grid-cols-2 gap-4">
                             <Field>
                                 <FieldLabel htmlFor="form-first-name" className="text-selago-0 text-[1rem] font-['Aileron'] font-semibold">First Name</FieldLabel>
-                                <Input name='form-first-name' id="form-first-name" type="text" placeholder="John" required className="input-field"/>
+                                <Input name='form-first-name' id="form-first-name" type="text" placeholder="John" required className="input-field" defaultValue={formAnswers.firstName}/>
                             </Field>
 
                             <Field>
                                 <FieldLabel htmlFor="form-last-name" className="text-selago-0 text-[1rem] font-['Aileron'] font-semibold">Last Name</FieldLabel>
-                                <Input name='form-last-name' id="form-last-name" type="text" placeholder="Doe" required className="input-field"/>
+                                <Input name='form-last-name' id="form-last-name" type="text" placeholder="Doe" required className="input-field" defaultValue={formAnswers.lastName}/>
                             </Field>
                         </div>
 
@@ -115,12 +117,12 @@ function SignUpPage({setPage, setFormAnswers} : SignUpPageProps){
                         <div className="grid grid-cols-2 gap-4">
                             <Field>
                                 <FieldLabel htmlFor="form-email" className="text-selago-0 text-[1rem] font-['Aileron'] font-semibold">Email</FieldLabel>
-                                <Input name='form-email' id="form-email" type="email" placeholder="john@example.com" required className="input-field"/>
+                                <Input name='form-email' id="form-email" type="email" placeholder="john@example.com" required className="input-field" defaultValue={formAnswers.email}/>
                             </Field>
 
                             <Field>
                                 <FieldLabel htmlFor="form-birthday" className="text-selago-0 text-[1rem] font-['Aileron'] font-semibold">Birthday</FieldLabel>
-                                <Input name='form-birthday' id="form-birthday" type="date" required className="input-field dark:[color-scheme:dark]"/>
+                                <Input name='form-birthday' id="form-birthday" type="date" required className="input-field dark:[color-scheme:dark]" defaultValue={formAnswers.birthday}/>
                             </Field>
                         </div>
 
@@ -128,13 +130,13 @@ function SignUpPage({setPage, setFormAnswers} : SignUpPageProps){
                         <div className="grid grid-cols-2 gap-4">
                             <Field>
                                 <FieldLabel htmlFor="form-phone" className="text-selago-0 text-[1rem] font-['Aileron'] font-semibold">Phone</FieldLabel>
-                                <Input name='form-phone' id="form-phone" type="tel" placeholder="+63 (555) 123-4567" required className="input-field"/>
+                                <Input name='form-phone' id="form-phone" type="tel" placeholder="+63 (555) 123-4567" required className="input-field" defaultValue={formAnswers.phone}/>
                             </Field>
 
                             <Field>
                                 <FieldLabel htmlFor="form-country" className="text-selago-0 text-[1rem] font-['Aileron'] font-semibold">Country</FieldLabel>
 
-                                <Select items={countries} defaultValue="ph" onValueChange={(value) => { if (value !== null) { setCountry(value); }}} required>
+                                <Select items={countries} defaultValue={formAnswers.country === '' ? 'ph' : formAnswers.country} onValueChange={(value) => { if (value !== null) { setCountry(value); }}} required>
                                     <SelectTrigger id="form-country" className="input-field">
                                         <SelectValue />
                                     </SelectTrigger>
@@ -156,12 +158,12 @@ function SignUpPage({setPage, setFormAnswers} : SignUpPageProps){
                         <div className="grid grid-cols-2 gap-4">
                             <Field>
                                 <FieldLabel htmlFor="form-company" className="text-selago-0 text-[1rem] font-['Aileron'] font-semibold">Company/Business Name</FieldLabel>
-                                <Input name='form-company' id="form-company" type="text" placeholder="Acme Inc." required className="input-field"/>
+                                <Input name='form-company' id="form-company" type="text" placeholder="Acme Inc." required className="input-field" defaultValue={formAnswers.businessName}/>
                             </Field>
 
                             <Field>
                                 <FieldLabel htmlFor="form-igname" className="text-selago-0 text-[1rem] font-['Aileron'] font-semibold">Instagram Handle</FieldLabel>
-                                <Input name='form-igname' id="form-igname" type="text" placeholder="@33_society" required className="input-field"/>
+                                <Input name='form-igname' id="form-igname" type="text" placeholder="@33_society" required className="input-field" defaultValue={formAnswers.instagramHandle}/>
                             </Field>
                         </div>
 
@@ -493,7 +495,7 @@ function SignUp({page, setPage} : {page: Page, setPage : React.Dispatch<React.Se
                 )}
 
                 {page === Page.signup && (
-                    <SignUpPage setPage={setPage} setFormAnswers={setFormAnswers}/>
+                    <SignUpPage setPage={setPage} formAnswers={formAnswers} setFormAnswers={setFormAnswers}/>
                 )}
             </div> 
         </>
