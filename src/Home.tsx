@@ -7,6 +7,13 @@ import Navbar from "./Navbar";
 
 import { Button } from "@base-ui/react/button";
 
+import FastMarquee from "react-fast-marquee";
+
+// Vite/Rolldown CJS interop workaround for react-fast-marquee
+const Marquee =
+  (FastMarquee as unknown as { default?: typeof FastMarquee }).default ||
+  FastMarquee;
+
 function App() {
   const CROWN_TOP_WIDTH = 837.5;
   const CROWN_TOP_HEIGHT = 181.5;
@@ -94,7 +101,7 @@ function App() {
             </div>
           </div>
 
-          <div className="bg-tristesse-0 h-fit w-full -mt-[15%] flex pt-48 flex-col items-center p-8 prose prose-lg ">
+          <div className="bg-tristesse-0 h-fit w-full -mt-[15%] flex pt-48 flex-col items-center p-8 prose prose-lg max-w-none pb-24">
             <div className="h-fit w-fit flex items-center flex-col">
               <HomePillars
                 number="01"
@@ -120,7 +127,7 @@ function App() {
 
             <LineDivider fillName="schiava-blue" className="mb-18 w-full" />
 
-            <div className="prose prose-lg h-fit w-fit flex items-center flex-col">
+            <div className="prose prose-lg h-fit w-full flex items-center flex-col @container">
               <h1 className="text-center font-cochin text-selago-50 mb-0">
                 Guest Speakers
               </h1>
@@ -128,6 +135,9 @@ function App() {
                 Toffee chocolate cake macaroon jujubes cotton candy sweet sesame
                 snaps gummi bears dragée.
               </p>
+              <Marquee autoFill={true} className="w-screen!">
+                <div className="h-96 w-48 bg-white mr-8"></div>
+              </Marquee>
             </div>
           </div>
         </div>
