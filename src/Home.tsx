@@ -170,18 +170,36 @@ function App() {
               />
             </div>
 
-            <LineDivider fillName="schiava-blue" className="mb-18 w-full" />
+            <LineDivider fillName="davys-grey-0" className="mb-18 w-full" />
 
             <div className="prose prose-lg h-fit w-full flex items-center flex-col @container">
               <h1 className="text-center font-cochin text-selago-50 mb-0">
                 GUEST SPEAKERS
               </h1>
-              <p className="text-center text-selago-0 font-aileron">
+              <p className="text-center text-selago-0 font-aileron mb-16  ">
                 Toffee chocolate cake macaroon jujubes cotton candy sweet sesame
                 snaps gummi bears dragée.
               </p>
-              <Marquee autoFill={true} className="w-screen!">
-                <div className="h-96 w-48 bg-white mr-8"></div>
+              <Marquee
+                autoFill={true}
+                className="w-screen!"
+                pauseOnHover
+                speed={75}
+              >
+                <div className="h-144 w-72 border border-davys-grey-0 mr-8 rounded-2xl flex flex-col">
+                  <img
+                    className="aspect-4/5 w-full h-auto mb-0 mt-0 rounded-t-2xl"
+                    src="https://s.yimg.com/lo/mysterio/api/f31f4df8d5b30a5537d3ade836d06d67c72de4375cb7bc16fafe22a85e2833a5/lightyear_networkapi/resizefill_w480_h348%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fknow_your_meme_909%2Fc3f13e3aa7742e8034894c82237bea06"
+                  ></img>
+                  <div className="p-4 flex flex-col gap-4">
+                    <h2 className="font-cochin text-selago-50 mb-0 mt-0 leading-none text-4xl">
+                      Floyd Escuadra
+                    </h2>
+                    <p className="font-aileron text-selago-0 text-base">
+                      Chocolate fruitcake bonbon powder danish pastry.
+                    </p>
+                  </div>
+                </div>
               </Marquee>
             </div>
           </div>
