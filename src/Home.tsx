@@ -338,7 +338,7 @@ function App() {
               </svg>
 
               <div className="w-full h-fit bg-schiava-blue -mt-1 px-8 py-4 flex flex-col gap-4 items-center">
-                <p className="font-aileron mb-0 mt-0 text-base text-selago-0">
+                <p className="font-aileron mb-0 mt-0 text-base text-selago-0 text-center">
                   <span className="font-bold mr-4">© 2026 SOCIETY 33</span> All
                   rights reserved.
                 </p>
