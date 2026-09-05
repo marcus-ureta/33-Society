@@ -72,7 +72,7 @@ function App() {
     <>
       {/* <Navbar /> */}
       <div className="w-full h-fit flex justify-center bg-tristesse-0 min-w-80 *:wrap-break-word ">
-        <div className="max-w-480 flex flex-col w-full min-w-80">
+        <div className="max-w-384 flex flex-col w-full min-w-80 h-fit">
           <div className=" w-full h-fit flex flex-col items-center pt-32 p-8">
             <div className="prose prose-lg max-w-none w-full flex flex-col items-center">
               <h1 className="font-cochin font-bold text-selago-100 text-7xl w-full max-w-[20ch] text-center mb-2">
@@ -240,11 +240,11 @@ function App() {
             }}
           >
             <div className="h-fit w-full flex flex-col items-center p-8 pt-24">
-            <h1 className="font-cochin text-selago-100 mb-8 text-center">
-              BEFORE YOU ENTER
-            </h1>
+              <h1 className="font-cochin text-selago-100 mb-8 text-center">
+                BEFORE YOU ENTER
+              </h1>
               <p className="font-aileron text-selago-50 mt-0 mb-16 text-center">
-              Everything you need to know about the Society
+                Everything you need to know about the Society
               </p>
               <div className="w-screen h-fit bg-tristesse-0 rounded-2xl p-4">
                 <Accordion multiple>
