@@ -10,6 +10,12 @@ import { Button } from "@base-ui/react/button";
 import HomeActivities from "./components/HomeActivities";
 
 import FastMarquee from "react-fast-marquee";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 // Vite/Rolldown CJS interop workaround for react-fast-marquee
 const Marquee =
@@ -40,6 +46,33 @@ function App() {
 
   const invertedArcSvg = `data:image/svg+xml;utf8,<svg viewBox="0 0 1000 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M 0,0 A 725 725 0 0 0 1000,0 L 1000,200 L 0,200 Z" fill="white"/></svg>`;
   const arcSvg = `data:image/svg+xml;utf8,<svg viewBox="0 0 1000 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M 0,0 A 725 725 0 0 0 1000,0 Z" fill="white"/></svg>`;
+
+  const faqItems = [
+    {
+      value: "goal",
+      trigger: "What is the goal of Society 33?",
+      content:
+        "Society 33 exists to bring together the next generation of ambitious individuals across Asia and create a circle where meaningful relationships can lead to personal growth, business opportunities, and lasting connections.",
+    },
+    {
+      value: "invitation",
+      trigger: "Can I invite someone to join the circle?",
+      content:
+        "Yes. Members may refer individuals they genuinely believe would be a strong addition to the Society. Every referral remains subject to review and approval to ensure the community maintains its standards.",
+    },
+    {
+      value: "yacht",
+      trigger: "What should I know about the yacht event?",
+      content:
+        "Our first Society 33 experience is a private yacht gathering featuring a closed-door mastermind session, curated conversations, networking, and an opportunity to connect with selected members of the Society. Full event details are provided to confirmed participants.",
+    },
+    {
+      value: "slot",
+      trigger: "Is my slot transferable?",
+      content:
+        "To maintain the quality and exclusivity of the Society, event slots are generally non-transferable. Any exception must be reviewed and approved by the Society 33 team",
+    },
+  ];
 
   return (
     <>
@@ -197,7 +230,7 @@ function App() {
           </div>
 
           <div
-            className="bg-schiava-blue h-270 w-full flex flex-col items-center p-8 prose prose-lg max-w-none mt-[-15%] pt-24"
+            className="h-fit bg-schiava-blue w-full flex flex-col prose prose-lg max-w-none mt-[-15%]"
             style={{
               maskImage: `url('/svg/BOTTOM_CROWN_ROTATED.svg'), linear-gradient(black, black)`,
               WebkitMaskImage: `url('/svg/BOTTOM_CROWN_ROTATED.svg'), linear-gradient(black, black)`,
@@ -205,19 +238,45 @@ function App() {
               maskRepeat: "no-repeat, no-repeat",
               WebkitMaskRepeat: "no-repeat, no-repeat",
 
-              maskSize: `100% auto, 100% calc(100% - (100cqw * ${CROWN_BOTTOM_HEIGHT_MULTIPLIER}) + 4px)`,
-              WebkitMaskSize: `100% auto, 100% calc(100% - (100cqw * ${CROWN_BOTTOM_HEIGHT_MULTIPLIER}) + 4px)`,
+              maskSize: `100% auto, 100% 100%`,
+              WebkitMaskSize: `100% auto, 100% 100%`,
 
               maskPosition: `0 0, 0 calc(100cqw * ${CROWN_TOP_HEIGHT_MULTIPLIER})`,
               WebkitMaskPosition: `0 0, 0 calc(100cqw * ${CROWN_TOP_HEIGHT_MULTIPLIER})`,
             }}
           >
+            <div className="h-fit w-full flex flex-col items-center p-8 pt-24">
             <h1 className="font-cochin text-selago-100 mb-8 text-center">
               BEFORE YOU ENTER
             </h1>
-            <h3 className="font-cochin text-selago-50 mt-0 mb-0 text-center">
+              <p className="font-aileron text-selago-50 mt-0 mb-16 text-center">
               Everything you need to know about the Society
-            </h3>
+              </p>
+              <div className="w-screen h-fit bg-tristesse-0 rounded-2xl p-4">
+                <Accordion multiple>
+                  {faqItems.map((item) => (
+                    <AccordionItem
+                      key={item.value}
+                      value={item.value}
+                      className={"*:mt-0 *:mb-0"}
+                    >
+                      <AccordionTrigger
+                        className={
+                          "font-aileron text-selago-50 text-xl font-bold"
+                        }
+                      >
+                        {item.trigger}
+                      </AccordionTrigger>
+                      <AccordionContent
+                        className={"font-aileron text-selago-0 text-lg"}
+                      >
+                        {item.content}
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </div>
+            </div>
           </div>
         </div>
       </div>
