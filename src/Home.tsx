@@ -1,12 +1,13 @@
-import { LineDivider } from "./components/LineDivider";
-import { HomePillars } from "./components/HomePillars";
-import { Logo } from "./components/logos";
 import "./index.css";
 
 import Navbar from "./Navbar";
+import { Logo } from "./components/logos";
 
+// TODO: remove once mockup buttons have been replaced with actual shadcn counterparts
 import { Button } from "@base-ui/react/button";
 
+import { LineDivider } from "./components/LineDivider";
+import { HomePillars } from "./components/HomePillars";
 import HomeActivities from "./components/HomeActivities";
 
 import FastMarquee from "react-fast-marquee";
@@ -20,12 +21,16 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-// Vite/Rolldown CJS interop workaround for react-fast-marquee
+// 🤖 Vite/Rolldown CJS interop workaround for react-fast-marquee
 const Marquee =
   (FastMarquee as unknown as { default?: typeof FastMarquee }).default ||
   FastMarquee;
 
+// ================================================================================
+
+// TODO: check if renaming function doesn't cause issues in main.tsx first
 function App() {
+  //  SVG CROWN DIMENSIONS & SEMI-CIRCLE PATHS
   const CROWN_TOP_WIDTH = 837.5;
   const CROWN_TOP_HEIGHT = 181.5;
 
@@ -41,6 +46,9 @@ function App() {
   const invertedArcSvg = `data:image/svg+xml;utf8,<svg viewBox="0 0 1000 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M 0,0 A 725 725 0 0 0 1000,0 L 1000,200 L 0,200 Z" fill="white"/></svg>`;
   const arcSvg = `data:image/svg+xml;utf8,<svg viewBox="0 0 1000 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M 0,0 A 725 725 0 0 0 1000,0 Z" fill="white"/></svg>`;
 
+  // ==============================================================================
+
+  //  CONTENT ARRAY MAPS
   const faqItems = [
     {
       value: "goal",
@@ -68,13 +76,20 @@ function App() {
     },
   ];
 
+  // ==============================================================================
+
   return (
     <>
       <Navbar />
 
       <div className="w-full h-fit flex justify-center bg-tristesse-0 min-w-80 *:wrap-break-word ">
+        {/* PADDED CONTENT AREA */}
         <div className="max-w-384 flex flex-col w-full min-w-80 h-fit">
+          {/* 
+            SECTION: HERO 
+          */}
           <div className=" w-full h-fit flex flex-col items-center pt-48 p-8">
+            {/* Middle hero text */}
             <div className="prose prose-lg max-w-none w-full flex flex-col items-center">
               <h1 className="font-cochin font-bold text-selago-100 text-7xl w-full max-w-[20ch] text-center mb-2">
                 Sweet topping shortbread jelly beans
@@ -83,6 +98,7 @@ function App() {
                 Cheesecake sugar plum marshmallow muffin chocolate cheesecake
                 sweet danish sesame snaps.
               </p>
+
               {/* Hero CTA */}
               <div className="mt-12 border-2 border-schiava-blue p-4 rounded-[42px] flex flex-col items-center gap-4">
                 <Button
@@ -95,10 +111,14 @@ function App() {
                 <p className="leading-0 px-6 text-selago-0">Book a Meeting</p>
               </div>
             </div>
+
+            {/* Partners */}
             <div className="flex justify-center h-72 w-full"></div>
           </div>
 
-          {/* -mt-36  pushes crown page cut upwards*/}
+          {/* ==============================================================================
+            SECTION: ABOUT SOCIETY 33 
+          ============================================================================== */}
           <div className="relative w-full @container h-fit p-8 flex flex-col items-center justify-center">
             <div
               className="absolute inset-0 bg-schiava-blue bg-no-repeat bg-size-[100%_100%]"
@@ -123,6 +143,7 @@ function App() {
               }}
             />
 
+            {/* About Society 33 content */}
             <div
               className="w-full h-full z-1 relative flex flex-col items-center prose prose-lg"
               style={{
@@ -134,6 +155,7 @@ function App() {
                 ABOUT
               </h1>
               <Logo variant="mark" className="text-selago-50 size-36"></Logo>
+
               <p className="text-center text-selago-0 font-aileron">
                 Oat cake cheesecake caramels shortbread toffee wafer. Tiramisu
                 sweet bonbon tart lemon drops. Muffin cake sugar plum chocolate
@@ -143,6 +165,9 @@ function App() {
             </div>
           </div>
 
+          {/* ==============================================================================
+            SECTION: PILLARS 
+          ============================================================================== */}
           <div className="bg-tristesse-0 h-fit w-full -mt-[15%] flex pt-24 flex-col items-center p-8 prose prose-lg max-w-none pb-24">
             <div className="h-fit w-fit flex items-center flex-col">
               <h1 className="font-cochin text-selago-50 text-center">
@@ -172,7 +197,9 @@ function App() {
             </div>
 
             <LineDivider fillName="davys-grey-0" className="mb-18 w-full" />
-
+            {/* ==============================================================================
+              SECTION: GUEST SPEAKERS
+            ============================================================================== */}
             <div className="prose prose-lg h-fit w-full flex items-center flex-col @container">
               <h1 className="text-center font-cochin text-selago-50 mb-0">
                 GUEST SPEAKERS
@@ -181,12 +208,14 @@ function App() {
                 Toffee chocolate cake macaroon jujubes cotton candy sweet sesame
                 snaps gummi bears dragée.
               </p>
+
               <Marquee
                 autoFill={true}
                 className="w-screen!"
                 pauseOnHover
                 speed={75}
               >
+                {/* TODO: extract this to reusable component */}
                 <div className="h-144 w-72 border border-davys-grey-0 mr-8 rounded-2xl flex flex-col">
                   <img
                     className="aspect-4/5 w-full h-auto mb-0 mt-0 rounded-t-2xl"
@@ -205,6 +234,9 @@ function App() {
             </div>
           </div>
 
+          {/* ==============================================================================
+          SECTION: YACHT ACTIVITIES
+          ============================================================================== */}
           <div
             className="bg-schiava-blue flex flex-col items-center p-8 prose prose-lg w-full h-fit max-w-none pt-24 @container pb-16"
             style={{
@@ -224,11 +256,13 @@ function App() {
             <h1 className="text-center font-cochin text-selago-50 mb-16">
               WHAT TO EXPECT INSIDE THE YACHT
             </h1>
+
             <HomeActivities description="Tart chocolate danish candy shortbread chupa chups chocolate pastry."></HomeActivities>
             <HomeActivities description="Cupcake tiramisu pastry croissant chocolate bar danish gummies."></HomeActivities>
             <HomeActivities description="Candy canes cotton candy powder jelly-o gummi bears toffee."></HomeActivities>
             <HomeActivities description="Toffee cake carrot cake wafer jujubes marshmallow icing pudding."></HomeActivities>
             <HomeActivities description="Ice cream chupa chups cake sesame snaps toffee danish marshmallow."></HomeActivities>
+
             <iframe
               className="w-[90vw] h-auto aspect-video mt-8"
               src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?si=ugKjYpsBKxPG9So0"
@@ -239,12 +273,21 @@ function App() {
             ></iframe>
           </div>
 
+          {/* ==============================================================================
+          SECTION: EVENT DETAILS
+          ============================================================================== */}
           <div className="bg-tristesse-0 h-270 w-full flex flex-col items-center p-8 prose prose-lg max-w-none -mt-8 pt-24">
             <h1 className="font-cochin text-selago-50 mb-0 text-center">
               EVENT DETAILS
             </h1>
           </div>
 
+          {/* ==============================================================================
+          SECTION: FAQ & FOOTER
+          ============================================================================== */}
+          {/* NOTE: sections like this next to the footer are enclosed together in a single
+              div due to the footer's desktop padding
+          */}
           <div
             className="h-fit bg-schiava-blue w-full flex flex-col prose prose-lg max-w-none mt-[-15%]"
             style={{
@@ -261,6 +304,9 @@ function App() {
               WebkitMaskPosition: `0 0, 0 calc(100cqw * ${CROWN_TOP_HEIGHT_MULTIPLIER})`,
             }}
           >
+            {/* ==============================================================================
+              SECTION: FOOTER
+            ============================================================================== */}
             <div className="h-fit w-full flex flex-col items-center p-8 pt-24">
               <h1 className="font-cochin text-selago-100 mb-8 text-center">
                 BEFORE YOU ENTER
@@ -294,7 +340,11 @@ function App() {
               </div>
             </div>
 
+            {/* TODO: extract footer to standalone component */}
             <div className="rounded-t-4xl h-fit w-full bg-tristesse-0 flex flex-col">
+              {/* 
+                Footer Links
+              */}
               <div className="w-full h-fit p-8 gap-8 flex flex-col mb-8">
                 <div className="flex flex-col w-fit h-fit items-start">
                   <Logo
@@ -338,6 +388,9 @@ function App() {
                 </div>
               </div>
 
+              {/* 
+                Crown Design
+              */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 xmlSpace="preserve"
@@ -359,6 +412,9 @@ function App() {
                 />
               </svg>
 
+              {/*  
+                Legal Details
+              */}
               <div className="w-full h-fit bg-schiava-blue -mt-1 px-8 py-4 flex flex-col gap-4 items-center">
                 <p className="font-aileron mb-0 mt-0 text-base text-selago-0 text-center">
                   <span className="font-bold mr-4">© 2026 SOCIETY 33</span> All
