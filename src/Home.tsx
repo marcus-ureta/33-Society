@@ -305,7 +305,7 @@ function App() {
                     A Circle Beyond Ordinary.
                   </p>
                 </div>
-                <div className="w-full h-fit flex flex-col gap-2">
+                <div className="w-full h-fit flex flex-col gap-4">
                   <p className="font-aileron text-selago-0 mb-0 mt-0">Link</p>
                   <p className="font-aileron text-selago-0 mb-0 mt-0">Link</p>
                   <p className="font-aileron text-selago-0 mb-0 mt-0">Link</p>
