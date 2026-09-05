@@ -142,8 +142,12 @@ function App() {
             </div>
           </div>
 
-          <div className="bg-tristesse-0 h-fit w-full -mt-[15%] flex pt-48 flex-col items-center p-8 prose prose-lg max-w-none pb-24">
+          <div className="bg-tristesse-0 h-fit w-full -mt-[15%] flex pt-24 flex-col items-center p-8 prose prose-lg max-w-none pb-24">
             <div className="h-fit w-fit flex items-center flex-col">
+              <h1 className="font-cochin text-selago-50 text-center">
+                OUR PILLARS
+              </h1>
+
               <HomePillars
                 number="01"
                 name="Value of Group"
