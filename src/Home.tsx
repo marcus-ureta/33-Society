@@ -170,7 +170,7 @@ function App() {
 
             <div className="prose prose-lg h-fit w-full flex items-center flex-col @container">
               <h1 className="text-center font-cochin text-selago-50 mb-0">
-                Guest Speakers
+                GUEST SPEAKERS
               </h1>
               <p className="text-center text-selago-0 font-aileron">
                 Toffee chocolate cake macaroon jujubes cotton candy sweet sesame
@@ -199,8 +199,7 @@ function App() {
             }}
           >
             <h1 className="text-center font-cochin text-selago-50 mb-16">
-              What to expect inside the <br />
-              Yacht
+              WHAT TO EXPECT INSIDE THE YACHT
             </h1>
             <HomeActivities description="Tart chocolate danish candy shortbread chupa chups chocolate pastry."></HomeActivities>
             <HomeActivities description="Cupcake tiramisu pastry croissant chocolate bar danish gummies."></HomeActivities>
@@ -219,7 +218,7 @@ function App() {
 
           <div className="bg-tristesse-0 h-270 w-full flex flex-col items-center p-8 prose prose-lg max-w-none -mt-8 pt-24">
             <h1 className="font-cochin text-selago-50 mb-0 text-center">
-              Event Details
+              EVENT DETAILS
             </h1>
           </div>
 
