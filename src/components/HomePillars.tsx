@@ -15,9 +15,9 @@ export function HomePillars({ number, name, description }: HomeValuesProps) {
         </h2>
       </div>
 
-      <h1 className="text-center w-full text-selago-50 font-cochin mb-0">
+      <h2 className="text-center w-full text-selago-50 text-4xl font-cochin mb-0 mt-0">
         {name}
-      </h1>
+      </h2>
 
       <p className="font-aileron text-selago-0 mt-4 text-center mb-18">
         {description}
