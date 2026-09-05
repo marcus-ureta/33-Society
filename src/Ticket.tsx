@@ -15,12 +15,12 @@ function Ticket() {
 
 
     return(
-        <div className='w-full h-dvh bg-tristesse-0 flex flex-row'>
+        <div className='w-full h-dvh bg-tristesse-0 flex flex-col sm:flex-row'>
             {/* QR CODES */}
-            <div className='flex flex-6 sm:flex-4 flex-col items-center w-full hidden sm:flex'>
+            <div className='flex flex-6 sm:flex-4 flex-col items-center w-full'>
 
                 {/* Logo / Header */}
-                <div className='border-b-2 border-selago-0 pt-[24px] pb-[16px] flex flex-col items-center w-full'>
+                <div className='border-b-2 border-selago-0 pt-[24px] pb-[16px] flex flex-col items-center w-full hidden sm:flex'>
                     <Logo
                         variant='horizontal'
                         className='text-selago-0 sm:w-56 md:w-64 h-auto'
@@ -29,7 +29,7 @@ function Ticket() {
 
                 {/* QR CODE AREA */}
                 <div className='flex-1 w-full flex items-center justify-center'>
-                    <div className='grid grid-cols-2 gap-8'>
+                    <div className='flex flex-wrap justify-center items-center gap-8'>
 
                         {/* QR CODE 1 */}
                         <div className='flex flex-col items-center gap-3'>
@@ -38,7 +38,7 @@ function Ticket() {
                             <div className='size-6 bg-amber-50' />
 
                             {/* QR placeholder */}
-                            <div className='size-64 bg-amber-500' />
+                            <div className='size-24 sm:size-64 bg-amber-500' />
 
                         </div>
 
@@ -49,7 +49,7 @@ function Ticket() {
                             <div className='size-6 bg-amber-50' />
 
                             {/* QR placeholder */}
-                            <div className='size-64 bg-amber-500' />
+                            <div className='size-24 sm:size-64 bg-amber-500' />
 
                         </div>
 
@@ -58,7 +58,7 @@ function Ticket() {
             </div>
 
             {/* Input Field */}
-            <div className='flex flex-6 flex-col bg-schiava-blue items-center px-[16px] pt-[32px] sm:p-[32px] text-selago-0 font-bold justify-center sm:justify-start'>
+            <div className='flex flex-6 flex-col bg-schiava-blue items-center px-[16px] pt-[32px] sm:p-[32px] text-selago-0 font-bold justify-center sm:justify-start pb-[16px]'>
                 <h1 className="font-['Cochin'] text-[clamp(1.5rem,3.5vw,4rem)] sm:mx-[10%] text-center">GET YOUR ONE PASS TICKET NOW</h1>
 
                 <form className="w-[95%] sm:mx-[10%] mt-[32px] sm:mt-[3%] max-w-[860px]">
