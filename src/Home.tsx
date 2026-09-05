@@ -38,15 +38,6 @@ function App() {
   const CROWN_BOTTOM_HEIGHT_MULTIPLIER =
     CROWN_BOTTOM_HEIGHT / CROWN_BOTTOM_WIDTH;
 
-  const ARC_WIDTH = 1000;
-  const ARC_HEIGHT = 32;
-  const ARC_HEIGHT_MULTIPLIER = ARC_HEIGHT / ARC_WIDTH;
-
-  const INVERTED_ARC_WIDTH = 1000;
-  const INVERTED_ARC_HEIGHT = 32;
-  const INVERTED_ARC_HEIGHT_MULTIPLIER =
-    INVERTED_ARC_HEIGHT / INVERTED_ARC_WIDTH;
-
   const invertedArcSvg = `data:image/svg+xml;utf8,<svg viewBox="0 0 1000 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M 0,0 A 725 725 0 0 0 1000,0 L 1000,200 L 0,200 Z" fill="white"/></svg>`;
   const arcSvg = `data:image/svg+xml;utf8,<svg viewBox="0 0 1000 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M 0,0 A 725 725 0 0 0 1000,0 Z" fill="white"/></svg>`;
 
