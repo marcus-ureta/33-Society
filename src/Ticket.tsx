@@ -17,12 +17,44 @@ function Ticket() {
     return(
         <div className='w-full h-dvh bg-tristesse-0 flex flex-row'>
             {/* QR CODES */}
-            <div className='flex flex-6 sm:flex-4 flex-col items-center w-full hidden sm:block'>
+            <div className='flex flex-6 sm:flex-4 flex-col items-center w-full hidden sm:flex'>
+
+                {/* Logo / Header */}
                 <div className='border-b-2 border-selago-0 pt-[24px] pb-[16px] flex flex-col items-center w-full'>
-                    <Logo variant='horizontal' className='text-selago-0 sm:w-56 md:w-64 h-auto'/>
+                    <Logo
+                        variant='horizontal'
+                        className='text-selago-0 sm:w-56 md:w-64 h-auto'
+                    />
                 </div>
 
-                
+                {/* QR CODE AREA */}
+                <div className='flex-1 w-full flex items-center justify-center'>
+                    <div className='grid grid-cols-2 gap-8'>
+
+                        {/* QR CODE 1 */}
+                        <div className='flex flex-col items-center gap-3'>
+
+                            {/* Logo placeholder */}
+                            <div className='size-6 bg-amber-50' />
+
+                            {/* QR placeholder */}
+                            <div className='size-64 bg-amber-500' />
+
+                        </div>
+
+                        {/* QR CODE 2 */}
+                        <div className='flex flex-col items-center gap-3'>
+
+                            {/* Logo placeholder */}
+                            <div className='size-6 bg-amber-50' />
+
+                            {/* QR placeholder */}
+                            <div className='size-64 bg-amber-500' />
+
+                        </div>
+
+                    </div>
+                </div>
             </div>
 
             {/* Input Field */}
@@ -61,14 +93,15 @@ function Ticket() {
                         </div>
                     </div>
 
-                    <div className='flex justify-center mt-[32px]'>
-                        <Button variant="outline" className={cn(buttonVariants({variant: "default", size: "lg",}),
-                            "bg-schiava-blue text-white border-2 border-schiava-blue-dark py-5 px-12 rounded-[64px] hover:bg-schiava-blue-dark hover:scale-102 transition-all duration-300 font-['Aileron'] font-semibold text-[1.575rem] hover:cursor-pointer"
-                        )}>
+                    <div className="mt-[16px]">
+                        <Input id="picture" type="file" className="hidden"/>
+
+                        <label htmlFor="picture" className="flex w-full h-10 items-center justify-center gap-2 rounded-xl border border-slate-600 bg-tristesse-0 text-white font-['Aileron'] font-semibold text-sm cursor-pointer transition-all duration-300 hover:bg-tristesse-50">
                             Upload your file
-                            <Upload className='size-6'/>
-                        </Button>
+                            <Upload className="h-5 w-5"/>
+                        </label>
                     </div>
+
 
                     <h3 className='text-center mt-[8px]'>Make sure that the reference number is visible</h3>
                 </form>
