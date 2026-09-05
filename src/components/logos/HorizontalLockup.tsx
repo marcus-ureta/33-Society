@@ -14,7 +14,7 @@ export function HorizontalLockup({
 
   return (
     <svg
-      viewBox="0 0 2845.83 1000"
+      viewBox="287.87 276.62 2270.09 443.17"
       fill={fill}
       width={resolvedWidth}
       height={resolvedHeight}

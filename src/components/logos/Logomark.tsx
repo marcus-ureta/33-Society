@@ -9,16 +9,16 @@ export function Logomark({
   className,
   ...props
 }: LogoProps) {
-  const resolvedWidth = width ?? (size ? size : undefined);
+  const resolvedWidth = width ?? (size ? "auto" : undefined);
   const resolvedHeight = height ?? (size ? size : undefined);
 
   return (
     <svg
-      viewBox="0 0 1000 1000"
+      viewBox="216.95 81.14 566.33 837.04"
       fill={fill}
       width={resolvedWidth}
       height={resolvedHeight}
-      className={cn("h-8 w-8 shrink-0", className)}
+      className={cn("h-8 w-auto shrink-0", className)}
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >

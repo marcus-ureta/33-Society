@@ -9,16 +9,16 @@ export function PrimaryLogo({
   className,
   ...props
 }: LogoProps) {
-  const resolvedWidth = width ?? (size ? size : undefined);
+  const resolvedWidth = width ?? (size ? "auto" : undefined);
   const resolvedHeight = height ?? (size ? size : undefined);
 
   return (
     <svg
-      viewBox="0 0 1000 1000"
+      viewBox="217.67 135.39 564.68 729.22"
       fill={fill}
       width={resolvedWidth}
       height={resolvedHeight}
-      className={cn("h-8 w-8 shrink-0", className)}
+      className={cn("h-8 w-auto shrink-0", className)}
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >

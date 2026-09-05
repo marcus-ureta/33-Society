@@ -14,7 +14,7 @@ export function Wordmark({
 
   return (
     <svg
-      viewBox="0 0 3630.47 1000"
+      viewBox="211.33 277.12 3207.83 445.77"
       fill={fill}
       width={resolvedWidth}
       height={resolvedHeight}
