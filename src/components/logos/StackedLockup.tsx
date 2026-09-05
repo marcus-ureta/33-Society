@@ -14,7 +14,7 @@ export function StackedLockup({
 
   return (
     <svg
-      viewBox="0 0 1171.84 1000"
+      viewBox="110.28 222.85 951.27 554.29"
       fill={fill}
       width={resolvedWidth}
       height={resolvedHeight}
