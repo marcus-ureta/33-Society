@@ -44,7 +44,7 @@ export async function checkVerification(formData: FormAnswers) {
     }
 }
 
-export async function signInAccount(email : string, password: string){
+export async function loginAccount(email : string, password: string){
     try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
 

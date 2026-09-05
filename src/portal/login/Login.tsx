@@ -9,7 +9,31 @@ import { Button } from "@/components/ui/button"
 
 import { Page } from "@/portal/Portal";
 
+import { loginAccount } from '@/services/auth';
+
 function Login({setPage} : {setPage : React.Dispatch<React.SetStateAction<Page>>}) {
+
+    async function handleLogin(event : React.FormEvent<HTMLFormElement>) {
+
+        event.preventDefault();
+
+        const form = event.currentTarget;
+        const formData = new FormData(form);
+
+        // INPUT VALIDATION
+
+
+        const email = formData.get('email')?.toString();
+        const password = formData.get('password')?.toString();
+
+        try {
+            const user = await loginAccount(email!, password!);
+            console.log('Successfully logged in!: ' + user.displayName);
+        } catch (error) {
+            console.error("Signup failed:", error);
+        }
+    }
+
     return(
         <>
             <div className="w-screen h-dvh bg-tristesse-0 flex flex-col pt-8">
@@ -18,8 +42,7 @@ function Login({setPage} : {setPage : React.Dispatch<React.SetStateAction<Page>>
                     <Logo variant="primary" className="size-16 text-selago-100" />
                 </div>
 
-                <div className='flex flex-col items-center justify-center w-full h-[80%] gap-y-16'>
-
+                <form onSubmit={handleLogin} className='flex flex-col items-center justify-center w-full h-[80%] gap-y-16'>
                     <div className='flex flex-col gap-y-9 items-center'>
                         <input name='email' placeholder='Email' className="border-b-[1px] border-davys-grey-0 text-[2rem] text-davys-grey-0 font-['instrument-serif'] italic pl-[8px]" />
 
@@ -38,7 +61,7 @@ function Login({setPage} : {setPage : React.Dispatch<React.SetStateAction<Page>>
                         </h2>
                     </div>
 
-                </div>
+                </form>
 
                 <div className='flex flex-col items-center justify-center w-full h-[10%] gap-y-2.5' onClick={() => setPage(Page.portal)}>
                     <ArrowLeft className="w-6 h-6 hover:text-schiava-blue-light text-selago-0 border-2 rounded-full mt-2 transition-all duration-200 hover:cursor-pointer"/>
