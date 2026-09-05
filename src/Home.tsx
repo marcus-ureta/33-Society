@@ -129,7 +129,7 @@ function App() {
                 paddingBottom: `calc(100cqw * ${CROWN_BOTTOM_HEIGHT_MULTIPLIER})`,
               }}
             >
-              <h1 className="font-cochin text-selago-50 mb-0 text-3xl text-center">
+              <h1 className="font-cochin text-selago-50 mb-4 text-center">
                 ABOUT
               </h1>
               <Logo variant="mark" className="text-selago-50 size-36"></Logo>
