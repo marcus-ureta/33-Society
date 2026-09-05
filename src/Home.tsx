@@ -10,6 +10,9 @@ import { Button } from "@base-ui/react/button";
 import HomeActivities from "./components/HomeActivities";
 
 import FastMarquee from "react-fast-marquee";
+
+import { Facebook, Instagram, Whatsapp } from "flowbite-react-icons/solid";
+
 import {
   Accordion,
   AccordionContent,
@@ -275,6 +278,87 @@ function App() {
                     </AccordionItem>
                   ))}
                 </Accordion>
+              </div>
+            </div>
+
+            <div className="rounded-t-4xl h-fit w-full bg-tristesse-0 flex flex-col">
+              <div className="w-full h-fit p-8 gap-8 flex flex-col mb-8">
+                <div className="flex flex-col w-fit h-fit items-start">
+                  <Logo
+                    variant="horizontal"
+                    className="text-selago-50 h-8 w-auto"
+                  ></Logo>
+                  <p className="text-selago-0 mt-2 mb-0 font-cochin">
+                    A Circle Beyond Ordinary.
+                  </p>
+                </div>
+                <div className="w-full h-fit flex flex-col gap-2">
+                  <p className="font-aileron text-selago-0 mb-0 mt-0">Link</p>
+                  <p className="font-aileron text-selago-0 mb-0 mt-0">Link</p>
+                  <p className="font-aileron text-selago-0 mb-0 mt-0">Link</p>
+                  <p className="font-aileron text-selago-0 mb-0 mt-0">Link</p>
+                </div>
+                <div className="w-full h-fit flex flex-row gap-3 -translate-x-2">
+                  <Facebook className="text-selago-0 size-8 -translate-y-px translate-x-1" />
+                  <Instagram className="text-selago-0 size-8" />
+                  <Whatsapp className="text-selago-0 size-8" />
+                  <svg
+                    className="fill-selago-0 size-8"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g
+                      id="SVGRepo_tracerCarrier"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></g>
+                    <g id="SVGRepo_iconCarrier">
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M23.1117 4.49449C23.4296 2.94472 21.9074 1.65683 20.4317 2.227L2.3425 9.21601C0.694517 9.85273 0.621087 12.1572 2.22518 12.8975L6.1645 14.7157L8.03849 21.2746C8.13583 21.6153 8.40618 21.8791 8.74917 21.968C9.09216 22.0568 9.45658 21.9576 9.70712 21.707L12.5938 18.8203L16.6375 21.8531C17.8113 22.7334 19.5019 22.0922 19.7967 20.6549L23.1117 4.49449ZM3.0633 11.0816L21.1525 4.0926L17.8375 20.2531L13.1 16.6999C12.7019 16.4013 12.1448 16.4409 11.7929 16.7928L10.5565 18.0292L10.928 15.9861L18.2071 8.70703C18.5614 8.35278 18.5988 7.79106 18.2947 7.39293C17.9906 6.99479 17.4389 6.88312 17.0039 7.13168L6.95124 12.876L3.0633 11.0816ZM8.17695 14.4791L8.78333 16.6015L9.01614 15.321C9.05253 15.1209 9.14908 14.9366 9.29291 14.7928L11.5128 12.573L8.17695 14.4791Z"
+                      ></path>
+                    </g>
+                  </svg>
+                </div>
+              </div>
+
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                xmlSpace="preserve"
+                style={{
+                  fillRule: "evenodd",
+                  clipRule: "evenodd",
+                  strokeLinejoin: "round",
+                  strokeMiterlimit: 2,
+                }}
+                className="fill-selago-0"
+                viewBox="0 0 838 182"
+              >
+                <path
+                  d="m546.49 163.64-44.14-22.04-48.39 23.89c-118.27 58.27-258.52 50.11-369.23-21.64l-3.53-2.28v181.5h837.55v-181.5c-111.37 73.01-253.08 81.4-372.28 22.07h.02ZM144.08 270.89l-14.07 20.91-14.14-20.91-14.6-20.11 14.6-20.18 14.14-20.84 14.07 20.84 14.6 20.18-14.6 20.11Zm375.07-7.5-19.18 28.41-19.18-28.41-19.85-27.41 19.85-27.41 19.18-28.41 19.18 28.41L539 235.98l-19.85 27.41Zm364.91 7.5-14.07 20.91-14.14-20.91-14.6-20.11 14.6-20.18 14.14-20.84 14.07 20.84 14.6 20.18-14.6 20.11Z"
+                  style={{
+                    fillRule: "nonzero",
+                  }}
+                  transform="translate(-81.2 -141.57)"
+                />
+              </svg>
+
+              <div className="w-full h-fit bg-schiava-blue -mt-1 px-8 py-4 flex flex-col gap-4 items-center">
+                <p className="font-aileron mb-0 mt-0 text-base text-selago-0">
+                  <span className="font-bold mr-4">© 2026 SOCIETY 33</span> All
+                  rights reserved.
+                </p>
+                <div className="flex gap-4 flex-row">
+                  <p className="font-aileron mb-0 mt-0 text-base text-selago-0">
+                    Terms of Service
+                  </p>
+                  <p className="font-aileron mb-0 mt-0 text-base text-selago-0">
+                    Privacy Policy
+                  </p>
+                </div>
               </div>
             </div>
           </div>
