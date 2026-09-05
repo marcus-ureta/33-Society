@@ -229,7 +229,7 @@ function App() {
             <HomeActivities description="Toffee cake carrot cake wafer jujubes marshmallow icing pudding."></HomeActivities>
             <HomeActivities description="Ice cream chupa chups cake sesame snaps toffee danish marshmallow."></HomeActivities>
             <iframe
-              className="w-screen h-auto aspect-video mt-8"
+              className="w-[90vw] h-auto aspect-video mt-8"
               src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?si=ugKjYpsBKxPG9So0"
               title="YouTube video player"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
