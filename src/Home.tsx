@@ -268,7 +268,7 @@ function App() {
               <p className="font-aileron text-selago-50 mt-0 mb-16 text-center">
                 Everything you need to know about the Society
               </p>
-              <div className="w-screen h-fit bg-tristesse-0 rounded-2xl p-4">
+              <div className="w-[90vw] h-fit bg-tristesse-0 rounded-2xl p-4">
                 <Accordion multiple>
                   {faqItems.map((item) => (
                     <AccordionItem
