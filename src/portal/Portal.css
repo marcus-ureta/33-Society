@@ -1,0 +1,28 @@
+@reference '@/index.css';
+
+@layer utilities {
+  .input-field {
+    @apply bg-tristesse-0 border-davys-grey-100 text-davys-grey-0 font-['Aileron'] placeholder:font-['instrument-serif'] placeholder:italic pl-[8px] text-[1rem]!;
+  }
+
+  .scrollable-container {
+    @apply flex-1 min-h-0 overflow-y-auto overflow-x-hidden w-[99%];
+  }
+
+  .scrollable-container::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  .scrollable-container::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollable-container::-webkit-scrollbar-thumb {
+    background: var(--color-selago-0);
+    border-radius: 9999px;
+  }
+
+  .scrollable-container::-webkit-scrollbar-button {
+    display: hidden;
+  }
+}
