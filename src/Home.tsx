@@ -70,10 +70,11 @@ function App() {
 
   return (
     <>
-      {/* <Navbar /> */}
+      <Navbar />
+
       <div className="w-full h-fit flex justify-center bg-tristesse-0 min-w-80 *:wrap-break-word ">
         <div className="max-w-384 flex flex-col w-full min-w-80 h-fit">
-          <div className=" w-full h-fit flex flex-col items-center pt-32 p-8">
+          <div className=" w-full h-fit flex flex-col items-center pt-48 p-8">
             <div className="prose prose-lg max-w-none w-full flex flex-col items-center">
               <h1 className="font-cochin font-bold text-selago-100 text-7xl w-full max-w-[20ch] text-center mb-2">
                 Sweet topping shortbread jelly beans
