@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, sendEmailVerification, reload, signInWithEmailAndPassword  } from "firebase/auth";
+import { createUserWithEmailAndPassword, sendEmailVerification, reload, signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
 import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { auth, database } from "../firebase";
 
@@ -27,24 +27,31 @@ export async function checkVerification(formData: FormAnswers) {
         throw new Error("Your email has not been verified yet.");
     }
 
-    if(formData.email === user.email)
-    {
-        await setDoc(doc(database, "users", user.uid), {
-            ...formData,
-            createdAt: serverTimestamp(),
-        });
-    }
-    else
-    {
-        await setDoc(doc(database, "users", user.uid), {
+    await user.getIdToken(true);
+
+    await setDoc(
+        doc(database, "users", user.uid),
+        {
             ...formData,
             registeredEmail: user.email,
             createdAt: serverTimestamp(),
-        }, {merge : true});
+        },
+        { merge: true }
+    );
+}
+
+export async function forgetPassword(email : string) {
+    try {
+        await sendPasswordResetEmail(auth, email);
+
+        console.log("Password reset email sent!");
+    } catch (error) {
+        console.error("Failed to send password reset email:", error);
+        throw error;
     }
 }
 
-export async function signInAccount(email : string, password: string){
+export async function loginAccount(email : string, password: string){
     try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
 
