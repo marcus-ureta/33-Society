@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, sendEmailVerification, reload } from "firebase/auth";
+import { createUserWithEmailAndPassword, sendEmailVerification, reload, signInWithEmailAndPassword  } from "firebase/auth";
 import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { auth, database } from "../firebase";
 
@@ -21,7 +21,6 @@ export async function checkVerification(formData: FormAnswers) {
         throw new Error("No user is currently signed in.");
     }
 
-    // Refresh the user's Auth information
     await reload(user);
 
     if (!user.emailVerified) {
@@ -41,6 +40,28 @@ export async function checkVerification(formData: FormAnswers) {
             ...formData,
             registeredEmail: user.email,
             createdAt: serverTimestamp(),
-        });
+        }, {merge : true});
+    }
+}
+
+export async function signInAccount(email : string, password: string){
+    try {
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+
+        const user = userCredential.user;
+
+        await reload(user);
+
+        if (!user.emailVerified) {
+            throw new Error("Please verify your email before signing in.");
+        }
+
+        console.log(user);
+        console.log("Successfully signed in!");
+
+        return user;
+    } catch (error) {
+        console.error(error);
+        throw error;
     }
 }
