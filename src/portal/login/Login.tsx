@@ -5,6 +5,8 @@ import { cn } from '@/lib/utils.ts'
 import { ArrowLeft } from "flowbite-react-icons/outline";
 import { Logo } from '@/components/logos/Logo.tsx'
 
+import '@/portal/Portal.css';
+
 import { Button } from "@/components/ui/button"
 
 import { Page } from "@/portal/Portal";
@@ -77,7 +79,7 @@ function Login({setPage} : {setPage : React.Dispatch<React.SetStateAction<Page>>
 
                 <div className="flex flex-col gap-y-6 items-center">
                     <Button type="submit" variant="outline" className={cn (buttonVariants({variant: "default", size: "lg",}), 
-                    "bg-schiava-blue text-white border-2 border-schiava-blue-dark py-5 px-12 rounded-[64px] hover:bg-schiava-blue-dark hover:scale-102 hover:cursor-pointer transition-all duration-300 font-['Aileron'] font-semibold text-[1.575rem]")}>
+                    "button-styling")}>
                         LOGIN
                     </Button>
 
