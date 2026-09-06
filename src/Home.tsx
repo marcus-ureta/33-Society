@@ -3,8 +3,7 @@ import "./index.css";
 import Navbar from "./Navbar";
 import { Logo } from "./components/logos";
 
-// TODO: remove once mockup buttons have been replaced with actual shadcn counterparts
-import { Button } from "@base-ui/react/button";
+import { Button } from "./components/ui/button";
 
 import { LineDivider } from "./components/LineDivider";
 import { HomePillars } from "./components/HomePillars";
@@ -100,14 +99,16 @@ function App() {
               </p>
 
               {/* Hero CTA */}
-              <div className="mt-12 border-2 border-schiava-blue p-4 rounded-[42px] flex flex-col items-center gap-4">
+              <div className="mt-12 border-2 border-schiava-blue p-4 md:px-6 rounded-[42px] md:rounded-full flex flex-col md:flex-row items-center gap-4">
                 <Button
+                  variant="default"
                   className={
-                    "text-selago-0 bg-schiava-blue font-aileron rounded-full text-base px-10 py-4"
+                    "text-selago-0 bg-schiava-blue px-8 py-3 font-aileron rounded-full text-lg h-full -ml-2"
                   }
                 >
                   Purchase a Ticket
                 </Button>
+                {/* TODO: replace with react router link */}
                 <p className="leading-0 px-6 text-selago-0">Book a Meeting</p>
               </div>
             </div>
