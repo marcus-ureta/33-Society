@@ -54,7 +54,9 @@ export async function forgetPassword(email : string) {
     }
 }
 
-export async function loginAccount(email : string, password: string){
+export async function loginAccount(email : string, password: string, name : string){
+    if(name !== '') throw new Error('Bad Request!');
+
     try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
 

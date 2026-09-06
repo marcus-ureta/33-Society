@@ -53,6 +53,7 @@ function Login({setPage} : {setPage : React.Dispatch<React.SetStateAction<Page>>
         const form = event.currentTarget;
         const formData = new FormData(form);
 
+        const name = formData.get('name')?.toString();
         const email = formData.get('email')?.toString();
         const password = formData.get('password')?.toString();
 
@@ -62,7 +63,7 @@ function Login({setPage} : {setPage : React.Dispatch<React.SetStateAction<Page>>
 
         try {
             setIsRequest(true);
-            const user = await loginAccount(email!, password!);
+            const user = await loginAccount(email!, password!, name!);
             console.log('Successfully logged in!: ' + user.displayName);
         } catch (error : any) {
             let message = "Something went wrong.";
@@ -97,6 +98,7 @@ function Login({setPage} : {setPage : React.Dispatch<React.SetStateAction<Page>>
 
             <form onSubmit={handleLogin} className="flex flex-col items-center justify-center w-full h-[80%] gap-y-16">
                 <div className="flex flex-col gap-y-9 items-center">
+                    <input name="name" type='text' placeholder="Your Name" className="border-b-[1px] border-davys-grey-0 text-[2rem] text-davys-grey-0 font-['instrument-serif'] italic pl-[8px] absolute left-[-9999px]"/>
 
                     <input name="email" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} className="border-b-[1px] border-davys-grey-0 text-[2rem] text-davys-grey-0 font-['instrument-serif'] italic pl-[8px]"/>
 
