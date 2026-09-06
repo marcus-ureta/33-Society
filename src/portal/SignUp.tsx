@@ -163,9 +163,7 @@ function SignUpPage({setPage, formAnswers, setFormAnswers} : SignUpPageProps){
 
                         {/* Submission Button */}
                         <div className='flex flex-col items-center justify-center mt-[4%]'>
-                            <Button type='submit' variant="outline" className={cn(buttonVariants({ variant: "default", size: "lg" }),
-                                "bg-schiava-blue text-white border-2 border-schiava-blue-dark py-5 px-12 rounded-[64px] hover:bg-schiava-blue-dark hover:scale-102 hover:cursor-pointer transition-all duration-300 font-['Aileron'] font-semibold text-[1.575rem]",
-                            )}>
+                            <Button type='submit' variant="outline" className={cn(buttonVariants({ variant: "default", size: "lg" }),"button-styling",)}>
                                 Submit
                             </Button>
                         </div>

@@ -8,6 +8,6 @@ import Home from "./Home.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <Home />
+    <Portal />
   </StrictMode>,
 );

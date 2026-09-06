@@ -9,6 +9,10 @@
     @apply flex-1 min-h-0 overflow-y-auto overflow-x-hidden w-[99%];
   }
 
+  .button-styling {
+    @apply bg-schiava-blue text-white border-2 border-schiava-blue-dark py-5 px-12 rounded-[64px] hover:bg-schiava-blue-dark hover:scale-102 transition-all duration-300 font-['Aileron'] font-semibold text-[1.575rem] hover:cursor-pointer;
+  }
+
   .scrollable-container::-webkit-scrollbar {
     width: 3px;
   }

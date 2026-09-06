@@ -39,7 +39,7 @@ function EmailVerification({setPage, email, formAnswers} : {setPage : React.Disp
                 <h2 className="font-['Aileron'] text-xl text-selago-0 mb-[16px] text-center">Please verify your email, then click the button below</h2>
 
                 <Button onClick={handleVerification} variant="outline" className={cn(buttonVariants({variant: "default", size: "lg",}),
-                        "bg-schiava-blue text-white border-2 border-schiava-blue-dark py-5 px-12 rounded-[64px] hover:bg-schiava-blue-dark hover:scale-102 transition-all duration-300 font-['Aileron'] font-semibold text-[1.575rem] hover:cursor-pointer"
+                        "button-styling"
                     )}
                 >
                     Check Verification
@@ -99,7 +99,7 @@ function AccountSetup({setPage, email, formAnswers} : {setPage : React.Dispatch<
 
                         <div className="flex justify-center mt-[4%]">
                             <Button type='submit' variant="outline" className={cn(buttonVariants({variant: "default", size: "lg",}),
-                                "bg-schiava-blue text-white border-2 border-schiava-blue-dark py-5 px-12 rounded-[64px] hover:bg-schiava-blue-dark hover:scale-102 transition-all duration-300 font-['Aileron'] font-semibold text-[1.575rem] hover:cursor-pointer"
+                                "button-styling"
                             )}
                         >
                                 Register Account

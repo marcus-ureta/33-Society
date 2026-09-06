@@ -61,7 +61,7 @@ function CongratulationsPage() {
                     <h1 className="text-[2.5rem] sm:text-[3.5rem] text-selago-0 font-['Cochin'] text-center font-bold mb-[3%]">Congratulations! You may now proceed to the home page</h1>
 
                     <Button type="submit" variant="outline" className={cn(buttonVariants({ variant: "default", size: "lg" }),
-                        "bg-schiava-blue text-white border-2 border-schiava-blue-dark py-5 px-12 rounded-[64px] hover:bg-schiava-blue-dark hover:scale-102 hover:cursor-pointer transition-all duration-300 font-['Aileron'] font-semibold text-[1.575rem] w-fit",
+                        "button-styling w-fit",
                     )}>
                         Go Home Page
                     </Button>
@@ -101,15 +101,11 @@ function Portal() {
                     <div className='flex flex-col items-center justify-center w-full h-[80%]'>
 
                         <div className='grid grid-rows-2 gap-y-4'>
-                            <Button onClick={() => setPage(Page.signup)} variant="outline" className={cn(buttonVariants({ variant: "default", size: "lg" }),
-                                            "bg-schiava-blue text-white border-2 border-schiava-blue-dark py-5 px-12 rounded-[64px] hover:bg-schiava-blue-dark hover:scale-102 hover:cursor-pointer transition-all duration-300 font-['Aileron'] font-semibold text-[1.575rem]",
-                                        )}>
+                            <Button onClick={() => setPage(Page.signup)} variant="outline" className={cn(buttonVariants({ variant: "default", size: "lg" }),"button-styling",)}>
                                 SIGN UP
                             </Button>
 
-                            <Button onClick={() => setPage(Page.login)} variant="outline" className={cn(buttonVariants({ variant: "default", size: "lg" }),
-                                            "bg-schiava-blue text-white border-2 border-schiava-blue-dark py-5 px-12 rounded-[64px] hover:bg-schiava-blue-dark hover:scale-102 hover:cursor-pointer transition-all duration-300 font-['Aileron'] font-semibold text-[1.575rem]",
-                                        )}>
+                            <Button onClick={() => setPage(Page.login)} variant="outline" className={cn(buttonVariants({ variant: "default", size: "lg" }), "button-styling",)}>
                                 LOGIN
                             </Button>
                         </div>
