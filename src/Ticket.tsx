@@ -15,7 +15,7 @@ function Ticket() {
 
 
     return(
-        <div className='w-full h-dvh bg-tristesse-0 flex flex-row'>
+        <div className='w-full min-h-dvh bg-tristesse-0 flex flex-row'>
             {/* QR CODES */}
             <div className='hidden sm:flex sm:flex-4 flex-col items-center w-full min-h-0'>
 
