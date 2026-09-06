@@ -3,6 +3,7 @@ import { Input } from "@/components/ui/input"
 
 import { buttonVariants } from '@/components/ui/button.tsx'
 import { cn } from '@/lib/utils.ts'
+import { isValidEmail, isValidInput } from "@/utils/genUtils"
 
 import { Logo } from '@/components/logos/Logo.tsx'
 
@@ -77,12 +78,13 @@ function AccountSetup({setPage, email, formAnswers} : {setPage : React.Dispatch<
         const form = event.currentTarget;
         const formData = new FormData(form);
 
-        // INPUT VALIDATION
-
-
         const registeredEmail = formData.get('email_address')?.toString();
         const password = formData.get('password')?.toString();
         const confirm_password = formData.get('confirm_password')?.toString();
+
+        // INPUT VALIDATION
+        if(!isValidEmail(registeredEmail!)) { setErrorMessage('Email is not valid!'); return; }
+        if(!isValidInput(password!, 6, 4096)) {setErrorMessage('Password is too short/long!'); return;}
 
         try {
             setIsRequest(true);
