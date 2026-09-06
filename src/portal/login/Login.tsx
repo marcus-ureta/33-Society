@@ -21,6 +21,8 @@ function Login({setPage} : {setPage : React.Dispatch<React.SetStateAction<Page>>
     const [message, setMessage] = useState("");
     const [error, setError] = useState("");
 
+    const [isRequest, setIsRequest] = useState(false);
+
     const handleForgotPassword = async () => {
         setMessage("");
         setError("");
@@ -56,10 +58,31 @@ function Login({setPage} : {setPage : React.Dispatch<React.SetStateAction<Page>>
         const password = formData.get('password')?.toString();
 
         try {
+            setIsRequest(true);
             const user = await loginAccount(email!, password!);
             console.log('Successfully logged in!: ' + user.displayName);
-        } catch (error) {
-            console.error("Signup failed:", error);
+        } catch (error : any) {
+            let message = "Something went wrong.";
+
+            switch (error.code) {
+                case "auth/invalid-credential":
+                    message = "Invalid Credentials";
+                    break;
+                case "auth/user-not-found":
+                    message = "Account not found";
+                    break;
+                case "auth/wrong-password":
+                    message = "Invalid Credentials";
+                    break;
+                case "auth/too-many-requests":
+                    message = "Too many attempts. Try again later.";
+                    break;
+            }
+
+            setError(message);
+            console.error("Login failed:", error);
+        } finally {
+            setIsRequest(false);
         }
     }
 
@@ -78,9 +101,16 @@ function Login({setPage} : {setPage : React.Dispatch<React.SetStateAction<Page>>
                 </div>
 
                 <div className="flex flex-col gap-y-6 items-center">
-                    <Button type="submit" variant="outline" className={cn (buttonVariants({variant: "default", size: "lg",}), 
+                    <Button type="submit" variant="outline" disabled={isRequest} className={cn (buttonVariants({variant: "default", size: "lg",}), 
                     "button-styling")}>
-                        LOGIN
+                        {isRequest ? (
+                            <>
+                                <span className="spinner" />
+                                Logging in...
+                            </>
+                        ) : (
+                            "Log In"
+                        )}
                     </Button>
 
                     <h2 onClick={handleForgotPassword} className="text-selago-100 underline transition-colors duration-200 cursor-pointer font-['Aileron'] text-[1rem] hover:text-schiava-blue-light">
