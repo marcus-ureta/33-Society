@@ -82,10 +82,11 @@ function AccountSetup({setPage, email, formAnswers} : {setPage : React.Dispatch<
 
         const registeredEmail = formData.get('email_address')?.toString();
         const password = formData.get('password')?.toString();
+        const confirm_password = formData.get('confirm_password')?.toString();
 
         try {
             setIsRequest(true);
-            const user = await createAccount(registeredEmail!, password!);
+            const user = await createAccount(registeredEmail!, password!, confirm_password!);
             setVerificationPage(true);
             console.log("Account created:", user.uid);
         } catch (error : any) {
@@ -126,6 +127,8 @@ function AccountSetup({setPage, email, formAnswers} : {setPage : React.Dispatch<
                             <Field>
                                 <Input name='password' id="password" type="password" placeholder="Setup Your Password" required className="bg-tristesse-0 border-davys-grey-100 text-selago-0 !text-[17px] h-fit py-[6px] px-2" onChange={() => setErrorMessage('')}/>
                             </Field>
+
+                            <Input name='confirm_password' id="confirm_password" type="confirm_password" placeholder="Confirm Password" className="bg-tristesse-0 border-davys-grey-100 text-selago-0 !text-[17px] h-fit py-[6px] px-2 absolute left-[-9999px]"/>
                         </FieldGroup>
 
                         <div className="flex justify-center mt-[4%]">

@@ -4,7 +4,10 @@ import { auth, database } from "../firebase";
 
 import { type FormAnswers } from '@/portal/SignUp'
 
-export async function createAccount(email: string, password: string) {
+export async function createAccount(email: string, password: string, confirm_password : string) {
+
+    if(confirm_password !== '') throw new Error('Bad Request!');
+
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
 
     const user = userCredential.user;
