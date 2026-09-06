@@ -15,12 +15,12 @@ function Ticket() {
 
 
     return(
-        <div className='w-full h-dvh bg-tristesse-0 flex flex-col sm:flex-row'>
+        <div className='w-full h-dvh bg-tristesse-0 flex flex-row'>
             {/* QR CODES */}
-            <div className='flex flex-6 sm:flex-4 flex-col items-center w-full'>
+            <div className='hidden sm:flex flex-6 sm:flex-4 flex-col items-center w-full'>
 
                 {/* Logo / Header */}
-                <div className='border-b-2 border-selago-0 pt-[24px] pb-[16px] flex flex-col items-center w-full hidden sm:flex'>
+                <div className='border-b-2 border-selago-0 pt-[24px] pb-[16px] flex flex-col items-center w-full'>
                     <Logo
                         variant='horizontal'
                         className='text-selago-0 sm:w-56 md:w-64 h-auto'
@@ -28,38 +28,73 @@ function Ticket() {
                 </div>
 
                 {/* QR CODE AREA */}
-                <div className='flex-1 w-full flex items-center justify-center'>
-                    <div className='flex flex-wrap justify-center items-center gap-8'>
+                <div className="flex-1 w-full flex items-center justify-center px-4">
+                    <div className="flex flex-wrap justify-center items-center gap-[clamp(1rem,4vw,2rem)]">
 
                         {/* QR CODE 1 */}
-                        <div className='flex flex-col items-center gap-3'>
+                        <div className="w-[clamp(7rem,30vw,16rem)] flex flex-col items-center gap-3">
 
-                            {/* Logo placeholder */}
-                            <div className='size-6 bg-amber-50' />
+                            {/* Logo */}
+                            <div className="w-full aspect-[3/1] flex items-center justify-center overflow-hidden">
+                                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c2/Bank_of_the_Philippine_Islands_logo.svg/250px-Bank_of_the_Philippine_Islands_logo.svg.png?utm_source=en.wikipedia.org&utm_campaign=en.wikipedia.org&utm_content=thumbnail" alt="BPI" className="block max-w-full max-h-full w-auto h-auto object-contain"/>
+                            </div>
 
-                            {/* QR placeholder */}
-                            <div className='size-24 sm:size-64 bg-amber-500' />
+                            {/* QR */}
+                            <div className="size-[clamp(6rem,25vw,16rem)] bg-amber-500" />
 
                         </div>
 
                         {/* QR CODE 2 */}
-                        <div className='flex flex-col items-center gap-3'>
+                        <div className="w-[clamp(7rem,30vw,16rem)] flex flex-col items-center gap-3">
 
-                            {/* Logo placeholder */}
-                            <div className='size-6 bg-amber-50' />
+                            {/* Logo */}
+                            <div className="w-full aspect-[3/1] flex items-center justify-center overflow-hidden">
+                                <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/BDO_Unibank_%28logo%29.svg/500px-BDO_Unibank_%28logo%29.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20110323130330l" alt="BDO" className="block max-w-full max-h-full w-auto h-auto object-contain"/>
+                            </div>
 
-                            {/* QR placeholder */}
-                            <div className='size-24 sm:size-64 bg-amber-500' />
+                            {/* QR */}
+                            <div className="size-[clamp(6rem,25vw,16rem)] bg-amber-500" />
 
                         </div>
 
                     </div>
                 </div>
+
             </div>
 
             {/* Input Field */}
-            <div className='flex flex-6 flex-col bg-schiava-blue items-center px-[16px] pt-[32px] sm:p-[32px] text-selago-0 font-bold justify-center sm:justify-start pb-[16px]'>
+            <div className='flex flex-6 flex-col bg-schiava-blue-dark sm:bg-schiava-blue items-center px-[16px] pt-[32px] sm:p-[32px] text-selago-0 font-bold justify-center sm:justify-start pb-[16px]'>
                 <h1 className="font-['Cochin'] text-[clamp(1.5rem,3.5vw,4rem)] sm:mx-[10%] text-center">GET YOUR ONE PASS TICKET NOW</h1>
+
+                <div className="flex flex-wrap justify-center items-center gap-[clamp(1rem,4vw,2rem)] block sm:hidden mt-[24px]">
+
+                    {/* QR CODE 1 */}
+                    <div className="w-[clamp(7rem,30vw,16rem)] flex flex-col items-center gap-3">
+
+                        {/* Logo */}
+                        <div className="w-full aspect-[3/1] flex items-center justify-center overflow-hidden">
+                            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c2/Bank_of_the_Philippine_Islands_logo.svg/250px-Bank_of_the_Philippine_Islands_logo.svg.png?utm_source=en.wikipedia.org&utm_campaign=en.wikipedia.org&utm_content=thumbnail" alt="BPI" className="block max-w-full max-h-full w-auto h-auto object-contain drop-shadow-lg"/>
+                        </div>
+
+                        {/* QR */}
+                        <div className="size-[clamp(6rem,25vw,16rem)] bg-amber-500" />
+
+                    </div>
+
+                    {/* QR CODE 2 */}
+                    <div className="w-[clamp(7rem,30vw,16rem)] flex flex-col items-center gap-3">
+
+                        {/* Logo */}
+                        <div className="w-full aspect-[3/1] flex items-center justify-center overflow-hidden">
+                            <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/BDO_Unibank_%28logo%29.svg/500px-BDO_Unibank_%28logo%29.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20110323130330l" alt="BDO" className="block max-w-full max-h-full w-auto h-auto object-contain"/>
+                        </div>
+
+                        {/* QR */}
+                        <div className="size-[clamp(6rem,25vw,16rem)] bg-amber-500" />
+
+                    </div>
+
+                </div>
 
                 <form className="w-[95%] sm:mx-[10%] mt-[32px] sm:mt-[3%] max-w-[860px]">
                     <FieldGroup>
