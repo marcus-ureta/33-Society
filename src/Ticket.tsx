@@ -17,7 +17,8 @@ function Ticket() {
     return(
         <div className='w-full h-dvh bg-tristesse-0 flex flex-row'>
             {/* QR CODES */}
-            <div className='hidden sm:flex flex-6 sm:flex-4 flex-col items-center w-full'>
+            <div className='hidden sm:flex sm:flex-4 flex-col items-center w-full min-h-0'>
+
 
                 {/* Logo / Header */}
                 <div className='border-b-2 border-selago-0 pt-[24px] pb-[16px] flex flex-col items-center w-full'>
@@ -28,7 +29,7 @@ function Ticket() {
                 </div>
 
                 {/* QR CODE AREA */}
-                <div className="flex-1 w-full flex items-center justify-center px-4">
+                <div className="flex-1 w-full h-dvh flex items-center justify-center px-4">
                     <div className="flex flex-wrap justify-center items-center gap-[clamp(1rem,4vw,2rem)]">
 
                         {/* QR CODE 1 */}
@@ -40,7 +41,7 @@ function Ticket() {
                             </div>
 
                             {/* QR */}
-                            <div className="size-[clamp(6rem,25vw,16rem)] bg-amber-500" />
+                            <div className="size-[clamp(4rem,min(32vw,24vh),16rem)] bg-amber-500" />
 
                         </div>
 
@@ -53,7 +54,7 @@ function Ticket() {
                             </div>
 
                             {/* QR */}
-                            <div className="size-[clamp(6rem,25vw,16rem)] bg-amber-500" />
+                            <div className="size-[clamp(4rem,min(32vw,24vh),16rem)] bg-amber-500" />
 
                         </div>
 
@@ -63,7 +64,7 @@ function Ticket() {
             </div>
 
             {/* Input Field */}
-            <div className='flex flex-6 flex-col bg-schiava-blue-dark sm:bg-schiava-blue items-center px-[16px] pt-[32px] sm:p-[32px] text-selago-0 font-bold justify-center sm:justify-start pb-[16px]'>
+            <div className='flex flex-6 flex-col bg-schiava-blue-dark sm:bg-schiava-blue items-center px-[16px] pt-[32px] sm:p-[32px] text-selago-0 font-bold justify-start pb-[16px]'>
                 <h1 className="font-['Cochin'] text-[clamp(1.5rem,3.5vw,4rem)] sm:mx-[10%] text-center">GET YOUR ONE PASS TICKET NOW</h1>
 
                 <div className="flex flex-wrap justify-center items-center gap-[clamp(1rem,4vw,2rem)] block sm:hidden mt-[24px]">
@@ -96,7 +97,7 @@ function Ticket() {
 
                 </div>
 
-                <form className="w-[95%] sm:mx-[10%] mt-[32px] sm:mt-[3%] max-w-[860px]">
+                <form className="w-[95%] sm:mx-[10%] mt-auto mb-auto max-w-[860px]">
                     <FieldGroup>
                         <div className="grid grid-rows-2 gap-6">
                             <Field>
