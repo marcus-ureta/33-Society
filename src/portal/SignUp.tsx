@@ -10,6 +10,8 @@ import { Field, FieldGroup, FieldLabel } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
+import { isValidEmail, isValidInput } from "@/utils/genUtils"
+
 import { Page } from "./Portal";
 
 import { countries } from '../utils/countries.ts'
@@ -52,38 +54,45 @@ function SignUpPage({setPage, formAnswers, setFormAnswers} : SignUpPageProps){
     async function handleSubmission (event : React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
 
-        // Input Validation
-
-
         // Get Form Data
         const form = event.currentTarget;
         const formData = new FormData(form);
 
-        const first_name = formData.get('form-first-name');
-        const last_name = formData.get('form-last-name');
+        const first_name = formData.get('form-first-name')?.toString()!;
+        const last_name = formData.get('form-last-name')?.toString()!;
         
-        const email = formData.get('form-email');
-        const birthday = formData.get('form-birthday');
+        const email = formData.get('form-email')?.toString()!;
+        const birthday = formData.get('form-birthday')?.toString()!;
 
-        const phone = formData.get('form-phone');
+        const phone = formData.get('form-phone')?.toString()!;
 
-        const company = formData.get('form-company');
-        const ig_handle = formData.get('form-igname');
+        const company = formData.get('form-company')?.toString()!;
+        const ig_handle = formData.get('form-igname')?.toString()!;
+
+        // INPUT VALIDATION
+        if(!isValidInput(first_name!, 2, 50)) return;
+        if(!isValidInput(last_name!, 2, 50)) return;
+
+        if(!isValidEmail(email!)) return;
+
+        if(!isValidInput(company!, 1, 70)) return;
+        if(!isValidInput(ig_handle!, 1, 31)) return;
+
 
         // Prepare for Next Page
         setFormAnswers(prev => ({
             ...prev,
-            firstName: first_name?.toString()!,
-            lastName: last_name?.toString()!,
+            firstName: first_name!,
+            lastName: last_name!,
 
-            email: email?.toString()!,
-            birthday: birthday?.toString()!,
+            email: email!,
+            birthday: birthday!,
 
-            phone: phone?.toString()!,
+            phone: phone!,
             country: country,
 
-            businessName: company?.toString()!,
-            instagramHandle: ig_handle?.toString()!
+            businessName: company!,
+            instagramHandle: ig_handle!
         }));
         setPage(Page.questionnaire);
     }
