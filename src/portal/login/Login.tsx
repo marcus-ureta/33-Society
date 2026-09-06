@@ -7,6 +7,8 @@ import { Logo } from '@/components/logos/Logo.tsx'
 
 import '@/portal/Portal.css';
 
+import { isValidEmail, isValidInput } from "@/utils/genUtils"
+
 import { Button } from "@/components/ui/button"
 
 import { Page } from "@/portal/Portal";
@@ -51,11 +53,12 @@ function Login({setPage} : {setPage : React.Dispatch<React.SetStateAction<Page>>
         const form = event.currentTarget;
         const formData = new FormData(form);
 
-        // INPUT VALIDATION
-
-
         const email = formData.get('email')?.toString();
         const password = formData.get('password')?.toString();
+
+        // INPUT VALIDATION
+        if(!isValidEmail(email!)) { setError('Email is not valid!'); return; }
+        if(!isValidInput(password!, 6, 4096)) {setError('Password is too short/long!'); return;}
 
         try {
             setIsRequest(true);
