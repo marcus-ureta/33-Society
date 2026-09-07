@@ -274,11 +274,28 @@ function App() {
               WHAT TO EXPECT INSIDE THE YACHT
             </h1>
 
-            <HomeActivities description="Tart chocolate danish candy shortbread chupa chups chocolate pastry."></HomeActivities>
-            <HomeActivities description="Cupcake tiramisu pastry croissant chocolate bar danish gummies."></HomeActivities>
-            <HomeActivities description="Candy canes cotton candy powder jelly-o gummi bears toffee."></HomeActivities>
-            <HomeActivities description="Toffee cake carrot cake wafer jujubes marshmallow icing pudding."></HomeActivities>
-            <HomeActivities description="Ice cream chupa chups cake sesame snaps toffee danish marshmallow."></HomeActivities>
+<div className="flex-col flex md:grid md:grid-cols-6 md:*:w-full md:gap-x-8 max-w-270">
+            <HomeActivities
+description="Tart chocolate danish candy shortbread chupa chups chocolate pastry."
+                className="md:col-span-3 xl:col-span-2"
+></HomeActivities>
+            <HomeActivities
+description="Cupcake tiramisu pastry croissant chocolate bar danish gummies."
+                className="md:col-span-3 xl:col-span-2"
+></HomeActivities>
+            <HomeActivities
+description="Candy canes cotton candy powder jelly-o gummi bears toffee."
+                className="md:col-span-3 xl:col-span-2"
+></HomeActivities>
+            <HomeActivities
+description="Toffee cake carrot cake wafer jujubes marshmallow icing pudding."
+                className="md:col-span-3 xl:col-span-2 xl:col-start-2"
+></HomeActivities>
+            <HomeActivities
+description="Ice cream chupa chups cake sesame snaps toffee danish marshmallow."
+                className="md:col-span-full xl:col-span-2 xl:col-start-4"
+></HomeActivities>
+</div>
 
             <iframe
               className="w-[90vw] md:w-full max-w-270 h-auto aspect-video mt-8"
