@@ -20,7 +20,7 @@ function QuestionnairePage({ setPage, questionNo, setQuestionNo, formAnswers, se
 
     const questions: string[] = [
         'What unique value or insight can you contribute to the community?',
-        'What is the primary challenge you are working to solve or scale in your business right now?',
+        'What company or business are you currently building?',
         'What is your current average monthly revenue',
         'Society 33 is a community of dedicated founders actively investing in scaling their businesses. If accepted, are you financially prepared to invest in your membership spot?',
     ];
