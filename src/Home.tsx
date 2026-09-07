@@ -90,7 +90,7 @@ function App() {
           */}
           <div className=" w-full h-fit flex flex-col items-center pt-48 p-8">
             {/* Middle hero text */}
-            <div className="prose prose-lg max-w-none w-full flex flex-col items-center">
+            <div className="prose prose-lg max-w-none w-full flex flex-col items-center max-w-270">
               <h1 className="font-cochin font-bold text-selago-100 text-7xl w-full max-w-[20ch] text-center mb-2">
                 Sweet topping shortbread jelly beans
               </h1>
@@ -147,7 +147,7 @@ function App() {
 
             {/* About Society 33 content */}
             <div
-              className="w-full h-full z-1 relative flex flex-col items-center prose prose-lg"
+              className="w-full h-full z-1 relative flex flex-col items-center prose prose-lg max-w-270"
               style={{
                 paddingTop: `calc(((100cqw * ${CROWN_TOP_HEIGHT_MULTIPLIER}) - 2px) + 32px)`,
                 paddingBottom: `64px`,
@@ -200,11 +200,14 @@ function App() {
             </div>
             </div>
 
-            <LineDivider fillName="davys-grey-0" className="mb-18 w-full" />
+            <LineDivider
+              fillName="davys-grey-0"
+              className="mb-18 w-full max-w-270"
+            />
             {/* ==============================================================================
               SECTION: GUEST SPEAKERS
             ============================================================================== */}
-            <div className="prose prose-lg h-fit w-full flex items-center flex-col @container">
+            <div className="prose prose-lg h-fit w-full flex items-center flex-col @container max-w-270">
               <h1 className="text-center font-cochin text-selago-50 mb-0">
                 GUEST SPEAKERS
               </h1>
@@ -268,7 +271,7 @@ function App() {
             <HomeActivities description="Ice cream chupa chups cake sesame snaps toffee danish marshmallow."></HomeActivities>
 
             <iframe
-              className="w-[90vw] h-auto aspect-video mt-8"
+              className="w-[90vw] md:w-full max-w-270 h-auto aspect-video mt-8"
               src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?si=ugKjYpsBKxPG9So0"
               title="YouTube video player"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -318,7 +321,7 @@ function App() {
               <p className="font-aileron text-selago-50 mt-0 mb-16 text-center">
                 Everything you need to know about the Society
               </p>
-              <div className="w-[90vw] h-fit bg-tristesse-0 rounded-2xl p-4">
+              <div className="w-[90vw] md:w-full max-w-270 h-fit bg-tristesse-0 rounded-2xl p-4">
                 <Accordion multiple>
                   {faqItems.map((item) => (
                     <AccordionItem
