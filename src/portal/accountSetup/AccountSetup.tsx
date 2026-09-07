@@ -123,14 +123,14 @@ function AccountSetup({setPage, email, formAnswers} : {setPage : React.Dispatch<
 
                         <FieldGroup className="flex flex-col gap-y-6 my-[5%]">
                             <Field>
-                                <Input name='email_address' id="email_address" type="email" placeholder="33society@gmail.com" required className="bg-tristesse-0 border-davys-grey-100 text-selago-0 !text-[17px] h-fit py-[6px] px-2" defaultValue={email} onChange={() => setErrorMessage('')}/>
+                                <Input name='email_address' id="email_address" type="email" placeholder="33society@gmail.com" required className="input-field" defaultValue={email} onChange={() => setErrorMessage('')}/>
                             </Field>
 
                             <Field>
-                                <Input name='password' id="password" type="password" placeholder="Setup Your Password" required className="bg-tristesse-0 border-davys-grey-100 text-selago-0 !text-[17px] h-fit py-[6px] px-2" onChange={() => setErrorMessage('')}/>
+                                <Input name='password' id="password" type="password" placeholder="Setup Your Password" required className="input-field" onChange={() => setErrorMessage('')}/>
                             </Field>
 
-                            <Input name='confirm_password' id="confirm_password" type="confirm_password" placeholder="Confirm Password" className="bg-tristesse-0 border-davys-grey-100 text-selago-0 !text-[17px] h-fit py-[6px] px-2 absolute left-[-9999px]"/>
+                            <Input name='confirm_password' id="confirm_password" type="confirm_password" placeholder="Confirm Password" className="input-field absolute left-[-9999px]"/>
                         </FieldGroup>
 
                         <div className="flex justify-center mt-[4%]">
