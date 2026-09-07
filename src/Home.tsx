@@ -176,6 +176,7 @@ function App() {
                 OUR PILLARS
               </h1>
 
+              <div className="flex-col flex md:grid md:grid-cols-2 lg:hidden">
               <HomePillars
                 number="01"
                 name="Value of Group"
@@ -196,6 +197,7 @@ function App() {
                 name="Business Opportunity"
                 description="Icing halvah ice cream chocolate gingerbread chocolate bar soufflé liquorice jelly beans."
               />
+            </div>
             </div>
 
             <LineDivider fillName="davys-grey-0" className="mb-18 w-full" />
