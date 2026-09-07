@@ -101,10 +101,10 @@ function SignUpPage({setPage, formAnswers, setFormAnswers} : SignUpPageProps){
         <>
             <div className='flex flex-col items-center justify-center h-[105%] gap-y-4 sm:gap-y-8 max-w-none prose mb-0 mx-[5%]'>
                 <form onSubmit={handleSubmission} className="w-full max-w-[720px]">
-                    <FieldGroup className='flex flex-col gap-y-9'>
+                    <FieldGroup className='flex flex-col gap-4 sm:gap-y-9 mt-[32px] sm:mt-[0%]'>
                         
                         {/* First Name & Last Name */}
-                        <div className="grid grid-cols-2 gap-4">
+                        <div className="flex flex-col sm:grid sm:grid-cols-2 gap-4">
                             <Field>
                                 <Input name='form-first-name' id="form-first-name" type="text" placeholder="First Name" required className="input-field" defaultValue={formAnswers.firstName}/>
                             </Field>
@@ -115,7 +115,7 @@ function SignUpPage({setPage, formAnswers, setFormAnswers} : SignUpPageProps){
                         </div>
 
                         {/* Email and Birthday */}
-                        <div className="grid grid-cols-2 gap-4">
+                        <div className="flex flex-col sm:grid sm:grid-cols-2 gap-4">
                             <Field>
                                 <Input name='form-email' id="form-email" type="email" placeholder="Email Address" required className="input-field" defaultValue={formAnswers.email}/>
                             </Field>
@@ -126,7 +126,7 @@ function SignUpPage({setPage, formAnswers, setFormAnswers} : SignUpPageProps){
                         </div>
 
                         {/* Phone and Country */}
-                        <div className="grid grid-cols-2 gap-4">
+                        <div className="flex flex-col sm:grid sm:grid-cols-2 gap-4">
                             <Field>
                                 <Input name='form-phone' id="form-phone" type="tel" placeholder="Phone Number" required className="input-field" defaultValue={formAnswers.phone}/>
                             </Field>
@@ -152,7 +152,7 @@ function SignUpPage({setPage, formAnswers, setFormAnswers} : SignUpPageProps){
                         </div>
 
                         {/* Business Name & Instagram Handle */}
-                        <div className="grid grid-cols-2 gap-4">
+                        <div className="flex flex-col sm:grid sm:grid-cols-2 gap-4">
                             <Field>
                                 <Input name='form-company' id="form-company" type="text" placeholder="Company/Business Name" required className="input-field" defaultValue={formAnswers.businessName}/>
                             </Field>
