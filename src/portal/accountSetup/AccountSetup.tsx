@@ -135,7 +135,7 @@ function AccountSetup({setPage, email, formAnswers} : {setPage : React.Dispatch<
 
                         <div className="flex justify-center mt-[4%]">
                             <Button disabled={isRequest} type='submit' variant="outline" className={cn(buttonVariants({variant: "default", size: "lg",}),
-                                "button-styling")}>
+                                "button-styling w-full")}>
                                 {isRequest ? (
                                     <>
                                         <span className="spinner"/>
@@ -152,7 +152,7 @@ function AccountSetup({setPage, email, formAnswers} : {setPage : React.Dispatch<
                         )}
                     </form>
 
-                        <Logo variant="stacked" className="hidden sm:block size-64 lg:size-96 xl:size-[28rem] text-selago-100 shrink-0"/>
+                        <Logo variant="stacked" className="hidden sm:block size-48 lg:size-68 xl:size-[18rem] text-selago-100"/>
                     </div>
                 </div>
             )}
