@@ -100,31 +100,27 @@ function SignUpPage({setPage, formAnswers, setFormAnswers} : SignUpPageProps){
     return(
         <>
             <div className='flex flex-col items-center justify-center h-[105%] gap-y-4 sm:gap-y-8 max-w-none prose mb-0 mx-[5%]'>
-                <form onSubmit={handleSubmission} className="w-full max-w-[548px]">
+                <form onSubmit={handleSubmission} className="w-full max-w-[720px]">
                     <FieldGroup className='flex flex-col gap-y-9'>
                         
                         {/* First Name & Last Name */}
                         <div className="grid grid-cols-2 gap-4">
                             <Field>
-                                <FieldLabel htmlFor="form-first-name" className="text-selago-0 text-[1rem] font-['Aileron'] font-semibold">First Name</FieldLabel>
-                                <Input name='form-first-name' id="form-first-name" type="text" placeholder="John" required className="input-field" defaultValue={formAnswers.firstName}/>
+                                <Input name='form-first-name' id="form-first-name" type="text" placeholder="First Name" required className="input-field" defaultValue={formAnswers.firstName}/>
                             </Field>
 
                             <Field>
-                                <FieldLabel htmlFor="form-last-name" className="text-selago-0 text-[1rem] font-['Aileron'] font-semibold">Last Name</FieldLabel>
-                                <Input name='form-last-name' id="form-last-name" type="text" placeholder="Doe" required className="input-field" defaultValue={formAnswers.lastName}/>
+                                <Input name='form-last-name' id="form-last-name" type="text" placeholder="Last Name" required className="input-field" defaultValue={formAnswers.lastName}/>
                             </Field>
                         </div>
 
                         {/* Email and Birthday */}
                         <div className="grid grid-cols-2 gap-4">
                             <Field>
-                                <FieldLabel htmlFor="form-email" className="text-selago-0 text-[1rem] font-['Aileron'] font-semibold">Email</FieldLabel>
-                                <Input name='form-email' id="form-email" type="email" placeholder="john@example.com" required className="input-field" defaultValue={formAnswers.email}/>
+                                <Input name='form-email' id="form-email" type="email" placeholder="Email Address" required className="input-field" defaultValue={formAnswers.email}/>
                             </Field>
 
                             <Field>
-                                <FieldLabel htmlFor="form-birthday" className="text-selago-0 text-[1rem] font-['Aileron'] font-semibold">Birthday</FieldLabel>
                                 <Input name='form-birthday' id="form-birthday" type="date" required className="input-field dark:[color-scheme:dark]" defaultValue={formAnswers.birthday}/>
                             </Field>
                         </div>
@@ -132,12 +128,10 @@ function SignUpPage({setPage, formAnswers, setFormAnswers} : SignUpPageProps){
                         {/* Phone and Country */}
                         <div className="grid grid-cols-2 gap-4">
                             <Field>
-                                <FieldLabel htmlFor="form-phone" className="text-selago-0 text-[1rem] font-['Aileron'] font-semibold">Phone</FieldLabel>
-                                <Input name='form-phone' id="form-phone" type="tel" placeholder="+63 (555) 123-4567" required className="input-field" defaultValue={formAnswers.phone}/>
+                                <Input name='form-phone' id="form-phone" type="tel" placeholder="Phone Number" required className="input-field" defaultValue={formAnswers.phone}/>
                             </Field>
 
                             <Field>
-                                <FieldLabel htmlFor="form-country" className="text-selago-0 text-[1rem] font-['Aileron'] font-semibold">Country</FieldLabel>
 
                                 <Select items={countries} defaultValue={formAnswers.country === '' ? 'ph' : formAnswers.country} onValueChange={(value) => { if (value !== null) { setCountry(value); }}} required>
                                     <SelectTrigger id="form-country" className="input-field">
@@ -160,13 +154,11 @@ function SignUpPage({setPage, formAnswers, setFormAnswers} : SignUpPageProps){
                         {/* Business Name & Instagram Handle */}
                         <div className="grid grid-cols-2 gap-4">
                             <Field>
-                                <FieldLabel htmlFor="form-company" className="text-selago-0 text-[1rem] font-['Aileron'] font-semibold">Company/Business Name</FieldLabel>
-                                <Input name='form-company' id="form-company" type="text" placeholder="Acme Inc." required className="input-field" defaultValue={formAnswers.businessName}/>
+                                <Input name='form-company' id="form-company" type="text" placeholder="Company/Business Name" required className="input-field" defaultValue={formAnswers.businessName}/>
                             </Field>
 
                             <Field>
-                                <FieldLabel htmlFor="form-igname" className="text-selago-0 text-[1rem] font-['Aileron'] font-semibold">Instagram Handle</FieldLabel>
-                                <Input name='form-igname' id="form-igname" type="text" placeholder="@33_society" required className="input-field" defaultValue={formAnswers.instagramHandle}/>
+                                <Input name='form-igname' id="form-igname" type="text" placeholder="Instagram Username @" required className="input-field" defaultValue={formAnswers.instagramHandle}/>
                             </Field>
                         </div>
 
