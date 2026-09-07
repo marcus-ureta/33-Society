@@ -177,24 +177,24 @@ function App() {
               </h1>
 
               <div className="flex-col flex md:grid md:grid-cols-2 xl:grid-cols-3 2xl:hidden md:gap-x-8 max-w-270">
-              <HomePillars
-                number="01"
+                <HomePillars
+                  number="01"
                   name="The Inner Circle"
                   description="A private community of founders, entrepreneurs, executives, and business-minded individuals across Asia."
-              />
-              <HomePillars
-                number="02"
+                />
+                <HomePillars
+                  number="02"
                   name="Private Experiences"
                   description="Private dinners, yacht experiences, curated gatherings, and events designed around the people in the room."
-              />
-              <HomePillars
-                number="03"
+                />
+                <HomePillars
+                  number="03"
                   name="Masterminds"
                   description="Closed-door conversations where members exchange ideas, challenges, strategies, and perspectives with people building at a similar level."
-              />
-              <HomePillars
-                number="04"
-                name="Business Opportunity"
+                />
+                <HomePillars
+                  number="04"
+                  name="Business Opportunity"
                   description="Create opportunities through partnerships, referrals, collaborations, introductions, and deal-making."
                 />
                 <HomePillars
@@ -206,8 +206,8 @@ function App() {
                   number="06"
                   name="International Experience"
                   description="From private yachts to international trips, every experience is designed to be something worth remembering."
-              />
-            </div>
+                />
+              </div>
             </div>
 
             <LineDivider
@@ -274,28 +274,28 @@ function App() {
               WHAT TO EXPECT INSIDE THE YACHT
             </h1>
 
-<div className="flex-col flex md:grid md:grid-cols-6 md:*:w-full md:gap-x-8 max-w-270">
-            <HomeActivities
-description="Tart chocolate danish candy shortbread chupa chups chocolate pastry."
+            <div className="flex-col flex md:grid md:grid-cols-6 md:*:w-full md:gap-x-8 max-w-270">
+              <HomeActivities
+                description="Tart chocolate danish candy shortbread chupa chups chocolate pastry."
                 className="md:col-span-3 xl:col-span-2"
-></HomeActivities>
-            <HomeActivities
-description="Cupcake tiramisu pastry croissant chocolate bar danish gummies."
+              ></HomeActivities>
+              <HomeActivities
+                description="Cupcake tiramisu pastry croissant chocolate bar danish gummies."
                 className="md:col-span-3 xl:col-span-2"
-></HomeActivities>
-            <HomeActivities
-description="Candy canes cotton candy powder jelly-o gummi bears toffee."
+              ></HomeActivities>
+              <HomeActivities
+                description="Candy canes cotton candy powder jelly-o gummi bears toffee."
                 className="md:col-span-3 xl:col-span-2"
-></HomeActivities>
-            <HomeActivities
-description="Toffee cake carrot cake wafer jujubes marshmallow icing pudding."
+              ></HomeActivities>
+              <HomeActivities
+                description="Toffee cake carrot cake wafer jujubes marshmallow icing pudding."
                 className="md:col-span-3 xl:col-span-2 xl:col-start-2"
-></HomeActivities>
-            <HomeActivities
-description="Ice cream chupa chups cake sesame snaps toffee danish marshmallow."
+              ></HomeActivities>
+              <HomeActivities
+                description="Ice cream chupa chups cake sesame snaps toffee danish marshmallow."
                 className="md:col-span-full xl:col-span-2 xl:col-start-4"
-></HomeActivities>
-</div>
+              ></HomeActivities>
+            </div>
 
             <iframe
               className="w-[90vw] md:w-full max-w-270 h-auto aspect-video mt-8"
@@ -322,27 +322,29 @@ description="Ice cream chupa chups cake sesame snaps toffee danish marshmallow."
           {/* NOTE: sections like this next to the footer are enclosed together in a single
               div due to the footer's desktop padding
           */}
-          <div
-            className="h-fit bg-schiava-blue w-full flex flex-col prose prose-lg max-w-none mt-[-15%]"
-            style={{
-              maskImage: `url('/svg/BOTTOM_CROWN_ROTATED.svg'), linear-gradient(black, black)`,
-              WebkitMaskImage: `url('/svg/BOTTOM_CROWN_ROTATED.svg'), linear-gradient(black, black)`,
+          <div className="relative w-full @container h-fit flex flex-col prose prose-lg max-w-none mt-[-15%]">
+            <div
+              className="absolute inset-0 bg-schiava-blue bg-no-repeat bg-size-[100%_100%]"
+              style={{
+                maskImage: `url('/svg/BOTTOM_CROWN_ROTATED.svg'), linear-gradient(black, black)`,
+                WebkitMaskImage: `url('/svg/BOTTOM_CROWN_ROTATED.svg'), linear-gradient(black, black)`,
 
-              maskRepeat: "no-repeat, no-repeat",
-              WebkitMaskRepeat: "no-repeat, no-repeat",
+                maskRepeat: "no-repeat, no-repeat",
+                WebkitMaskRepeat: "no-repeat, no-repeat",
 
-              maskSize: `100% auto, 100% 100%`,
-              WebkitMaskSize: `100% auto, 100% 100%`,
+                maskSize: `100% auto, 100% 100%`,
+                WebkitMaskSize: `100% auto, 100% 100%`,
 
-              maskPosition: `0 0, 0 calc(100cqw * ${CROWN_TOP_HEIGHT_MULTIPLIER})`,
-              WebkitMaskPosition: `0 0, 0 calc(100cqw * ${CROWN_TOP_HEIGHT_MULTIPLIER})`,
-            }}
-          >
+                maskPosition: `0 0, 0 calc((100cqw * ${CROWN_BOTTOM_HEIGHT_MULTIPLIER}) - 2px)`,
+                WebkitMaskPosition: `0 0, 0 calc((100cqw * ${CROWN_BOTTOM_HEIGHT_MULTIPLIER}) - 2px)`,
+              }}
+            />
+
             {/* ==============================================================================
-              SECTION: FOOTER
+              SECTION: FAQ
             ============================================================================== */}
-            <div className="h-fit w-full flex flex-col items-center p-8 pt-24">
-              <h1 className="font-cochin text-selago-100 mb-8 text-center">
+            <div className="w-full h-fit z-1 relative flex flex-col items-center p-8 pt-24">
+              <h1 className="font-cochin text-selago-100 mb-8 text-center mt-[4%]">
                 BEFORE YOU ENTER
               </h1>
               <p className="font-aileron text-selago-50 mt-0 mb-16 text-center">
@@ -375,7 +377,7 @@ description="Ice cream chupa chups cake sesame snaps toffee danish marshmallow."
             </div>
 
             {/* TODO: extract footer to standalone component */}
-            <div className="rounded-t-4xl h-fit w-full bg-tristesse-0 flex flex-col">
+            <div className="rounded-t-4xl h-fit w-full bg-tristesse-0 flex flex-col relative z-1">
               {/* 
                 Footer Links
               */}
