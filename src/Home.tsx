@@ -44,6 +44,7 @@ function App() {
 
   const invertedArcSvg = `data:image/svg+xml;utf8,<svg viewBox="0 0 1000 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M 0,0 A 725 725 0 0 0 1000,0 L 1000,200 L 0,200 Z" fill="white"/></svg>`;
   const arcSvg = `data:image/svg+xml;utf8,<svg viewBox="0 0 1000 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M 0,0 A 725 725 0 0 0 1000,0 Z" fill="white"/></svg>`;
+  const bottomCrownSvg = `data:image/svg+xml;utf8,<svg viewBox="0 0 1000 281" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><g transform="matrix(1.770915,0,0,1.770915,-385.474959,-1250.048629)"><path d="M782.35,705.836L782.35,781.72L499.26,864.61L217.67,781.72L217.67,705.82C222.56,705.82 782.35,705.836 782.35,705.836Z" fill="white"/></g></svg>`;
 
   // ==============================================================================
 
@@ -124,8 +125,8 @@ function App() {
             <div
               className="absolute inset-0 bg-schiava-blue bg-no-repeat bg-size-[100%_100%]"
               style={{
-                maskImage: `url('/svg/CROWN_CROPPED.svg'), linear-gradient(black, black), url('/svg/BOTTOM_CROWN.svg')`,
-                WebkitMaskImage: `url('/svg/CROWN_CROPPED.svg'), linear-gradient(black, black), url('/svg/BOTTOM_CROWN.svg')`,
+                maskImage: `url('/svg/CROWN_CROPPED.svg'), linear-gradient(black, black), url('${bottomCrownSvg}')`,
+                WebkitMaskImage: `url('/svg/CROWN_CROPPED.svg'), linear-gradient(black, black), url('${bottomCrownSvg}')`,
 
                 maskRepeat: "no-repeat, no-repeat, no-repeat",
                 WebkitMaskRepeat: "no-repeat, no-repeat, no-repeat",
@@ -133,8 +134,8 @@ function App() {
                 // Layer 1: Scale width to 100% and explicitly match the top crown aspect ratio height.
                 // Layer 2: Fill 100% height minus top crown and bottom crown (with 4px overlap for seams).
                 // Layer 3: Scale width to 100% and explicitly match the bottom crown aspect ratio height.
-                maskSize: `100% auto, 100% calc(100% - (100cqw * ${CROWN_TOP_HEIGHT_MULTIPLIER}) - (100cqw * ${CROWN_BOTTOM_HEIGHT_MULTIPLIER}) + 4px), 100% auto`,
-                WebkitMaskSize: `100% auto, 100% calc(100% - (100cqw * ${CROWN_TOP_HEIGHT_MULTIPLIER}) - (100cqw * ${CROWN_BOTTOM_HEIGHT_MULTIPLIER}) + 4px), 100% auto`,
+                maskSize: `100% auto, 100% calc(100% - (100cqw * ${CROWN_TOP_HEIGHT_MULTIPLIER}) - 60px), 100% 64px`,
+                WebkitMaskSize: `100% auto, 100% calc(100% - (100cqw * ${CROWN_TOP_HEIGHT_MULTIPLIER}) - 60px), 100% 64px`,
 
                 // Layer 1: Pin to top left.
                 // Layer 2: Push down to where the top crown ends (minus 2px to prevent a seam).
@@ -149,7 +150,7 @@ function App() {
               className="w-full h-full z-1 relative flex flex-col items-center prose prose-lg"
               style={{
                 paddingTop: `calc(((100cqw * ${CROWN_TOP_HEIGHT_MULTIPLIER}) - 2px) + 32px)`,
-                paddingBottom: `calc(100cqw * ${CROWN_BOTTOM_HEIGHT_MULTIPLIER})`,
+                paddingBottom: `64px`,
               }}
             >
               <h1 className="font-cochin text-selago-50 mb-4 text-center">
@@ -169,7 +170,7 @@ function App() {
           {/* ==============================================================================
             SECTION: PILLARS 
           ============================================================================== */}
-          <div className="bg-tristesse-0 h-fit w-full -mt-[15%] flex pt-24 flex-col items-center p-8 prose prose-lg max-w-none pb-24">
+          <div className="bg-tristesse-0 h-fit w-full -mt-[15%] flex pt-72 flex-col items-center p-8 prose prose-lg max-w-none pb-24">
             <div className="h-fit w-fit flex items-center flex-col">
               <h1 className="font-cochin text-selago-50 text-center">
                 OUR PILLARS
