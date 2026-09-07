@@ -2,7 +2,7 @@
 
 @layer utilities {
   .input-field {
-    @apply bg-tristesse-0 border-davys-grey-100 text-davys-grey-0 font-['Aileron'] placeholder:font-['instrument-serif'] placeholder:italic pl-[8px] text-[1rem]!;
+    @apply bg-tristesse-0 border-davys-grey-100 text-davys-grey-0 font-['Aileron'] pl-[10px] text-[1.15rem]! py-[26px] text-selago-0 rounded-xl;
   }
 
   .scrollable-container {
@@ -10,7 +10,7 @@
   }
 
   .button-styling {
-    @apply bg-schiava-blue text-white border-2 border-schiava-blue-dark py-5 px-12 rounded-[64px] hover:bg-schiava-blue-dark hover:scale-102 transition-all duration-300 font-['Aileron'] font-semibold text-[1.575rem] hover:cursor-pointer;
+    @apply bg-schiava-blue text-white border-2 border-schiava-blue-dark py-7 px-19 rounded-[64px] hover:bg-transparent hover:scale-102 transition-all duration-300 font-['Aileron'] font-semibold text-[1.575rem] hover:cursor-pointer hover:text-schiava-blue-light hover:border-schiava-blue-light;
   }
 
   .scrollable-container::-webkit-scrollbar {
