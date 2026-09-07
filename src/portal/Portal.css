@@ -2,7 +2,7 @@
 
 @layer utilities {
   .input-field {
-    @apply bg-tristesse-0 border-davys-grey-100 text-davys-grey-0 font-['Aileron'] pl-[10px] text-[1.15rem]! py-[26px] text-selago-0;
+    @apply bg-tristesse-0 border-davys-grey-100 text-davys-grey-0 font-['Aileron'] pl-[10px] text-[1.15rem]! py-[26px] text-selago-0 rounded-xl;
   }
 
   .scrollable-container {
