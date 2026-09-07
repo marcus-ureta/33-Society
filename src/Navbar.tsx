@@ -29,7 +29,6 @@ function Navbar() {
           {/* NAVBAR LINKS 
               TODO: react router links (scrollable ids) and single source array
           */}
-          <p>One Time Event Pass</p>
           <p>About</p>
           <p>Members</p>
           <p>Event Details</p>
