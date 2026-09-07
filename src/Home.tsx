@@ -176,26 +176,36 @@ function App() {
                 OUR PILLARS
               </h1>
 
-              <div className="flex-col flex md:grid md:grid-cols-2 lg:hidden">
+              <div className="flex-col flex md:grid md:grid-cols-2 xl:grid-cols-3 2xl:hidden md:gap-x-8 max-w-270">
               <HomePillars
                 number="01"
-                name="Value of Group"
-                description="Cake candy canes sweet pastry caramels cake icing cheesecake sweet roll cake croissant."
+                  name="The Inner Circle"
+                  description="A private community of founders, entrepreneurs, executives, and business-minded individuals across Asia."
               />
               <HomePillars
                 number="02"
-                name="Clarity"
-                description="Marzipan danish chocolate cake candy brownie shortbread chupa chups tootsie roll ice cream."
+                  name="Private Experiences"
+                  description="Private dinners, yacht experiences, curated gatherings, and events designed around the people in the room."
               />
               <HomePillars
                 number="03"
-                name="Lifestyle"
-                description="Sesame snaps apple pie ice cream lemon drops gummies sweet roll jelly oat cake candy."
+                  name="Masterminds"
+                  description="Closed-door conversations where members exchange ideas, challenges, strategies, and perspectives with people building at a similar level."
               />
               <HomePillars
                 number="04"
                 name="Business Opportunity"
-                description="Icing halvah ice cream chocolate gingerbread chocolate bar soufflé liquorice jelly beans."
+                  description="Create opportunities through partnerships, referrals, collaborations, introductions, and deal-making."
+                />
+                <HomePillars
+                  number="05"
+                  name="International Experience"
+                  description="Travel beyond the usual business environment. Experience new cities, new markets, and new relationships with the Society."
+                />
+                <HomePillars
+                  number="06"
+                  name="International Experience"
+                  description="From private yachts to international trips, every experience is designed to be something worth remembering."
               />
             </div>
             </div>
