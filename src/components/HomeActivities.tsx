@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 
 export interface HomeActivitiesProps {
   description: ReactNode;
-  children: ReactNode;
+  children?: ReactNode;
   className?: string;
 }
 
