@@ -78,17 +78,15 @@ function AccountSetup({setPage, email, formAnswers} : {setPage : React.Dispatch<
         const form = event.currentTarget;
         const formData = new FormData(form);
 
-        const registeredEmail = formData.get('email_address')?.toString();
         const password = formData.get('password')?.toString();
         const confirm_password = formData.get('confirm_password')?.toString();
 
         // INPUT VALIDATION
-        if(!isValidEmail(registeredEmail!)) { setErrorMessage('Email is not valid!'); return; }
         if(!isValidInput(password!, 6, 4096)) {setErrorMessage('Password is too short/long!'); return;}
 
         try {
             setIsRequest(true);
-            const user = await createAccount(registeredEmail!, password!, confirm_password!);
+            const user = await createAccount(email, password!, confirm_password!);
             setVerificationPage(true);
             console.log("Account created:", user.uid);
         } catch (error : any) {
@@ -122,9 +120,11 @@ function AccountSetup({setPage, email, formAnswers} : {setPage : React.Dispatch<
                             <h1 className="text-white font-['Cochin'] text-5xl font-bold">Account Setup</h1>
 
                             <FieldGroup className="flex flex-col gap-y-6 my-[5%]">
-                                <Field>
+                                {/* <Field>
                                     <Input name='email_address' id="email_address" type="email" placeholder="33society@gmail.com" required className="input-field" defaultValue={email} onChange={() => setErrorMessage('')}/>
-                                </Field>
+                                </Field> */}
+
+                                <h1 className="font-['Aileron'] text-[clamp(0.75rem,5vw,2rem)] text-selago-100">Email: <span className='font-bold'>{email}</span></h1>
 
                                 <Field>
                                     <Input name='password' id="password" type="password" placeholder="Setup Your Password" required className="input-field" onChange={() => setErrorMessage('')}/>
