@@ -108,16 +108,10 @@ function Portal() {
 
             </div>
 
-            <div style={{
-                position: 'fixed',
+            <div className='fixed h-[10vw] w-[10vw] pointer-events-none blur-[60px] rounded-[50%]' style={{
                 top: mousePos.y,
                 left: mousePos.x,
-                height: '10vw',
-                width: '10vw',
                 backgroundImage: 'radial-gradient(hsla(225, 38%, 50%, 0.1), hsla(222, 100%, 98%, 0.1))',
-                filter: 'blur(60px)',
-                borderRadius: '50%',
-                pointerEvents: 'none',
                 transform: `translate(-30%, -25%)`,
             }}/>
         </>
