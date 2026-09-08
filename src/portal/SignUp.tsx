@@ -173,8 +173,8 @@ function SignUpPage({setPage, formAnswers, setFormAnswers} : SignUpPageProps){
                 </form>
             </div>
 
-            <div className='flex flex-col items-center justify-center w-full h-[10%] gap-y-2.5' onClick={() => setPage(Page.portal)}>
-                <ArrowLeft className="w-6 h-6 hover:text-schiava-blue-light text-selago-0 border-2 rounded-full mt-2 transition-all duration-200 hover:cursor-pointer"/>
+            <div className='flex flex-col items-center justify-center w-full h-[10%] gap-y-2.5'>
+                <ArrowLeft onClick={() => setPage(Page.portal)} className="w-6 h-6 hover:text-schiava-blue-light text-selago-0 border-2 rounded-full mt-2 transition-all duration-200 hover:cursor-pointer"/>
             </div>
         </>
     )

@@ -223,8 +223,8 @@ function QuestionnairePage({ setPage, questionNo, setQuestionNo, formAnswers, se
             </div>
 
             <div className="flex flex-col items-center justify-center w-full h-[25%] gap-y-2.5">
-                <div onClick={handlePrevQuestion} className="pointer-events-auto">
-                    <ArrowLeft className="w-6 h-6 hover:text-schiava-blue-light text-selago-0 border-2 rounded-full mt-2 transition-all duration-200 hover:cursor-pointer" />
+                <div className="pointer-events-auto">
+                    <ArrowLeft onClick={handlePrevQuestion} className="w-6 h-6 hover:text-schiava-blue-light text-selago-0 border-2 rounded-full mt-2 transition-all duration-200 hover:cursor-pointer" />
                 </div>
             </div>
         </>
