@@ -10,7 +10,7 @@
   }
 
   .button-styling {
-    @apply bg-schiava-blue text-white border-2 border-schiava-blue-dark py-7 px-19 rounded-[64px] hover:bg-transparent hover:scale-102 transition-all duration-300 font-['Aileron'] font-semibold text-[1.575rem] hover:cursor-pointer hover:text-schiava-blue-light hover:border-schiava-blue-light;
+    @apply bg-schiava-blue text-white border-2 border-schiava-blue-dark py-7.5 px-19 rounded-[64px] hover:bg-transparent hover:scale-102 transition-all duration-300 font-['Aileron'] font-semibold text-[1.575rem] hover:cursor-pointer hover:text-schiava-blue-light hover:border-schiava-blue-light;
   }
 
   .scrollable-container::-webkit-scrollbar {
