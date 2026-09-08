@@ -115,50 +115,50 @@ function AccountSetup({setPage, email, formAnswers} : {setPage : React.Dispatch<
             )}
 
             {!goVerificationPage && (
-                <div className="flex flex-col gap-y-4 items-center mt-[5%]">
-                    <div className="w-full max-w-6xl flex items-center justify-center gap-8">
+                <div className="w-full min-h-[67vh] flex items-center justify-center">
+                    <div className="w-full max-w-7xl flex items-center justify-center gap-8 px-6">
                 
-                    <form onSubmit={handleSignup} className="w-full max-w-[548px] mx-[5%]">
-                        <h1 className="text-white font-['Cochin'] text-5xl font-bold">Account Setup</h1>
+                        <form onSubmit={handleSignup} className="w-full max-w-[680px] mx-[5%]">
+                            <h1 className="text-white font-['Cochin'] text-5xl font-bold">Account Setup</h1>
 
-                        <FieldGroup className="flex flex-col gap-y-6 my-[5%]">
-                            <Field>
-                                <Input name='email_address' id="email_address" type="email" placeholder="33society@gmail.com" required className="input-field" defaultValue={email} onChange={() => setErrorMessage('')}/>
-                            </Field>
+                            <FieldGroup className="flex flex-col gap-y-6 my-[5%]">
+                                <Field>
+                                    <Input name='email_address' id="email_address" type="email" placeholder="33society@gmail.com" required className="input-field" defaultValue={email} onChange={() => setErrorMessage('')}/>
+                                </Field>
 
-                            <Field>
-                                <Input name='password' id="password" type="password" placeholder="Setup Your Password" required className="input-field" onChange={() => setErrorMessage('')}/>
-                            </Field>
+                                <Field>
+                                    <Input name='password' id="password" type="password" placeholder="Setup Your Password" required className="input-field" onChange={() => setErrorMessage('')}/>
+                                </Field>
 
-                            <Input name='confirm_password' id="confirm_password" type="confirm_password" placeholder="Confirm Password" className="input-field absolute left-[-9999px]"/>
-                        </FieldGroup>
+                                <Input name='confirm_password' id="confirm_password" type="confirm_password" placeholder="Confirm Password" className="input-field absolute left-[-9999px]"/>
+                            </FieldGroup>
 
-                        <div className="flex justify-center mt-[4%]">
-                            <Button disabled={isRequest} type='submit' variant="outline" className={cn(buttonVariants({variant: "default", size: "lg",}),
-                                "button-styling w-full")}>
-                                {isRequest ? (
-                                    <>
-                                        <span className="spinner"/>
-                                        Registering Account...
-                                    </>
-                                ) : (
-                                    "Register Account"
-                                )}
-                            </Button>
-                        </div>
+                            <div className="flex justify-center mt-[4%]">
+                                <Button disabled={isRequest} type='submit' variant="outline" className={cn(buttonVariants({variant: "default", size: "lg",}),
+                                    "button-styling w-full")}>
+                                    {isRequest ? (
+                                        <>
+                                            <span className="spinner"/>
+                                            Registering Account...
+                                        </>
+                                    ) : (
+                                        "Register Account"
+                                    )}
+                                </Button>
+                            </div>
 
-                        {errorMessage && (
-                            <p className="text-red-400 text-sm font-['Aileron'] text-center mt-[16px]">{errorMessage}</p>
-                        )}
-                    </form>
+                            {errorMessage && (
+                                <p className="text-red-400 text-sm font-['Aileron'] text-center mt-[16px]">{errorMessage}</p>
+                            )}
+                        </form>
 
                         <Logo variant="stacked" className="hidden sm:block size-48 lg:size-68 xl:size-[18rem] text-selago-100"/>
                     </div>
                 </div>
             )}
 
-            <div className="absolute bottom-0 left-0 w-full h-[600px] overflow-hidden pointer-events-none select-none">
-                <img src={crown} className="absolute bottom-0 left-0 w-full h-auto md:translate-y-[clamp(0px,4vw,500px)] select-none"/>
+            <div className="absolute bottom-0 left-0 w-full h-full overflow-hidden pointer-events-none select-none">
+                <img src={crown} className="absolute bottom-0 left-0 w-full h-auto md:translate-y-[clamp(0px,9vw,1500px)] select-none"/>
             </div>
         </>
     );  
