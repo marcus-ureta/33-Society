@@ -7,6 +7,9 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { Page } from '@/portal/Portal';
 import { type FormAnswers } from '@/portal/SignUp';
 
+import { useState, useEffect } from 'react';
+
+
 interface QuestionnairePageProps {
     setPage: React.Dispatch<React.SetStateAction<Page>>;
     questionNo: number;
@@ -17,6 +20,7 @@ interface QuestionnairePageProps {
 }
 
 function QuestionnairePage({ setPage, questionNo, setQuestionNo, formAnswers, setFormAnswers } : QuestionnairePageProps) {
+    const [animate, setAnimate] = useState(true);
 
     const questions: string[] = [
         'What unique value or insight can you contribute to the community?',
@@ -44,12 +48,16 @@ function QuestionnairePage({ setPage, questionNo, setQuestionNo, formAnswers, se
     };
 
     const handleNextQuestion = (input: string) => {
+
+        if(animate === true) return;
+
         const trimmedInput = input.trim();
 
         if (!trimmedInput) {
             return;
         }
 
+        setAnimate(true);
         const key = questionKeys[questionNo];
 
         setFormAnswers(prev => ({
@@ -66,13 +74,14 @@ function QuestionnairePage({ setPage, questionNo, setQuestionNo, formAnswers, se
     };
 
     const handleCheckboxChange = (checked: boolean | "indeterminate", value: string) => {
-        if (checked === true) {
+        if (checked === true && !animate) {
             handleNextQuestion(value);
         }
     };
 
     const handlePrevQuestion = () => {
-        if (questionNo > 1) {
+        if (questionNo > 1 && !animate) {
+            setAnimate(true);
             setQuestionNo((prev) => prev - 1);
         } else {
             setPage(Page.signup);
@@ -81,7 +90,7 @@ function QuestionnairePage({ setPage, questionNo, setQuestionNo, formAnswers, se
 
     return (
         <>
-            <div className="flex flex-col items-center justify-center w-full h-[80%] gap-y-4 sm:gap-y-12 max-w-none prose animate-slide-up">
+            <div onAnimationEnd={() => setAnimate(false)} className={`flex flex-col items-center justify-center w-full h-[80%] gap-y-4 sm:gap-y-12 max-w-none prose ${animate === true ? 'animate-slide-up' : ''}`}>
 
                 <h1 className="font-['Cochin'] font-bold text-selago-100 text-3xl sm:text-4xl mx-12 text-center max-w-[1068px]">
                     {questions[questionNo - 1]}
