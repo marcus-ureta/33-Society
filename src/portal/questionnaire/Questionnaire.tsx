@@ -7,6 +7,9 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { Page } from '@/portal/Portal';
 import { type FormAnswers } from '@/portal/SignUp';
 
+import { useState } from 'react';
+
+
 interface QuestionnairePageProps {
     setPage: React.Dispatch<React.SetStateAction<Page>>;
     questionNo: number;
@@ -16,7 +19,10 @@ interface QuestionnairePageProps {
     setFormAnswers: React.Dispatch<React.SetStateAction<FormAnswers>>;
 }
 
+type AnimationState = "idle" | "prev-exit" | "next-exit" | "enter";
+
 function QuestionnairePage({ setPage, questionNo, setQuestionNo, formAnswers, setFormAnswers } : QuestionnairePageProps) {
+    const [animation, setAnimation] = useState<AnimationState>("enter");
 
     const questions: string[] = [
         'What unique value or insight can you contribute to the community?',
@@ -44,6 +50,9 @@ function QuestionnairePage({ setPage, questionNo, setQuestionNo, formAnswers, se
     };
 
     const handleNextQuestion = (input: string) => {
+
+        if (animation !== "idle") return;
+
         const trimmedInput = input.trim();
 
         if (!trimmedInput) {
@@ -58,9 +67,9 @@ function QuestionnairePage({ setPage, questionNo, setQuestionNo, formAnswers, se
         }));
 
         if (questionNo < questions.length) {
-            setQuestionNo(prev => prev + 1);
+            setAnimation("next-exit");
         } else {
-            setQuestionNo(prev => prev + 1);
+            setAnimation("next-exit");
             setPage(Page.accountSetup);
         }
     };
@@ -72,16 +81,42 @@ function QuestionnairePage({ setPage, questionNo, setQuestionNo, formAnswers, se
     };
 
     const handlePrevQuestion = () => {
+        if (animation !== "idle") return;
+
         if (questionNo > 1) {
-            setQuestionNo((prev) => prev - 1);
+            setAnimation("prev-exit");
         } else {
             setPage(Page.signup);
         }
     };
 
+    const handleAnimationEnd = () => {
+        if (animation === "next-exit") {
+            setTimeout(() => {
+                setQuestionNo(prev => prev + 1);
+                setAnimation("enter");
+            }, 100);
+
+            return;
+        }
+
+        if (animation === "prev-exit") {
+            setTimeout(() => {
+                setQuestionNo(prev => prev - 1);
+                setAnimation("enter");
+            }, 100);
+
+            return;
+        }
+
+        if (animation === "enter") {
+            setAnimation("idle");
+        }
+    };
+
     return (
         <>
-            <div className="flex flex-col items-center justify-center w-full h-[80%] gap-y-4 sm:gap-y-12 max-w-none prose">
+            <div onAnimationEnd={handleAnimationEnd} className={`flex flex-col items-center justify-center w-full h-[80%] gap-y-4 sm:gap-y-12 max-w-none prose ${animation === "next-exit" || animation === "prev-exit" ? "animate-slide-down" : ""} ${animation === "enter" ? "animate-slide-up" : ""}`}>
 
                 <h1 className="font-['Cochin'] font-bold text-selago-100 text-3xl sm:text-4xl mx-12 text-center max-w-[1068px]">
                     {questions[questionNo - 1]}
@@ -223,8 +258,8 @@ function QuestionnairePage({ setPage, questionNo, setQuestionNo, formAnswers, se
             </div>
 
             <div className="flex flex-col items-center justify-center w-full h-[25%] gap-y-2.5">
-                <div onClick={handlePrevQuestion} className="pointer-events-auto">
-                    <ArrowLeft className="w-6 h-6 hover:text-schiava-blue-light text-selago-0 border-2 rounded-full mt-2 transition-all duration-200 hover:cursor-pointer" />
+                <div className="pointer-events-auto">
+                    <ArrowLeft onClick={handlePrevQuestion} className="w-6 h-6 hover:text-schiava-blue-light text-selago-0 border-2 rounded-full mt-2 transition-all duration-200 hover:cursor-pointer" />
                 </div>
             </div>
         </>

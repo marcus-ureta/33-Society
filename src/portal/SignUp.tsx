@@ -98,7 +98,7 @@ function SignUpPage({setPage, formAnswers, setFormAnswers} : SignUpPageProps){
     }
 
     return(
-        <>
+        <div className={`animate-slide-up w-full h-[82%]`}>
             <div className='flex flex-col items-center justify-center h-[105%] gap-y-4 sm:gap-y-8 max-w-none prose mb-0 mx-[5%]'>
                 <form onSubmit={handleSubmission} className="w-full max-w-[720px]">
                     <FieldGroup className='flex flex-col gap-4 sm:gap-y-9 mt-[32px] sm:mt-[0%]'>
@@ -172,11 +172,7 @@ function SignUpPage({setPage, formAnswers, setFormAnswers} : SignUpPageProps){
                     </FieldGroup>
                 </form>
             </div>
-
-            <div className='flex flex-col items-center justify-center w-full h-[10%] gap-y-2.5' onClick={() => setPage(Page.portal)}>
-                <ArrowLeft className="w-6 h-6 hover:text-schiava-blue-light text-selago-0 border-2 rounded-full mt-2 transition-all duration-200 hover:cursor-pointer"/>
-            </div>
-        </>
+        </div>
     )
 }
 
@@ -207,14 +203,14 @@ function SignUp({page, setPage} : {page: Page, setPage : React.Dispatch<React.Se
     return(
         <>
             <div className="w-screen h-dvh bg-tristesse-0 flex flex-col pt-8 overflow-hidden">
-                <div className={`flex flex-col gap-y-4 items-center ${page === Page.accountSetup ? 'hidden' : ''} `}>
+                <div className={`flex flex-col gap-y-4 items-center ${page === Page.accountSetup ? 'hidden' : ''} animate-slide-up`}>
                     <Logo variant="primary" className="size-16 text-selago-100" />
 
                     <div className="flex flex-row items-center w-[75%] max-w-[820px] gap-x-4 gap-y-7">
                         <div className="w-[50%] h-[3px] bg-selago-0 rounded-full shadow-[0_0_16px_1px_var(--color-schiava-blue-dark)]"/>
                         <div className={`w-[50%] h-[3px] rounded-full shadow-[0_0_16px_1px_var(--color-schiava-blue-dark)] ${page !== Page.signup ? 'bg-selago-0' : 'bg-davys-grey-0'} transition-all duration-200`}/>
                         {[...Array(4)].map((_, index) => (
-                            <div key={index} className={`w-[50%] h-[3px] ${index < questionNo - 1 ? 'bg-selago-0' : 'bg-davys-grey-0'} rounded-full shadow-[0_0_16px_1px_var(--color-schiava-blue-dark)] transition-all duration-200`} />
+                            <div key={index} className={`w-[50%] h-[3px] ${page !== Page.signup && index < questionNo - 1 ? 'bg-selago-0' : 'bg-davys-grey-0'} rounded-full shadow-[0_0_16px_1px_var(--color-schiava-blue-dark)] transition-all duration-200`} />
                         ))}
                     </div>
                 </div>
