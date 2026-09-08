@@ -1,6 +1,7 @@
-
+import { Button } from "@/components/ui/button"
 import { buttonVariants } from '../components/ui/button.tsx'
 import { cn } from '../lib/utils.ts'
+
 
 import { Field } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
@@ -9,7 +10,7 @@ import { ArrowRight } from "flowbite-react-icons/outline";
 
 import { Logo } from '@/components/logos/Logo.tsx'
 
-import { Button } from "@/components/ui/button"
+import MagneticButton from "@/components/magnetic_button/MagneticButton.tsx";
 import { useState } from 'react';
 
 import SignUp from './SignUp.tsx';
@@ -85,9 +86,7 @@ function Portal() {
                                 </Field>
                             </form>
 
-                            <Button onClick={() => setPage(Page.login)} variant="outline" className={cn(buttonVariants({ variant: "default", size: "lg" }), "button-styling w-full")}>
-                                LOGIN
-                            </Button>
+                            <MagneticButton onClick={() => setPage(Page.login)} message='LOG IN' className='w-full'/>
                         </div>
                     </div>
 
