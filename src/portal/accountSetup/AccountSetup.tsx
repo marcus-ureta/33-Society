@@ -109,7 +109,7 @@ function AccountSetup({setPage, email, formAnswers} : {setPage : React.Dispatch<
     }
 
     return (
-        <>
+        <div className={`animate-slide-up w-full h-full overflow-hidden`}>
             {goVerificationPage && (
                 <EmailVerification setPage={setPage} email={email} formAnswers={formAnswers}/>
             )}
@@ -160,7 +160,7 @@ function AccountSetup({setPage, email, formAnswers} : {setPage : React.Dispatch<
             <div className="absolute bottom-0 left-0 w-full h-full overflow-hidden pointer-events-none select-none">
                 <img src={crown} className="absolute bottom-0 left-0 w-full h-auto md:translate-y-[clamp(0px,9vw,1500px)] select-none"/>
             </div>
-        </>
+        </div>
     );  
 }
 

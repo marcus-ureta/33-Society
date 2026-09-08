@@ -36,7 +36,7 @@ function CongratulationsPage() {
 
     return(
         <div className="w-screen h-dvh bg-tristesse-0 flex flex-col pt-8">
-            <div className='flex flex-col items-center justify-center w-full h-full'>
+            <div className='flex flex-col items-center justify-center w-full h-full animate-slide-up'>
                 
                 <div className='flex flex-col max-w-[820px] items-center mx-[5%]'>
 
