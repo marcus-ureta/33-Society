@@ -42,11 +42,7 @@ function CongratulationsPage() {
 
                     <h1 className="text-[2.5rem] sm:text-[3.5rem] text-selago-0 font-['Cochin'] text-center font-bold mb-[3%]">Congratulations! You may now proceed to the home page</h1>
 
-                    <Button type="submit" variant="outline" className={cn(buttonVariants({ variant: "default", size: "lg" }),
-                        "button-styling w-fit",
-                    )}>
-                        Go Home Page
-                    </Button>
+                    <MagneticButton onClick={() => console.log('logged in!')} message='Go Home Page' className='w-full'/>
 
                 </div>
 
