@@ -69,7 +69,7 @@ function QuestionnairePage({ setPage, questionNo, setQuestionNo, formAnswers, se
         if (questionNo < questions.length) {
             setAnimation("next-exit");
         } else {
-            setQuestionNo(prev => prev + 1);
+            setAnimation("next-exit");
             setPage(Page.accountSetup);
         }
     };
