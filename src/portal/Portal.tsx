@@ -57,10 +57,10 @@ function Portal() {
 
     return (
 
-        <div className="w-screen h-dvh bg-tristesse-0 flex flex-col pt-8">
+        <div className="w-screen h-dvh bg-tristesse-0 flex flex-col pt-8 overflow-hidden">
             
             {page === Page.portal && (
-                <>
+                <div className={`w-full h-full animate-slide-up`}>
                     <div className="flex flex-col gap-y-4 items-center">
                         <Logo variant="primary" className="size-16 text-selago-100" />
 
@@ -85,8 +85,7 @@ function Portal() {
                             <MagneticButton onClick={() => setPage(Page.login)} message='LOG IN' className='w-full'/>
                         </div>
                     </div>
-
-                </>
+                </div>
             )}
 
             {page === Page.login && (
