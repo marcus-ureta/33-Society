@@ -210,7 +210,7 @@ function SignUp({page, setPage} : {page: Page, setPage : React.Dispatch<React.Se
                         <div className="w-[50%] h-[3px] bg-selago-0 rounded-full shadow-[0_0_16px_1px_var(--color-schiava-blue-dark)]"/>
                         <div className={`w-[50%] h-[3px] rounded-full shadow-[0_0_16px_1px_var(--color-schiava-blue-dark)] ${page !== Page.signup ? 'bg-selago-0' : 'bg-davys-grey-0'} transition-all duration-200`}/>
                         {[...Array(4)].map((_, index) => (
-                            <div key={index} className={`w-[50%] h-[3px] ${index < questionNo - 1 ? 'bg-selago-0' : 'bg-davys-grey-0'} rounded-full shadow-[0_0_16px_1px_var(--color-schiava-blue-dark)] transition-all duration-200`} />
+                            <div key={index} className={`w-[50%] h-[3px] ${page !== Page.signup && index < questionNo - 1 ? 'bg-selago-0' : 'bg-davys-grey-0'} rounded-full shadow-[0_0_16px_1px_var(--color-schiava-blue-dark)] transition-all duration-200`} />
                         ))}
                     </div>
                 </div>

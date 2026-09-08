@@ -7,7 +7,7 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { Page } from '@/portal/Portal';
 import { type FormAnswers } from '@/portal/SignUp';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 
 interface QuestionnairePageProps {
@@ -19,8 +19,10 @@ interface QuestionnairePageProps {
     setFormAnswers: React.Dispatch<React.SetStateAction<FormAnswers>>;
 }
 
+type AnimationState = "idle" | "prev-exit" | "next-exit" | "enter";
+
 function QuestionnairePage({ setPage, questionNo, setQuestionNo, formAnswers, setFormAnswers } : QuestionnairePageProps) {
-    const [animate, setAnimate] = useState(true);
+    const [animation, setAnimation] = useState<AnimationState>("enter");
 
     const questions: string[] = [
         'What unique value or insight can you contribute to the community?',
@@ -49,7 +51,7 @@ function QuestionnairePage({ setPage, questionNo, setQuestionNo, formAnswers, se
 
     const handleNextQuestion = (input: string) => {
 
-        if(animate === true) return;
+        if (animation !== "idle") return;
 
         const trimmedInput = input.trim();
 
@@ -57,7 +59,6 @@ function QuestionnairePage({ setPage, questionNo, setQuestionNo, formAnswers, se
             return;
         }
 
-        setAnimate(true);
         const key = questionKeys[questionNo];
 
         setFormAnswers(prev => ({
@@ -66,7 +67,7 @@ function QuestionnairePage({ setPage, questionNo, setQuestionNo, formAnswers, se
         }));
 
         if (questionNo < questions.length) {
-            setQuestionNo(prev => prev + 1);
+            setAnimation("next-exit");
         } else {
             setQuestionNo(prev => prev + 1);
             setPage(Page.accountSetup);
@@ -74,23 +75,48 @@ function QuestionnairePage({ setPage, questionNo, setQuestionNo, formAnswers, se
     };
 
     const handleCheckboxChange = (checked: boolean | "indeterminate", value: string) => {
-        if (checked === true && !animate) {
+        if (checked === true) {
             handleNextQuestion(value);
         }
     };
 
     const handlePrevQuestion = () => {
-        if (questionNo > 1 && !animate) {
-            setAnimate(true);
-            setQuestionNo((prev) => prev - 1);
+        if (animation !== "idle") return;
+
+        if (questionNo > 1) {
+            setAnimation("prev-exit");
         } else {
             setPage(Page.signup);
         }
     };
 
+    const handleAnimationEnd = () => {
+        if (animation === "next-exit") {
+            setTimeout(() => {
+                setQuestionNo(prev => prev + 1);
+                setAnimation("enter");
+            }, 100);
+
+            return;
+        }
+
+        if (animation === "prev-exit") {
+            setTimeout(() => {
+                setQuestionNo(prev => prev - 1);
+                setAnimation("enter");
+            }, 100);
+
+            return;
+        }
+
+        if (animation === "enter") {
+            setAnimation("idle");
+        }
+    };
+
     return (
         <>
-            <div onAnimationEnd={() => setAnimate(false)} className={`flex flex-col items-center justify-center w-full h-[80%] gap-y-4 sm:gap-y-12 max-w-none prose ${animate === true ? 'animate-slide-up' : ''}`}>
+            <div onAnimationEnd={handleAnimationEnd} className={`flex flex-col items-center justify-center w-full h-[80%] gap-y-4 sm:gap-y-12 max-w-none prose ${animation === "next-exit" || animation === "prev-exit" ? "animate-slide-down" : ""} ${animation === "enter" ? "animate-slide-up" : ""}`}>
 
                 <h1 className="font-['Cochin'] font-bold text-selago-100 text-3xl sm:text-4xl mx-12 text-center max-w-[1068px]">
                     {questions[questionNo - 1]}
