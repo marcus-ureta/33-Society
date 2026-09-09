@@ -78,17 +78,15 @@ function AccountSetup({setPage, email, formAnswers} : {setPage : React.Dispatch<
         const form = event.currentTarget;
         const formData = new FormData(form);
 
-        const registeredEmail = formData.get('email_address')?.toString();
         const password = formData.get('password')?.toString();
         const confirm_password = formData.get('confirm_password')?.toString();
 
         // INPUT VALIDATION
-        if(!isValidEmail(registeredEmail!)) { setErrorMessage('Email is not valid!'); return; }
         if(!isValidInput(password!, 6, 4096)) {setErrorMessage('Password is too short/long!'); return;}
 
         try {
             setIsRequest(true);
-            const user = await createAccount(registeredEmail!, password!, confirm_password!);
+            const user = await createAccount(email, password!, confirm_password!);
             setVerificationPage(true);
             console.log("Account created:", user.uid);
         } catch (error : any) {
@@ -109,58 +107,60 @@ function AccountSetup({setPage, email, formAnswers} : {setPage : React.Dispatch<
     }
 
     return (
-        <>
+        <div className={`animate-slide-up w-full h-full overflow-hidden`}>
             {goVerificationPage && (
                 <EmailVerification setPage={setPage} email={email} formAnswers={formAnswers}/>
             )}
 
             {!goVerificationPage && (
-                <div className="flex flex-col gap-y-4 items-center mt-[5%]">
-                    <div className="w-full max-w-6xl flex items-center justify-center gap-8">
+                <div className="w-full min-h-[67vh] flex items-center justify-center">
+                    <div className="w-full max-w-7xl flex items-center justify-center gap-8 px-6">
                 
-                    <form onSubmit={handleSignup} className="w-full max-w-[548px] mx-[5%]">
-                        <h1 className="text-white font-['Cochin'] text-5xl font-bold">Account Setup</h1>
+                        <form onSubmit={handleSignup} className="w-full max-w-[680px] mx-[5%]">
+                            <h1 className="text-white font-['Cochin'] text-5xl font-bold">Account Setup</h1>
 
-                        <FieldGroup className="flex flex-col gap-y-6 my-[5%]">
-                            <Field>
-                                <Input name='email_address' id="email_address" type="email" placeholder="33society@gmail.com" required className="bg-tristesse-0 border-davys-grey-100 text-selago-0 !text-[17px] h-fit py-[6px] px-2" defaultValue={email} onChange={() => setErrorMessage('')}/>
-                            </Field>
+                            <FieldGroup className="flex flex-col gap-y-6 my-[5%]">
+                                {/* <Field>
+                                    <Input name='email_address' id="email_address" type="email" placeholder="33society@gmail.com" required className="input-field" defaultValue={email} onChange={() => setErrorMessage('')}/>
+                                </Field> */}
 
-                            <Field>
-                                <Input name='password' id="password" type="password" placeholder="Setup Your Password" required className="bg-tristesse-0 border-davys-grey-100 text-selago-0 !text-[17px] h-fit py-[6px] px-2" onChange={() => setErrorMessage('')}/>
-                            </Field>
+                                <h1 className="font-['Aileron'] text-[clamp(0.75rem,5vw,2rem)] text-selago-100">Email: <span className='font-bold'>{email}</span></h1>
 
-                            <Input name='confirm_password' id="confirm_password" type="confirm_password" placeholder="Confirm Password" className="bg-tristesse-0 border-davys-grey-100 text-selago-0 !text-[17px] h-fit py-[6px] px-2 absolute left-[-9999px]"/>
-                        </FieldGroup>
+                                <Field>
+                                    <Input name='password' id="password" type="password" placeholder="Setup Your Password" required className="input-field" onChange={() => setErrorMessage('')}/>
+                                </Field>
 
-                        <div className="flex justify-center mt-[4%]">
-                            <Button disabled={isRequest} type='submit' variant="outline" className={cn(buttonVariants({variant: "default", size: "lg",}),
-                                "button-styling")}>
-                                {isRequest ? (
-                                    <>
-                                        <span className="spinner"/>
-                                        Registering Account...
-                                    </>
-                                ) : (
-                                    "Register Account"
-                                )}
-                            </Button>
-                        </div>
+                                <Input name='confirm_password' id="confirm_password" type="confirm_password" placeholder="Confirm Password" className="input-field absolute left-[-9999px]"/>
+                            </FieldGroup>
 
-                        {errorMessage && (
-                            <p className="text-red-400 text-sm font-['Aileron'] text-center mt-[16px]">{errorMessage}</p>
-                        )}
-                    </form>
+                            <div className="flex justify-center mt-[4%]">
+                                <Button disabled={isRequest} type='submit' variant="outline" className={cn(buttonVariants({variant: "default", size: "lg",}),
+                                    "button-styling w-full")}>
+                                    {isRequest ? (
+                                        <>
+                                            <span className="spinner"/>
+                                            Registering Account...
+                                        </>
+                                    ) : (
+                                        "Register Account"
+                                    )}
+                                </Button>
+                            </div>
 
-                        <Logo variant="stacked" className="hidden sm:block size-64 lg:size-96 xl:size-[28rem] text-selago-100 shrink-0"/>
+                            {errorMessage && (
+                                <p className="text-red-400 text-sm font-['Aileron'] text-center mt-[16px]">{errorMessage}</p>
+                            )}
+                        </form>
+
+                        <Logo variant="stacked" className="hidden sm:block size-48 lg:size-68 xl:size-[18rem] text-selago-100"/>
                     </div>
                 </div>
             )}
 
-            <div className="absolute bottom-0 left-0 w-full h-[600px] overflow-hidden pointer-events-none select-none">
-                <img src={crown} className="absolute bottom-0 left-0 w-full h-auto md:translate-y-[clamp(0px,4vw,500px)] select-none"/>
+            <div className="absolute bottom-0 left-0 w-full h-full overflow-hidden pointer-events-none select-none">
+                <img src={crown} className="absolute bottom-0 left-0 w-full h-auto md:translate-y-[clamp(0px,9vw,1500px)] select-none"/>
             </div>
-        </>
+        </div>
     );  
 }
 
