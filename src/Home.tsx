@@ -19,12 +19,20 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 import HomePillarsDesktop from "./components/HomePillarsDesktop";
+import { useRef } from "react";
 
 // 🤖 Vite/Rolldown CJS interop workaround for react-fast-marquee
 const Marquee =
   (FastMarquee as unknown as { default?: typeof FastMarquee }).default ||
   FastMarquee;
+
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 // ================================================================================
 
@@ -79,19 +87,59 @@ function App() {
 
   // ==============================================================================
 
+  const PILLARS_SECTION = useRef<HTMLDivElement>(null);
+  const PILLAR_CIRCLE = useRef<HTMLDivElement>(null);
+
+  useGSAP(
+    () => {
+      gsap.set(PILLAR_CIRCLE.current, { rotate: 74 });
+
+      let tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: PILLARS_SECTION.current,
+          pin: true,
+          pinSpacing: true,
+          anticipatePin: 1,
+          scrub: true,
+          start: "top top",
+          end: "+=2500",
+          snap: {
+            snapTo: "labelsDirectional",
+            duration: { min: 0.2, max: 0.8 }, // the snap animation should be at least 0.2 seconds, but no more than 3 seconds (determined by velocity)
+            delay: 0.2, // wait 0.2 seconds from the last scroll event before doing the snapping
+          },
+          markers: true,
+        },
+      });
+
+      tl.addLabel("pillar1")
+        .to(PILLAR_CIRCLE.current, { rotate: 45, duration: 1 })
+        .addLabel("pillar2")
+        .to(PILLAR_CIRCLE.current, { rotate: 16, duration: 1 })
+        .addLabel("pillar3")
+        .to(PILLAR_CIRCLE.current, { rotate: -16, duration: 1 })
+        .addLabel("pillar4")
+        .to(PILLAR_CIRCLE.current, { rotate: -45, duration: 1 })
+        .addLabel("pillar5")
+        .to(PILLAR_CIRCLE.current, { rotate: -74, duration: 1 })
+        .addLabel("pillar6");
+    },
+    { dependencies: [] },
+  );
+
   return (
     <>
       <Navbar />
 
       <div className="w-full h-fit flex justify-center bg-tristesse-0 min-w-80 *:wrap-break-word overflow-hidden">
         {/* PADDED CONTENT AREA */}
-        <div className="max-w-384 flex flex-col w-full min-w-80 h-fit">
+        <div className="w-full min-w-80">
           {/* 
             SECTION: HERO 
           */}
           <div className=" w-full h-fit flex flex-col items-center pt-48 p-8">
             {/* Middle hero text */}
-            <div className="prose prose-lg max-w-none w-full flex flex-col items-center max-w-270">
+            <div className="prose prose-lg w-full flex flex-col items-center max-w-270">
               <h1 className="font-cochin font-bold text-selago-100 text-7xl w-full max-w-[20ch] text-center mb-2">
                 Sweet topping shortbread jelly beans
               </h1>
@@ -122,7 +170,7 @@ function App() {
           {/* ==============================================================================
             SECTION: ABOUT SOCIETY 33 
           ============================================================================== */}
-          <div className="relative w-full @container h-fit p-8 flex flex-col items-center justify-center">
+          <div className="relative w-full @container h-fit p-8 flex flex-col items-center justify-center z-1">
             <div
               className="absolute inset-0 bg-schiava-blue bg-no-repeat bg-size-[100%_100%]"
               style={{
@@ -171,94 +219,113 @@ function App() {
           {/* ==============================================================================
             SECTION: PILLARS 
           ============================================================================== */}
-          <div className="bg-tristesse-0 h-fit w-full -mt-[15%] flex pt-72 flex-col items-center p-8 prose prose-lg max-w-none pb-24">
-            <div className="h-fit w-fit flex items-center flex-col">
-              <h1 className="font-cochin text-selago-50 text-center">
+          <div className="relative bg-tristesse-0 w-full mt-[-15%]">
+            <div
+              className="bg-tristesse-0 h-screen w-full flex items-center flex-col justify-center p-8 prose prose-lg max-w-none overflow-hidden mt-32"
+              ref={PILLARS_SECTION}
+            >
+              <h1 className="font-cochin text-selago-50 text-center mt-64">
                 OUR PILLARS
               </h1>
 
-              <div className="w-full h-fit flex overflow-hidden">
-                <div className="h-100 w-full my-24">
-                  <div className="rounded-full border-4 border-davys-grey-0 h-750 w-750 grid-cols-4 grid-rows-4 grid rotate-70">
+              <div
+                className="w-full h-fit flex justify-center overflow-hidden"
+                style={{
+                  maskImage:
+                    "radial-gradient(circle, black 25%, transparent 75%)",
+                  WebkitMaskImage:
+                    "radial-gradient(circle, black 25%, transparent 75%)",
+                }}
+              >
+                <div className="h-100 w-fit my-24">
+                  <div
+                    className="rounded-full border-4 border-davys-grey-0 h-750 w-750 grid-cols-4 grid-rows-4 grid rotate-16"
+                    ref={PILLAR_CIRCLE}
+                  >
+                    {/* 74, 45, 16, -16, -45 -74 */}
                     <HomePillarsDesktop
                       number="02"
                       name="Private Experiences"
                       description="Private dinners, yacht experiences, curated gatherings, and events designed around the people in the room."
-                      className="translate-x-68 translate-y-78 -rotate-42"
+                      className="translate-x-68 translate-y-75 -rotate-45"
                     />
                     <HomePillarsDesktop
                       number="03"
                       name="Masterminds"
                       description="Closed-door conversations where members exchange ideas, challenges, strategies, and perspectives with people building at a similar level."
-                      className="-rotate-16 translate-x-32 -translate-y-12"
+                      className="-rotate-16 translate-x-31 -translate-y-12"
                     />
                     <HomePillarsDesktop
                       number="04"
                       name="Business Opportunity"
                       description="Create opportunities through partnerships, referrals, collaborations, introductions, and deal-making."
+                      className="rotate-16 translate-x-34 -translate-y-11"
                     />
                     <HomePillarsDesktop
                       number="05"
                       name="International Experience"
                       description="Travel beyond the usual business environment. Experience new cities, new markets, and new relationships with the Society."
+                      className="rotate-45 -translate-x-11 translate-y-74"
                     />
                     <HomePillarsDesktop
                       number="01"
                       name="The Inner Circle"
                       description="A private community of founders, entrepreneurs, executives, and business-minded individuals across Asia."
-                      className="-rotate-70 -translate-x-20 translate-y-38"
+                      className="-rotate-74 -translate-x-21 translate-y-38"
                     />
                     <HomePillarsDesktop
                       number="06"
                       name="International Experience"
                       description="From private yachts to international trips, every experience is designed to be something worth remembering."
-                      className="col-start-4"
+                      className="col-start-4 rotate-74 translate-x-78 translate-y-36"
                     />
                   </div>
                 </div>
               </div>
-
-              <div className="flex-col flex md:grid md:grid-cols-2 xl:grid-cols-3 2xl:hidden md:gap-x-8 max-w-270">
-                <HomePillars
-                  number="01"
-                  name="The Inner Circle"
-                  description="A private community of founders, entrepreneurs, executives, and business-minded individuals across Asia."
-                />
-                <HomePillars
-                  number="02"
-                  name="Private Experiences"
-                  description="Private dinners, yacht experiences, curated gatherings, and events designed around the people in the room."
-                />
-                <HomePillars
-                  number="03"
-                  name="Masterminds"
-                  description="Closed-door conversations where members exchange ideas, challenges, strategies, and perspectives with people building at a similar level."
-                />
-                <HomePillars
-                  number="04"
-                  name="Business Opportunity"
-                  description="Create opportunities through partnerships, referrals, collaborations, introductions, and deal-making."
-                />
-                <HomePillars
-                  number="05"
-                  name="International Experience"
-                  description="Travel beyond the usual business environment. Experience new cities, new markets, and new relationships with the Society."
-                />
-                <HomePillars
-                  number="06"
-                  name="International Experience"
-                  description="From private yachts to international trips, every experience is designed to be something worth remembering."
-                />
-              </div>
             </div>
 
+            <div className="flex-col flex md:grid md:grid-cols-2 xl:grid-cols-3 2xl:hidden md:gap-x-8 max-w-270 mx-auto p-8">
+              <HomePillars
+                number="01"
+                name="The Inner Circle"
+                description="A private community of founders, entrepreneurs, executives, and business-minded individuals across Asia."
+              />
+              <HomePillars
+                number="02"
+                name="Private Experiences"
+                description="Private dinners, yacht experiences, curated gatherings, and events designed around the people in the room."
+              />
+              <HomePillars
+                number="03"
+                name="Masterminds"
+                description="Closed-door conversations where members exchange ideas, challenges, strategies, and perspectives with people building at a similar level."
+              />
+              <HomePillars
+                number="04"
+                name="Business Opportunity"
+                description="Create opportunities through partnerships, referrals, collaborations, introductions, and deal-making."
+              />
+              <HomePillars
+                number="05"
+                name="International Experience"
+                description="Travel beyond the usual business environment. Experience new cities, new markets, and new relationships with the Society."
+              />
+              <HomePillars
+                number="06"
+                name="International Experience"
+                description="From private yachts to international trips, every experience is designed to be something worth remembering."
+              />
+            </div>
+          </div>
+
+          {/* ==============================================================================
+            SECTION: GUEST SPEAKERS
+          ============================================================================== */}
+          <div className="bg-tristesse-0 h-fit w-full flex flex-col items-center p-8 prose prose-lg max-w-none pb-24">
             <LineDivider
               fillName="davys-grey-0"
               className="mb-18 w-full max-w-270"
             />
-            {/* ==============================================================================
-              SECTION: GUEST SPEAKERS
-            ============================================================================== */}
             <div className="prose prose-lg h-fit w-full flex items-center flex-col @container max-w-none">
               <h1 className="text-center font-cochin text-selago-50 mb-0">
                 GUEST SPEAKERS
