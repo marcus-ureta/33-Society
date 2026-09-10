@@ -21,11 +21,14 @@ import {
 function Navbar() {
   return (
     <>
-      <div className="fixed w-9/10 max-w-270 left-1/2 -translate-x-1/2 h-16 top-12 bg-selago-0 rounded-full grid grid-cols-[auto_1fr_auto] grid-rows-1 items-center px-6 z-50">
-        <Logo variant="horizontal" className="h-6 w-auto text-schiava-blue" />
+      <div className="fixed w-9/10 max-w-270 left-1/2 -translate-x-1/2 h-16 top-12 bg-selago-0 rounded-full grid grid-cols-[auto_1fr_auto] grid-rows-1 items-center px-6 z-50 drop-shadow-2xl">
+        <Logo
+          variant="horizontal"
+          className="h-6 w-auto text-schiava-blue drop-shadow-tristesse-0/42 drop-shadow-lg"
+        />
 
         {/* LARGE TABLET AND UP ONLY LINKS */}
-        <div className="hidden w-full lg:flex flex-row gap-10 px-8 *:font-aileron *:text-schiava-blue *:text-base">
+        <div className="hidden w-full lg:flex flex-row gap-10 px-8 *:font-aileron *:text-schiava-blue *:text-base *:text-shadow-lg *:text-shadow-tristesse-0/12">
           {/* NAVBAR LINKS 
               TODO: react router links (scrollable ids) and single source array
           */}
@@ -38,7 +41,7 @@ function Navbar() {
           <Button
             variant="outline"
             className={
-              "text-schiava-blue px-5 py-2 font-aileron text-sm rounded-full h-full border-schiava-blue transition-all duration-300 hover:border-schiava-blue-dark hover:bg-schiava-blue-dark hover:text-selago-0 active:scale-90"
+              "text-schiava-blue px-5 py-2 font-aileron text-sm rounded-full h-full border-schiava-blue transition-all duration-300 hover:border-schiava-blue-dark hover:bg-schiava-blue-dark hover:text-selago-0 active:scale-90 drop-shadow-tristesse-0/42 drop-shadow-lg"
             }
           >
             Book a Meeting
@@ -47,7 +50,7 @@ function Navbar() {
           <Button
             variant="default"
             className={
-              "text-selago-0 bg-schiava-blue px-5 py-2 font-aileron text-sm rounded-full h-full -ml-2 transition-all duration-300 hover:bg-tristesse-0 hover:text-selago-0 active:scale-90"
+              "text-selago-0 bg-schiava-blue px-5 py-2 font-aileron text-sm rounded-full h-full -ml-2 transition-all duration-300 hover:bg-tristesse-0 hover:text-selago-0 active:scale-90 drop-shadow-tristesse-0/42 drop-shadow-lg"
             }
           >
             Purchase a Ticket
@@ -61,7 +64,9 @@ function Navbar() {
               <Button
                 variant="ghost"
                 size="icon-lg"
-                className={"lg:hidden justify-self-end"}
+                className={
+                  "lg:hidden justify-self-end drop-shadow-lg drop-shadow-tristesse-0/28"
+                }
               >
                 <Bars className="size-6 text-schiava-blue" />
               </Button>
