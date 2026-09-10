@@ -34,6 +34,8 @@ const Marquee =
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
+import { useMediaQuery } from "react-responsive";
+
 // ================================================================================
 
 // TODO: check if renaming function doesn't cause issues in main.tsx first
@@ -127,13 +129,25 @@ function App() {
     { dependencies: [] },
   );
 
+  const is2kWidth = useMediaQuery({ minWidth: 2048 });
+
   return (
     <>
       <Navbar />
 
       <div className="w-full h-fit flex justify-center bg-tristesse-0 min-w-80 *:wrap-break-word overflow-hidden">
         {/* PADDED CONTENT AREA */}
-        <div className="w-full min-w-80">
+        <div
+          className="w-full min-w-80 max-w-512"
+          style={{
+            WebkitMaskImage: is2kWidth
+              ? "linear-gradient(90deg, rgba(0,0,0,0) 0%, black 2%, #000000 50%, black 98%, rgba(0,0,0,0) 100%)"
+              : "",
+            maskImage: is2kWidth
+              ? "linear-gradient(90deg, rgba(0,0,0,0) 0%, black 2%, #000000 50%, black 98%, rgba(0,0,0,0) 100%)"
+              : "",
+          }}
+        >
           {/* 
             SECTION: HERO 
           */}
