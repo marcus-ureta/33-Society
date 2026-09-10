@@ -1,11 +1,16 @@
 
-import { ArrowRight, ArrowLeft } from "flowbite-react-icons/outline";
+import { ArrowRight, ArrowLeft } from "flowbite-react-icons/outline"
 
 import { Field, FieldGroup, FieldLabel } from "@/components/ui/field"
 import { Checkbox } from "@/components/ui/checkbox"
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 
 import { Page } from '@/portal/Portal';
-import { type FormAnswers } from '@/portal/SignUp';
+import { Label } from "@/components/ui/label"
+import { type FormAnswers } from '@/portal/SignUp'
+
+import MagneticButton from "@/components/magnetic_button/MagneticButton.tsx";
+
 
 import { useState } from 'react';
 
@@ -140,69 +145,29 @@ function QuestionnairePage({ setPage, questionNo, setQuestionNo, formAnswers, se
                 )}
 
                 {questionNo === 3 && (
-                    <FieldGroup className="grid grid-cols-2 grid-rows-2 items-center justify-items-center gap-y-9 max-w-[512px] translate-x-[13%]">
+                    <RadioGroup className="flex flex-col items-center justify-center gap-y-4 w-[90%] max-w-[620px]" defaultValue='option-one'>
+                        <div className="group flex items-center gap-3 bg-selago-50 w-full py-[8px] justify-center border-2 border-davys-grey-0 rounded-4xl hover:bg-transparent hover:border-selago-50 transition-all duration-200">
+                            <RadioGroupItem value="option-one" id="option-one" className='hidden'/>
+                            <Label className="text-2xl font-['Aileron'] text-tristesse-0 group-hover:text-selago-50" htmlFor="option-one">Under $5k</Label>
+                        </div>
 
-                        <Field orientation="horizontal" className="w-full justify-center">
-                            <Checkbox id="5k" name="under_5k" className="hover:cursor-pointer size-6 border-selago-0 text-selago-100 mr-1"
-                                onCheckedChange={(checked) =>
-                                    handleCheckboxChange(
-                                        checked,
-                                        "Under $5k"
-                                    )
-                                }
-                            />
-                            <FieldLabel htmlFor="5k" className="hover:cursor-pointer text-[1.05rem] text-selago-100 font-['Aileron'] font-semibold">
-                                Under $5k
-                            </FieldLabel>
-                        </Field>
+                        <div className="group flex items-center gap-3 bg-selago-50 w-full py-[8px] justify-center border-2 border-davys-grey-0 rounded-4xl hover:bg-transparent hover:border-selago-50 transition-all duration-200">
+                            <RadioGroupItem value="option-one" id="option-one" className='hidden'/>
+                            <Label className="text-2xl font-['Aileron'] text-tristesse-0 group-hover:text-selago-50" htmlFor="option-one">Under $5k - $10k</Label>
+                        </div>
 
-                        <Field orientation="horizontal" className="w-full justify-center">
-                            <Checkbox id="5k_10k" name="5k_10k" className="hover:cursor-pointer size-6 border-selago-0 text-selago-100 mr-1"
-                                onCheckedChange={(checked) =>
-                                    handleCheckboxChange(
-                                        checked,
-                                        "$5k - $10k"
-                                    )
-                                }
-                            />
+                        <div className="group flex items-center gap-3 bg-selago-50 w-full py-[8px] justify-center border-2 border-davys-grey-0 rounded-4xl hover:bg-transparent hover:border-selago-50 transition-all duration-200">
+                            <RadioGroupItem value="option-one" id="option-one" className='hidden'/>
+                            <Label className="text-2xl font-['Aileron'] text-tristesse-0 group-hover:text-selago-50" htmlFor="option-one">Under $10k - $50k</Label>
+                        </div>
 
-                            <FieldLabel htmlFor="5k_10k" className="hover:cursor-pointer text-[1.05rem] text-selago-100 font-['Aileron'] font-semibold">
-                                $5k - $10k
-                            </FieldLabel>
-                        </Field>
+                        <div className="group flex items-center gap-3 bg-selago-50 w-full py-[8px] justify-center border-2 border-davys-grey-0 rounded-4xl hover:bg-transparent hover:border-selago-50 transition-all duration-200">
+                            <RadioGroupItem value="option-one" id="option-one" className='hidden'/>
+                            <Label className="text-2xl font-['Aileron'] text-tristesse-0 group-hover:text-selago-50" htmlFor="option-one">Above $50k</Label>
+                        </div>
 
-                        <Field orientation="horizontal" className="w-full justify-center">
-                            <Checkbox id="10k_50k" name="10k_50k" className="hover:cursor-pointer size-6 border-selago-0 text-selago-100 mr-1"
-                                onCheckedChange={(checked) =>
-                                    handleCheckboxChange(
-                                        checked,
-                                        "$10k - $50k"
-                                    )
-                                }
-                            />
-
-                            <FieldLabel htmlFor="10k_50k" className="hover:cursor-pointer text-[1.05rem] text-selago-100 font-['Aileron'] font-semibold">
-                                $10k - $50k
-                            </FieldLabel>
-                        </Field>
-
-                        <Field orientation="horizontal" className="w-full justify-center">
-                            <Checkbox id="50k" name="50k" className="hover:cursor-pointer size-6 border-selago-0 text-selago-100 mr-1"
-                                onCheckedChange={(checked) =>
-                                    handleCheckboxChange(
-                                        checked,
-                                        "$50k+"
-                                    )
-                                }
-                            />
-
-                            <FieldLabel htmlFor="50k" className="hover:cursor-pointer text-[1.05rem] text-selago-100 font-['Aileron'] font-semibold"
-                            >
-                                $50k+
-                            </FieldLabel>
-                        </Field>
-
-                    </FieldGroup>
+                        <MagneticButton message='Next Question' onClick={() => {}}/>
+                    </RadioGroup>
                 )}
 
                 {questionNo === 4 && (
