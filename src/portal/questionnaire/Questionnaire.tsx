@@ -1,8 +1,6 @@
 
 import { ArrowRight, ArrowLeft } from "flowbite-react-icons/outline"
 
-import { Field, FieldGroup, FieldLabel } from "@/components/ui/field"
-import { Checkbox } from "@/components/ui/checkbox"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 
 import { Page } from '@/portal/Portal';
@@ -79,12 +77,6 @@ function QuestionnairePage({ setPage, questionNo, setQuestionNo, formAnswers, se
         }
     };
 
-    const handleCheckboxChange = (checked: boolean | "indeterminate", value: string) => {
-        if (checked === true) {
-            handleNextQuestion(value);
-        }
-    };
-
     const handlePrevQuestion = () => {
         if (animation !== "idle") return;
 
@@ -136,7 +128,7 @@ function QuestionnairePage({ setPage, questionNo, setQuestionNo, formAnswers, se
                                     handleNextQuestion(inputValue);
                                 }
                             }}
-                        placeholder="Your Answer" className="border-b-[1px] border-davys-grey-0 text-[2rem] text-davys-grey-0 font-['instrument-serif'] italic pl-2 w-[90%] max-w-[660px] mb-0"/>
+                        placeholder="Your Answer" className="border-b border-davys-grey-0 text-[2rem] text-davys-grey-0 font-['instrument-serif'] italic pl-2 w-[90%] max-w-[660px] mb-0"/>
 
                         <div onClick={() => handleNextQuestion(inputValue)} className={`pointer-events-auto ${!inputValue.trim() ? 'opacity-40 cursor-not-allowed' : ''}`}>
                             <ArrowRight className={`w-6 h-6 text-davys-grey-0 border-2 rounded-full mt-2 transition-all duration-200 ${inputValue.trim() ? 'hover:text-selago-0 hover:cursor-pointer' : 'cursor-not-allowed'}`}/>
