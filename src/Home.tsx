@@ -151,13 +151,13 @@ function App() {
           {/* 
             SECTION: HERO 
           */}
-          <div className=" w-full h-fit flex flex-col items-center pt-48 p-8">
+          <div className=" w-full h-fit lg:h-screen flex flex-col items-center pt-64 p-8">
             {/* Middle hero text */}
             <div className="prose prose-lg w-full flex flex-col items-center max-w-270">
-              <h1 className="font-cochin font-bold text-selago-100 text-7xl w-full max-w-[20ch] text-center mb-2">
+              <h1 className="font-cochin font-bold text-selago-100 text-7xl lg:text-8xl w-full max-w-[20ch] text-center mb-2">
                 The Privelege of the Right Circle.
               </h1>
-              <p className="font-aileron text-selago-0 mb-0 text-center">
+              <p className="font-aileron text-selago-0 mb-0 text-center lg:text-xl">
                 Society 33 is a private society for the next generation of Asian
                 founders.
               </p>
@@ -178,13 +178,13 @@ function App() {
             </div>
 
             {/* Partners */}
-            <div className="flex justify-center h-72 w-full"></div>
+            <div className="flex justify-center h-72 lg:h-auto w-full"></div>
           </div>
 
           {/* ==============================================================================
             SECTION: ABOUT SOCIETY 33 
           ============================================================================== */}
-          <div className="relative w-full @container h-fit p-8 flex flex-col items-center justify-center z-1">
+          <div className="relative w-full @container h-fit p-8 flex flex-col items-center justify-center z-1 -mt-32">
             <div
               className="absolute inset-0 bg-schiava-blue bg-no-repeat bg-size-[100%_100%]"
               style={{
