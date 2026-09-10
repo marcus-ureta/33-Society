@@ -20,7 +20,7 @@ export function HomePillarsDesktop({
       {...props}
     >
       <div className="rounded-full p-8 size-48 flex justify-center items-center bg-schiava-blue mb-8">
-        <h2 className="font-cochin text-selago-50 text-7xl text-center translate-x-0.5 translate-y-0.5 mb-0 mt-0">
+        <h2 className="font-cochin text-selago-50 text-7xl text-center translate-x-0.5 translate-y-0.5 mb-0 mt-0 text-shadow-lg text-shadow-tristesse-0/48">
           {number}
         </h2>
       </div>
