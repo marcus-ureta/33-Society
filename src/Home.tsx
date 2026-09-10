@@ -362,18 +362,18 @@ function App() {
 
               <Marquee
                 autoFill={true}
-                className="w-full!"
+                className="w-full! py-8 -my-8"
                 pauseOnHover
                 speed={75}
                 style={{
                   WebkitMaskImage:
-                    "linear-gradient(90deg, transparent 3%, black, transparent 97%)",
+                    "linear-gradient(90deg, transparent 2%, rgba(0,0,0,0.5) 12%, black 50%, rgba(0,0,0,0.5) 88%, transparent 98%)",
                   maskImage:
-                    "linear-gradient(90deg, transparent 3%, black, transparent 97%)",
+                    "linear-gradient(90deg, transparent 2%, rgba(0,0,0,0.5) 12%, black 50%, rgba(0,0,0,0.5) 88%, transparent 98%)",
                 }}
               >
                 {/* TODO: extract this to reusable component */}
-                <div className="h-144 w-72 border border-davys-grey-0 mr-8 rounded-2xl flex flex-col">
+                <div className="h-144 w-72 border border-davys-grey-0 mr-8 rounded-2xl flex flex-col bg-schiava-blue/12 transition-all duration-300 hover:scale-102">
                   <img
                     className="aspect-4/5 w-full h-auto mb-0 mt-0 rounded-t-2xl"
                     src="https://s.yimg.com/lo/mysterio/api/f31f4df8d5b30a5537d3ade836d06d67c72de4375cb7bc16fafe22a85e2833a5/lightyear_networkapi/resizefill_w480_h348%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fknow_your_meme_909%2Fc3f13e3aa7742e8034894c82237bea06"
@@ -436,15 +436,6 @@ function App() {
                 className="md:col-span-full xl:col-span-2 xl:col-start-4"
               ></HomeActivities>
             </div>
-
-            <iframe
-              className="w-[90vw] md:w-full max-w-270 h-auto aspect-video mt-8"
-              src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?si=ugKjYpsBKxPG9So0"
-              title="YouTube video player"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
-            ></iframe>
           </div>
 
           {/* ==============================================================================
