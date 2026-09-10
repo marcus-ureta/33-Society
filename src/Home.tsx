@@ -183,14 +183,14 @@ function App() {
                 // Layer 1: Scale width to 100% and explicitly match the top crown aspect ratio height.
                 // Layer 2: Fill 100% height minus top crown and bottom crown (with 4px overlap for seams).
                 // Layer 3: Scale width to 100% and explicitly match the bottom crown aspect ratio height.
-                maskSize: `100% auto, 100% calc(100% - (100cqw * ${CROWN_TOP_HEIGHT_MULTIPLIER}) - 60px), 100% 64px`,
-                WebkitMaskSize: `100% auto, 100% calc(100% - (100cqw * ${CROWN_TOP_HEIGHT_MULTIPLIER}) - 60px), 100% 64px`,
+                maskSize: `100% auto, 100% calc(100% - (100cqw * ${CROWN_TOP_HEIGHT_MULTIPLIER}) - 128px), 100% 256px`,
+                WebkitMaskSize: `100% auto, 100% calc(100% - (100cqw * ${CROWN_TOP_HEIGHT_MULTIPLIER}) - 128px), 100% 256px`,
 
                 // Layer 1: Pin to top left.
                 // Layer 2: Push down to where the top crown ends (minus 2px to prevent a seam).
                 // Layer 3: Pin to bottom.
-                maskPosition: `0 0, 0 calc((100cqw * ${CROWN_TOP_HEIGHT_MULTIPLIER}) - 2px), 0 bottom`,
-                WebkitMaskPosition: `0 0, 0 calc((100cqw * ${CROWN_TOP_HEIGHT_MULTIPLIER}) - 2px), 0 bottom`,
+                maskPosition: `0 0, 0 calc((100cqw * ${CROWN_TOP_HEIGHT_MULTIPLIER}) - 32px), 0 bottom`,
+                WebkitMaskPosition: `0 0, 0 calc((100cqw * ${CROWN_TOP_HEIGHT_MULTIPLIER}) - 32px), 0 bottom`,
               }}
             />
 
@@ -198,20 +198,31 @@ function App() {
             <div
               className="w-full h-full z-1 relative flex flex-col items-center prose prose-lg max-w-270"
               style={{
-                paddingTop: `calc(((100cqw * ${CROWN_TOP_HEIGHT_MULTIPLIER}) - 2px) + 32px)`,
-                paddingBottom: `64px`,
+                paddingTop: `calc((100cqw * ${CROWN_TOP_HEIGHT_MULTIPLIER}) - 272px)`,
+                paddingBottom: `128px`,
               }}
             >
-              <h1 className="font-cochin text-selago-50 mb-4 text-center">
+              <h1 className="font-cochin text-selago-0 mb-4 text-center">
                 ABOUT
               </h1>
-              <Logo variant="mark" className="text-selago-50 size-36"></Logo>
+              <Logo
+                variant="mark"
+                className="text-selago-0 size-36 mb-8"
+              ></Logo>
 
-              <p className="text-center text-selago-0 font-aileron">
-                Oat cake cheesecake caramels shortbread toffee wafer. Tiramisu
-                sweet bonbon tart lemon drops. Muffin cake sugar plum chocolate
-                bar cotton candy sweet jujubes danish. Croissant icing chupa
-                chups jelly beans fruitcake.
+              <p className="text-[#D3D8E5] font-aileron max-w-[65ch] text-justify [text-align-last:center]">
+                Society 33 is a private society built for young founders and
+                ambitious individuals across Asia who are building something of
+                their own. We bring together people with ambition, achievements,
+                and something meaningful to contribute creating a circle where
+                relationships can turn into partnerships, introductions can
+                become opportunities, and conversations can lead to deals.
+                <br />
+                <br />
+                From intimate founder dinners to yacht experiences, mastermind
+                sessions, and international trips, Society 33 exists to bring
+                the right people into the same room. Because who you build with
+                matters just as much as what you build.
               </p>
             </div>
           </div>
@@ -229,7 +240,7 @@ function App() {
               </h1>
 
               <div
-                className="w-full h-fit flex justify-center overflow-hidden"
+                className="w-full h-fit flex justify-center overflow-hidden max-w-540"
                 style={{
                   maskImage:
                     "radial-gradient(circle, black 25%, transparent 75%)",
