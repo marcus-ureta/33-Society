@@ -151,7 +151,7 @@ function App() {
           {/* 
             SECTION: HERO 
           */}
-          <div className=" w-full h-fit lg:h-screen flex flex-col items-center pt-64 p-8">
+          <div className=" w-full h-fit lg:h-screen flex flex-col items-center pt-64 p-8 min-h-225">
             {/* Middle hero text */}
             <div className="prose prose-lg w-full flex flex-col items-center max-w-270">
               <h1 className="font-cochin font-bold text-selago-100 text-7xl lg:text-8xl w-full max-w-[20ch] text-center mb-2">
@@ -163,11 +163,11 @@ function App() {
               </p>
 
               {/* Hero CTA */}
-              <div className="mt-12 border-2 border-schiava-blue p-4 md:px-6 rounded-[42px] md:rounded-full flex flex-col md:flex-row items-center gap-4">
+              <div className="mt-12 border-2 border-schiava-blue p-4 lg:p-2 md:px-6 rounded-[42px] md:rounded-full flex flex-col md:flex-row items-center gap-4 lg:gap-0">
                 <Button
                   variant="default"
                   className={
-                    "text-selago-0 bg-schiava-blue px-8 py-3 font-aileron rounded-full text-lg h-full -ml-2"
+                    "text-selago-0 bg-schiava-blue px-8 py-3 font-aileron rounded-full text-lg h-full -ml-2 lg:ml-0"
                   }
                 >
                   Purchase a Ticket
@@ -216,15 +216,15 @@ function App() {
                 paddingBottom: `128px`,
               }}
             >
-              <h1 className="font-cochin text-selago-0 mb-4 text-center">
+              <h1 className="font-cochin text-selago-0 mb-4 text-center text-shadow-lg text-shadow-tristesse-0/36">
                 ABOUT
               </h1>
               <Logo
                 variant="mark"
-                className="text-selago-0 size-36 mb-8"
+                className="text-selago-0 size-36 mb-8 drop-shadow-lg drop-shadow-tristesse-0/56"
               ></Logo>
 
-              <p className="text-[#D3D8E5] font-aileron max-w-[65ch] text-justify [text-align-last:center]">
+              <p className="text-[#D3D8E5] font-aileron max-w-[65ch] text-justify [text-align-last:center] text-shadow-md text-shadow-tristesse-0/48">
                 Society 33 is a private society built for young founders and
                 ambitious individuals across Asia who are building something of
                 their own. We bring together people with ambition, achievements,
