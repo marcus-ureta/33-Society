@@ -165,54 +165,22 @@ function QuestionnairePage({ setPage, questionNo, setQuestionNo, formAnswers, se
                 )}
 
                 {questionNo === 4 && (
-                    <FieldGroup className="grid sm:grid-cols-3 items-center justify-center gap-y-9 max-w-[880px]">
+                    <RadioGroup className="flex flex-col gap-y-4 w-[90%] h-auto sm:h-[39%] max-w-[620px]" value={inputValue ?? ""} onValueChange={saveAnswer}>
+                        {[
+                            { id: "option-one", value: "Yes, I am ready to invest", label: "Yes, I am ready to invest" },
+                            { id: "option-two", value: "No, not at this time", label: "No, not at this time" },
+                            { id: "option-three", value: "Maybe, will think about it", label: "Maybe, will think about it" },
+                        ].map((option) => (
+                            <Label key={option.id} htmlFor={option.id} className={`radio-field text-2xl cursor-pointer transition-all duration-200
+                                ${inputValue === option.value ? "border-selago-50! bg-transparent! text-selago-50" : ""}`}>
 
-                        <Field orientation="horizontal" className="w-fit justify-center">
-                            <Checkbox id="offer_accepted" name="offer_accepted" className="hover:cursor-pointer size-6 border-selago-0 text-selago-100 mr-1"
-                                onCheckedChange={(checked) =>
-                                    handleCheckboxChange(
-                                        checked,
-                                        "Yes, I am ready to invest"
-                                    )
-                                }
-                            />
+                            <RadioGroupItem value={option.value} id={option.id} className="sr-only"/>
+                                {option.label}
+                            </Label>
+                        ))}
 
-                            <FieldLabel htmlFor="offer_accepted" className="hover:cursor-pointer text-[1.05rem] text-selago-100 font-['Aileron'] font-semibold">
-                                Yes, I am ready to invest
-                            </FieldLabel>
-                        </Field>
-
-                        <Field orientation="horizontal" className="w-fit justify-center">
-                            <Checkbox id="offer_declined" name="offer_declined" className="hover:cursor-pointer size-6 border-selago-0 text-selago-100 mr-1"
-                                onCheckedChange={(checked) =>
-                                    handleCheckboxChange(
-                                        checked,
-                                        "No, not at this time"
-                                    )
-                                }
-                            />
-
-                            <FieldLabel htmlFor="offer_declined" className="hover:cursor-pointer text-[1.05rem] text-selago-100 font-['Aileron'] font-semibold">
-                                No, not at this time
-                            </FieldLabel>
-                        </Field>
-
-                        <Field orientation="horizontal" className="w-fit justify-center">
-                            <Checkbox id="offer_uncertain" name="offer_uncertain" className="hover:cursor-pointer size-6 border-selago-0 text-selago-100 mr-1"
-                                onCheckedChange={(checked) =>
-                                    handleCheckboxChange(
-                                        checked,
-                                        "Maybe, will think about it for some time"
-                                    )
-                                }
-                            />
-
-                            <FieldLabel htmlFor="offer_uncertain" className="hover:cursor-pointer text-[1.05rem] text-selago-100 font-['Aileron'] font-semibold">
-                                Maybe, will think about it for some time
-                            </FieldLabel>
-                        </Field>
-
-                    </FieldGroup>
+                        <MagneticButton message='Next Question' className='mt-[16px]' onClick={() => handleNextQuestion(inputValue)}/>
+                    </RadioGroup>
                 )}
             </div>
 
