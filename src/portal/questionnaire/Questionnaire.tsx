@@ -152,7 +152,7 @@ function QuestionnairePage({ setPage, questionNo, setQuestionNo, formAnswers, se
                             </Label>
                         ))}
 
-                        <MagneticButton message='Next Question' className='mt-[16px]' onClick={() => handleNextQuestion(inputValue)}/>
+                        <MagneticButton message='Next Question' className={`mt-[16px] ${inputValue === '' ? 'cursor-not-allowed! bg-davys-grey-0! border-davys-grey-50! text-davys-grey-100!' : ''}`} onClick={() => handleNextQuestion(inputValue)}/>
                     </RadioGroup>
                 )}
 
@@ -171,7 +171,7 @@ function QuestionnairePage({ setPage, questionNo, setQuestionNo, formAnswers, se
                             </Label>
                         ))}
 
-                        <MagneticButton message='Next Question' className='mt-[16px]' onClick={() => handleNextQuestion(inputValue)}/>
+                        <MagneticButton message='Next Question' className={`mt-[16px] ${inputValue === '' ? 'cursor-not-allowed! bg-davys-grey-0! border-davys-grey-50! text-davys-grey-100!' : ''}`} onClick={() => handleNextQuestion(inputValue)}/>
                     </RadioGroup>
                 )}
             </div>
