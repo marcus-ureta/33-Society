@@ -2,11 +2,15 @@
 
 @layer utilities {
   .input-field {
-    @apply bg-tristesse-0 border-davys-grey-100 text-davys-grey-0 font-['Aileron'] placeholder:font-['instrument-serif'] placeholder:italic pl-[8px] text-[1rem]!;
+    @apply bg-tristesse-0 border-davys-grey-100 text-davys-grey-0 font-['Aileron'] pl-[10px] text-[1.15rem]! py-[26px] text-selago-0 rounded-xl;
   }
 
   .scrollable-container {
     @apply flex-1 min-h-0 overflow-y-auto overflow-x-hidden w-[99%];
+  }
+
+  .button-styling {
+    @apply bg-schiava-blue text-white border-2 border-schiava-blue-dark py-7.5 px-19 rounded-[64px] hover:bg-transparent hover:scale-102 transition-all duration-300 font-['Aileron'] font-semibold text-[1.575rem] hover:cursor-pointer hover:text-schiava-blue-light hover:border-schiava-blue-light;
   }
 
   .scrollable-container::-webkit-scrollbar {
@@ -25,4 +29,41 @@
   .scrollable-container::-webkit-scrollbar-button {
     display: hidden;
   }
+
+  .spinner {
+    @apply h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.4s ease-out forwards; /* ADD CUBIC BEIZER */
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  70% {
+    transform: translateY(-40px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.animate-slide-down {
+  animation: slideDown 0.6s ease-out forwards; /* ADD CUBIC BEIZER */
 }

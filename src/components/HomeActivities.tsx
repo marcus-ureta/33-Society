@@ -1,13 +1,20 @@
 import type { ReactNode } from "react";
 
+import { cn } from "@/lib/utils";
+
 export interface HomeActivitiesProps {
-  children?: ReactNode;
   description: ReactNode;
+  children?: ReactNode;
+  className?: string;
 }
 
-export function HomeActivities({ description, children }: HomeActivitiesProps) {
+export function HomeActivities({
+  description,
+  children,
+  className,
+}: HomeActivitiesProps) {
   return (
-    <div className="h-fit w-fit flex items-center flex-col">
+    <div className={cn("h-fit w-fit flex items-center flex-col", className)}>
       <div className="rounded-full p-8 size-36 flex justify-center items-center bg-tristesse-0 mb-4">
         {children}
       </div>

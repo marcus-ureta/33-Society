@@ -5,6 +5,10 @@ import { cn } from '@/lib/utils.ts'
 import { ArrowLeft } from "flowbite-react-icons/outline";
 import { Logo } from '@/components/logos/Logo.tsx'
 
+import '@/portal/Portal.css';
+
+import { isValidEmail, isValidInput } from "@/utils/genUtils"
+
 import { Button } from "@/components/ui/button"
 
 import { Page } from "@/portal/Portal";
@@ -18,6 +22,8 @@ function Login({setPage} : {setPage : React.Dispatch<React.SetStateAction<Page>>
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
     const [error, setError] = useState("");
+
+    const [isRequest, setIsRequest] = useState(false);
 
     const handleForgotPassword = async () => {
         setMessage("");
@@ -47,28 +53,52 @@ function Login({setPage} : {setPage : React.Dispatch<React.SetStateAction<Page>>
         const form = event.currentTarget;
         const formData = new FormData(form);
 
-        // INPUT VALIDATION
-
-
+        const name = formData.get('name')?.toString();
         const email = formData.get('email')?.toString();
         const password = formData.get('password')?.toString();
 
+        // INPUT VALIDATION
+        if(!isValidEmail(email!)) { setError('Email is not valid!'); return; }
+        if(!isValidInput(password!, 6, 4096)) {setError('Password is too short/long!'); return;}
+
         try {
-            const user = await loginAccount(email!, password!);
+            setIsRequest(true);
+            const user = await loginAccount(email!, password!, name!);
             console.log('Successfully logged in!: ' + user.displayName);
-        } catch (error) {
-            console.error("Signup failed:", error);
+        } catch (error : any) {
+            let message = "Something went wrong.";
+
+            switch (error.code) {
+                case "auth/invalid-credential":
+                    message = "Invalid Credentials";
+                    break;
+                case "auth/user-not-found":
+                    message = "Account not found";
+                    break;
+                case "auth/wrong-password":
+                    message = "Invalid Credentials";
+                    break;
+                case "auth/too-many-requests":
+                    message = "Too many attempts. Try again later.";
+                    break;
+            }
+
+            setError(message);
+            console.error("Login failed:", error);
+        } finally {
+            setIsRequest(false);
         }
     }
 
     return(
-        <>                
+        <div className={`animate-slide-up w-full h-full`}>                
             <div className="flex flex-col gap-y-4 items-center">
                 <Logo variant="primary" className="size-16 text-selago-100"/>
             </div>
 
             <form onSubmit={handleLogin} className="flex flex-col items-center justify-center w-full h-[80%] gap-y-16">
                 <div className="flex flex-col gap-y-9 items-center">
+                    <input name="name" type='text' placeholder="Your Name" className="border-b-[1px] border-davys-grey-0 text-[2rem] text-davys-grey-0 font-['instrument-serif'] italic pl-[8px] absolute left-[-9999px]"/>
 
                     <input name="email" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} className="border-b-[1px] border-davys-grey-0 text-[2rem] text-davys-grey-0 font-['instrument-serif'] italic pl-[8px]"/>
 
@@ -76,9 +106,16 @@ function Login({setPage} : {setPage : React.Dispatch<React.SetStateAction<Page>>
                 </div>
 
                 <div className="flex flex-col gap-y-6 items-center">
-                    <Button type="submit" variant="outline" className={cn (buttonVariants({variant: "default", size: "lg",}), 
-                    "bg-schiava-blue text-white border-2 border-schiava-blue-dark py-5 px-12 rounded-[64px] hover:bg-schiava-blue-dark hover:scale-102 hover:cursor-pointer transition-all duration-300 font-['Aileron'] font-semibold text-[1.575rem]")}>
-                        LOGIN
+                    <Button type="submit" variant="outline" disabled={isRequest} className={cn (buttonVariants({variant: "default", size: "lg",}), 
+                    "button-styling")}>
+                        {isRequest ? (
+                            <>
+                                <span className="spinner" />
+                                Logging in...
+                            </>
+                        ) : (
+                            "Log In"
+                        )}
                     </Button>
 
                     <h2 onClick={handleForgotPassword} className="text-selago-100 underline transition-colors duration-200 cursor-pointer font-['Aileron'] text-[1rem] hover:text-schiava-blue-light">
@@ -96,10 +133,10 @@ function Login({setPage} : {setPage : React.Dispatch<React.SetStateAction<Page>>
                 </div>
             </form>
 
-            <div className="flex flex-col items-center justify-center w-full h-[10%] gap-y-2.5" onClick={() => setPage(Page.portal)}>
-                <ArrowLeft className="w-6 h-6 hover:text-schiava-blue-light text-selago-0 border-2 rounded-full mt-2 transition-all duration-200 hover:cursor-pointer" />
+            <div className="flex flex-col items-center justify-center w-full h-[10%] gap-y-2.5">
+                <ArrowLeft onClick={() => setPage(Page.portal)} className="w-6 h-6 hover:text-schiava-blue-light text-selago-0 border-2 rounded-full mt-2 transition-all duration-200 hover:cursor-pointer" />
             </div>
-        </>
+        </div>
     )
 }
 

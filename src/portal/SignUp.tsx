@@ -6,9 +6,11 @@ import { ArrowLeft } from "flowbite-react-icons/outline";
 import { Logo } from '@/components/logos/Logo.tsx'
 
 import { Button } from "@/components/ui/button"
-import { Field, FieldGroup, FieldLabel } from "@/components/ui/field"
+import { Field, FieldGroup } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+
+import { isValidEmail, isValidInput } from "@/utils/genUtils"
 
 import { Page } from "./Portal";
 
@@ -52,83 +54,84 @@ function SignUpPage({setPage, formAnswers, setFormAnswers} : SignUpPageProps){
     async function handleSubmission (event : React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
 
-        // Input Validation
-
-
         // Get Form Data
         const form = event.currentTarget;
         const formData = new FormData(form);
 
-        const first_name = formData.get('form-first-name');
-        const last_name = formData.get('form-last-name');
+        const first_name = formData.get('form-first-name')?.toString()!;
+        const last_name = formData.get('form-last-name')?.toString()!;
         
-        const email = formData.get('form-email');
-        const birthday = formData.get('form-birthday');
+        const email = formData.get('form-email')?.toString()!;
+        const birthday = formData.get('form-birthday')?.toString()!;
 
-        const phone = formData.get('form-phone');
+        const phone = formData.get('form-phone')?.toString()!;
 
-        const company = formData.get('form-company');
-        const ig_handle = formData.get('form-igname');
+        const company = formData.get('form-company')?.toString()!;
+        const ig_handle = formData.get('form-igname')?.toString()!;
+
+        // INPUT VALIDATION
+        if(!isValidInput(first_name!, 2, 50)) return;
+        if(!isValidInput(last_name!, 2, 50)) return;
+
+        if(!isValidEmail(email!)) return;
+
+        if(!isValidInput(company!, 1, 70)) return;
+        if(!isValidInput(ig_handle!, 1, 31)) return;
+
 
         // Prepare for Next Page
         setFormAnswers(prev => ({
             ...prev,
-            firstName: first_name?.toString()!,
-            lastName: last_name?.toString()!,
+            firstName: first_name!,
+            lastName: last_name!,
 
-            email: email?.toString()!,
-            birthday: birthday?.toString()!,
+            email: email!,
+            birthday: birthday!,
 
-            phone: phone?.toString()!,
+            phone: phone!,
             country: country,
 
-            businessName: company?.toString()!,
-            instagramHandle: ig_handle?.toString()!
+            businessName: company!,
+            instagramHandle: ig_handle!
         }));
         setPage(Page.questionnaire);
     }
 
     return(
-        <>
+        <div className={`animate-slide-up w-full h-[82%]`}>
             <div className='flex flex-col items-center justify-center h-[105%] gap-y-4 sm:gap-y-8 max-w-none prose mb-0 mx-[5%]'>
-                <form onSubmit={handleSubmission} className="w-full max-w-[548px]">
-                    <FieldGroup className='flex flex-col gap-y-9'>
+                <form onSubmit={handleSubmission} className="w-full max-w-[720px]">
+                    <FieldGroup className='flex flex-col gap-4 sm:gap-y-9 mt-[32px] sm:mt-[0%]'>
                         
                         {/* First Name & Last Name */}
-                        <div className="grid grid-cols-2 gap-4">
+                        <div className="flex flex-col sm:grid sm:grid-cols-2 gap-4">
                             <Field>
-                                <FieldLabel htmlFor="form-first-name" className="text-selago-0 text-[1rem] font-['Aileron'] font-semibold">First Name</FieldLabel>
-                                <Input name='form-first-name' id="form-first-name" type="text" placeholder="John" required className="input-field" defaultValue={formAnswers.firstName}/>
+                                <Input name='form-first-name' id="form-first-name" type="text" placeholder="First Name" required className="input-field" defaultValue={formAnswers.firstName}/>
                             </Field>
 
                             <Field>
-                                <FieldLabel htmlFor="form-last-name" className="text-selago-0 text-[1rem] font-['Aileron'] font-semibold">Last Name</FieldLabel>
-                                <Input name='form-last-name' id="form-last-name" type="text" placeholder="Doe" required className="input-field" defaultValue={formAnswers.lastName}/>
+                                <Input name='form-last-name' id="form-last-name" type="text" placeholder="Last Name" required className="input-field" defaultValue={formAnswers.lastName}/>
                             </Field>
                         </div>
 
                         {/* Email and Birthday */}
-                        <div className="grid grid-cols-2 gap-4">
+                        <div className="flex flex-col sm:grid sm:grid-cols-2 gap-4">
                             <Field>
-                                <FieldLabel htmlFor="form-email" className="text-selago-0 text-[1rem] font-['Aileron'] font-semibold">Email</FieldLabel>
-                                <Input name='form-email' id="form-email" type="email" placeholder="john@example.com" required className="input-field" defaultValue={formAnswers.email}/>
+                                <Input name='form-email' id="form-email" type="email" placeholder="Email Address" required className="input-field" defaultValue={formAnswers.email}/>
                             </Field>
 
                             <Field>
-                                <FieldLabel htmlFor="form-birthday" className="text-selago-0 text-[1rem] font-['Aileron'] font-semibold">Birthday</FieldLabel>
                                 <Input name='form-birthday' id="form-birthday" type="date" required className="input-field dark:[color-scheme:dark]" defaultValue={formAnswers.birthday}/>
                             </Field>
                         </div>
 
                         {/* Phone and Country */}
-                        <div className="grid grid-cols-2 gap-4">
+                        <div className="flex flex-col sm:grid sm:grid-cols-2 gap-4">
                             <Field>
-                                <FieldLabel htmlFor="form-phone" className="text-selago-0 text-[1rem] font-['Aileron'] font-semibold">Phone</FieldLabel>
-                                <Input name='form-phone' id="form-phone" type="tel" placeholder="+63 (555) 123-4567" required className="input-field" defaultValue={formAnswers.phone}/>
+                                <Input name='form-phone' id="form-phone" type="tel" placeholder="Phone Number" required className="input-field" defaultValue={formAnswers.phone}/>
                             </Field>
 
                             <Field>
-                                <FieldLabel htmlFor="form-country" className="text-selago-0 text-[1rem] font-['Aileron'] font-semibold">Country</FieldLabel>
 
                                 <Select items={countries} defaultValue={formAnswers.country === '' ? 'ph' : formAnswers.country} onValueChange={(value) => { if (value !== null) { setCountry(value); }}} required>
                                     <SelectTrigger id="form-country" className="input-field">
@@ -149,23 +152,19 @@ function SignUpPage({setPage, formAnswers, setFormAnswers} : SignUpPageProps){
                         </div>
 
                         {/* Business Name & Instagram Handle */}
-                        <div className="grid grid-cols-2 gap-4">
+                        <div className="flex flex-col sm:grid sm:grid-cols-2 gap-4">
                             <Field>
-                                <FieldLabel htmlFor="form-company" className="text-selago-0 text-[1rem] font-['Aileron'] font-semibold">Company/Business Name</FieldLabel>
-                                <Input name='form-company' id="form-company" type="text" placeholder="Acme Inc." required className="input-field" defaultValue={formAnswers.businessName}/>
+                                <Input name='form-company' id="form-company" type="text" placeholder="Company/Business Name" required className="input-field" defaultValue={formAnswers.businessName}/>
                             </Field>
 
                             <Field>
-                                <FieldLabel htmlFor="form-igname" className="text-selago-0 text-[1rem] font-['Aileron'] font-semibold">Instagram Handle</FieldLabel>
-                                <Input name='form-igname' id="form-igname" type="text" placeholder="@33_society" required className="input-field" defaultValue={formAnswers.instagramHandle}/>
+                                <Input name='form-igname' id="form-igname" type="text" placeholder="Instagram Username @" required className="input-field" defaultValue={formAnswers.instagramHandle}/>
                             </Field>
                         </div>
 
                         {/* Submission Button */}
                         <div className='flex flex-col items-center justify-center mt-[4%]'>
-                            <Button type='submit' variant="outline" className={cn(buttonVariants({ variant: "default", size: "lg" }),
-                                "bg-schiava-blue text-white border-2 border-schiava-blue-dark py-5 px-12 rounded-[64px] hover:bg-schiava-blue-dark hover:scale-102 hover:cursor-pointer transition-all duration-300 font-['Aileron'] font-semibold text-[1.575rem]",
-                            )}>
+                            <Button type='submit' variant="outline" className={cn(buttonVariants({ variant: "default", size: "lg" }),"button-styling",)}>
                                 Submit
                             </Button>
                         </div>
@@ -173,11 +172,7 @@ function SignUpPage({setPage, formAnswers, setFormAnswers} : SignUpPageProps){
                     </FieldGroup>
                 </form>
             </div>
-
-            <div className='flex flex-col items-center justify-center w-full h-[10%] gap-y-2.5' onClick={() => setPage(Page.portal)}>
-                <ArrowLeft className="w-6 h-6 hover:text-schiava-blue-light text-selago-0 border-2 rounded-full mt-2 transition-all duration-200 hover:cursor-pointer"/>
-            </div>
-        </>
+        </div>
     )
 }
 
@@ -208,14 +203,14 @@ function SignUp({page, setPage} : {page: Page, setPage : React.Dispatch<React.Se
     return(
         <>
             <div className="w-screen h-dvh bg-tristesse-0 flex flex-col pt-8 overflow-hidden">
-                <div className={`flex flex-col gap-y-4 items-center ${page === Page.accountSetup ? 'hidden' : ''} `}>
+                <div className={`flex flex-col gap-y-4 items-center ${page === Page.accountSetup ? 'hidden' : ''} animate-slide-up`}>
                     <Logo variant="primary" className="size-16 text-selago-100" />
 
                     <div className="flex flex-row items-center w-[75%] max-w-[820px] gap-x-4 gap-y-7">
                         <div className="w-[50%] h-[3px] bg-selago-0 rounded-full shadow-[0_0_16px_1px_var(--color-schiava-blue-dark)]"/>
                         <div className={`w-[50%] h-[3px] rounded-full shadow-[0_0_16px_1px_var(--color-schiava-blue-dark)] ${page !== Page.signup ? 'bg-selago-0' : 'bg-davys-grey-0'} transition-all duration-200`}/>
                         {[...Array(4)].map((_, index) => (
-                            <div key={index} className={`w-[50%] h-[3px] ${index < questionNo - 1 ? 'bg-selago-0' : 'bg-davys-grey-0'} rounded-full shadow-[0_0_16px_1px_var(--color-schiava-blue-dark)] transition-all duration-200`} />
+                            <div key={index} className={`w-[50%] h-[3px] ${page !== Page.signup && index < questionNo - 1 ? 'bg-selago-0' : 'bg-davys-grey-0'} rounded-full shadow-[0_0_16px_1px_var(--color-schiava-blue-dark)] transition-all duration-200`} />
                         ))}
                     </div>
                 </div>
