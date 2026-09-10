@@ -340,6 +340,12 @@ function App() {
                 className="w-full!"
                 pauseOnHover
                 speed={75}
+                style={{
+                  WebkitMaskImage:
+                    "linear-gradient(90deg, transparent 3%, black, transparent 97%)",
+                  maskImage:
+                    "linear-gradient(90deg, transparent 3%, black, transparent 97%)",
+                }}
               >
                 {/* TODO: extract this to reusable component */}
                 <div className="h-144 w-72 border border-davys-grey-0 mr-8 rounded-2xl flex flex-col">
