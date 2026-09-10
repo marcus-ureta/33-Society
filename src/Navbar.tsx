@@ -38,7 +38,7 @@ function Navbar() {
           <Button
             variant="outline"
             className={
-              "text-schiava-blue px-5 py-2 font-aileron text-sm rounded-full h-full border-schiava-blue"
+              "text-schiava-blue px-5 py-2 font-aileron text-sm rounded-full h-full border-schiava-blue transition-all duration-300 hover:border-schiava-blue-dark hover:bg-schiava-blue-dark hover:text-selago-0 active:scale-90"
             }
           >
             Book a Meeting
@@ -47,7 +47,7 @@ function Navbar() {
           <Button
             variant="default"
             className={
-              "text-selago-0 bg-schiava-blue px-5 py-2 font-aileron text-sm rounded-full h-full -ml-2"
+              "text-selago-0 bg-schiava-blue px-5 py-2 font-aileron text-sm rounded-full h-full -ml-2 transition-all duration-300 hover:bg-tristesse-0 hover:text-selago-0 active:scale-90"
             }
           >
             Purchase a Ticket
