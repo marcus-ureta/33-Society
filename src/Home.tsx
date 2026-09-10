@@ -141,11 +141,11 @@ function App() {
             {/* Middle hero text */}
             <div className="prose prose-lg w-full flex flex-col items-center max-w-270">
               <h1 className="font-cochin font-bold text-selago-100 text-7xl w-full max-w-[20ch] text-center mb-2">
-                Sweet topping shortbread jelly beans
+                The Privelege of the Right Circle.
               </h1>
               <p className="font-aileron text-selago-0 mb-0 text-center">
-                Cheesecake sugar plum marshmallow muffin chocolate cheesecake
-                sweet danish sesame snaps.
+                Society 33 is a private society for the next generation of Asian
+                founders.
               </p>
 
               {/* Hero CTA */}
