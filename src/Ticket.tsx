@@ -24,7 +24,7 @@ function Ticket() {
                 <div className='border-b-2 border-selago-0 pt-[24px] pb-[16px] flex flex-col items-center w-full'>
                     <Logo
                         variant='horizontal'
-                        className='text-selago-0 sm:w-56 md:w-64 h-auto'
+                        className='text-selago-0 sm:w-48 md:w-64 h-auto'
                     />
                 </div>
 
@@ -65,7 +65,7 @@ function Ticket() {
 
             {/* Input Field */}
             <div className='flex flex-6 flex-col bg-schiava-blue-dark sm:bg-schiava-blue items-center px-[16px] pt-[32px] sm:p-[32px] text-selago-0 font-bold justify-start pb-[16px]'>
-                <h1 className="font-['Cochin'] text-[clamp(1.5rem,3.5vw,4rem)] sm:mx-[10%] text-center">GET YOUR ONE PASS TICKET NOW</h1>
+                <h1 className="font-['Cochin'] text-[1.5rem] sm:text-[clamp(1.8rem,3.5vw,4rem)] sm:mx-[10%] text-center">GET YOUR ONE PASS TICKET NOW</h1>
 
                 <div className="flex flex-wrap justify-center items-center gap-[clamp(1rem,4vw,2rem)] block sm:hidden mt-[24px]">
 

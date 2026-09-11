@@ -21,23 +21,53 @@ import {
 function Navbar() {
   return (
     <>
-      <div className="fixed w-9/10 max-w-270 left-1/2 -translate-x-1/2 h-16 top-12 bg-selago-0 rounded-full grid grid-cols-[auto_1fr_auto] grid-rows-1 items-center px-6 z-50">
-        <Logo variant="horizontal" className="h-6 w-auto text-schiava-blue" />
-        <div className="w-full flex flex-row gap-10 px-8 *:font-aileron *:text-schiava-blue *:text-base">
+      <div className="fixed w-9/10 max-w-270 left-1/2 -translate-x-1/2 h-16 top-12 bg-selago-0 rounded-full grid grid-cols-[auto_1fr_auto] grid-rows-1 items-center px-6 z-50 drop-shadow-2xl">
+        <Logo
+          variant="horizontal"
+          className="h-6 w-auto text-schiava-blue drop-shadow-tristesse-0/42 drop-shadow-lg"
+        />
+
+        {/* LARGE TABLET AND UP ONLY LINKS */}
+        <div className="hidden w-full lg:flex flex-row gap-10 px-8 *:font-aileron *:text-schiava-blue *:text-base *:text-shadow-lg *:text-shadow-tristesse-0/12">
           {/* NAVBAR LINKS 
               TODO: react router links (scrollable ids) and single source array
           */}
-          {/* <p>One Time Event Pass</p>
           <p>About</p>
           <p>Members</p>
-          <p>Event Details</p> */}
+          <p>Event Details</p>
         </div>
 
-        {/* MOBILE NAVBAR MENU */}
+        <div className="hidden md:flex flex-row gap-4 md:w-full lg:w-fit justify-end">
+          <Button
+            variant="outline"
+            className={
+              "text-schiava-blue px-5 py-2 font-aileron text-sm rounded-full h-full border-schiava-blue transition-all duration-300 hover:border-schiava-blue-dark hover:bg-schiava-blue-dark hover:text-selago-0 active:scale-90 drop-shadow-tristesse-0/42 drop-shadow-lg"
+            }
+          >
+            Book a Meeting
+          </Button>
+
+          <Button
+            variant="default"
+            className={
+              "text-selago-0 bg-schiava-blue px-5 py-2 font-aileron text-sm rounded-full h-full -ml-2 transition-all duration-300 hover:bg-tristesse-0 hover:text-selago-0 active:scale-90 drop-shadow-tristesse-0/42 drop-shadow-lg"
+            }
+          >
+            Purchase a Ticket
+          </Button>
+        </div>
+
+        {/* SMALL TABLET AND BELOW NAVBAR MENU */}
         <Sheet>
           <SheetTrigger
             render={
-              <Button variant="ghost" size="icon-lg" className={"lg:hidden"}>
+              <Button
+                variant="ghost"
+                size="icon-lg"
+                className={
+                  "lg:hidden justify-self-end drop-shadow-lg drop-shadow-tristesse-0/28"
+                }
+              >
                 <Bars className="size-6 text-schiava-blue" />
               </Button>
             }
@@ -64,11 +94,19 @@ function Navbar() {
               ></SheetClose>
             </div>
 
-            <div className="flex flex-col items-center w-full h-fit gap-8 prose prose-lg">
-              <p className="font-aileron text-selago-0 mb-0 mt-0">Link</p>
-              <p className="font-aileron text-selago-0 mb-0 mt-0">Link</p>
-              <p className="font-aileron text-selago-0 mb-0 mt-0">Link</p>
-              <p className="font-aileron text-selago-0 mb-0 mt-0">Link</p>
+            <div className="flex flex-col items-center w-full h-fit gap-8 prose prose-lg max-w-none">
+              <p className="font-aileron text-selago-0 mb-0 mt-0 text-center">
+                Link
+              </p>
+              <p className="font-aileron text-selago-0 mb-0 mt-0 text-center">
+                Link
+              </p>
+              <p className="font-aileron text-selago-0 mb-0 mt-0 text-center">
+                Link
+              </p>
+              <p className="font-aileron text-selago-0 mb-0 mt-0 text-center">
+                Link
+              </p>
             </div>
 
             <SheetFooter>
@@ -81,14 +119,6 @@ function Navbar() {
             </SheetFooter>
           </SheetContent>
         </Sheet>
-
-        {/* <Button
-          className={
-            "text-selago-0 bg-schiava-blue px-5 py-2 font-aileron text-sm rounded-full"
-          }
-        >
-          Book a Meeting
-        </Button> */}
       </div>
     </>
   );
