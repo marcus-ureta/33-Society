@@ -156,7 +156,7 @@ function App() {
               <h1 className="font-cochin font-bold text-selago-100 text-7xl lg:text-8xl w-full max-w-[20ch] text-center mb-2">
                 The Privelege of the Right Circle.
               </h1>
-              <p className="font-aileron text-selago-0 mb-0 text-center lg:text-xl">
+              <p className="font-aileron text-selago-dark mb-0 text-center lg:text-xl">
                 Society 33 is a private society for the next generation of Asian
                 founders.
               </p>
@@ -223,7 +223,7 @@ function App() {
                 className="text-selago-0 size-36 mb-8 drop-shadow-lg drop-shadow-tristesse-0/56"
               ></Logo>
 
-              <p className="text-[#D3D8E5] font-aileron max-w-[65ch] text-justify [text-align-last:center] text-shadow-md text-shadow-tristesse-0/48">
+              <p className="text-selago-dark font-aileron max-w-[65ch] text-justify [text-align-last:center] text-shadow-md text-shadow-tristesse-0/48">
                 Society 33 is a private society built for young founders and
                 ambitious individuals across Asia who are building something of
                 their own. We bring together people with ambition, achievements,
@@ -248,7 +248,7 @@ function App() {
               className="bg-tristesse-0 h-screen w-full flex items-center flex-col justify-center p-8 prose prose-lg max-w-none overflow-hidden mt-32"
               ref={PILLARS_SECTION}
             >
-              <h1 className="font-cochin text-selago-50 text-center mt-64">
+              <h1 className="font-cochin text-selago-0 text-center mt-64">
                 OUR PILLARS
               </h1>
 
@@ -351,10 +351,10 @@ function App() {
               className="mb-18 w-full max-w-270"
             />
             <div className="prose prose-lg h-fit w-full flex items-center flex-col @container max-w-none">
-              <h1 className="text-center font-cochin text-selago-50 mb-0">
+              <h1 className="text-center font-cochin text-selago-0 mb-0">
                 GUEST SPEAKERS
               </h1>
-              <p className="text-center text-selago-0 font-aileron mb-16  ">
+              <p className="text-center text-selago-dark font-aileron mb-16  ">
                 Toffee chocolate cake macaroon jujubes cotton candy sweet sesame
                 snaps gummi bears dragée.
               </p>
@@ -378,10 +378,10 @@ function App() {
                     src="https://s.yimg.com/lo/mysterio/api/f31f4df8d5b30a5537d3ade836d06d67c72de4375cb7bc16fafe22a85e2833a5/lightyear_networkapi/resizefill_w480_h348%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fknow_your_meme_909%2Fc3f13e3aa7742e8034894c82237bea06"
                   ></img>
                   <div className="p-4 flex flex-col gap-4">
-                    <h2 className="font-cochin text-selago-50 mb-0 mt-0 leading-none text-4xl">
+                    <h2 className="font-cochin text-selago-0 mb-0 mt-0 leading-none text-4xl">
                       Floyd Escuadra
                     </h2>
-                    <p className="font-aileron text-selago-0 text-base">
+                    <p className="font-aileron text-selago-dark text-base">
                       Chocolate fruitcake bonbon powder danish pastry.
                     </p>
                   </div>
@@ -409,7 +409,7 @@ function App() {
               WebkitMaskPosition: `0 0, 0 32px, 0 bottom`,
             }}
           >
-            <h1 className="text-center font-cochin text-selago-50 mb-16 text-shadow-lg text-shadow-tristesse-0/36">
+            <h1 className="text-center font-cochin text-selago-0 mb-16 text-shadow-lg text-shadow-tristesse-0/36">
               WHAT TO EXPECT INSIDE THE YACHT
             </h1>
 
@@ -441,7 +441,7 @@ function App() {
           SECTION: EVENT DETAILS
           ============================================================================== */}
           <div className="bg-tristesse-0 h-270 w-full flex flex-col items-center p-8 prose prose-lg max-w-none -mt-8 pt-24">
-            <h1 className="font-cochin text-selago-50 mb-0 text-center">
+            <h1 className="font-cochin text-selago-0 mb-0 text-center">
               EVENT DETAILS
             </h1>
           </div>
@@ -474,10 +474,10 @@ function App() {
               SECTION: FAQ
             ============================================================================== */}
             <div className="w-full h-fit z-1 relative flex flex-col items-center p-8 pt-24">
-              <h1 className="font-cochin text-selago-100 mb-8 text-center mt-[4%] text-shadow-lg text-shadow-tristesse-0/36">
+              <h1 className="font-cochin text-selago-0 mb-8 text-center mt-[4%] text-shadow-lg text-shadow-tristesse-0/36">
                 BEFORE YOU ENTER
               </h1>
-              <p className="font-aileron text-selago-50 mt-0 mb-16 text-center text-shadow-md text-shadow-tristesse-0/48">
+              <p className="font-aileron text-selago-dark mt-0 mb-16 text-center text-shadow-md text-shadow-tristesse-0/48">
                 Everything you need to know about the Society.
               </p>
               <div className="w-[90vw] md:w-full max-w-270 h-fit bg-tristesse-0 rounded-2xl p-4">
@@ -490,13 +490,13 @@ function App() {
                     >
                       <AccordionTrigger
                         className={
-                          "font-aileron text-selago-50 text-xl font-bold"
+                          "font-aileron text-selago-0 text-xl font-bold"
                         }
                       >
                         {item.trigger}
                       </AccordionTrigger>
                       <AccordionContent
-                        className={"font-aileron text-selago-0 text-lg"}
+                        className={"font-aileron text-selago-dark text-lg"}
                       >
                         {item.content}
                       </AccordionContent>
@@ -597,9 +597,11 @@ function App() {
                 Legal Details
               */}
               <div className="w-full h-fit bg-schiava-blue -mt-1 px-8 py-4 flex flex-col md:flex-row gap-4 items-center">
-                <p className="font-aileron mb-0 mt-0 text-base text-selago-0 w-fit md:w-full text-shadow-md text-shadow-tristesse-0/48">
-                  <span className="font-bold mr-4">© 2026 SOCIETY 33</span> All
-                  rights reserved.
+                <p className="font-aileron mb-0 mt-0 text-base text-selago-dark w-fit md:w-full text-shadow-md text-shadow-tristesse-0/48">
+                  <span className="font-bold mr-4 text-selago-0">
+                    © 2026 SOCIETY 33
+                  </span>
+                  All rights reserved.
                 </p>
                 <div className="flex gap-4 flex-row w-fit md:w-full md:justify-end *:text-shadow-md *:text-shadow-tristesse-0/48">
                   <p className="font-aileron mb-0 mt-0 text-base text-selago-0">
