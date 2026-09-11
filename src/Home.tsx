@@ -152,16 +152,16 @@ function App() {
           <div className=" w-full h-fit lg:h-screen flex flex-col items-center pt-64 p-8 min-h-225">
             {/* Middle hero text */}
             <div className="prose prose-lg w-full flex flex-col items-center max-w-270">
-              <h1 className="font-cochin font-bold text-selago-100 text-7xl lg:text-8xl w-full text-center mb-4 mt-18">
+              <h1 className="intersect-once intersect:motion-preset-blur-up intersect:motion-delay-0 font-cochin font-bold text-selago-100 text-7xl lg:text-8xl w-full text-center mb-4 mt-18">
                 The Privelege of the Right Circle.
               </h1>
-              <p className="font-aileron text-selago-dark mb-0 text-center lg:text-xl">
+              <p className="intersect-once intersect:motion-preset-blur-up intersect:motion-delay-150 font-aileron text-selago-dark mb-0 text-center lg:text-xl">
                 Society 33 is a private society for the next generation of Asian
                 founders.
               </p>
 
               {/* Hero CTA */}
-              <div className="mt-12 border-2 border-schiava-blue p-4 lg:p-2 rounded-[42px] md:rounded-full flex flex-col md:flex-row items-center gap-4 md:gap-0 transition-all duration-300 hover:px-4 hover:py-3 hover:-translate-y-1">
+              <div className="intersect-once intersect:motion-preset-blur-up intersect:motion-delay-300 mt-12 border-2 border-schiava-blue p-4 lg:p-2 rounded-[42px] md:rounded-full flex flex-col md:flex-row items-center gap-4 md:gap-0 transition-all duration-300 hover:px-4 hover:py-3 hover:-translate-y-1">
                 <Button
                   variant="default"
                   className={
@@ -218,15 +218,15 @@ function App() {
                 paddingBottom: `128px`,
               }}
             >
-              <h1 className="font-cochin text-selago-0 mb-4 text-center text-shadow-lg text-shadow-tristesse-0/36">
+              <h1 className="font-cochin text-selago-0 mb-4 text-center text-shadow-lg text-shadow-tristesse-0/36 intersect-once intersect:motion-preset-blur-up intersect:motion-delay-0">
                 ABOUT
               </h1>
               <Logo
                 variant="mark"
-                className="text-selago-0 size-36 mb-8 drop-shadow-lg drop-shadow-tristesse-0/56"
+                className="text-selago-0 size-36 mb-8 drop-shadow-lg drop-shadow-tristesse-0/56 intersect-once intersect:motion-preset-blur-up intersect:motion-delay-0"
               ></Logo>
 
-              <p className="text-selago-dark font-aileron text-justify [text-align-last:center] text-shadow-md text-shadow-tristesse-0/48">
+              <p className="text-selago-dark font-aileron text-justify [text-align-last:center] text-shadow-md text-shadow-tristesse-0/48 intersect-once intersect:motion-preset-blur-up intersect:motion-delay-150">
                 Society 33 is a private society built for young founders and
                 ambitious individuals across Asia who are building something of
                 their own. We bring together people with ambition, achievements,
@@ -254,7 +254,7 @@ function App() {
               className="bg-tristesse-0 h-screen w-full 2xl:flex hidden items-center flex-col justify-center p-8 prose prose-lg max-w-none overflow-hidden"
               ref={PILLARS_SECTION}
             >
-              <h1 className="font-cochin text-selago-0 text-center mt-56">
+              <h1 className="intersect-once intersect:motion-preset-blur-up intersect:motion-delay-0 font-cochin text-selago-0 text-center mt-56">
                 OUR PILLARS
               </h1>
 
@@ -315,7 +315,7 @@ function App() {
               </div>
             </div>
 
-            <div className="prose prose-lg w-fit h-fit mx-auto 2xl:hidden">
+            <div className="intersect-once intersect:motion-preset-blur-up intersect:motion-delay-0 prose prose-lg w-fit h-fit mx-auto 2xl:hidden">
               <h1 className="font-cochin text-selago-0 text-center mb-6 mt-0">
                 OUR PILLARS
               </h1>
@@ -361,13 +361,13 @@ function App() {
           <div className="bg-tristesse-0 h-fit w-full flex flex-col items-center p-8 prose prose-lg max-w-none pb-24">
             <LineDivider
               fillName="davys-grey-0"
-              className="mb-18 w-full max-w-270"
+              className="intersect-once intersect:motion-preset-blur-up intersect:motion-delay-0 mb-18 w-full max-w-270"
             />
             <div className="prose prose-lg h-fit w-full flex items-center flex-col @container max-w-none">
-              <h1 className="text-center font-cochin text-selago-0 mb-0">
+              <h1 className="intersect-once intersect:motion-preset-blur-up intersect:motion-delay-0 text-center font-cochin text-selago-0 mb-0">
                 GUEST SPEAKERS
               </h1>
-              <p className="text-center text-selago-dark font-aileron mb-16  ">
+              <p className="intersect-once intersect:motion-preset-blur-up intersect:motion-delay-150 text-center text-selago-dark font-aileron mb-16  ">
                 Toffee chocolate cake macaroon jujubes cotton candy sweet sesame
                 snaps gummi bears dragée.
               </p>
@@ -422,7 +422,7 @@ function App() {
               WebkitMaskPosition: `0 0, 0 32px, 0 bottom`,
             }}
           >
-            <h1 className="text-center font-cochin text-selago-0 mb-16 text-shadow-lg text-shadow-tristesse-0/36">
+            <h1 className="intersect-once intersect:motion-preset-blur-up intersect:motion-delay-0 text-center font-cochin text-selago-0 mb-16 text-shadow-lg text-shadow-tristesse-0/36">
               WHAT TO EXPECT INSIDE THE YACHT
             </h1>
 
@@ -454,7 +454,7 @@ function App() {
           SECTION: EVENT DETAILS
           ============================================================================== */}
           <div className="bg-tristesse-0 h-270 w-full flex flex-col items-center p-8 prose prose-lg max-w-none -mt-8 pt-24">
-            <h1 className="font-cochin text-selago-0 mb-0 text-center">
+            <h1 className="intersect-once intersect:motion-preset-blur-up intersect:motion-delay-0 font-cochin text-selago-0 mb-0 text-center">
               EVENT DETAILS
             </h1>
           </div>
@@ -487,13 +487,13 @@ function App() {
               SECTION: FAQ
             ============================================================================== */}
             <div className="w-full h-fit z-1 relative flex flex-col items-center p-8 pt-32 md:pt-[calc(128px-4%)]">
-              <h1 className="font-cochin text-selago-0 mb-8 text-center mt-[4%] text-shadow-lg text-shadow-tristesse-0/36">
+              <h1 className="intersect-once intersect:motion-preset-blur-up intersect:motion-delay-0 font-cochin text-selago-0 mb-8 text-center mt-[4%] text-shadow-lg text-shadow-tristesse-0/36">
                 BEFORE YOU ENTER
               </h1>
-              <p className="font-aileron text-selago-dark mt-0 mb-16 text-center text-shadow-md text-shadow-tristesse-0/48">
+              <p className="intersect-once intersect:motion-preset-blur-up intersect:motion-delay-150 font-aileron text-selago-dark mt-0 mb-16 text-center text-shadow-md text-shadow-tristesse-0/48">
                 Everything you need to know about the Society.
               </p>
-              <div className="w-[90vw] md:w-full max-w-270 h-fit bg-tristesse-0 rounded-2xl px-4 py-2">
+              <div className="intersect-once intersect:motion-preset-blur-up intersect:motion-delay-300 w-[90vw] md:w-full max-w-270 h-fit bg-tristesse-0 rounded-2xl px-4 py-2">
                 <Accordion multiple>
                   {faqItems.map((item) => (
                     <AccordionItem
