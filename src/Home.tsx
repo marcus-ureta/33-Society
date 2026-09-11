@@ -152,7 +152,7 @@ function App() {
           <div className=" w-full h-fit lg:h-screen flex flex-col items-center pt-64 p-8 min-h-225">
             {/* Middle hero text */}
             <div className="prose prose-lg w-full flex flex-col items-center max-w-270">
-              <h1 className="font-cochin font-bold text-selago-100 text-7xl lg:text-8xl w-full text-center mb-4">
+              <h1 className="font-cochin font-bold text-selago-100 text-7xl lg:text-8xl w-full text-center mb-4 mt-18">
                 The Privelege of the Right Circle.
               </h1>
               <p className="font-aileron text-selago-dark mb-0 text-center lg:text-xl">
@@ -184,7 +184,7 @@ function App() {
           {/* ==============================================================================
             SECTION: ABOUT SOCIETY 33 
           ============================================================================== */}
-          <div className="relative w-full @container h-fit p-8 flex flex-col items-center justify-center z-1 -mt-32">
+          <div className="relative w-full @container h-fit p-8 flex flex-col items-center justify-center z-1">
             <div
               className="absolute inset-0 bg-schiava-blue bg-no-repeat bg-size-[100%_100%]"
               style={{
@@ -254,7 +254,7 @@ function App() {
               className="bg-tristesse-0 h-screen w-full 2xl:flex hidden items-center flex-col justify-center p-8 prose prose-lg max-w-none overflow-hidden"
               ref={PILLARS_SECTION}
             >
-              <h1 className="font-cochin text-selago-0 text-center mt-64">
+              <h1 className="font-cochin text-selago-0 text-center mt-56">
                 OUR PILLARS
               </h1>
 
