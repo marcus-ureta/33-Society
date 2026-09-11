@@ -47,15 +47,10 @@ function App() {
   // This calculates the aspect ratio (e.g., 200 / 1200 = 0.1666)
   const CROWN_TOP_HEIGHT_MULTIPLIER = CROWN_TOP_HEIGHT / CROWN_TOP_WIDTH;
 
-  const CROWN_BOTTOM_WIDTH = 1000;
-  const CROWN_BOTTOM_HEIGHT = 281.2;
-
-  const CROWN_BOTTOM_HEIGHT_MULTIPLIER =
-    CROWN_BOTTOM_HEIGHT / CROWN_BOTTOM_WIDTH;
-
   const invertedArcSvg = `data:image/svg+xml;utf8,<svg viewBox="0 0 1000 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M 0,0 A 725 725 0 0 0 1000,0 L 1000,200 L 0,200 Z" fill="white"/></svg>`;
   const arcSvg = `data:image/svg+xml;utf8,<svg viewBox="0 0 1000 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M 0,0 A 725 725 0 0 0 1000,0 Z" fill="white"/></svg>`;
   const bottomCrownSvg = `data:image/svg+xml;utf8,<svg viewBox="0 0 1000 281" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><g transform="matrix(1.770915,0,0,1.770915,-385.474959,-1250.048629)"><path d="M782.35,705.836L782.35,781.72L499.26,864.61L217.67,781.72L217.67,705.82C222.56,705.82 782.35,705.836 782.35,705.836Z" fill="white"/></g></svg>`;
+  const bottomCrownRotatedSvg = `data:image/svg+xml;utf8,<svg viewBox="0 0 1000 281" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><g transform="matrix(-1.770915,-0,0,-1.770915,1385.475459,1531.049414)"><path d="M782.35,705.836L782.35,781.72L499.26,864.61L217.67,781.72L217.67,705.82C222.56,705.82 782.35,705.836 782.35,705.836Z" fill="white"/></g></svg>`;
 
   // ==============================================================================
 
@@ -94,36 +89,40 @@ function App() {
 
   useGSAP(
     () => {
-      gsap.set(PILLAR_CIRCLE.current, { rotate: 74 });
+      let mm = gsap.matchMedia();
 
-      let tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: PILLARS_SECTION.current,
-          pin: true,
-          pinSpacing: true,
-          anticipatePin: 1,
-          scrub: 1,
-          start: "top top",
-          end: "+=2500",
-          snap: {
-            snapTo: "labelsDirectional",
-            duration: { min: 0.2, max: 0.8 }, // the snap animation should be at least 0.2 seconds, but no more than 3 seconds (determined by velocity)
-            delay: 0.2, // wait 0.2 seconds from the last scroll event before doing the snapping
+      mm.add("(min-width: 1536px)", () => {
+        gsap.set(PILLAR_CIRCLE.current, { rotate: 74 });
+
+        let tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: PILLARS_SECTION.current,
+            pin: true,
+            pinSpacing: true,
+            anticipatePin: 1,
+            scrub: 1,
+            start: "top top",
+            end: "+=2500",
+            snap: {
+              snapTo: "labelsDirectional",
+              duration: { min: 0.2, max: 0.8 },
+              delay: 0.2,
+            },
           },
-        },
-      });
+        });
 
-      tl.addLabel("pillar1")
-        .to(PILLAR_CIRCLE.current, { rotate: 45, duration: 1 })
-        .addLabel("pillar2")
-        .to(PILLAR_CIRCLE.current, { rotate: 16, duration: 1 })
-        .addLabel("pillar3")
-        .to(PILLAR_CIRCLE.current, { rotate: -16, duration: 1 })
-        .addLabel("pillar4")
-        .to(PILLAR_CIRCLE.current, { rotate: -45, duration: 1 })
-        .addLabel("pillar5")
-        .to(PILLAR_CIRCLE.current, { rotate: -74, duration: 1 })
-        .addLabel("pillar6");
+        tl.addLabel("pillar1")
+          .to(PILLAR_CIRCLE.current, { rotate: 45, duration: 1 })
+          .addLabel("pillar2")
+          .to(PILLAR_CIRCLE.current, { rotate: 16, duration: 1 })
+          .addLabel("pillar3")
+          .to(PILLAR_CIRCLE.current, { rotate: -16, duration: 1 })
+          .addLabel("pillar4")
+          .to(PILLAR_CIRCLE.current, { rotate: -45, duration: 1 })
+          .addLabel("pillar5")
+          .to(PILLAR_CIRCLE.current, { rotate: -74, duration: 1 })
+          .addLabel("pillar6");
+      });
     },
     { dependencies: [] },
   );
@@ -153,7 +152,7 @@ function App() {
           <div className=" w-full h-fit lg:h-screen flex flex-col items-center pt-64 p-8 min-h-225">
             {/* Middle hero text */}
             <div className="prose prose-lg w-full flex flex-col items-center max-w-270">
-              <h1 className="font-cochin font-bold text-selago-100 text-7xl lg:text-8xl w-full max-w-[20ch] text-center mb-2">
+              <h1 className="font-cochin font-bold text-selago-100 text-7xl lg:text-8xl w-full text-center mb-4">
                 The Privelege of the Right Circle.
               </h1>
               <p className="font-aileron text-selago-dark mb-0 text-center lg:text-xl">
@@ -162,17 +161,19 @@ function App() {
               </p>
 
               {/* Hero CTA */}
-              <div className="mt-12 border-2 border-schiava-blue p-4 lg:p-2 md:px-6 rounded-[42px] md:rounded-full flex flex-col md:flex-row items-center gap-4 lg:gap-0">
+              <div className="mt-12 border-2 border-schiava-blue p-4 lg:p-2 rounded-[42px] md:rounded-full flex flex-col md:flex-row items-center gap-4 md:gap-0">
                 <Button
                   variant="default"
                   className={
-                    "text-selago-0 bg-schiava-blue px-8 py-3 font-aileron rounded-full text-lg h-full -ml-2 lg:ml-0"
+                    "text-selago-0 bg-schiava-blue px-8 py-4 font-aileron rounded-full text-lg h-full"
                   }
                 >
                   Purchase a Ticket
                 </Button>
                 {/* TODO: replace with react router link */}
-                <p className="leading-0 px-6 text-selago-0">Book a Meeting</p>
+                <p className="leading-0 px-6 text-selago-0 mr-2">
+                  Book a Meeting
+                </p>
               </div>
             </div>
 
@@ -211,7 +212,7 @@ function App() {
 
             {/* About Society 33 content */}
             <div
-              className="w-full h-full z-1 relative flex flex-col items-center prose prose-lg max-w-270"
+              className="w-full h-full z-1 relative flex flex-col items-center prose prose-lg"
               style={{
                 paddingTop: `calc((100cqw * ${CROWN_TOP_HEIGHT_MULTIPLIER}) - 16%)`,
                 paddingBottom: `128px`,
@@ -225,7 +226,7 @@ function App() {
                 className="text-selago-0 size-36 mb-8 drop-shadow-lg drop-shadow-tristesse-0/56"
               ></Logo>
 
-              <p className="text-selago-dark font-aileron max-w-[65ch] text-justify [text-align-last:center] text-shadow-md text-shadow-tristesse-0/48">
+              <p className="text-selago-dark font-aileron text-justify [text-align-last:center] text-shadow-md text-shadow-tristesse-0/48">
                 Society 33 is a private society built for young founders and
                 ambitious individuals across Asia who are building something of
                 their own. We bring together people with ambition, achievements,
@@ -245,9 +246,12 @@ function App() {
           {/* ==============================================================================
             SECTION: PILLARS 
           ============================================================================== */}
-          <div className="relative bg-tristesse-0 w-full mt-[-15%]">
+          <div className="relative bg-tristesse-0 w-full 2xl:mt-0 lg:mt-[8%] md:mt-[12%] mt-[20%]">
+            {/* 
+            NOTE: we don't want the possibility of flex justify-center in the parent interfering with GSAP scroll, so we're using mx-auto here
+            */}
             <div
-              className="bg-tristesse-0 h-screen w-full flex items-center flex-col justify-center p-8 prose prose-lg max-w-none overflow-hidden mt-32"
+              className="bg-tristesse-0 h-screen w-full 2xl:flex hidden items-center flex-col justify-center p-8 prose prose-lg max-w-none overflow-hidden"
               ref={PILLARS_SECTION}
             >
               <h1 className="font-cochin text-selago-0 text-center mt-64">
@@ -265,10 +269,11 @@ function App() {
               >
                 <div className="h-100 w-fit my-24">
                   <div
-                    className="rounded-full border-4 border-davys-grey-0 h-750 w-750 grid-cols-4 grid-rows-4 grid rotate-16"
+                    className="rounded-full border-4 border-davys-grey-0 h-750 w-750 grid-cols-4 grid-rows-4 grid"
                     ref={PILLAR_CIRCLE}
                   >
                     {/* 74, 45, 16, -16, -45 -74 */}
+                    {/* TODO: extract to content array map across mobile and desktop variants */}
                     <HomePillarsDesktop
                       number="02"
                       name="Private Experiences"
@@ -308,6 +313,12 @@ function App() {
                   </div>
                 </div>
               </div>
+            </div>
+
+            <div className="prose prose-lg w-fit h-fit mx-auto 2xl:hidden">
+              <h1 className="font-cochin text-selago-0 text-center mb-6 mt-0">
+                OUR PILLARS
+              </h1>
             </div>
 
             <div className="flex-col flex md:grid md:grid-cols-2 xl:grid-cols-3 2xl:hidden md:gap-x-8 max-w-270 mx-auto p-8">
@@ -368,9 +379,9 @@ function App() {
                 speed={75}
                 style={{
                   WebkitMaskImage:
-                    "linear-gradient(90deg, transparent 2%, rgba(0,0,0,0.5) 12%, black 50%, rgba(0,0,0,0.5) 88%, transparent 98%)",
+                    "linear-gradient(90deg, transparent 2%, rgba(0,0,0,0.5) 8%, black 25%, black 50%, black 75%, rgba(0,0,0,0.5) 92%, transparent 98%)",
                   maskImage:
-                    "linear-gradient(90deg, transparent 2%, rgba(0,0,0,0.5) 12%, black 50%, rgba(0,0,0,0.5) 88%, transparent 98%)",
+                    "linear-gradient(90deg, transparent 2%, rgba(0,0,0,0.5) 8%, black 25%, black 50%, black 75%, rgba(0,0,0,0.5) 92%, transparent 98%)",
                 }}
               >
                 {/* TODO: extract this to reusable component */}
@@ -454,28 +465,28 @@ function App() {
           {/* NOTE: sections like this next to the footer are enclosed together in a single
               div, due to the footer's desktop bottom padding
           */}
-          <div className="relative w-full @container h-fit flex flex-col prose prose-lg max-w-none mt-[-15%]">
+          <div className="relative w-full @container h-fit flex flex-col prose prose-lg max-w-none -mt-8">
             <div
               className="absolute inset-0 bg-schiava-blue bg-no-repeat bg-size-[100%_100%]"
               style={{
-                maskImage: `url('/svg/BOTTOM_CROWN_ROTATED.svg'), linear-gradient(black, black)`,
-                WebkitMaskImage: `url('/svg/BOTTOM_CROWN_ROTATED.svg'), linear-gradient(black, black)`,
+                maskImage: `url('${bottomCrownRotatedSvg}'), linear-gradient(black, black)`,
+                WebkitMaskImage: `url('${bottomCrownRotatedSvg}'), linear-gradient(black, black)`,
 
                 maskRepeat: "no-repeat, no-repeat",
                 WebkitMaskRepeat: "no-repeat, no-repeat",
 
-                maskSize: `100% auto, 100% 100%`,
-                WebkitMaskSize: `100% auto, 100% 100%`,
+                maskSize: `100% 256px, 100% 100%`,
+                WebkitMaskSize: `100% 256px, 100% 100%`,
 
-                maskPosition: `0 0, 0 calc((100cqw * ${CROWN_BOTTOM_HEIGHT_MULTIPLIER}) - 2px)`,
-                WebkitMaskPosition: `0 0, 0 calc((100cqw * ${CROWN_BOTTOM_HEIGHT_MULTIPLIER}) - 2px)`,
+                maskPosition: `0 0, 0 254px`,
+                WebkitMaskPosition: `0 0, 0 254px`,
               }}
             />
 
             {/* ==============================================================================
               SECTION: FAQ
             ============================================================================== */}
-            <div className="w-full h-fit z-1 relative flex flex-col items-center p-8 pt-24">
+            <div className="w-full h-fit z-1 relative flex flex-col items-center p-8 pt-32 md:pt-[calc(128px-4%)]">
               <h1 className="font-cochin text-selago-0 mb-8 text-center mt-[4%] text-shadow-lg text-shadow-tristesse-0/36">
                 BEFORE YOU ENTER
               </h1>
