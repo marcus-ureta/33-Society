@@ -102,7 +102,7 @@ function App() {
           pin: true,
           pinSpacing: true,
           anticipatePin: 1,
-          scrub: true,
+          scrub: 1,
           start: "top top",
           end: "+=2500",
           snap: {
@@ -110,7 +110,6 @@ function App() {
             duration: { min: 0.2, max: 0.8 }, // the snap animation should be at least 0.2 seconds, but no more than 3 seconds (determined by velocity)
             delay: 0.2, // wait 0.2 seconds from the last scroll event before doing the snapping
           },
-          markers: true,
         },
       });
 
@@ -410,11 +409,11 @@ function App() {
               WebkitMaskPosition: `0 0, 0 32px, 0 bottom`,
             }}
           >
-            <h1 className="text-center font-cochin text-selago-50 mb-16">
+            <h1 className="text-center font-cochin text-selago-50 mb-16 text-shadow-lg text-shadow-tristesse-0/36">
               WHAT TO EXPECT INSIDE THE YACHT
             </h1>
 
-            <div className="flex-col flex md:grid md:grid-cols-6 md:*:w-full md:gap-x-8 max-w-270">
+            <div className="flex-col flex md:grid md:grid-cols-6 md:*:w-full md:gap-x-8 max-w-270 *:text-shadow-md *:text-shadow-tristesse-0/48">
               <HomeActivities
                 description="Tart chocolate danish candy shortbread chupa chups chocolate pastry."
                 className="md:col-span-3 xl:col-span-2"
@@ -451,7 +450,7 @@ function App() {
           SECTION: FAQ & FOOTER
           ============================================================================== */}
           {/* NOTE: sections like this next to the footer are enclosed together in a single
-              div due to the footer's desktop padding
+              div, due to the footer's desktop bottom padding
           */}
           <div className="relative w-full @container h-fit flex flex-col prose prose-lg max-w-none mt-[-15%]">
             <div
@@ -475,11 +474,11 @@ function App() {
               SECTION: FAQ
             ============================================================================== */}
             <div className="w-full h-fit z-1 relative flex flex-col items-center p-8 pt-24">
-              <h1 className="font-cochin text-selago-100 mb-8 text-center mt-[4%]">
+              <h1 className="font-cochin text-selago-100 mb-8 text-center mt-[4%] text-shadow-lg text-shadow-tristesse-0/36">
                 BEFORE YOU ENTER
               </h1>
-              <p className="font-aileron text-selago-50 mt-0 mb-16 text-center">
-                Everything you need to know about the Society
+              <p className="font-aileron text-selago-50 mt-0 mb-16 text-center text-shadow-md text-shadow-tristesse-0/48">
+                Everything you need to know about the Society.
               </p>
               <div className="w-[90vw] md:w-full max-w-270 h-fit bg-tristesse-0 rounded-2xl p-4">
                 <Accordion multiple>
@@ -536,7 +535,7 @@ function App() {
                     <p className="font-aileron text-selago-0 mb-0 mt-0">
                       Book a Meeting
                     </p>
-                    <p className="font-aileron text-selago-0 mb-0 mt-0">
+                    <p className="font-aileron text-selago-0 mb-0 mt-0 text-shadow-md text-shadow-tristesse-0/48">
                       Purchase a Ticket
                     </p>
                   </div>
@@ -598,11 +597,11 @@ function App() {
                 Legal Details
               */}
               <div className="w-full h-fit bg-schiava-blue -mt-1 px-8 py-4 flex flex-col md:flex-row gap-4 items-center">
-                <p className="font-aileron mb-0 mt-0 text-base text-selago-0 w-fit md:w-full">
+                <p className="font-aileron mb-0 mt-0 text-base text-selago-0 w-fit md:w-full text-shadow-md text-shadow-tristesse-0/48">
                   <span className="font-bold mr-4">© 2026 SOCIETY 33</span> All
                   rights reserved.
                 </p>
-                <div className="flex gap-4 flex-row w-fit md:w-full md:justify-end">
+                <div className="flex gap-4 flex-row w-fit md:w-full md:justify-end *:text-shadow-md *:text-shadow-tristesse-0/48">
                   <p className="font-aileron mb-0 mt-0 text-base text-selago-0">
                     Terms of Service
                   </p>
