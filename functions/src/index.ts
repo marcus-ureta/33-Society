@@ -1,33 +1,24 @@
 
 import {setGlobalOptions} from "firebase-functions";
-import {onRequest} from "firebase-functions/https";
 
-import {onCall, HttpsError, CallableRequest } from "firebase-functions/v2/https";
+import {onCall, CallableRequest } from "firebase-functions/v2/https";
 import * as logger from "firebase-functions/logger";
 
+import { initializeApp } from "firebase-admin/app";
+import { getFirestore } from "firebase-admin/firestore";
+
+initializeApp();
+
+const db = getFirestore();
 
 setGlobalOptions({maxInstances: 10, region: "asia-east2"});
 
-export const helloWorld = onRequest({ cors: true },(request, response) => {
-    logger.info("Hello logs!", {structuredData: true});
-    response.send("Hello from Firebase! Teehee");
-});
-
-export const getSystemStatus = onCall((request : any) => {
-    logger.info('request receieved: ' + request);
-
-    if (!request.auth) {
-        throw new HttpsError("unauthenticated", "The function must be called while authenticated.");
-    }
-
-    return { status: "operational", timestamp: Date.now() };
-});
 
 interface authPasswordProps {
     password: string
 }
 
-export const authenticatePassword = onCall((request : CallableRequest<authPasswordProps>) => {
+export const authenticatePassword = onCall( async (request : CallableRequest<authPasswordProps>) => {
 
     const password = request.data.password;
 
