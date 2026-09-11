@@ -2,7 +2,7 @@
 import {setGlobalOptions} from "firebase-functions";
 import {onRequest} from "firebase-functions/https";
 
-import {onCall, HttpsError} from "firebase-functions/v2/https";
+import {onCall, HttpsError, CallableRequest } from "firebase-functions/v2/https";
 import * as logger from "firebase-functions/logger";
 
 
@@ -18,7 +18,33 @@ export const getSystemStatus = onCall((request : any) => {
 
     if (!request.auth) {
         throw new HttpsError("unauthenticated", "The function must be called while authenticated.");
-    }   
+    }
 
     return { status: "operational", timestamp: Date.now() };
 });
+
+interface authPasswordProps {
+    password: string
+}
+
+export const authenticatePassword = onCall((request : CallableRequest<authPasswordProps>) => {
+
+    const password = request.data.password;
+
+    logger.info(password);
+
+    // return a boolean based on the fetched password from database
+    const getDbPassword = 'ballslover69'
+
+    if(password === getDbPassword) {
+        return{
+            authToken: '692301',
+            success: true
+        }
+    }
+
+    return{
+        authToken: null,
+        success: false
+    }
+})
