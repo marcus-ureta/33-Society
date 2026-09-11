@@ -267,7 +267,7 @@ function App() {
                     "radial-gradient(circle, black 25%, transparent 75%)",
                 }}
               >
-                <div className="h-100 w-fit my-24">
+                <div className="h-100 w-fit my-32">
                   <div
                     className="rounded-full border-4 border-davys-grey-0 h-750 w-750 grid-cols-4 grid-rows-4 grid"
                     ref={PILLAR_CIRCLE}
