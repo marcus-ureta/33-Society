@@ -96,7 +96,7 @@ function Login({setPage} : {setPage : React.Dispatch<React.SetStateAction<Page>>
                 <Logo variant="primary" className="size-16 text-selago-100"/>
             </div>
 
-            <form onSubmit={handleLogin} className="flex flex-col items-center justify-center w-full h-[80%] gap-y-16">
+            <form onSubmit={handleLogin} className="flex flex-col items-center justify-center w-full h-[82%] gap-y-12">
                 <div className="flex flex-col gap-y-9 items-center">
                     <input name="name" type='text' placeholder="Your Name" className="border-b-[1px] border-davys-grey-0 text-[2rem] text-davys-grey-0 font-['instrument-serif'] italic pl-[8px] absolute left-[-9999px]"/>
 

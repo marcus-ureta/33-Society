@@ -5,6 +5,10 @@
     @apply bg-tristesse-0 border-davys-grey-100 text-davys-grey-0 font-['Aileron'] pl-[10px] text-[1.15rem]! py-[26px] text-selago-0 rounded-xl;
   }
 
+  .radio-field {
+    @apply flex items-center gap-3 bg-selago-50 w-full py-[8px] justify-center border-2 border-davys-grey-0 rounded-4xl hover:bg-transparent hover:border-selago-50 transition-all duration-200;
+  }
+
   .scrollable-container {
     @apply flex-1 min-h-0 overflow-y-auto overflow-x-hidden w-[99%];
   }
