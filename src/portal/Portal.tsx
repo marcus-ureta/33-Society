@@ -1,4 +1,7 @@
 
+import { httpsCallable } from "firebase/functions";
+import { functions } from "@/firebase.ts";
+
 import { Field } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 
@@ -13,6 +16,11 @@ import SignUp from './SignUp.tsx';
 import Login from './login/Login.tsx'
 
 import './Portal.css';
+
+interface StatusResponse {
+  status: string;
+  timestamp: number;
+}
 
 export const Page = {
     portal: 'Portal',
@@ -60,6 +68,20 @@ function Portal() {
         return () => window.removeEventListener('mousemove', handleMouseMove);
     }, []);
 
+    const handleCallFunction = async () => {
+        try {
+            const getSystemStatus = httpsCallable<void, StatusResponse>(functions, "getSystemStatus");
+
+            const response = await getSystemStatus();
+
+            if (response.data) {
+                console.log(`Success! ${response.data}`);
+            }
+        } catch (error) {
+            console.error("Error calling Firebase function:", error);
+        }
+    };
+
     return (
         <>
             <div className="w-screen h-dvh bg-tristesse-0 flex flex-col pt-8 overflow-hidden">
@@ -82,7 +104,7 @@ function Portal() {
                                         <div className="relative w-full">
                                             <Input name="password" id="password" type="password" placeholder="Input Password" required className="input-field w-full rounded-none! pr-12"/>
 
-                                            <ArrowRight className="absolute right-3 top-1/2 -translate-y-1/2 w-6 h-6 text-davys-grey-0 hover:text-selago-0 border-2 rounded-full transition-all duration-200 hover:cursor-pointer" onClick={() => setPage(Page.signup)}/>
+                                            <ArrowRight className="absolute right-3 top-1/2 -translate-y-1/2 w-6 h-6 text-davys-grey-0 hover:text-selago-0 border-2 rounded-full transition-all duration-200 hover:cursor-pointer" onClick={handleCallFunction}/>
                                         </div>
                                     </Field>
                                 </form>
