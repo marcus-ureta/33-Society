@@ -193,17 +193,19 @@ function App() {
                 maskRepeat: "no-repeat, no-repeat, no-repeat",
                 WebkitMaskRepeat: "no-repeat, no-repeat, no-repeat",
 
+                // 🤖
                 // Layer 1: Scale width to 100% and explicitly match the top crown aspect ratio height.
                 // Layer 2: Fill 100% height minus top crown and bottom crown (with 4px overlap for seams).
                 // Layer 3: Scale width to 100% and explicitly match the bottom crown aspect ratio height.
-                maskSize: `100% auto, 100% calc(100% - (100cqw * ${CROWN_TOP_HEIGHT_MULTIPLIER}) - 128px), 100% 256px`,
-                WebkitMaskSize: `100% auto, 100% calc(100% - (100cqw * ${CROWN_TOP_HEIGHT_MULTIPLIER}) - 128px), 100% 256px`,
+                maskSize: `100% auto, 100% calc(100% - (100cqw * ${CROWN_TOP_HEIGHT_MULTIPLIER}) - 254px), 100% 256px`,
+                WebkitMaskSize: `100% auto, 100% calc(100% - (100cqw * ${CROWN_TOP_HEIGHT_MULTIPLIER}) - 254px), 100% 256px`,
 
+                // 🤖
                 // Layer 1: Pin to top left.
-                // Layer 2: Push down to where the top crown ends (minus 2px to prevent a seam).
+                // Layer 2: Push down to where the top crown ends.
                 // Layer 3: Pin to bottom.
-                maskPosition: `0 0, 0 calc((100cqw * ${CROWN_TOP_HEIGHT_MULTIPLIER}) - 32px), 0 bottom`,
-                WebkitMaskPosition: `0 0, 0 calc((100cqw * ${CROWN_TOP_HEIGHT_MULTIPLIER}) - 32px), 0 bottom`,
+                maskPosition: `0 0, 0 calc((100cqw * ${CROWN_TOP_HEIGHT_MULTIPLIER})), 0 bottom`,
+                WebkitMaskPosition: `0 0, 0 calc((100cqw * ${CROWN_TOP_HEIGHT_MULTIPLIER})), 0 bottom`,
               }}
             />
 
@@ -211,7 +213,7 @@ function App() {
             <div
               className="w-full h-full z-1 relative flex flex-col items-center prose prose-lg max-w-270"
               style={{
-                paddingTop: `calc((100cqw * ${CROWN_TOP_HEIGHT_MULTIPLIER}) - 272px)`,
+                paddingTop: `calc((100cqw * ${CROWN_TOP_HEIGHT_MULTIPLIER}) - 16%)`,
                 paddingBottom: `128px`,
               }}
             >
