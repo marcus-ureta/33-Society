@@ -161,17 +161,17 @@ function App() {
               </p>
 
               {/* Hero CTA */}
-              <div className="mt-12 border-2 border-schiava-blue p-4 lg:p-2 rounded-[42px] md:rounded-full flex flex-col md:flex-row items-center gap-4 md:gap-0">
+              <div className="mt-12 border-2 border-schiava-blue p-4 lg:p-2 rounded-[42px] md:rounded-full flex flex-col md:flex-row items-center gap-4 md:gap-0 transition-all duration-300 hover:px-4 hover:py-3 hover:-translate-y-1">
                 <Button
                   variant="default"
                   className={
-                    "text-selago-0 bg-schiava-blue px-8 py-4 font-aileron rounded-full text-lg h-full"
+                    "text-selago-0 bg-schiava-blue px-8 py-4 font-aileron rounded-full text-lg h-full transition-all duration-300 hover:scale-105"
                   }
                 >
                   Purchase a Ticket
                 </Button>
                 {/* TODO: replace with react router link */}
-                <p className="leading-0 px-6 text-selago-0 mr-2">
+                <p className="leading-0 px-6 text-selago-0 mr-2 transition-all duration-300 hover:scale-105">
                   Book a Meeting
                 </p>
               </div>
