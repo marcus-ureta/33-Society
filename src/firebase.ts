@@ -21,6 +21,6 @@ export const auth = getAuth(app);
 
 export const functions = getFunctions(app, 'asia-east2');
 
-if (window.location.hostname === "localhost") {
+if (import.meta.env.DEV) {
     connectFunctionsEmulator(functions, "127.0.0.1", 5001);
 }

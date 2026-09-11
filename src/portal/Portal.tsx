@@ -18,8 +18,8 @@ import Login from './login/Login.tsx'
 import './Portal.css';
 
 interface StatusResponse {
-  status: string;
-  timestamp: number;
+    status: string;
+    timestamp: number;
 }
 
 export const Page = {
