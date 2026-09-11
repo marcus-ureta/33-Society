@@ -493,13 +493,13 @@ function App() {
               <p className="font-aileron text-selago-dark mt-0 mb-16 text-center text-shadow-md text-shadow-tristesse-0/48">
                 Everything you need to know about the Society.
               </p>
-              <div className="w-[90vw] md:w-full max-w-270 h-fit bg-tristesse-0 rounded-2xl p-4">
+              <div className="w-[90vw] md:w-full max-w-270 h-fit bg-tristesse-0 rounded-2xl px-4 py-2">
                 <Accordion multiple>
                   {faqItems.map((item) => (
                     <AccordionItem
                       key={item.value}
                       value={item.value}
-                      className={"*:mt-0 *:mb-0"}
+                      className={"*:mt-0 *:mb-0 p-4"}
                     >
                       <AccordionTrigger
                         className={
@@ -524,7 +524,7 @@ function App() {
               {/* 
                 Footer Links
               */}
-              <div className="w-full h-fit p-8 gap-8 md:gap-24 flex flex-col mb-8 md:flex-row">
+              <div className="w-full h-fit p-16 px-24 gap-8 md:gap-24 flex flex-col mb-8 md:flex-row">
                 <div className="flex flex-col w-full max-w-56 h-fit items-start">
                   <Logo
                     variant="horizontal"
