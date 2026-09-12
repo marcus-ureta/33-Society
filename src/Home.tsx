@@ -25,7 +25,7 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import HomePillarsDesktop from "./components/HomePillarsDesktop";
-import { useRef } from "react";
+import { useRef, type ReactNode } from "react";
 
 // 🤖 Vite/Rolldown CJS interop workaround for react-fast-marquee
 const Marquee =
@@ -43,6 +43,12 @@ export interface PillarItem {
   name: string;
   description: string;
   className?: string;
+}
+
+export interface ActivityItem {
+  description: string;
+  className?: string;
+  children?: ReactNode;
 }
 
 // TODO: check if renaming function doesn't cause issues in main.tsx first
@@ -137,6 +143,39 @@ function App() {
         "From private yachts to international trips, every experience is designed to be something worth remembering.",
       className:
         "col-start-4 row-start-2 rotate-74 translate-x-78 translate-y-36",
+    },
+  ];
+
+  const activityItems: ActivityItem[] = [
+    {
+      description:
+        "Tart chocolate danish candy shortbread chupa chups chocolate pastry.",
+      className:
+        "md:col-span-3 xl:col-span-2 intersect-once intersect:motion-preset-blur-up intersect:motion-delay-450",
+    },
+    {
+      description:
+        "Cupcake tiramisu pastry croissant chocolate bar danish gummies.",
+      className:
+        "md:col-span-3 xl:col-span-2 intersect-once intersect:motion-preset-blur-up intersect:motion-delay-600",
+    },
+    {
+      description:
+        "Candy canes cotton candy powder jelly-o gummi bears toffee.",
+      className:
+        "md:col-span-3 xl:col-span-2 intersect-once intersect:motion-preset-blur-up intersect:motion-delay-750",
+    },
+    {
+      description:
+        "Toffee cake carrot cake wafer jujubes marshmallow icing pudding.",
+      className:
+        "md:col-span-3 xl:col-span-2 xl:col-start-2 intersect-once intersect:motion-preset-blur-up intersect:motion-delay-450",
+    },
+    {
+      description:
+        "Ice cream chupa chups cake sesame snaps toffee danish marshmallow.",
+      className:
+        "md:col-span-full xl:col-span-2 xl:col-start-4 intersect-once intersect:motion-preset-blur-up intersect:motion-delay-600",
     },
   ];
 
@@ -435,26 +474,15 @@ function App() {
             </h1>
 
             <div className="flex-col flex md:grid md:grid-cols-6 md:*:w-full md:gap-x-8 max-w-270 *:text-shadow-md *:text-shadow-tristesse-0/48">
-              <HomeActivities
-                description="Tart chocolate danish candy shortbread chupa chups chocolate pastry."
-                className="md:col-span-3 xl:col-span-2"
-              ></HomeActivities>
-              <HomeActivities
-                description="Cupcake tiramisu pastry croissant chocolate bar danish gummies."
-                className="md:col-span-3 xl:col-span-2"
-              ></HomeActivities>
-              <HomeActivities
-                description="Candy canes cotton candy powder jelly-o gummi bears toffee."
-                className="md:col-span-3 xl:col-span-2"
-              ></HomeActivities>
-              <HomeActivities
-                description="Toffee cake carrot cake wafer jujubes marshmallow icing pudding."
-                className="md:col-span-3 xl:col-span-2 xl:col-start-2"
-              ></HomeActivities>
-              <HomeActivities
-                description="Ice cream chupa chups cake sesame snaps toffee danish marshmallow."
-                className="md:col-span-full xl:col-span-2 xl:col-start-4"
-              ></HomeActivities>
+              {activityItems.map((activity, index) => (
+                <HomeActivities
+                  key={index}
+                  description={activity.description}
+                  className={activity.className}
+                >
+                  {activity.children}
+                </HomeActivities>
+              ))}
             </div>
           </div>
 
