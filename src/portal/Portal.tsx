@@ -61,6 +61,7 @@ function CongratulationsPage() {
 }
 
 function Portal() {
+    const [isPasswordCheck, setPasswordCheck] = useState(false);
     const [page, setPage] = useState<Page>(Page.portal);
     const [mousePos, setPosition] = useState({ x: 0, y: 0 });
 
@@ -75,6 +76,8 @@ function Portal() {
 
     const handleCallFunction = async (event : React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+
+        setPasswordCheck(true);
 
         const form = event.currentTarget;
         const formData = new FormData(form);
@@ -98,6 +101,9 @@ function Portal() {
             }
         } catch (error) {
             console.error("Error calling Firebase function:", error);
+        }
+        finally{
+            setPasswordCheck(false);
         }
     };
 
@@ -123,8 +129,16 @@ function Portal() {
                                         <div className="relative w-full">
                                             <Input name="password" id="password" type="password" placeholder="Input Password" required className="input-field w-full rounded-none! pr-12"/>
 
-                                            <button type="submit" className='absolute right-3 top-1/2 -translate-y-1/2'>
-                                                <ArrowRight className="w-6 h-6 text-davys-grey-0 hover:text-selago-0 border-2 rounded-full transition-all duration-200 hover:cursor-pointer" type='submit'/>
+                                            <button type="submit" disabled={isPasswordCheck} className='absolute right-3 top-1/2 -translate-y-1/2'>
+                                                {isPasswordCheck === true && (
+                                                    <div className="flex items-center justify-center min-h-screen">
+                                                        <div className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"/>
+                                                    </div>
+                                                )}
+
+                                                {isPasswordCheck === false && (
+                                                    <ArrowRight className="w-6 h-6 text-davys-grey-0 hover:text-selago-0 border-2 rounded-full transition-all duration-200 hover:cursor-pointer" type='submit'/>
+                                                )}
                                             </button>
                                         </div>
                                     </Field>
