@@ -24,6 +24,7 @@ type authPasswordProps = {
 type AuthPasswordResponse = {
     authToken: string | null;
     success: boolean;
+    errorMessage?: string
 };
 
 export const Page = {
@@ -89,10 +90,11 @@ function Portal() {
 
             if (response.data.success === true) {
                 console.log(`Success! ${response.data}`);
+                setPage(Page.signup);
             }
             else
             {
-                console.log('no password matches found');
+                console.log(response.data.errorMessage);
             }
         } catch (error) {
             console.error("Error calling Firebase function:", error);

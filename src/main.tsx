@@ -10,7 +10,7 @@ import ObserveWithIntersect from "./IntersectObserver.tsx";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ObserveWithIntersect>
-      <Home />
+      <Portal />
     </ObserveWithIntersect>
   </StrictMode>,
 );

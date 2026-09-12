@@ -20,22 +20,33 @@ interface authPasswordProps {
 
 export const authenticatePassword = onCall( async (request : CallableRequest<authPasswordProps>) => {
 
-    const password = request.data.password;
+    const userInput = request.data.password;
 
-    logger.info(password);
+    try{
+        const getMatchedPassword = await db.collection('registeredPasswords').where('isActive', '==', true)
+            .where('password', '==', userInput).limit(1).get();
 
-    // return a boolean based on the fetched password from database
-    const getDbPassword = 'ballslover69'
+        if(getMatchedPassword.empty) {
+            return {
+                authToken: null,
+                success: false,
+                errorMessage: 'No matching passwords!'
+            }
+        }
 
-    if(password === getDbPassword) {
-        return{
-            authToken: '692301',
+        return {
+            authToken: '',
             success: true
         }
-    }
 
-    return{
-        authToken: null,
-        success: false
+        
+    }catch (e) {
+        logger.info(e);
+
+        return {
+            authToken: null,
+            success: false,
+            errorMessage: 'Unexpected Error. Please try again later.'
+        }
     }
 })
