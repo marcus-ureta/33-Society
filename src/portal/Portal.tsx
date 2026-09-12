@@ -62,6 +62,8 @@ function CongratulationsPage() {
 
 function Portal() {
     const [isPasswordCheck, setPasswordCheck] = useState(false);
+    const [errorMessage, setErrorMessage] = useState<string>('');
+
     const [page, setPage] = useState<Page>(Page.portal);
     const [mousePos, setPosition] = useState({ x: 0, y: 0 });
 
@@ -92,14 +94,15 @@ function Portal() {
             const response = await authenticatePassword({password: password});
 
             if (response.data.success === true) {
-                console.log(`Success! ${response.data}`);
                 setPage(Page.signup);
             }
             else
             {
+                setErrorMessage(response.data.errorMessage!);
                 console.log(response.data.errorMessage);
             }
-        } catch (error) {
+        } catch (error : any) {
+            setErrorMessage(error);
             console.error("Error calling Firebase function:", error);
         }
         finally{
@@ -126,8 +129,14 @@ function Portal() {
                             <div className="grid grid-rows-2 gap-y-8 w-full max-w-md">
                                 <form className="w-full" onSubmit={handleCallFunction}>
                                     <Field>
+
+                                        {errorMessage && (
+                                            <p className="text-red-400 text-sm font-['Aileron'] text-center mt-[16px]">{errorMessage}</p>
+                                        )}
+
+                                        
                                         <div className="relative w-full">
-                                            <Input name="password" id="password" type="password" placeholder="Input Password" required className="input-field w-full rounded-none! pr-12"/>
+                                            <Input name="password" id="password" type="password" placeholder="Input Password" required className="input-field w-full rounded-none! pr-12" onChange={() => setErrorMessage('')}/>
 
                                             <button type="submit" disabled={isPasswordCheck} className='absolute right-3 top-1/2 -translate-y-1/2'>
                                                 {isPasswordCheck === true && (
