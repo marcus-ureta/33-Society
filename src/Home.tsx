@@ -38,6 +38,13 @@ import { useMediaQuery } from "react-responsive";
 
 // ================================================================================
 
+export interface PillarItem {
+  number: string;
+  name: string;
+  description: string;
+  className?: string;
+}
+
 // TODO: check if renaming function doesn't cause issues in main.tsx first
 function App() {
   //  SVG CROWN DIMENSIONS & SEMI-CIRCLE PATHS
@@ -79,6 +86,57 @@ function App() {
       trigger: "Is my slot transferable?",
       content:
         "To maintain the quality and exclusivity of the Society, event slots are generally non-transferable. Any exception must be reviewed and approved by the Society 33 team",
+    },
+  ];
+
+  const pillarItems: PillarItem[] = [
+    {
+      number: "01",
+      name: "The Inner Circle",
+      description:
+        "A private community of founders, entrepreneurs, executives, and business-minded individuals across Asia.",
+      className:
+        "col-start-1 row-start-2 -rotate-74 -translate-x-21 translate-y-38",
+    },
+    {
+      number: "02",
+      name: "Private Experiences",
+      description:
+        "Private dinners, yacht experiences, curated gatherings, and events designed around the people in the room.",
+      className:
+        "col-start-1 row-start-1 translate-x-68 translate-y-75 -rotate-45",
+    },
+    {
+      number: "03",
+      name: "Masterminds",
+      description:
+        "Closed-door conversations where members exchange ideas, challenges, strategies, and perspectives with people building at a similar level.",
+      className:
+        "col-start-2 row-start-1 -rotate-16 translate-x-31 -translate-y-12",
+    },
+    {
+      number: "04",
+      name: "Business Opportunity",
+      description:
+        "Create opportunities through partnerships, referrals, collaborations, introductions, and deal-making.",
+      className:
+        "col-start-3 row-start-1 rotate-16 translate-x-34 -translate-y-11",
+    },
+    {
+      number: "05",
+      name: "International Experience",
+      description:
+        "Travel beyond the usual business environment. Experience new cities, new markets, and new relationships with the Society.",
+      className:
+        "col-start-4 row-start-1 rotate-45 -translate-x-11 translate-y-74",
+    },
+    {
+      number: "06",
+      name: "International Experience",
+      description:
+        "From private yachts to international trips, every experience is designed to be something worth remembering.",
+      className:
+        "col-start-4 row-start-2 rotate-74 translate-x-78 translate-y-36",
     },
   ];
 
@@ -273,43 +331,15 @@ function App() {
                     ref={PILLAR_CIRCLE}
                   >
                     {/* 74, 45, 16, -16, -45 -74 */}
-                    {/* TODO: extract to content array map across mobile and desktop variants */}
-                    <HomePillarsDesktop
-                      number="02"
-                      name="Private Experiences"
-                      description="Private dinners, yacht experiences, curated gatherings, and events designed around the people in the room."
-                      className="translate-x-68 translate-y-75 -rotate-45"
-                    />
-                    <HomePillarsDesktop
-                      number="03"
-                      name="Masterminds"
-                      description="Closed-door conversations where members exchange ideas, challenges, strategies, and perspectives with people building at a similar level."
-                      className="-rotate-16 translate-x-31 -translate-y-12"
-                    />
-                    <HomePillarsDesktop
-                      number="04"
-                      name="Business Opportunity"
-                      description="Create opportunities through partnerships, referrals, collaborations, introductions, and deal-making."
-                      className="rotate-16 translate-x-34 -translate-y-11"
-                    />
-                    <HomePillarsDesktop
-                      number="05"
-                      name="International Experience"
-                      description="Travel beyond the usual business environment. Experience new cities, new markets, and new relationships with the Society."
-                      className="rotate-45 -translate-x-11 translate-y-74"
-                    />
-                    <HomePillarsDesktop
-                      number="01"
-                      name="The Inner Circle"
-                      description="A private community of founders, entrepreneurs, executives, and business-minded individuals across Asia."
-                      className="-rotate-74 -translate-x-21 translate-y-38"
-                    />
-                    <HomePillarsDesktop
-                      number="06"
-                      name="International Experience"
-                      description="From private yachts to international trips, every experience is designed to be something worth remembering."
-                      className="col-start-4 rotate-74 translate-x-78 translate-y-36"
-                    />
+                    {pillarItems.map((pillar) => (
+                      <HomePillarsDesktop
+                        key={pillar.number}
+                        number={pillar.number}
+                        name={pillar.name}
+                        description={pillar.description}
+                        className={pillar.className}
+                      />
+                    ))}
                   </div>
                 </div>
               </div>
@@ -322,36 +352,14 @@ function App() {
             </div>
 
             <div className="flex-col flex md:grid md:grid-cols-2 xl:grid-cols-3 2xl:hidden md:gap-x-8 max-w-270 mx-auto p-8">
-              <HomePillars
-                number="01"
-                name="The Inner Circle"
-                description="A private community of founders, entrepreneurs, executives, and business-minded individuals across Asia."
-              />
-              <HomePillars
-                number="02"
-                name="Private Experiences"
-                description="Private dinners, yacht experiences, curated gatherings, and events designed around the people in the room."
-              />
-              <HomePillars
-                number="03"
-                name="Masterminds"
-                description="Closed-door conversations where members exchange ideas, challenges, strategies, and perspectives with people building at a similar level."
-              />
-              <HomePillars
-                number="04"
-                name="Business Opportunity"
-                description="Create opportunities through partnerships, referrals, collaborations, introductions, and deal-making."
-              />
-              <HomePillars
-                number="05"
-                name="International Experience"
-                description="Travel beyond the usual business environment. Experience new cities, new markets, and new relationships with the Society."
-              />
-              <HomePillars
-                number="06"
-                name="International Experience"
-                description="From private yachts to international trips, every experience is designed to be something worth remembering."
-              />
+              {pillarItems.map((pillar) => (
+                <HomePillars
+                  key={pillar.number}
+                  number={pillar.number}
+                  name={pillar.name}
+                  description={pillar.description}
+                />
+              ))}
             </div>
           </div>
 
