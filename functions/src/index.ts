@@ -2,7 +2,9 @@
 import {setGlobalOptions} from "firebase-functions";
 
 import {onCall, CallableRequest } from "firebase-functions/v2/https";
+
 import * as logger from "firebase-functions/logger";
+import * as crypto from 'crypto';
 
 import { initializeApp } from "firebase-admin/app";
 import { getFirestore } from "firebase-admin/firestore";
@@ -49,8 +51,6 @@ export const authenticatePassword = onCall( async (request : CallableRequest<aut
                 success: true,
             };
         }
-
-        const crypto = require('crypto');
 
         const authToken = crypto.randomBytes(16).toString('hex');
 
