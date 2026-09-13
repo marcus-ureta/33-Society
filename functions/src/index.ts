@@ -35,8 +35,33 @@ export const authenticatePassword = onCall( async (request : CallableRequest<aut
             }
         }
 
+        const matchedPasswordDoc = getMatchedPassword.docs[0];
+        const passwordDocumentID = matchedPasswordDoc.id;
+
+        const existingToken = await db.collection("registrationTokens").where("passwordDocumentID", "==", passwordDocumentID).
+            where("isUsed", "==", false).limit(1).get();
+
+        if (!existingToken.empty) {
+            const existingTokenData = existingToken.docs[0].data();
+
+            return {
+                authToken: existingTokenData.token,
+                success: true,
+            };
+        }
+
+        const crypto = require('crypto');
+
+        const authToken = crypto.randomBytes(16).toString('hex');
+
+        await db.collection("registrationTokens").add({
+            passwordDocumentID: passwordDocumentID,
+            token: authToken,
+            isUsed: false,
+        });
+
         return {
-            authToken: '',
+            authToken: authToken,
             success: true
         }
 
