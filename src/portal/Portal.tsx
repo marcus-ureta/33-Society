@@ -136,7 +136,7 @@ function Portal() {
 
                                         
                                         <div className="relative w-full">
-                                            <Input name="password" id="password" type="password" placeholder="Input Password" required className="input-field w-full rounded-none! pr-12" onChange={() => setErrorMessage('')}/>
+                                            <Input name="password" id="password" type="text" placeholder="Input Password" required className="input-field w-full rounded-none! pr-12" onChange={() => setErrorMessage('')}/>
 
                                             <button type="submit" disabled={isPasswordCheck} className='absolute right-3 top-1/2 -translate-y-1/2'>
                                                 {isPasswordCheck === true && (
