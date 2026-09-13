@@ -5,7 +5,8 @@ import {onCall, CallableRequest } from "firebase-functions/v2/https";
 import * as logger from "firebase-functions/logger";
 
 import { initializeApp } from "firebase-admin/app";
-import { getFirestore, FieldValue } from "firebase-admin/firestore";
+import { getFirestore } from "firebase-admin/firestore";
+
 
 initializeApp();
 
@@ -50,24 +51,3 @@ export const authenticatePassword = onCall( async (request : CallableRequest<aut
         }
     }
 })
-
-export const registerPassword = onCall(async (request) => {
-    const { password } = request.data;
-
-    if (!password || typeof password !== "string") {
-        throw new Error("Invalid password");
-    }
-
-    const db = getFirestore();
-
-    const doc = await db.collection("registeredPasswords").add({
-        password,
-        isActive: true,
-        createdAt: FieldValue.serverTimestamp(),
-    });
-
-    return {
-        success: true,
-        id: doc.id,
-    };
-});
