@@ -116,10 +116,10 @@ function Portal() {
                 
                 {page === Page.portal && (
                     <div className={`w-full h-full animate-slide-up`}>
-                        <div className="flex flex-col gap-y-4 items-center">
+                        <div className="flex flex-col gap-y-9 items-center">
                             <Logo variant="primary" className="size-16 text-selago-100" />
 
-                            <div className="flex gap-x-3 items-center w-[320px]">
+                            <div className="flex gap-x-3 items-center w-[240px]">
                                 <div className="w-full h-[3px] bg-selago-0 rounded-full shadow-[0_0_16px_1px_var(--color-schiava-blue-dark)]" />
                                 <div className="w-full h-[3px] bg-davys-grey-0 rounded-full shadow-[0_0_16px_1px_var(--color-schiava-blue-dark)]" />
                             </div>
@@ -127,7 +127,7 @@ function Portal() {
 
                         <div className="flex flex-col items-center justify-center w-full h-[80%]">
                             <div className="grid grid-rows-2 gap-y-8 w-full max-w-md">
-                                <form className="w-full" onSubmit={handleCallFunction}>
+                                <form className="w-full" onSubmit={() => setPage(Page.signup)}>
                                     <Field>
 
                                         {errorMessage && (
