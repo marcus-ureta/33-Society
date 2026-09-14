@@ -1,19 +1,15 @@
-import { Field, FieldGroup} from "@/components/ui/field"
+import { Field, FieldGroup, FieldLabel} from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 
 import { buttonVariants } from '@/components/ui/button.tsx'
 import { cn } from '@/lib/utils.ts'
-import { isValidEmail, isValidInput } from "@/utils/genUtils"
-
-import { Logo } from '@/components/logos/Logo.tsx'
+import { isValidInput } from "@/utils/genUtils"
 
 import { Button } from "@/components/ui/button"
 
 import '@/portal/Portal.css';
 
 import { Page } from '@/portal/Portal';
-
-import crown from '/svg/CROWN_CROPPED.svg';
 
 
 import {createAccount, checkVerification} from '@/services/auth'
@@ -113,20 +109,17 @@ function AccountSetup({setPage, email, formAnswers} : {setPage : React.Dispatch<
             )}
 
             {!goVerificationPage && (
-                <div className="w-full min-h-[67vh] flex items-center justify-center">
+                <div className="w-full min-h-[80vh] flex items-center justify-center">
                     <div className="w-full max-w-7xl flex items-center justify-center gap-8 px-6">
                 
-                        <form onSubmit={handleSignup} className="w-full max-w-[680px] mx-[5%]">
-                            <h1 className="text-white font-['Cochin'] text-5xl font-bold">Account Setup</h1>
+                        <form onSubmit={handleSignup} className="w-full max-w-[560px] mx-[5%] border-2 px-10 py-5 box-content border-selago-0 rounded-4xl">
+                            <h1 className="text-white font-['Cochin'] text-5xl font-bold text-center">Create Your Password</h1>
+
+                            <h1 className="font-['Aileron'] text-[clamp(0.5rem,5vw,1.25rem)] text-selago-100 text-center mt-[16px]">Set a strong password for <span className='font-bold'>{email}</span>. Use at least 8 characters, including 1 number and 1 symbol</h1>
 
                             <FieldGroup className="flex flex-col gap-y-6 my-[5%]">
-                                {/* <Field>
-                                    <Input name='email_address' id="email_address" type="email" placeholder="33society@gmail.com" required className="input-field" defaultValue={email} onChange={() => setErrorMessage('')}/>
-                                </Field> */}
-
-                                <h1 className="font-['Aileron'] text-[clamp(0.75rem,5vw,2rem)] text-selago-100">Email: <span className='font-bold'>{email}</span></h1>
-
                                 <Field>
+                                    <FieldLabel htmlFor="password" className="font-['Aileron'] text-xl text-selago-0">Password</FieldLabel>
                                     <Input name='password' id="password" type="password" placeholder="Setup Your Password" required className="input-field" onChange={() => setErrorMessage('')}/>
                                 </Field>
 
@@ -151,15 +144,9 @@ function AccountSetup({setPage, email, formAnswers} : {setPage : React.Dispatch<
                                 <p className="text-red-400 text-sm font-['Aileron'] text-center mt-[16px]">{errorMessage}</p>
                             )}
                         </form>
-
-                        <Logo variant="stacked" className="hidden sm:block size-48 lg:size-68 xl:size-[18rem] text-selago-100"/>
                     </div>
                 </div>
             )}
-
-            <div className="absolute bottom-0 left-0 w-full h-full overflow-hidden pointer-events-none select-none">
-                <img src={crown} className="absolute bottom-0 left-0 w-full h-auto md:translate-y-[clamp(0px,9vw,1500px)] select-none"/>
-            </div>
         </div>
     );  
 }
