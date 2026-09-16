@@ -5,6 +5,8 @@ import { buttonVariants } from '@/components/ui/button.tsx'
 import { cn } from '@/lib/utils.ts'
 import { isValidInput } from "@/utils/genUtils"
 
+import { Logo } from '@/components/logos/Logo.tsx'
+
 import { Button } from "@/components/ui/button"
 
 import '@/portal/Portal.css';
@@ -104,47 +106,52 @@ function AccountSetup({setPage, email, formAnswers} : {setPage : React.Dispatch<
 
     return (
         <div className={`animate-slide-up w-full h-full overflow-hidden`}>
+
             {goVerificationPage && (
                 <EmailVerification setPage={setPage} email={email} formAnswers={formAnswers}/>
             )}
 
             {!goVerificationPage && (
-                <div className="w-full min-h-[80vh] flex items-center justify-center">
-                    <div className="w-full max-w-7xl flex items-center justify-center gap-8 px-6">
-                
-                        <form onSubmit={handleSignup} className="w-full max-w-[560px] mx-[5%] border-2 px-10 py-5 box-content border-selago-0 rounded-4xl">
-                            <h1 className="text-white font-['Cochin'] text-5xl font-bold text-center">Create Your Password</h1>
 
-                            <h1 className="font-['Aileron'] text-[clamp(0.5rem,5vw,1.25rem)] text-selago-100 text-center mt-[16px]">Set a strong password for <span className='font-bold'>{email}</span>. Use at least 8 characters, including 1 number and 1 symbol</h1>
+                <div className="w-full h-[89%] flex flex-col place-items-center justify-center">
+                    <Logo variant="primary" className="size-16 text-selago-100 mb-[48px]" />
 
-                            <FieldGroup className="flex flex-col gap-y-6 my-[5%]">
-                                <Field>
-                                    <FieldLabel htmlFor="password" className="font-['Aileron'] text-xl text-selago-0">Password</FieldLabel>
-                                    <Input name='password' id="password" type="password" placeholder="Setup Your Password" required className="input-field" onChange={() => setErrorMessage('')}/>
-                                </Field>
+                    <form onSubmit={handleSignup} className="w-full max-w-[560px] mx-[5%] border-2 px-10 py-5 box-content border-selago-0 rounded-4xl">
+                        <h1 className="text-white font-['Cochin'] text-5xl font-bold text-center">Create Your Password</h1>
 
-                                <Input name='confirm_password' id="confirm_password" type="confirm_password" placeholder="Confirm Password" className="input-field absolute left-[-9999px]"/>
-                            </FieldGroup>
+                        <h1 className="font-['Aileron'] text-[clamp(0.5rem,5vw,1.25rem)] text-selago-100 text-center mt-[16px]">Set a strong password for <span className='font-bold'>{email}</span>. Use at least 8 characters, including 1 number and 1 symbol</h1>
 
-                            <div className="flex justify-center mt-[4%]">
-                                <Button disabled={isRequest} type='submit' variant="outline" className={cn(buttonVariants({variant: "default", size: "lg",}),
-                                    "button-styling w-full")}>
-                                    {isRequest ? (
-                                        <>
-                                            <span className="spinner"/>
-                                            Registering Account...
-                                        </>
-                                    ) : (
-                                        "Register Account"
-                                    )}
-                                </Button>
-                            </div>
+                        <FieldGroup className="flex flex-col gap-y-6 my-[5%]">
+                            <Field>
+                                <FieldLabel htmlFor="password" className="font-['Aileron'] text-xl text-selago-0">Password</FieldLabel>
+                                <div className="relative">
+                                    <Input name='password' id="password" type="password" placeholder="Setup Your Password" required className="input-field pr-12" onChange={() => setErrorMessage('')}/>
 
-                            {errorMessage && (
-                                <p className="text-red-400 text-sm font-['Aileron'] text-center mt-[16px]">{errorMessage}</p>
-                            )}
-                        </form>
-                    </div>
+                                    <button type="button" className="absolute right-3 top-1/2 -translate-y-1/2 text-selago-100 hover:text-white transition-colors">Show Password</button>
+                                </div>
+                            </Field>
+
+                            <Input name='confirm_password' id="confirm_password" type="confirm_password" placeholder="Confirm Password" className="input-field absolute left-[-9999px]"/>
+                        </FieldGroup>
+
+                        <div className="flex justify-center mt-[4%]">
+                            <Button disabled={isRequest} type='submit' variant="outline" className={cn(buttonVariants({variant: "default", size: "lg",}),
+                                "button-styling w-full")}>
+                                {isRequest ? (
+                                    <>
+                                        <span className="spinner"/>
+                                        Registering Account...
+                                    </>
+                                ) : (
+                                    "Register Account"
+                                )}
+                            </Button>
+                        </div>
+
+                        {errorMessage && (
+                            <p className="text-red-400 text-sm font-['Aileron'] text-center mt-[16px]">{errorMessage}</p>
+                        )}
+                    </form>
                 </div>
             )}
         </div>
