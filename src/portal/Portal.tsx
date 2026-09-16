@@ -127,7 +127,7 @@ function Portal() {
 
                         <div className="flex flex-col items-center justify-center w-full h-[80%]">
                             <div className="grid grid-rows-2 gap-y-8 w-full max-w-md">
-                                <form className="w-full" onSubmit={() => setPage(Page.signup)}>
+                                <form className="w-full" onSubmit={handleCallFunction}>
                                     <Field>
 
                                         {errorMessage && (
