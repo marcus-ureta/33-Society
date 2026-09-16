@@ -19,6 +19,8 @@ import type { FormAnswers } from "../SignUp"
 
 import { useState } from 'react';
 
+import { Eye, EyeSlash } from "flowbite-react-icons/outline";
+
 
 function EmailVerification({setPage, email, formAnswers} : {setPage : React.Dispatch<React.SetStateAction<Page>>, email : string, formAnswers : FormAnswers}){
     const [isRequest, setIsRequest] = useState<boolean>(false);
@@ -69,6 +71,8 @@ function AccountSetup({setPage, email, formAnswers} : {setPage : React.Dispatch<
     const [goVerificationPage, setVerificationPage] = useState<boolean>(false);
     const [isRequest, setIsRequest] = useState<boolean>(false);
     const [errorMessage, setErrorMessage] = useState<string>('');
+
+    const [showPassword, setShowPassword] = useState<boolean>(false);
 
     async function handleSignup(event : React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
@@ -125,9 +129,15 @@ function AccountSetup({setPage, email, formAnswers} : {setPage : React.Dispatch<
                             <Field>
                                 <FieldLabel htmlFor="password" className="font-['Aileron'] text-xl text-selago-0">Password</FieldLabel>
                                 <div className="relative">
-                                    <Input name='password' id="password" type="password" placeholder="Setup Your Password" required className="input-field pr-12" onChange={() => setErrorMessage('')}/>
+                                    <Input name='password' id="password" type={showPassword ? 'text' : 'password'} placeholder="Setup Your Password" required className="input-field pr-12" onChange={() => setErrorMessage('')}/>
 
-                                    <button type="button" className="absolute right-3 top-1/2 -translate-y-1/2 text-selago-100 hover:text-white transition-colors">Show Password</button>
+                                    {showPassword === false && (
+                                        <Eye className="absolute right-3 top-1/2 -translate-y-1/2 w-6 h-auto text-davys-grey-0 hover:text-selago-0 border-2 rounded-full transition-all duration-200 hover:cursor-pointer" onClick={() => setShowPassword(!showPassword)}/>
+                                    )}
+
+                                    {showPassword === true && (
+                                        <EyeSlash className="absolute right-3 top-1/2 -translate-y-1/2 w-6 h-auto text-davys-grey-0 hover:text-selago-0 border-2 rounded-full transition-all duration-200 hover:cursor-pointer" onClick={() => setShowPassword(!showPassword)}/>
+                                    )}
                                 </div>
                             </Field>
 
