@@ -153,7 +153,9 @@ function Portal() {
                                     </Field>
                                 </form>
 
-                                <MagneticButton onClick={() => setPage(Page.login)} message='LOG IN' className='w-full'/>
+                                <h1 className='text-selago-0 text-center text-xl'>Already have an account? {" "}
+                                    <span className="font-bold cursor-pointer hover:text-2xl transition-all duration-150 hover:text-schiava-blue-light" onClick={() => setPage(Page.login)}>Log in!</span>
+                                </h1>
                             </div>
                         </div>
                     </div>
