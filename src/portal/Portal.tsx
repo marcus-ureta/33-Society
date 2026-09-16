@@ -116,10 +116,10 @@ function Portal() {
                 
                 {page === Page.portal && (
                     <div className={`w-full h-full animate-slide-up`}>
-                        <div className="flex flex-col gap-y-4 items-center">
+                        <div className="flex flex-col gap-y-9 items-center">
                             <Logo variant="primary" className="size-16 text-selago-100" />
 
-                            <div className="flex gap-x-3 items-center w-[320px]">
+                            <div className="flex gap-x-3 items-center w-[240px]">
                                 <div className="w-full h-[3px] bg-selago-0 rounded-full shadow-[0_0_16px_1px_var(--color-schiava-blue-dark)]" />
                                 <div className="w-full h-[3px] bg-davys-grey-0 rounded-full shadow-[0_0_16px_1px_var(--color-schiava-blue-dark)]" />
                             </div>
@@ -153,7 +153,9 @@ function Portal() {
                                     </Field>
                                 </form>
 
-                                <MagneticButton onClick={() => setPage(Page.login)} message='LOG IN' className='w-full'/>
+                                <h1 className='text-selago-0 text-center text-xl'>Already have an account? {" "}
+                                    <span className="font-bold cursor-pointer hover:text-2xl transition-all duration-150 hover:text-schiava-blue-light" onClick={() => setPage(Page.login)}>Log in!</span>
+                                </h1>
                             </div>
                         </div>
                     </div>

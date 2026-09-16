@@ -2,7 +2,6 @@
 import { buttonVariants } from '../components/ui/button.tsx'
 import { cn } from '../lib/utils.ts'
 
-import { ArrowLeft } from "flowbite-react-icons/outline";
 import { Logo } from '@/components/logos/Logo.tsx'
 
 import { Button } from "@/components/ui/button"
@@ -202,31 +201,29 @@ function SignUp({page, setPage} : {page: Page, setPage : React.Dispatch<React.Se
 
     return(
         <>
-            <div className="w-screen h-dvh bg-tristesse-0 flex flex-col pt-8 overflow-hidden">
-                <div className={`flex flex-col gap-y-4 items-center ${page === Page.accountSetup ? 'hidden' : ''} animate-slide-up`}>
-                    <Logo variant="primary" className="size-16 text-selago-100" />
+            <div className={`flex flex-col gap-y-9 items-center ${page === Page.accountSetup ? 'hidden' : ''} animate-slide-up`}>
+                <Logo variant="primary" className="size-16 text-selago-100" />
 
-                    <div className="flex flex-row items-center w-[75%] max-w-[820px] gap-x-4 gap-y-7">
-                        <div className="w-[50%] h-[3px] bg-selago-0 rounded-full shadow-[0_0_16px_1px_var(--color-schiava-blue-dark)]"/>
-                        <div className={`w-[50%] h-[3px] rounded-full shadow-[0_0_16px_1px_var(--color-schiava-blue-dark)] ${page !== Page.signup ? 'bg-selago-0' : 'bg-davys-grey-0'} transition-all duration-200`}/>
-                        {[...Array(4)].map((_, index) => (
-                            <div key={index} className={`w-[50%] h-[3px] ${page !== Page.signup && index < questionNo - 1 ? 'bg-selago-0' : 'bg-davys-grey-0'} rounded-full shadow-[0_0_16px_1px_var(--color-schiava-blue-dark)] transition-all duration-200`} />
-                        ))}
-                    </div>
+                <div className="flex flex-row items-center w-[35%] max-w-[820px] gap-x-4 gap-y-7">
+                    <div className="w-[50%] h-[3px] bg-selago-0 rounded-full shadow-[0_0_16px_1px_var(--color-schiava-blue-dark)]"/>
+                    <div className={`w-[50%] h-[3px] rounded-full shadow-[0_0_16px_1px_var(--color-schiava-blue-dark)] ${page !== Page.signup ? 'bg-selago-0' : 'bg-davys-grey-0'} transition-all duration-200`}/>
+                    {[...Array(4)].map((_, index) => (
+                        <div key={index} className={`w-[50%] h-[3px] ${page !== Page.signup && index < questionNo - 1 ? 'bg-selago-0' : 'bg-davys-grey-0'} rounded-full shadow-[0_0_16px_1px_var(--color-schiava-blue-dark)] transition-all duration-200`} />
+                    ))}
                 </div>
+            </div>
 
-                {page === Page.accountSetup && (
-                    <AccountSetup setPage={setPage} email={formAnswers.email} formAnswers={formAnswers}/>
-                )}
+            {page === Page.accountSetup && (
+                <AccountSetup setPage={setPage} email={formAnswers.email} formAnswers={formAnswers}/>
+            )}
 
-                {page === Page.questionnaire && (
-                    <QuestionnairePage setPage={setPage} questionNo={questionNo} setQuestionNo={setQuestionNo} formAnswers={formAnswers} setFormAnswers={setFormAnswers}/>
-                )}
+            {page === Page.questionnaire && (
+                <QuestionnairePage setPage={setPage} questionNo={questionNo} setQuestionNo={setQuestionNo} formAnswers={formAnswers} setFormAnswers={setFormAnswers}/>
+            )}
 
-                {page === Page.signup && (
-                    <SignUpPage setPage={setPage} formAnswers={formAnswers} setFormAnswers={setFormAnswers}/>
-                )}
-            </div> 
+            {page === Page.signup && (
+                <SignUpPage setPage={setPage} formAnswers={formAnswers} setFormAnswers={setFormAnswers}/>
+            )}
         </>
     )
 }
