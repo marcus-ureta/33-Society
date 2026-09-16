@@ -43,7 +43,8 @@ function EmailVerification({setPage, email, formAnswers} : {setPage : React.Disp
 
     return(
         <>
-            <div className='w-full h-[89%] flex flex-col place-items-center justify-center'>
+            <div className='w-full h-[85%] flex flex-col place-items-center justify-center'>
+                <Logo variant="primary" className="size-16 text-selago-100 mb-[48px]" />
 
                 <div className="w-[95%] sm:w-full max-w-[560px] mx-[5%] border-2 px-0 sm:px-10 py-10 box-content border-selago-0 rounded-4xl flex flex-col justify-center items-center">
                     <h1 className="font-['Cochin'] text-3xl sm:text-5xl text-selago-0 font-bold text-center mb-[20px]">We've sent you an email!</h1>
