@@ -43,24 +43,27 @@ function EmailVerification({setPage, email, formAnswers} : {setPage : React.Disp
 
     return(
         <>
-            <div className='flex flex-col w-full h-[80%] items-center justify-center gap-y-4'>
-                <h1 className="font-['Cochin'] text-3xl text-selago-0 font-bold text-center">We've sent a verification link to: {email}</h1>
-                <h2 className="font-['Aileron'] text-xl text-selago-0 mb-[16px] text-center">Please verify your email, then click the button below</h2>
+            <div className='w-full h-[89%] flex flex-col place-items-center justify-center'>
 
-                <Button onClick={handleVerification} variant="outline" className={cn(buttonVariants({variant: "default", size: "lg",}),"button-styling")}>
-                    {isRequest ? (
-                        <>
-                            <span className="spinner"/>
-                            Registering Account...
-                        </>
-                    ) : (
-                        "Register Account"
+                <div className="w-[95%] sm:w-full max-w-[560px] mx-[5%] border-2 px-0 sm:px-10 py-10 box-content border-selago-0 rounded-4xl flex flex-col justify-center items-center">
+                    <h1 className="font-['Cochin'] text-3xl sm:text-5xl text-selago-0 font-bold text-center mb-[20px]">We've sent you an email!</h1>
+                    <h2 className="font-['Aileron'] text-base sm:text-l text-selago-0 mb-[16px] text-center"> We’ve sent a verification link to {email}. Please click the link to verify your account, then press the button below</h2>
+
+                    <Button onClick={handleVerification} variant="outline" className={cn(buttonVariants({variant: "default", size: "lg",}),"button-styling")}>
+                        {isRequest ? (
+                            <>
+                                <span className="spinner"/>
+                                Registering Account...
+                            </>
+                        ) : (
+                            "Register Account"
+                        )}
+                    </Button>
+
+                    {errorMessage && (
+                        <p className="text-red-400 text-sm font-['Aileron'] text-center mt-[16px]">{errorMessage}</p>
                     )}
-                </Button>
-
-                {errorMessage && (
-                    <p className="text-red-400 text-sm font-['Aileron'] text-center mt-[16px]">{errorMessage}</p>
-                )}
+                </div>
             </div>
         </>
     )
