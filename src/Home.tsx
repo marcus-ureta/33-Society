@@ -440,10 +440,10 @@ function App() {
             <div className="w-full h-fit pt-72">
               {/* lg:mt-[8%] md:mt-[12%] mt-[20%] 2xl:mt-[16%] */}
               {/*
-            NOTE: we don't want the possibility of flex justify-center in the parent interfering with GSAP scroll, so we're using mx-auto here
-            */}
+              NOTE: we don't want the possibility of flex justify-center in the parent interfering with GSAP scroll, so we're using mx-auto here
+              */}
               <div
-                className="relative h-screen w-full 2xl:flex hidden items-center flex-col justify-center p-8 prose prose-lg max-w-none"
+                className="relative h-screen w-full 2xl:flex hidden items-center flex-col justify-center py-8 prose prose-lg max-w-none"
                 ref={PILLARS_SECTION}
               >
                 {/* Background Pattern */}
@@ -461,15 +461,32 @@ function App() {
                   OUR PILLARS
                 </h1>
 
-                <div
-                  className="relative z-1 w-full h-fit flex justify-center overflow-hidden max-w-540"
-                  style={{
-                    maskImage:
-                      "radial-gradient(circle, black 25%, transparent 70%)",
-                    WebkitMaskImage:
-                      "radial-gradient(circle, black 25%, transparent 70%)",
-                  }}
-                >
+                <div className="relative z-1 w-full h-fit flex justify-center overflow-hidden max-w-540">
+                  <div
+                    className="absolute bottom-0 z-2 w-screen h-3/4 overflow-y-hidden"
+                    style={
+                      {
+                        // maskImage:
+                        //   "radial-gradient(circle, transparent 25%, black 70%)",
+                        // WebkitMaskImage:
+                        //   "radial-gradient(circle, transparent 25%, black 70%)",
+                      }
+                    }
+                  >
+                    <div
+                      className="h-[200%] w-full absolute bottom-0"
+                      style={{
+                        backgroundImage:
+                          "radial-gradient(transparent 25%, #0b131c 80%)",
+                        maskImage:
+                          "radial-gradient(transparent 25%, black 80%), linear-gradient(to bottom, transparent 48%, black 58%)",
+                        WebkitMaskImage:
+                          "radial-gradient(transparent 25%, black 80%), linear-gradient(to bottom, transparent 48%, black 58%)",
+                        maskComposite: "intersect",
+                        WebkitMaskComposite: "destination-in",
+                      }}
+                    ></div>
+                  </div>
                   <div className="h-100 w-fit my-32">
                     <div
                       className="rounded-full border-4 border-davys-grey-0 h-750 w-750 grid-cols-4 grid-rows-4 grid"
@@ -508,9 +525,9 @@ function App() {
               </div>
             </div>
 
-          {/* ==============================================================================
+            {/* ==============================================================================
             SECTION: GUEST SPEAKERS
-          ============================================================================== */}
+            ============================================================================== */}
             <div className="h-fit w-full flex flex-col items-center p-8 prose prose-lg max-w-none pb-24">
               <LineDivider
                 fillName="davys-grey-0"
