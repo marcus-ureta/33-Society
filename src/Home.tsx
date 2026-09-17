@@ -671,7 +671,7 @@ function App() {
                     <AccordionItem
                       key={item.value}
                       value={item.value}
-                      className={"*:mt-0 *:mb-0 p-4"}
+                      className={"*:mt-0 *:mb-0 p-3 px-4"}
                     >
                       <AccordionTrigger
                         className={
