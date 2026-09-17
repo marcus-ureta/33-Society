@@ -61,6 +61,7 @@ function App() {
   const CROWN_TOP_HEIGHT_MULTIPLIER = CROWN_TOP_HEIGHT / CROWN_TOP_WIDTH;
 
   const invertedArcSvg = `data:image/svg+xml;utf8,<svg viewBox="0 0 1000 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M 0,0 A 725 725 0 0 0 1000,0 L 1000,200 L 0,200 Z" fill="white"/></svg>`;
+  // const invertedArcSvg = `data:image/svg+xml;utf8,<svg viewBox="0 0 1000 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M 0,200 A 725 725 0 0 1 1000,200 Z" fill="white"/></svg>`;
   const arcSvg = `data:image/svg+xml;utf8,<svg viewBox="0 0 1000 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M 0,0 A 725 725 0 0 0 1000,0 Z" fill="white"/></svg>`;
   const bottomCrownSvg = `data:image/svg+xml;utf8,<svg viewBox="0 0 1000 281" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><g transform="matrix(1.770915,0,0,1.770915,-385.474959,-1250.048629)"><path d="M782.35,705.836L782.35,781.72L499.26,864.61L217.67,781.72L217.67,705.82C222.56,705.82 782.35,705.836 782.35,705.836Z" fill="white"/></g></svg>`;
   const bottomCrownRotatedSvg = `data:image/svg+xml;utf8,<svg viewBox="0 0 1000 281" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><g transform="matrix(-1.770915,-0,0,-1.770915,1385.475459,1531.049414)"><path d="M782.35,705.836L782.35,781.72L499.26,864.61L217.67,781.72L217.67,705.82C222.56,705.82 782.35,705.836 782.35,705.836Z" fill="white"/></g></svg>`;
@@ -568,14 +569,14 @@ function App() {
               maskRepeat: "no-repeat, no-repeat, no-repeat",
               WebkitMaskRepeat: "no-repeat, no-repeat, no-repeat",
 
-              maskSize: `100% 32px, 100% calc(100% - 64px), 100% 32px`,
-              WebkitMaskSize: `100% 32px, 100% calc(100% - 64px), 100% 32px`,
+              maskSize: `100% 64px, 100% calc(100% - 128px), 100% 64px`,
+              WebkitMaskSize: `100% 64px, 100% calc(100% - 128px), 100% 64px`,
 
-              maskPosition: `0 0, 0 32px, 0 bottom`,
-              WebkitMaskPosition: `0 0, 0 32px, 0 bottom`,
+              maskPosition: `0 0, 0 64px, 0 bottom`,
+              WebkitMaskPosition: `0 0, 0 64px, 0 bottom`,
             }}
           >
-            <h1 className="intersect-once intersect:motion-preset-blur-up intersect:motion-delay-0 text-center font-cochin text-selago-0 mb-16 text-shadow-lg text-shadow-tristesse-0/36">
+            <h1 className="intersect-once intersect:motion-preset-blur-up intersect:motion-delay-0 text-center font-cochin text-selago-0 mb-16 text-shadow-lg text-shadow-tristesse-0/36 mt-0">
               WHAT TO EXPECT INSIDE THE YACHT
             </h1>
 
