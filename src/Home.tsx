@@ -183,9 +183,76 @@ function App() {
 
   const PILLARS_SECTION = useRef<HTMLDivElement>(null);
   const PILLAR_CIRCLE = useRef<HTMLDivElement>(null);
+  const privilegeTextRef = useRef<HTMLSpanElement>(null);
+  const privilegeFinalTextRef = useRef<HTMLSpanElement>(null);
 
   useGSAP(
     () => {
+      // ------------------------------------------------------------------------
+      // Hero Heading: "Privilege" Gradient & Animation
+      // Modify the gradient colors, angle, stops, and animation parameters here
+      // ------------------------------------------------------------------------
+      if (privilegeTextRef.current) {
+        // Customize your gradient directly here:
+        const gradient =
+          "linear-gradient(110deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 5%, #ffffff 7%, rgba(255, 255, 255, 0) 9%, rgba(255, 255, 255, 0) 100%)";
+
+        gsap.set(privilegeTextRef.current, {
+          backgroundImage: gradient,
+          backgroundSize: "125% 100%",
+          backgroundPosition: "50% center",
+          backgroundRepeat: "no-repeat",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+        });
+
+        let tlHeroHeading = gsap.timeline({
+          scrollTrigger: {
+            trigger: privilegeTextRef.current,
+            start: "top 95%",
+            toggleActions: "play none none none",
+          },
+        });
+
+        tlHeroHeading.to(privilegeTextRef.current, {
+          backgroundPosition: "-400% center",
+          duration: 1.5,
+          delay: 0.5,
+          ease: "power1.out",
+        });
+      }
+
+      if (privilegeFinalTextRef.current) {
+        // Customize your gradient directly here:
+        // (First half: filled gradient/color, Second half: transparent wipe)
+        const finalGradient =
+          "linear-gradient(110deg, #FFFFFF 0%, #FFFFFF 48%, rgba(0, 0, 0, 0) 52%, rgba(0, 0, 0, 0) 100%)";
+
+        gsap.set(privilegeFinalTextRef.current, {
+          backgroundImage: finalGradient,
+          backgroundSize: "250% 100%",
+          backgroundPosition: "100% center",
+          backgroundRepeat: "no-repeat",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+        });
+
+        let tlHeroHeadingFinal = gsap.timeline({
+          scrollTrigger: {
+            trigger: privilegeFinalTextRef.current,
+            start: "top 95%",
+            toggleActions: "play none none none",
+          },
+        });
+
+        tlHeroHeadingFinal.to(privilegeFinalTextRef.current, {
+          backgroundPosition: "0% center",
+          duration: 1.5,
+          delay: 1.5,
+          ease: "power1.out",
+        });
+      }
+
       let mm = gsap.matchMedia();
 
       mm.add("(min-width: 1536px)", () => {
@@ -243,16 +310,39 @@ function App() {
               : "",
           }}
         >
-          {/* 
-            SECTION: HERO 
+          {/*
+            SECTION: HERO
           */}
           <div className=" w-full h-fit lg:h-screen flex flex-col items-center pt-64 p-8 min-h-225">
             {/* Middle hero text */}
             <div className="prose prose-lg w-full flex flex-col items-center max-w-270">
-              <h1 className="intersect-once intersect:motion-preset-blur-up intersect:motion-delay-0 font-cochin font-bold text-selago-100 text-7xl lg:text-8xl w-full text-center mb-4 mt-18">
-                The Privelege of the Right Circle.
-              </h1>
-              <p className="intersect-once intersect:motion-preset-blur-up intersect:motion-delay-150 font-aileron text-selago-dark mb-0 text-center lg:text-xl">
+              <div className="intersect-once intersect:motion-preset-blur-up intersect:motion-delay-0 w-full text-center mb-4 mt-18">
+                <h1 className="inline font-cochin font-bold text-selago-100 text-7xl lg:text-8xl mt-0 mb-0">
+                  The&nbsp;
+                </h1>
+                <span className="relative inline-block font-cochin font-bold text-7xl lg:text-8xl mt-0 mb-0">
+                  {/* Base Text */}
+                  <span
+                    className="inline-block bg-clip-text text-transparent"
+                    ref={privilegeFinalTextRef}
+                  >
+                    Privilege
+                  </span>
+                  {/* Shine Overlay */}
+                  <span
+                    ref={privilegeTextRef}
+                    aria-hidden="true"
+                    className="absolute inset-0 bg-clip-text text-transparent pointer-events-none select-none"
+                  >
+                    Privilege
+                  </span>
+                </span>
+                <h1 className="inline font-cochin font-bold text-selago-100 text-7xl lg:text-8xl mt-0 mb-0">
+                  &nbsp;of the Right Circle.
+                </h1>
+              </div>
+
+              <p className="intersect-once intersect:motion-preset-blur-up intersect:motion-delay-2500 font-aileron text-selago-dark mb-0 text-center lg:text-xl">
                 Society 33 is a private society for the next generation of Asian
                 founders.
               </p>
