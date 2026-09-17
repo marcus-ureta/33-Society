@@ -36,7 +36,6 @@ export async function checkVerification(formData: FormAnswers) {
         doc(database, "users", user.uid),
         {
             ...formData,
-            registeredEmail: user.email,
             createdAt: serverTimestamp(),
         },
         { merge: true }

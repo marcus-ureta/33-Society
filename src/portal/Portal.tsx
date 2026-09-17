@@ -24,6 +24,7 @@ type authPasswordProps = {
 type AuthPasswordResponse = {
     authToken: string | null;
     success: boolean;
+    errorMessage?: string
 };
 
 export const Page = {
@@ -60,6 +61,9 @@ function CongratulationsPage() {
 }
 
 function Portal() {
+    const [isPasswordCheck, setPasswordCheck] = useState(false);
+    const [errorMessage, setErrorMessage] = useState<string>('');
+
     const [page, setPage] = useState<Page>(Page.portal);
     const [mousePos, setPosition] = useState({ x: 0, y: 0 });
 
@@ -75,6 +79,8 @@ function Portal() {
     const handleCallFunction = async (event : React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
+        setPasswordCheck(true);
+
         const form = event.currentTarget;
         const formData = new FormData(form);
 
@@ -88,14 +94,19 @@ function Portal() {
             const response = await authenticatePassword({password: password});
 
             if (response.data.success === true) {
-                console.log(`Success! ${response.data}`);
+                setPage(Page.signup);
             }
             else
             {
-                console.log('no password matches found');
+                setErrorMessage(response.data.errorMessage!);
+                console.log(response.data.errorMessage);
             }
-        } catch (error) {
+        } catch (error : any) {
+            setErrorMessage(error);
             console.error("Error calling Firebase function:", error);
+        }
+        finally{
+            setPasswordCheck(false);
         }
     };
 
@@ -118,11 +129,25 @@ function Portal() {
                             <div className="grid grid-rows-2 gap-y-8 w-full max-w-md">
                                 <form className="w-full" onSubmit={handleCallFunction}>
                                     <Field>
-                                        <div className="relative w-full">
-                                            <Input name="password" id="password" type="password" placeholder="Input Password" required className="input-field w-full rounded-none! pr-12"/>
 
-                                            <button type="submit" className='absolute right-3 top-1/2 -translate-y-1/2'>
-                                                <ArrowRight className="w-6 h-6 text-davys-grey-0 hover:text-selago-0 border-2 rounded-full transition-all duration-200 hover:cursor-pointer" type='submit'/>
+                                        {errorMessage && (
+                                            <p className="text-red-400 text-sm font-['Aileron'] text-center mt-[16px]">{errorMessage}</p>
+                                        )}
+
+                                        
+                                        <div className="relative w-full">
+                                            <Input name="password" id="password" type="text" placeholder="Input Password" required className="input-field w-full rounded-none! pr-12" onChange={() => setErrorMessage('')}/>
+
+                                            <button type="submit" disabled={isPasswordCheck} className='absolute right-3 top-1/2 -translate-y-1/2'>
+                                                {isPasswordCheck === true && (
+                                                    <div className="flex items-center justify-center min-h-screen">
+                                                        <div className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"/>
+                                                    </div>
+                                                )}
+
+                                                {isPasswordCheck === false && (
+                                                    <ArrowRight className="w-6 h-6 text-davys-grey-0 hover:text-selago-0 border-2 rounded-full transition-all duration-200 hover:cursor-pointer" type='submit'/>
+                                                )}
                                             </button>
                                         </div>
                                     </Field>
