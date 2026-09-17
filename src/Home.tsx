@@ -297,10 +297,10 @@ function App() {
     <>
       <Navbar />
 
-      <div className="w-full h-fit flex justify-center bg-tristesse-0 min-w-80 *:wrap-break-word overflow-hidden">
+      <div className="relative w-full h-fit flex justify-center bg-tristesse-0 min-w-80 *:wrap-break-word overflow-hidden">
         {/* PADDED CONTENT AREA */}
         <div
-          className="w-full min-w-80 max-w-512"
+          className="w-full min-w-80 max-w-512 before:absolute before:inset-0 before:z-0 before:bg-[url('/svg/PATTERN%202.svg')] before:bg-repeat before:bg-size-[500px_500px] before:opacity-13 before:pointer-events-none"
           style={{
             WebkitMaskImage: is2kWidth
               ? "linear-gradient(90deg, rgba(0,0,0,0) 0%, black 2%, #000000 50%, black 98%, rgba(0,0,0,0) 100%)"
@@ -348,19 +348,21 @@ function App() {
               </p>
 
               {/* Hero CTA */}
-              <div className="intersect-once intersect:motion-preset-blur-up intersect:motion-delay-300 mt-12 border-2 border-schiava-blue p-4 lg:p-2 rounded-[42px] md:rounded-full flex flex-col md:flex-row items-center gap-4 md:gap-0 transition-all duration-300 hover:px-4 hover:py-3 hover:-translate-y-1">
-                <Button
-                  variant="default"
-                  className={
-                    "text-selago-0 bg-schiava-blue px-8 py-4 font-aileron rounded-full text-lg h-full transition-all duration-300 hover:scale-105"
-                  }
-                >
-                  Purchase a Ticket
-                </Button>
-                {/* TODO: replace with react router link */}
-                <p className="leading-0 px-6 text-selago-0 mr-2 transition-all duration-300 hover:scale-105">
-                  Book a Meeting
-                </p>
+              <div className="intersect-once intersect:motion-preset-blur-up intersect:motion-delay-3000 mt-12">
+                <div className="border-2 border-schiava-blue p-4 lg:p-2 rounded-[42px] md:rounded-full flex flex-col md:flex-row items-center gap-4 md:gap-0 transition-all duration-300 hover:px-4 hover:py-3 hover:-translate-y-1">
+                  <Button
+                    variant="default"
+                    className={
+                      "text-selago-0 bg-schiava-blue px-8 py-4 font-aileron rounded-full text-lg h-full transition-all duration-300 hover:scale-105"
+                    }
+                  >
+                    Purchase a Ticket
+                  </Button>
+                  {/* TODO: replace with react router link */}
+                  <p className="leading-0 px-6 text-selago-0 mr-2 transition-all duration-300 hover:scale-105">
+                    Book a Meeting
+                  </p>
+                </div>
               </div>
             </div>
 
@@ -371,9 +373,9 @@ function App() {
           {/* ==============================================================================
             SECTION: ABOUT SOCIETY 33 
           ============================================================================== */}
-          <div className="relative w-full @container h-fit p-8 flex flex-col items-center justify-center z-1">
+          <div className="relative w-full @container h-fit p-8 flex flex-col items-center justify-center z-2">
             <div
-              className="absolute inset-0 bg-schiava-blue bg-no-repeat bg-size-[100%_100%]"
+              className="absolute inset-0 bg-schiava-blue bg-no-repeat bg-size-[100%_100%] pointer-events-none"
               style={{
                 maskImage: `url('/svg/CROWN_CROPPED.svg'), linear-gradient(black, black), url('${bottomCrownSvg}')`,
                 WebkitMaskImage: `url('/svg/CROWN_CROPPED.svg'), linear-gradient(black, black), url('${bottomCrownSvg}')`,
@@ -430,113 +432,127 @@ function App() {
             </div>
           </div>
 
-          {/* ==============================================================================
-            SECTION: PILLARS 
-          ============================================================================== */}
-          <div className="relative bg-tristesse-0 w-full 2xl:mt-0 lg:mt-[8%] md:mt-[12%] mt-[20%]">
-            {/* 
+          <div className="relative w-full h-fit -mt-70 bg-tristesse-0 z-1 pb-16">
+            {/* ==============================================================================
+            SECTION: PILLARS
+            ============================================================================== */}
+            <div className="w-full h-fit pt-72">
+              {/* lg:mt-[8%] md:mt-[12%] mt-[20%] 2xl:mt-[16%] */}
+              {/*
             NOTE: we don't want the possibility of flex justify-center in the parent interfering with GSAP scroll, so we're using mx-auto here
             */}
-            <div
-              className="bg-tristesse-0 h-screen w-full 2xl:flex hidden items-center flex-col justify-center p-8 prose prose-lg max-w-none overflow-hidden"
-              ref={PILLARS_SECTION}
-            >
-              <h1 className="intersect-once intersect:motion-preset-blur-up intersect:motion-delay-0 font-cochin text-selago-0 text-center mt-56">
-                OUR PILLARS
-              </h1>
-
               <div
-                className="w-full h-fit flex justify-center overflow-hidden max-w-540"
-                style={{
-                  maskImage:
-                    "radial-gradient(circle, black 25%, transparent 75%)",
-                  WebkitMaskImage:
-                    "radial-gradient(circle, black 25%, transparent 75%)",
-                }}
+                className="relative h-screen w-full 2xl:flex hidden items-center flex-col justify-center p-8 prose prose-lg max-w-none"
+                ref={PILLARS_SECTION}
               >
-                <div className="h-100 w-fit my-32">
-                  <div
-                    className="rounded-full border-4 border-davys-grey-0 h-750 w-750 grid-cols-4 grid-rows-4 grid"
-                    ref={PILLAR_CIRCLE}
-                  >
-                    {/* 74, 45, 16, -16, -45 -74 */}
-                    {pillarItems.map((pillar) => (
-                      <HomePillarsDesktop
-                        key={pillar.number}
-                        number={pillar.number}
-                        name={pillar.name}
-                        description={pillar.description}
-                        className={pillar.className}
-                      />
-                    ))}
+                {/* Background Pattern */}
+                <div
+                  className="pointer-events-none absolute inset-0 -translate-y-32 h-[calc(100vh+128px)] z-0 bg-[url('/svg/PATTERN%201.svg')] bg-repeat bg-size-[750px_750px] opacity-8"
+                  style={{
+                    maskImage:
+                      "linear-gradient(to bottom, black 85%, transparent 100%)",
+                    WebkitMaskImage:
+                      "linear-gradient(to bottom, black 85%, transparent 100%)",
+                  }}
+                />
+
+                <h1 className="relative z-1 intersect-once intersect:motion-preset-blur-up intersect:motion-delay-0 font-cochin text-selago-0 text-center mt-52">
+                  OUR PILLARS
+                </h1>
+
+                <div
+                  className="relative z-1 w-full h-fit flex justify-center overflow-hidden max-w-540"
+                  style={{
+                    maskImage:
+                      "radial-gradient(circle, black 25%, transparent 70%)",
+                    WebkitMaskImage:
+                      "radial-gradient(circle, black 25%, transparent 70%)",
+                  }}
+                >
+                  <div className="h-100 w-fit my-32">
+                    <div
+                      className="rounded-full border-4 border-davys-grey-0 h-750 w-750 grid-cols-4 grid-rows-4 grid"
+                      ref={PILLAR_CIRCLE}
+                    >
+                      {/* 74, 45, 16, -16, -45 -74 */}
+                      {pillarItems.map((pillar) => (
+                        <HomePillarsDesktop
+                          key={pillar.number}
+                          number={pillar.number}
+                          name={pillar.name}
+                          description={pillar.description}
+                          className={pillar.className}
+                        />
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <div className="intersect-once intersect:motion-preset-blur-up intersect:motion-delay-0 prose prose-lg w-fit h-fit mx-auto 2xl:hidden">
-              <h1 className="font-cochin text-selago-0 text-center mb-6 mt-0">
-                OUR PILLARS
-              </h1>
-            </div>
+              <div className="intersect-once intersect:motion-preset-blur-up intersect:motion-delay-0 prose prose-lg w-fit h-fit mx-auto 2xl:hidden">
+                <h1 className="font-cochin text-selago-0 text-center mb-6 mt-0">
+                  OUR PILLARS
+                </h1>
+              </div>
 
-            <div className="flex-col flex md:grid md:grid-cols-2 xl:grid-cols-3 2xl:hidden md:gap-x-8 max-w-270 mx-auto p-8">
-              {pillarItems.map((pillar) => (
-                <HomePillars
-                  key={pillar.number}
-                  number={pillar.number}
-                  name={pillar.name}
-                  description={pillar.description}
-                />
-              ))}
+              <div className="flex-col flex md:grid md:grid-cols-2 xl:grid-cols-3 2xl:hidden md:gap-x-8 max-w-270 mx-auto p-8">
+                {pillarItems.map((pillar) => (
+                  <HomePillars
+                    key={pillar.number}
+                    number={pillar.number}
+                    name={pillar.name}
+                    description={pillar.description}
+                  />
+                ))}
+              </div>
             </div>
-          </div>
 
           {/* ==============================================================================
             SECTION: GUEST SPEAKERS
           ============================================================================== */}
-          <div className="bg-tristesse-0 h-fit w-full flex flex-col items-center p-8 prose prose-lg max-w-none pb-24">
-            <LineDivider
-              fillName="davys-grey-0"
-              className="intersect-once intersect:motion-preset-blur-up intersect:motion-delay-0 mb-18 w-full max-w-270"
-            />
-            <div className="prose prose-lg h-fit w-full flex items-center flex-col @container max-w-none">
-              <h1 className="intersect-once intersect:motion-preset-blur-up intersect:motion-delay-0 text-center font-cochin text-selago-0 mb-0">
-                GUEST SPEAKERS
-              </h1>
-              <p className="intersect-once intersect:motion-preset-blur-up intersect:motion-delay-150 text-center text-selago-dark font-aileron mb-16  ">
-                Toffee chocolate cake macaroon jujubes cotton candy sweet sesame
-                snaps gummi bears dragée.
-              </p>
+            <div className="h-fit w-full flex flex-col items-center p-8 prose prose-lg max-w-none pb-24">
+              <LineDivider
+                fillName="davys-grey-0"
+                className="intersect-once intersect:motion-preset-blur-up intersect:motion-delay-0 mb-18 w-full max-w-270"
+              />
+              <div className="prose prose-lg h-fit w-full flex items-center flex-col @container max-w-none">
+                <h1 className="intersect-once intersect:motion-preset-blur-up intersect:motion-delay-0 text-center font-cochin text-selago-0 mb-0">
+                  GUEST SPEAKERS
+                </h1>
+                <p className="intersect-once intersect:motion-preset-blur-up intersect:motion-delay-150 text-center text-selago-dark font-aileron mb-16  ">
+                  Toffee chocolate cake macaroon jujubes cotton candy sweet
+                  sesame snaps gummi bears dragée.
+                </p>
 
-              <Marquee
-                autoFill={true}
-                className="w-full! py-8 -my-8"
-                pauseOnHover
-                speed={75}
-                style={{
-                  WebkitMaskImage:
-                    "linear-gradient(90deg, transparent 2%, rgba(0,0,0,0.5) 8%, black 25%, black 50%, black 75%, rgba(0,0,0,0.5) 92%, transparent 98%)",
-                  maskImage:
-                    "linear-gradient(90deg, transparent 2%, rgba(0,0,0,0.5) 8%, black 25%, black 50%, black 75%, rgba(0,0,0,0.5) 92%, transparent 98%)",
-                }}
-              >
-                {/* TODO: extract this to reusable component */}
-                <div className="h-144 w-72 border border-davys-grey-0 mr-8 rounded-2xl flex flex-col bg-schiava-blue/12 transition-all duration-300 hover:scale-102">
-                  <img
-                    className="aspect-4/5 w-full h-auto mb-0 mt-0 rounded-t-2xl"
-                    src="https://s.yimg.com/lo/mysterio/api/f31f4df8d5b30a5537d3ade836d06d67c72de4375cb7bc16fafe22a85e2833a5/lightyear_networkapi/resizefill_w480_h348%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fknow_your_meme_909%2Fc3f13e3aa7742e8034894c82237bea06"
-                  ></img>
-                  <div className="p-4 flex flex-col gap-4">
-                    <h2 className="font-cochin text-selago-0 mb-0 mt-0 leading-none text-4xl">
-                      Floyd Escuadra
-                    </h2>
-                    <p className="font-aileron text-selago-dark text-base">
-                      Chocolate fruitcake bonbon powder danish pastry.
-                    </p>
+                <Marquee
+                  autoFill={true}
+                  className="w-full! py-8 -my-8"
+                  pauseOnHover
+                  speed={75}
+                  style={{
+                    WebkitMaskImage:
+                      "linear-gradient(90deg, transparent 2%, rgba(0,0,0,0.5) 8%, black 25%, black 50%, black 75%, rgba(0,0,0,0.5) 92%, transparent 98%)",
+                    maskImage:
+                      "linear-gradient(90deg, transparent 2%, rgba(0,0,0,0.5) 8%, black 25%, black 50%, black 75%, rgba(0,0,0,0.5) 92%, transparent 98%)",
+                  }}
+                >
+                  {/* TODO: extract this to reusable component */}
+                  <div className="h-144 w-72 border border-davys-grey-0 mr-8 rounded-2xl flex flex-col bg-schiava-blue/12 transition-all duration-300 hover:scale-102">
+                    <img
+                      className="aspect-4/5 w-full h-auto mb-0 mt-0 rounded-t-2xl"
+                      src="https://s.yimg.com/lo/mysterio/api/f31f4df8d5b30a5537d3ade836d06d67c72de4375cb7bc16fafe22a85e2833a5/lightyear_networkapi/resizefill_w480_h348%3Bquality_80%3Bformat_webp/https%3A%2F%2Fmedia.zenfs.com%2Fen%2Fknow_your_meme_909%2Fc3f13e3aa7742e8034894c82237bea06"
+                    ></img>
+                    <div className="p-4 flex flex-col gap-4">
+                      <h2 className="font-cochin text-selago-0 mb-0 mt-0 leading-none text-4xl">
+                        Floyd Escuadra
+                      </h2>
+                      <p className="font-aileron text-selago-dark text-base">
+                        Chocolate fruitcake bonbon powder danish pastry.
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </Marquee>
+                </Marquee>
+              </div>
             </div>
           </div>
 
@@ -544,7 +560,7 @@ function App() {
           SECTION: YACHT ACTIVITIES
           ============================================================================== */}
           <div
-            className="bg-schiava-blue flex flex-col items-center p-8 prose prose-lg w-full h-fit max-w-none pt-24 @container pb-16"
+            className="relative z-1 bg-schiava-blue flex flex-col items-center p-8 prose prose-lg w-full h-fit max-w-none @container py-24 pt-32 -mt-16"
             style={{
               maskImage: `url('${invertedArcSvg}'), linear-gradient(black, black), url('${arcSvg}')`,
               WebkitMaskImage: `url('${invertedArcSvg}'), linear-gradient(black, black), url('${arcSvg}')`,
@@ -577,12 +593,41 @@ function App() {
           </div>
 
           {/* ==============================================================================
-          SECTION: EVENT DETAILS
+          SECTION: QUOTE
           ============================================================================== */}
-          <div className="bg-tristesse-0 h-270 w-full flex flex-col items-center p-8 prose prose-lg max-w-none -mt-8 pt-24">
-            <h1 className="intersect-once intersect:motion-preset-blur-up intersect:motion-delay-0 font-cochin text-selago-0 mb-0 text-center">
-              EVENT DETAILS
-            </h1>
+          <div className="relative z-1 h-fit pb-32 pt-36 w-full flex flex-col items-center p-8 prose prose-lg max-w-none -mt-8">
+            <div className="w-[90vw] md:w-full max-w-270 h-fit border border-davys-grey-0 bg-schiava-blue/12 rounded-2xl p-8 grid grid-cols-1 grid-rows-[auto_1fr_auto]">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 90 90"
+                fill="currentColor"
+                className="size-12 text-schiava-blue-light rotate-180"
+              >
+                <path d="M62.634 78.529c-.288 0-.572-.125-.768-.359-.304-.363-.311-.892-.016-1.263 1.831-2.305 3.392-4.479 4.771-6.648 3.493-5.489 6.217-11.243 8.108-17.13-1.949.577-3.957.869-5.993.869-11.726 0-21.265-9.539-21.265-21.264 0-11.725 9.539-21.264 21.265-21.264 7.527 0 14.34 3.871 18.229 10.354.006.01.013.021.019.031C88.957 25.159 90 28.92 90 32.734c0 .188-.012.374-.024.559l-.018.287c.209 8.413-2.851 18.271-8.393 26.981-4.954 7.784-11.51 14.124-18.459 17.85-.149.079-.311.118-.472.118zM76.262 50.538c.244 0 .484.089.671.259.284.257.396.652.289 1.02-1.95 6.721-4.949 13.286-8.913 19.517-.526.827-1.077 1.654-1.658 2.488 4.958-3.597 9.546-8.547 13.228-14.334 5.335-8.383 8.28-17.832 8.081-25.923l.021-.409c.009-.14.02-.279.02-.421 0-3.444-.94-6.843-2.72-9.831-.007-.01-.013-.02-.019-.029-3.521-5.889-9.699-9.404-16.525-9.404-10.623 0-19.265 8.642-19.265 19.264s8.642 19.264 19.265 19.264c2.449 0 4.856-.467 7.153-1.388.106-.042.233-.066.358-.066zM15.162 78.529c-.289 0-.573-.125-.768-.359-.304-.363-.311-.892-.016-1.263 1.831-2.305 3.391-4.479 4.771-6.648 3.493-5.488 6.216-11.242 8.108-17.13-1.95.577-3.958.869-5.994.869C9.539 53.998 0 44.459 0 32.734 0 21.009 9.539 11.47 21.264 11.47c7.537 0 14.356 3.879 18.243 10.378 1.978 3.31 3.021 7.072 3.021 10.886 0 .188-.012.374-.024.56l-.017.286c.208 8.414-2.851 18.271-8.393 26.981-4.954 7.785-11.51 14.124-18.459 17.85-.148.079-.31.118-.471.118zM28.79 50.538c.244 0 .484.089.671.259.283.257.396.652.289 1.02-1.951 6.722-4.95 13.288-8.914 19.517-.526.827-1.078 1.654-1.659 2.489 4.959-3.598 9.546-8.548 13.229-14.335 5.334-8.383 8.28-17.831 8.082-25.923l.02-.406c.01-.141.02-.281.02-.424 0-3.454-.945-6.861-2.733-9.853-3.526-5.896-9.704-9.411-16.53-9.411C10.642 13.47 2 22.112 2 32.734s8.642 19.264 19.264 19.264c2.449 0 4.856-.467 7.154-1.388.105-.042.231-.066.356-.066z" />
+              </svg>
+
+              <div className="flex justify-center items-center w-full h-full prose prose-lg max-w-none py-8">
+                <h1 className="font-cochin text-center text-selago-dark w-4/5 mt-0 mb-0 leading-none font-normal">
+                  Show me your five closest friends and I'll show you your
+                  future.{" "}
+                  <span className="font-bold text-schiava-blue-light">
+                    Society 33
+                  </span>{" "}
+                  <span className="font-bold text-selago-0">
+                    is where winners choose theirs.
+                  </span>
+                </h1>
+              </div>
+
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 90 90"
+                fill="currentColor"
+                className="size-12 text-schiava-blue-light justify-self-end"
+              >
+                <path d="M62.634 78.529c-.288 0-.572-.125-.768-.359-.304-.363-.311-.892-.016-1.263 1.831-2.305 3.392-4.479 4.771-6.648 3.493-5.489 6.217-11.243 8.108-17.13-1.949.577-3.957.869-5.993.869-11.726 0-21.265-9.539-21.265-21.264 0-11.725 9.539-21.264 21.265-21.264 7.527 0 14.34 3.871 18.229 10.354.006.01.013.021.019.031C88.957 25.159 90 28.92 90 32.734c0 .188-.012.374-.024.559l-.018.287c.209 8.413-2.851 18.271-8.393 26.981-4.954 7.784-11.51 14.124-18.459 17.85-.149.079-.311.118-.472.118zM76.262 50.538c.244 0 .484.089.671.259.284.257.396.652.289 1.02-1.95 6.721-4.949 13.286-8.913 19.517-.526.827-1.077 1.654-1.658 2.488 4.958-3.597 9.546-8.547 13.228-14.334 5.335-8.383 8.28-17.832 8.081-25.923l.021-.409c.009-.14.02-.279.02-.421 0-3.444-.94-6.843-2.72-9.831-.007-.01-.013-.02-.019-.029-3.521-5.889-9.699-9.404-16.525-9.404-10.623 0-19.265 8.642-19.265 19.264s8.642 19.264 19.265 19.264c2.449 0 4.856-.467 7.153-1.388.106-.042.233-.066.358-.066zM15.162 78.529c-.289 0-.573-.125-.768-.359-.304-.363-.311-.892-.016-1.263 1.831-2.305 3.391-4.479 4.771-6.648 3.493-5.488 6.216-11.242 8.108-17.13-1.95.577-3.958.869-5.994.869C9.539 53.998 0 44.459 0 32.734 0 21.009 9.539 11.47 21.264 11.47c7.537 0 14.356 3.879 18.243 10.378 1.978 3.31 3.021 7.072 3.021 10.886 0 .188-.012.374-.024.56l-.017.286c.208 8.414-2.851 18.271-8.393 26.981-4.954 7.785-11.51 14.124-18.459 17.85-.148.079-.31.118-.471.118zM28.79 50.538c.244 0 .484.089.671.259.283.257.396.652.289 1.02-1.951 6.722-4.95 13.288-8.914 19.517-.526.827-1.078 1.654-1.659 2.489 4.959-3.598 9.546-8.548 13.229-14.335 5.334-8.383 8.28-17.831 8.082-25.923l.02-.406c.01-.141.02-.281.02-.424 0-3.454-.945-6.861-2.733-9.853-3.526-5.896-9.704-9.411-16.53-9.411C10.642 13.47 2 22.112 2 32.734s8.642 19.264 19.264 19.264c2.449 0 4.856-.467 7.154-1.388.105-.042.231-.066.356-.066z" />
+              </svg>
+            </div>
           </div>
 
           {/* ==============================================================================
@@ -591,7 +636,7 @@ function App() {
           {/* NOTE: sections like this next to the footer are enclosed together in a single
               div, due to the footer's desktop bottom padding
           */}
-          <div className="relative w-full @container h-fit flex flex-col prose prose-lg max-w-none -mt-8">
+          <div className="relative z-1 w-full @container h-fit flex flex-col prose prose-lg max-w-none -mt-8">
             <div
               className="absolute inset-0 bg-schiava-blue bg-no-repeat bg-size-[100%_100%]"
               style={{
