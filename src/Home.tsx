@@ -102,7 +102,7 @@ function App() {
       description:
         "A private community of founders, entrepreneurs, executives, and business-minded individuals across Asia.",
       className:
-        "col-start-1 row-start-2 -rotate-74 -translate-x-21 translate-y-38",
+        "col-start-1 row-start-2 -rotate-74 -translate-x-19 translate-y-34",
     },
     {
       number: "02",
@@ -110,7 +110,7 @@ function App() {
       description:
         "Private dinners, yacht experiences, curated gatherings, and events designed around the people in the room.",
       className:
-        "col-start-1 row-start-1 translate-x-68 translate-y-75 -rotate-45",
+        "col-start-1 row-start-1 translate-x-75 translate-y-70 -rotate-45",
     },
     {
       number: "03",
@@ -118,7 +118,7 @@ function App() {
       description:
         "Closed-door conversations where members exchange ideas, challenges, strategies, and perspectives with people building at a similar level.",
       className:
-        "col-start-2 row-start-1 -rotate-16 translate-x-31 -translate-y-12",
+        "col-start-2 row-start-1 -rotate-16 translate-x-30 -translate-y-16",
     },
     {
       number: "04",
@@ -126,7 +126,7 @@ function App() {
       description:
         "Create opportunities through partnerships, referrals, collaborations, introductions, and deal-making.",
       className:
-        "col-start-3 row-start-1 rotate-16 translate-x-34 -translate-y-11",
+        "col-start-3 row-start-1 rotate-16 translate-x-30 -translate-y-16",
     },
     {
       number: "05",
@@ -134,7 +134,7 @@ function App() {
       description:
         "Travel beyond the usual business environment. Experience new cities, new markets, and new relationships with the Society.",
       className:
-        "col-start-4 row-start-1 rotate-45 -translate-x-11 translate-y-74",
+        "col-start-4 row-start-1 rotate-45 -translate-x-14 translate-y-69",
     },
     {
       number: "06",
@@ -142,7 +142,7 @@ function App() {
       description:
         "From private yachts to international trips, every experience is designed to be something worth remembering.",
       className:
-        "col-start-4 row-start-2 rotate-74 translate-x-78 translate-y-36",
+        "col-start-4 row-start-2 rotate-74 translate-x-74 translate-y-29",
     },
   ];
 
