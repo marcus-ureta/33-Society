@@ -16,12 +16,15 @@ import { Page } from "@/portal/Portal";
 import { loginAccount, forgetPassword } from '@/services/auth';
 import { useState } from "react";
 
+import { Eye, EyeSlash } from "flowbite-react-icons/outline";
 
 function Login({setPage} : {setPage : React.Dispatch<React.SetStateAction<Page>>}) {
 
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
     const [error, setError] = useState("");
+
+    const [showPassword, setShowPassword] = useState<boolean>(false);
 
     const [isRequest, setIsRequest] = useState(false);
 
@@ -97,12 +100,22 @@ function Login({setPage} : {setPage : React.Dispatch<React.SetStateAction<Page>>
             </div>
 
             <form onSubmit={handleLogin} className="flex flex-col items-center justify-center w-full h-[82%] gap-y-12">
-                <div className="flex flex-col gap-y-9 items-center">
+                <div className="flex flex-col gap-y-9 items-center w-full max-w-[380px]">
                     <input name="name" type='text' placeholder="Your Name" className="border-b-[1px] border-davys-grey-0 text-[2rem] text-davys-grey-0 font-['instrument-serif'] italic pl-[8px] absolute left-[-9999px]"/>
 
-                    <input name="email" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} className="border-b-[1px] border-davys-grey-0 text-[2rem] text-davys-grey-0 font-['instrument-serif'] italic pl-[8px]"/>
+                    <input name="email" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} className="border-b-[1px] border-davys-grey-0 text-[1.65rem] text-davys-grey-0 font-['instrument-serif'] italic pl-[8px] w-full"/>
 
-                    <input name="password" type="password" placeholder="Password" className="border-b-[1px] border-davys-grey-0 text-[2rem] text-davys-grey-0 font-['instrument-serif'] italic pl-[8px]"/>
+                    <div className='relative w-full'>
+                        <input name="password" type={showPassword ? 'text' : 'password'} placeholder="Password" className="border-b-[1px] border-davys-grey-0 text-[1.65rem] text-davys-grey-0 font-['instrument-serif'] italic pl-[8px] w-full"/>
+
+                        {showPassword === false && (
+                            <Eye className="absolute right-3 top-1/2 -translate-y-1/2 w-6 h-auto text-davys-grey-0 hover:text-selago-0 border-2 rounded-full transition-all duration-200 hover:cursor-pointer" onClick={() => setShowPassword(!showPassword)}/>
+                        )}
+
+                        {showPassword === true && (
+                            <EyeSlash className="absolute right-3 top-1/2 -translate-y-1/2 w-6 h-auto text-davys-grey-0 hover:text-selago-0 border-2 rounded-full transition-all duration-200 hover:cursor-pointer" onClick={() => setShowPassword(!showPassword)}/>
+                        )}
+                    </div>
                 </div>
 
                 <div className="flex flex-col gap-y-6 items-center">

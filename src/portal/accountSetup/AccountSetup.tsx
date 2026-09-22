@@ -1,9 +1,9 @@
-import { Field, FieldGroup} from "@/components/ui/field"
+import { Field, FieldGroup, FieldLabel} from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 
 import { buttonVariants } from '@/components/ui/button.tsx'
 import { cn } from '@/lib/utils.ts'
-import { isValidEmail, isValidInput } from "@/utils/genUtils"
+import { isValidInput } from "@/utils/genUtils"
 
 import { Logo } from '@/components/logos/Logo.tsx'
 
@@ -13,13 +13,13 @@ import '@/portal/Portal.css';
 
 import { Page } from '@/portal/Portal';
 
-import crown from '/svg/CROWN_CROPPED.svg';
-
 
 import {createAccount, checkVerification} from '@/services/auth'
 import type { FormAnswers } from "../SignUp"
 
 import { useState } from 'react';
+
+import { Eye, EyeSlash } from "flowbite-react-icons/outline";
 
 
 function EmailVerification({setPage, email, formAnswers} : {setPage : React.Dispatch<React.SetStateAction<Page>>, email : string, formAnswers : FormAnswers}){
@@ -43,24 +43,28 @@ function EmailVerification({setPage, email, formAnswers} : {setPage : React.Disp
 
     return(
         <>
-            <div className='flex flex-col w-full h-[80%] items-center justify-center gap-y-4'>
-                <h1 className="font-['Cochin'] text-3xl text-selago-0 font-bold text-center">We've sent a verification link to: {email}</h1>
-                <h2 className="font-['Aileron'] text-xl text-selago-0 mb-[16px] text-center">Please verify your email, then click the button below</h2>
+            <div className='w-full h-[85%] flex flex-col place-items-center justify-center'>
+                <Logo variant="primary" className="size-16 text-selago-100 mb-[48px]" />
 
-                <Button onClick={handleVerification} variant="outline" className={cn(buttonVariants({variant: "default", size: "lg",}),"button-styling")}>
-                    {isRequest ? (
-                        <>
-                            <span className="spinner"/>
-                            Registering Account...
-                        </>
-                    ) : (
-                        "Register Account"
+                <div className="w-[95%] sm:w-full max-w-[560px] mx-[5%] border-2 px-0 sm:px-10 py-10 box-content border-selago-0 rounded-4xl flex flex-col justify-center items-center">
+                    <h1 className="font-['Cochin'] text-3xl sm:text-5xl text-selago-0 font-bold text-center mb-[20px]">We've sent you an email!</h1>
+                    <h2 className="font-['Aileron'] text-base sm:text-l text-selago-0 mb-[16px] text-center"> We’ve sent a verification link to {email}. Please click the link to verify your account, then press the button below</h2>
+
+                    <Button onClick={handleVerification} variant="outline" className={cn(buttonVariants({variant: "default", size: "lg",}),"button-styling")}>
+                        {isRequest ? (
+                            <>
+                                <span className="spinner"/>
+                                Registering Account...
+                            </>
+                        ) : (
+                            "Register Account"
+                        )}
+                    </Button>
+
+                    {errorMessage && (
+                        <p className="text-red-400 text-sm font-['Aileron'] text-center mt-[16px]">{errorMessage}</p>
                     )}
-                </Button>
-
-                {errorMessage && (
-                    <p className="text-red-400 text-sm font-['Aileron'] text-center mt-[16px]">{errorMessage}</p>
-                )}
+                </div>
             </div>
         </>
     )
@@ -71,6 +75,8 @@ function AccountSetup({setPage, email, formAnswers} : {setPage : React.Dispatch<
     const [goVerificationPage, setVerificationPage] = useState<boolean>(false);
     const [isRequest, setIsRequest] = useState<boolean>(false);
     const [errorMessage, setErrorMessage] = useState<string>('');
+
+    const [showPassword, setShowPassword] = useState<boolean>(false);
 
     async function handleSignup(event : React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
@@ -108,58 +114,60 @@ function AccountSetup({setPage, email, formAnswers} : {setPage : React.Dispatch<
 
     return (
         <div className={`animate-slide-up w-full h-full overflow-hidden`}>
+
             {goVerificationPage && (
                 <EmailVerification setPage={setPage} email={email} formAnswers={formAnswers}/>
             )}
 
             {!goVerificationPage && (
-                <div className="w-full min-h-[67vh] flex items-center justify-center">
-                    <div className="w-full max-w-7xl flex items-center justify-center gap-8 px-6">
-                
-                        <form onSubmit={handleSignup} className="w-full max-w-[680px] mx-[5%]">
-                            <h1 className="text-white font-['Cochin'] text-5xl font-bold">Account Setup</h1>
 
-                            <FieldGroup className="flex flex-col gap-y-6 my-[5%]">
-                                {/* <Field>
-                                    <Input name='email_address' id="email_address" type="email" placeholder="33society@gmail.com" required className="input-field" defaultValue={email} onChange={() => setErrorMessage('')}/>
-                                </Field> */}
+                <div className="w-full h-[89%] flex flex-col place-items-center justify-center">
+                    <Logo variant="primary" className="size-16 text-selago-100 mb-[48px]" />
 
-                                <h1 className="font-['Aileron'] text-[clamp(0.75rem,5vw,2rem)] text-selago-100">Email: <span className='font-bold'>{email}</span></h1>
+                    <form onSubmit={handleSignup} className="w-full max-w-[560px] mx-[5%] border-2 px-10 py-5 box-content border-selago-0 rounded-4xl">
+                        <h1 className="text-white font-['Cochin'] text-5xl font-bold text-center">Create Your Password</h1>
 
-                                <Field>
-                                    <Input name='password' id="password" type="password" placeholder="Setup Your Password" required className="input-field" onChange={() => setErrorMessage('')}/>
-                                </Field>
+                        <h1 className="font-['Aileron'] text-[clamp(0.5rem,5vw,1.25rem)] text-selago-100 text-center mt-[16px]">Set a strong password for <span className='font-bold'>{email}</span>. Use at least 8 characters, including 1 number and 1 symbol</h1>
 
-                                <Input name='confirm_password' id="confirm_password" type="confirm_password" placeholder="Confirm Password" className="input-field absolute left-[-9999px]"/>
-                            </FieldGroup>
+                        <FieldGroup className="flex flex-col gap-y-6 my-[5%]">
+                            <Field>
+                                <FieldLabel htmlFor="password" className="font-['Aileron'] text-xl text-selago-0">Password</FieldLabel>
+                                <div className="relative">
+                                    <Input name='password' id="password" type={showPassword ? 'text' : 'password'} placeholder="Setup Your Password" required className="input-field pr-12" onChange={() => setErrorMessage('')}/>
 
-                            <div className="flex justify-center mt-[4%]">
-                                <Button disabled={isRequest} type='submit' variant="outline" className={cn(buttonVariants({variant: "default", size: "lg",}),
-                                    "button-styling w-full")}>
-                                    {isRequest ? (
-                                        <>
-                                            <span className="spinner"/>
-                                            Registering Account...
-                                        </>
-                                    ) : (
-                                        "Register Account"
+                                    {showPassword === false && (
+                                        <Eye className="absolute right-3 top-1/2 -translate-y-1/2 w-6 h-auto text-davys-grey-0 hover:text-selago-0 border-2 rounded-full transition-all duration-200 hover:cursor-pointer" onClick={() => setShowPassword(!showPassword)}/>
                                     )}
-                                </Button>
-                            </div>
 
-                            {errorMessage && (
-                                <p className="text-red-400 text-sm font-['Aileron'] text-center mt-[16px]">{errorMessage}</p>
-                            )}
-                        </form>
+                                    {showPassword === true && (
+                                        <EyeSlash className="absolute right-3 top-1/2 -translate-y-1/2 w-6 h-auto text-davys-grey-0 hover:text-selago-0 border-2 rounded-full transition-all duration-200 hover:cursor-pointer" onClick={() => setShowPassword(!showPassword)}/>
+                                    )}
+                                </div>
+                            </Field>
 
-                        <Logo variant="stacked" className="hidden sm:block size-48 lg:size-68 xl:size-[18rem] text-selago-100"/>
-                    </div>
+                            <Input name='confirm_password' id="confirm_password" type="confirm_password" placeholder="Confirm Password" className="input-field absolute left-[-9999px]"/>
+                        </FieldGroup>
+
+                        <div className="flex justify-center mt-[4%]">
+                            <Button disabled={isRequest} type='submit' variant="outline" className={cn(buttonVariants({variant: "default", size: "lg",}),
+                                "button-styling w-full")}>
+                                {isRequest ? (
+                                    <>
+                                        <span className="spinner"/>
+                                        Registering Account...
+                                    </>
+                                ) : (
+                                    "Register Account"
+                                )}
+                            </Button>
+                        </div>
+
+                        {errorMessage && (
+                            <p className="text-red-400 text-sm font-['Aileron'] text-center mt-[16px]">{errorMessage}</p>
+                        )}
+                    </form>
                 </div>
             )}
-
-            <div className="absolute bottom-0 left-0 w-full h-full overflow-hidden pointer-events-none select-none">
-                <img src={crown} className="absolute bottom-0 left-0 w-full h-auto md:translate-y-[clamp(0px,9vw,1500px)] select-none"/>
-            </div>
         </div>
     );  
 }
