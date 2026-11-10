@@ -1,4 +1,6 @@
 
+import { useNavigate } from "react-router-dom";
+
 import { httpsCallable } from "firebase/functions";
 import { functions } from "@/firebase.ts";
 
@@ -43,6 +45,8 @@ export type Page = typeof Page[keyof typeof Page];
 
 function CongratulationsPage() {
 
+    const navigate = useNavigate();
+    
     return(
         <div className="w-screen h-dvh bg-tristesse-0 flex flex-col pt-8">
             <div className='flex flex-col items-center justify-center w-full h-full animate-slide-up'>
@@ -51,7 +55,7 @@ function CongratulationsPage() {
 
                     <h1 className="text-[2.5rem] sm:text-[3.5rem] text-selago-0 font-['Cochin'] text-center font-bold mb-[3%]">Congratulations! You may now proceed to the home page</h1>
 
-                    <MagneticButton onClick={() => console.log('logged in!')} message='Go Home Page' className='w-full'/>
+                    <MagneticButton onClick={() => navigate("/main")} message='Go Home Page' className='w-full'/>
 
                 </div>
 

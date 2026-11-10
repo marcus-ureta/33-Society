@@ -1,4 +1,6 @@
 
+import { useNavigate } from "react-router-dom";
+
 import { buttonVariants } from '@/components/ui/button.tsx'
 import { cn } from '@/lib/utils.ts'
 
@@ -23,6 +25,8 @@ function Login({setPage} : {setPage : React.Dispatch<React.SetStateAction<Page>>
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
     const [error, setError] = useState("");
+
+    const navigate = useNavigate();
 
     const [showPassword, setShowPassword] = useState<boolean>(false);
 
@@ -67,6 +71,8 @@ function Login({setPage} : {setPage : React.Dispatch<React.SetStateAction<Page>>
         try {
             setIsRequest(true);
             const user = await loginAccount(email!, password!, name!);
+
+            navigate("/main");
             console.log('Successfully logged in!: ' + user.displayName);
         } catch (error : any) {
             let message = "Something went wrong.";
