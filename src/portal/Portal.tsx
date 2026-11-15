@@ -45,7 +45,7 @@ export type Page = typeof Page[keyof typeof Page];
 
 function CongratulationsPage() {
 
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     
     return(
         <div className="w-screen h-dvh bg-tristesse-0 flex flex-col pt-8">
@@ -96,6 +96,26 @@ function Portal() {
 
         console.log(password);
 
+        try {
+            const authenticatePassword = httpsCallable<authPasswordProps, AuthPasswordResponse>(functions, "authenticatePassword");
+
+            const response = await authenticatePassword({password: password});
+
+            if (response.data.success === true) {
+                setPage(Page.signup);
+            }
+            else
+            {
+                setErrorMessage(response.data.errorMessage!);
+                console.log(response.data.errorMessage);
+            }
+        } catch (error : any) {
+            setErrorMessage(error);
+            console.error("Error calling Firebase function:", error);
+        }
+        finally{
+            setPasswordCheck(false);
+        }
     };
 
     return (
