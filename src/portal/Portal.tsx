@@ -11,7 +11,7 @@ import { ArrowRight } from "flowbite-react-icons/outline";
 
 import { Logo } from '@/components/logos/Logo.tsx'
 
-import MagneticButton from "@/components/magnetic_button/MagneticButton.tsx";
+// import MagneticButton from "@/components/magnetic_button/MagneticButton.tsx";
 import { useState, useEffect } from 'react';
 
 import SignUp from './SignUp.tsx';
@@ -53,9 +53,13 @@ function CongratulationsPage() {
                 
                 <div className='flex flex-col max-w-[820px] items-center mx-[5%]'>
 
-                    <h1 className="text-[2.5rem] sm:text-[3.5rem] text-selago-0 font-['Cochin'] text-center font-bold mb-[3%]">Congratulations! You may now proceed to the home page</h1>
+                    <Logo variant="primary" className="size-16 text-selago-100 mb-8" />
 
-                    <MagneticButton onClick={() => navigate("/main")} message='Go Home Page' className='w-full'/>
+                    <h1 className="text-[2.5rem] sm:text-[3.5rem] text-selago-0 font-['Cochin'] text-center font-bold mb-[3%]">Thank you! We appreciate your interest in joining 33-Society</h1>
+
+                    <p className="font-aileron text-selago-dark mb-0 text-center lg:text-xl">33-Society is currently built for operators further into their build. We'll be in touch soon.</p>
+
+                    {/* <MagneticButton onClick={() => navigate("/main")} message='Go Home Page' className='w-full'/> */}
 
                 </div>
 
@@ -92,26 +96,6 @@ function Portal() {
 
         console.log(password);
 
-        try {
-            const authenticatePassword = httpsCallable<authPasswordProps, AuthPasswordResponse>(functions, "authenticatePassword");
-
-            const response = await authenticatePassword({password: password});
-
-            if (response.data.success === true) {
-                setPage(Page.signup);
-            }
-            else
-            {
-                setErrorMessage(response.data.errorMessage!);
-                console.log(response.data.errorMessage);
-            }
-        } catch (error : any) {
-            setErrorMessage(error);
-            console.error("Error calling Firebase function:", error);
-        }
-        finally{
-            setPasswordCheck(false);
-        }
     };
 
     return (

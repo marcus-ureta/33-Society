@@ -73,7 +73,7 @@ function QuestionnairePage({ setPage, questionNo, setQuestionNo, formAnswers, se
             setAnimation("next-exit");
         } else {
             setAnimation("next-exit");
-            setPage(Page.accountSetup);
+            setPage(Page.congratulations);
         }
     };
 
