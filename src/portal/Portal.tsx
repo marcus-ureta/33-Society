@@ -11,7 +11,7 @@ import { ArrowRight } from "flowbite-react-icons/outline";
 
 import { Logo } from '@/components/logos/Logo.tsx'
 
-// import MagneticButton from "@/components/magnetic_button/MagneticButton.tsx";
+import MagneticButton from "@/components/magnetic_button/MagneticButton.tsx";
 import { useState, useEffect } from 'react';
 
 import SignUp from './SignUp.tsx';
@@ -49,18 +49,18 @@ function CongratulationsPage() {
     // const navigate = useNavigate();
     
     return(
-        <div className="w-screen h-dvh bg-tristesse-0 flex flex-col pt-8">
-            <div className='flex flex-col items-center justify-center w-full h-full animate-slide-up'>
+        <div className="w-full h-dvh bg-tristesse-0 flex flex-col pt-8">
+            <div className='flex flex-col items-center justify-center w-full h-[95%] animate-slide-up'>
                 
-                <div className='flex flex-col max-w-[820px] items-center mx-[5%]'>
+                <div className='flex flex-col max-w-[780px] items-center mx-[5%] gap-y-4'>
 
-                    <Logo variant="primary" className="size-16 text-selago-100 mb-8" />
+                    <Logo variant="primary" className="size-20 text-selago-100 mb-3" />
 
-                    <h1 className="text-[2.5rem] sm:text-[3.5rem] text-selago-0 font-['Cochin'] text-center font-bold mb-[3%]">Thank you! We appreciate your interest in joining 33-Society</h1>
+                    <h1 className="text-[2.5rem] sm:text-[3.5rem] text-selago-0 font-['Cochin'] text-center font-bold mb-1">Thank you! We appreciate your interest in joining 33-Society</h1>
 
-                    <p className="font-aileron text-selago-dark mb-0 text-center lg:text-xl">33-Society is currently built for operators further into their build. We'll be in touch soon.</p>
+                    <p className="font-aileron text-selago-dark mb-2 text-center lg:text-xl">33-Society is currently built for operators further into their build. We'll be in touch soon.</p>
 
-                    {/* <MagneticButton onClick={() => navigate("/main")} message='Go Home Page' className='w-full'/> */}
+                    <MagneticButton onClick={() => {window.open("https://www.instagram.com/society33_/?utm_source=ig_web_button_share_sheet")}} message='Follow Our Instagram' className='!rounded-none !bg-transparent'/>
 
                 </div>
 
