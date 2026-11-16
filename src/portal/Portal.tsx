@@ -30,6 +30,7 @@ type AuthPasswordResponse = {
 };
 
 export const Page = {
+    introAnim: 'IntroAnim',
     portal: 'Portal',
 
     signup: 'Signup',
@@ -72,7 +73,7 @@ function Portal() {
     const [isPasswordCheck, setPasswordCheck] = useState(false);
     const [errorMessage, setErrorMessage] = useState<string>('');
 
-    const [page, setPage] = useState<Page>(Page.portal);
+    const [page, setPage] = useState<Page>(Page.introAnim);
     const [mousePos, setPosition] = useState({ x: 0, y: 0 });
 
     useEffect(() => {
