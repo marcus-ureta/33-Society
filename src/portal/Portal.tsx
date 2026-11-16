@@ -1,5 +1,5 @@
 
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 import { httpsCallable } from "firebase/functions";
 import { functions } from "@/firebase.ts";
@@ -96,15 +96,34 @@ function Portal() {
         const password = formData.get('password')?.toString();
 
         console.log(password);
-
+        
         try {
             const authenticatePassword = httpsCallable<authPasswordProps, AuthPasswordResponse>(functions, "authenticatePassword");
+
+            const response = await authenticatePassword({password: password});
+
+            if (response.data.success === true) {
+                setPage(Page.signup);
+            }
+            else
+            {
+                setErrorMessage(response.data.errorMessage!);
+                console.log(response.data.errorMessage);
+            }
+        } catch (error : any) {
+            setErrorMessage(error);
+            console.error("Error calling Firebase function:", error);
+        }
+        finally{
+            setPasswordCheck(false);
+        }
+    };
 
     const subheaderText: string[] = [..."A PRIVATE SOCIETY FOR FOUNDERS"];
     const [introAnimTextIndex, setIntroAnimTextIndex] = useState<number>(0);
     const [introAnimSequence, setIntroAnimSequence] = useState(0);
 
-    const handleLogoAnimEnd = (e : React.AnimationEvent<HTMLDivElement>) => {
+    const handleAnimEnd = (e : React.AnimationEvent<HTMLDivElement>) => {
         console.log("Animation ended:", e.animationName);
         
         if(e.animationName === 'introLogoPopup'){
@@ -118,9 +137,13 @@ function Portal() {
 
             if(introAnimTextIndex + 5 === subheaderText.length){
                 setTimeout(() => {
-                    setPage(Page.portal);
+                    setIntroAnimSequence(prev => prev + 1);
                 }, 1000);
             }
+        }
+
+        if(e.animationName === 'introOutro'){
+            setPage(Page.portal);
         }
     }
 
@@ -128,20 +151,22 @@ function Portal() {
         <>
             
             {page === Page.introAnim && (
-                <div className="w-screen h-dvh bg-schiava-blue-dark flex flex-col pt-8 overflow-hidden">
-                    <div className="w-full h-full flex items-center justify-center">
-                        <div className='w-[90%] max-w-[820px] flex flex-col items-center justify-center gap-y-2 text-center'>
-                            <div className="animate-intro-logo-popup w-fit h-fit" onAnimationEnd={handleLogoAnimEnd}>
-                                <Logo variant="stacked" className="size-48 text-selago-100 mx-[5%]"/>
+                <div className="relative w-full h-dvh bg-schiava-blue-dark flex flex-col pt-8 overflow-hidden inset-0 pointer-events-none">
+                    <div className="w-full h-[90%] flex items-center justify-center">
+                        <div className='w-[90%] max-w-[820px] flex flex-col items-center justify-center gap-y-1 text-center'>
+                            <div className="animate-intro-logo-popup w-fit h-fit" onAnimationEnd={handleAnimEnd}>
+                                <Logo variant="stacked" className="size-52 text-selago-100"/>
                             </div>
 
-                            <h1 className={`text-3xl text-selago-100 font-cochin border-t border-selago-100 pt-5 tracking-wide ${introAnimSequence === 1 ? 'animate-fade-in' : 'opacity-0'}`}>{subheaderText.map((char, index) => (
-                                <span key={index} className={`inline-block ${char === " " || introAnimSequence !== 1 ? "" : "animate-slide-up-text"}`} style={{ animationDelay: `${index * 0.04}s` }} onAnimationEnd={handleLogoAnimEnd}>
+                            <h1 className={`text-3xl text-selago-100 font-cochin border-t border-selago-100 pt-5 tracking-wide ${introAnimSequence >= 1 ? 'animate-fade-in' : 'opacity-0'}`}>{subheaderText.map((char, index) => (
+                                <span key={index} className={`inline-block ${char === " " || introAnimSequence !== 1 ? "" : "animate-slide-up-text"}`} style={{ animationDelay: `${index * 0.04}s` }} onAnimationEnd={handleAnimEnd}>
                                     {char === " " ? "\u00A0" : char}
                                 </span>
                             ))}</h1>
                         </div>
                     </div>
+
+                    <div className={`bg-tristesse-0 size-1 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full absolute overflow-hidden ${introAnimSequence >= 2 ? 'animate-intro-outro' : 'hidden'} `} onAnimationEnd={handleAnimEnd}/>
                 </div>
             )}
 
