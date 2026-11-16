@@ -99,97 +99,126 @@ function Portal() {
         try {
             const authenticatePassword = httpsCallable<authPasswordProps, AuthPasswordResponse>(functions, "authenticatePassword");
 
-            const response = await authenticatePassword({password: password});
+    const subheaderText: string[] = [..."A PRIVATE SOCIETY FOR FOUNDERS"];
+    const [introAnimTextIndex, setIntroAnimTextIndex] = useState<number>(0);
+    const [introAnimSequence, setIntroAnimSequence] = useState(0);
 
-            if (response.data.success === true) {
-                setPage(Page.signup);
-            }
-            else
-            {
-                setErrorMessage(response.data.errorMessage!);
-                console.log(response.data.errorMessage);
-            }
-        } catch (error : any) {
-            setErrorMessage(error);
-            console.error("Error calling Firebase function:", error);
+    const handleLogoAnimEnd = (e : React.AnimationEvent<HTMLDivElement>) => {
+        console.log("Animation ended:", e.animationName);
+        
+        if(e.animationName === 'introLogoPopup'){
+            setIntroAnimSequence(prev => prev + 1);
+            console.log("Animation ended, sequence updated to:", introAnimSequence + 1);
         }
-        finally{
-            setPasswordCheck(false);
+
+        if(e.animationName === 'slideUp'){
+            setIntroAnimTextIndex(prev => prev + 1);
+            console.log("Animation ended, text index updated to:", introAnimTextIndex);
+
+            if(introAnimTextIndex + 5 === subheaderText.length){
+                setTimeout(() => {
+                    setPage(Page.portal);
+                }, 1000);
+            }
         }
-    };
+    }
 
     return (
         <>
-            <div className="w-screen h-dvh bg-tristesse-0 flex flex-col pt-8 overflow-hidden">
-                
-                {page === Page.portal && (
-                    <div className={`w-full h-full animate-slide-up`}>
-                        <div className="flex flex-col gap-y-9 items-center">
-                            <Logo variant="primary" className="size-16 text-selago-100" />
-
-                            <div className="flex gap-x-3 items-center w-[240px]">
-                                <div className="w-full h-[3px] bg-selago-0 rounded-full shadow-[0_0_16px_1px_var(--color-schiava-blue-dark)]" />
-                                <div className="w-full h-[3px] bg-davys-grey-0 rounded-full shadow-[0_0_16px_1px_var(--color-schiava-blue-dark)]" />
+            
+            {page === Page.introAnim && (
+                <div className="w-screen h-dvh bg-schiava-blue-dark flex flex-col pt-8 overflow-hidden">
+                    <div className="w-full h-full flex items-center justify-center">
+                        <div className='w-[90%] max-w-[820px] flex flex-col items-center justify-center gap-y-2 text-center'>
+                            <div className="animate-intro-logo-popup w-fit h-fit" onAnimationEnd={handleLogoAnimEnd}>
+                                <Logo variant="stacked" className="size-48 text-selago-100 mx-[5%]"/>
                             </div>
-                        </div>
 
-                        <div className="flex flex-col items-center justify-center w-full h-[80%]">
-                            <div className="grid grid-rows-2 gap-y-8 w-full max-w-md">
-                                <form className="w-full" onSubmit={handleCallFunction}>
-                                    <Field>
-
-                                        {errorMessage && (
-                                            <p className="text-red-400 text-sm font-['Aileron'] text-center mt-[16px]">{errorMessage}</p>
-                                        )}
-
-                                        
-                                        <div className="relative w-full">
-                                            <Input name="password" id="password" type="text" placeholder="Input Password" required className="input-field w-full rounded-none! pr-12" onChange={() => setErrorMessage('')}/>
-
-                                            <button type="submit" disabled={isPasswordCheck} className='absolute right-3 top-1/2 -translate-y-1/2'>
-                                                {isPasswordCheck === true && (
-                                                    <div className="flex items-center justify-center min-h-screen">
-                                                        <div className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"/>
-                                                    </div>
-                                                )}
-
-                                                {isPasswordCheck === false && (
-                                                    <ArrowRight className="w-6 h-6 text-davys-grey-0 hover:text-selago-0 border-2 rounded-full transition-all duration-200 hover:cursor-pointer" type='submit'/>
-                                                )}
-                                            </button>
-                                        </div>
-                                    </Field>
-                                </form>
-
-                                <h1 className='text-selago-0 text-center text-xl'>Already have an account? {" "}
-                                    <span className="font-bold cursor-pointer hover:text-2xl transition-all duration-150 hover:text-schiava-blue-light" onClick={() => setPage(Page.login)}>Log in!</span>
-                                </h1>
-                            </div>
+                            <h1 className={`text-3xl text-selago-100 font-cochin border-t border-selago-100 pt-5 tracking-wide ${introAnimSequence === 1 ? 'animate-fade-in' : 'opacity-0'}`}>{subheaderText.map((char, index) => (
+                                <span key={index} className={`inline-block ${char === " " || introAnimSequence !== 1 ? "" : "animate-slide-up-text"}`} style={{ animationDelay: `${index * 0.04}s` }} onAnimationEnd={handleLogoAnimEnd}>
+                                    {char === " " ? "\u00A0" : char}
+                                </span>
+                            ))}</h1>
                         </div>
                     </div>
-                )}
+                </div>
+            )}
 
-                {page === Page.login && (
-                    <Login setPage={setPage}/>
-                )}
+            {page !== Page.introAnim && (
+                <>
+                    <div className="w-screen h-dvh bg-tristesse-0 flex flex-col pt-8 overflow-hidden">
+                    
+                    {page === Page.portal && (
+                        <div className={`w-full h-full animate-slide-up`}>
+                            <div className="flex flex-col gap-y-9 items-center">
+                                <Logo variant="primary" className="size-16 text-selago-100" />
+
+                                <div className="flex gap-x-3 items-center w-[240px]">
+                                    <div className="w-full h-[3px] bg-selago-0 rounded-full shadow-[0_0_16px_1px_var(--color-schiava-blue-dark)]" />
+                                    <div className="w-full h-[3px] bg-davys-grey-0 rounded-full shadow-[0_0_16px_1px_var(--color-schiava-blue-dark)]" />
+                                </div>
+                            </div>
+
+                            <div className="flex flex-col items-center justify-center w-full h-[80%]">
+                                <div className="grid grid-rows-2 gap-y-8 w-full max-w-md">
+                                    <form className="w-full" onSubmit={handleCallFunction}>
+                                        <Field>
+
+                                            {errorMessage && (
+                                                <p className="text-red-400 text-sm font-['Aileron'] text-center mt-[16px]">{errorMessage}</p>
+                                            )}
+
+                                            
+                                            <div className="relative w-full">
+                                                <Input name="password" id="password" type="text" placeholder="Input Password" required className="input-field w-full rounded-none! pr-12" onChange={() => setErrorMessage('')}/>
+
+                                                <button type="submit" disabled={isPasswordCheck} className='absolute right-3 top-1/2 -translate-y-1/2'>
+                                                    {isPasswordCheck === true && (
+                                                        <div className="flex items-center justify-center min-h-screen">
+                                                            <div className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"/>
+                                                        </div>
+                                                    )}
+
+                                                    {isPasswordCheck === false && (
+                                                        <ArrowRight className="w-6 h-6 text-davys-grey-0 hover:text-selago-0 border-2 rounded-full transition-all duration-200 hover:cursor-pointer" type='submit'/>
+                                                    )}
+                                                </button>
+                                            </div>
+                                        </Field>
+                                    </form>
+
+                                    <h1 className='text-selago-0 text-center text-xl'>Already have an account? {" "}
+                                        <span className="font-bold cursor-pointer hover:text-2xl transition-all duration-150 hover:text-schiava-blue-light" onClick={() => setPage(Page.login)}>Log in!</span>
+                                    </h1>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
+                    {page === Page.login && (
+                        <Login setPage={setPage}/>
+                    )}
 
 
-                {(page === Page.signup || page === Page.questionnaire || page === Page.accountSetup) && (
-                    <SignUp page={page} setPage={setPage} />
-                )}
+                    {(page === Page.signup || page === Page.questionnaire || page === Page.accountSetup) && (
+                        <SignUp page={page} setPage={setPage} />
+                    )}
 
-                {page === Page.congratulations && (
-                    <CongratulationsPage/>
-                )}
+                    {page === Page.congratulations && (
+                        <CongratulationsPage/>
+                    )}
 
-            </div>
+                </div>
 
-            <div className='fixed h-[10vw] w-[10vw] pointer-events-none blur-[60px] rounded-[50%]' style={{
-                top: mousePos.y,
-                left: mousePos.x,
-                backgroundImage: 'radial-gradient(hsla(225, 38%, 50%, 0.1), hsla(222, 100%, 98%, 0.1))',
-                transform: `translate(-30%, -25%)`,
-            }}/>
+                <div className='fixed h-[10vw] w-[10vw] pointer-events-none blur-[60px] rounded-[50%]' style={{
+                    top: mousePos.y,
+                    left: mousePos.x,
+                    backgroundImage: 'radial-gradient(hsla(225, 38%, 50%, 0.1), hsla(222, 100%, 98%, 0.1))',
+                    transform: `translate(-30%, -25%)`,
+                }}/>
+                </>
+            )
+            }
         </>
     );
 }
