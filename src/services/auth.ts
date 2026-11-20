@@ -44,7 +44,7 @@ export async function checkVerification(formData: FormAnswers) {
 
 export async function sendApplicantInfo(formData : FormAnswers){
     await addDoc(
-        collection(database, "applicant"),
+        collection(database, "applicants"),
         {
             ...formData,
             createdAt: serverTimestamp(),
