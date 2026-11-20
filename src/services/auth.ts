@@ -1,5 +1,5 @@
 import { createUserWithEmailAndPassword, sendEmailVerification, reload, signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth";
-import { doc, setDoc, serverTimestamp } from "firebase/firestore";
+import { doc, setDoc, serverTimestamp, addDoc, collection } from "firebase/firestore";
 import { auth, database } from "../firebase";
 
 import { type FormAnswers } from '@/portal/SignUp'
@@ -43,13 +43,12 @@ export async function checkVerification(formData: FormAnswers) {
 }
 
 export async function sendApplicantInfo(formData : FormAnswers){
-    await setDoc(
-        doc(database, "applicant"),
+    await addDoc(
+        collection(database, "applicant"),
         {
             ...formData,
             createdAt: serverTimestamp(),
-        },
-        { merge: true }
+        }
     );
 }
 
