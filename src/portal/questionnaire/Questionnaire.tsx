@@ -9,6 +9,8 @@ import { type FormAnswers } from '@/portal/SignUp'
 
 import MagneticButton from "@/components/magnetic_button/MagneticButton.tsx";
 
+import { sendApplicantInfo } from "@/services/auth";
+
 
 import { useState } from 'react';
 
@@ -73,6 +75,7 @@ function QuestionnairePage({ setPage, questionNo, setQuestionNo, formAnswers, se
             setAnimation("next-exit");
         } else {
             setAnimation("next-exit");
+            sendApplicantInfo(formAnswers);
             setPage(Page.congratulations);
         }
     };

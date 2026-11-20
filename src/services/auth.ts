@@ -42,6 +42,17 @@ export async function checkVerification(formData: FormAnswers) {
     );
 }
 
+export async function sendApplicantInfo(formData : FormAnswers){
+    await setDoc(
+        doc(database, "applicant"),
+        {
+            ...formData,
+            createdAt: serverTimestamp(),
+        },
+        { merge: true }
+    );
+}
+
 export async function forgetPassword(email : string) {
     try {
         await sendPasswordResetEmail(auth, email);
