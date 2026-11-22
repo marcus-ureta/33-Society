@@ -116,7 +116,7 @@ function QuestionnairePage({ setPage, questionNo, setQuestionNo, formAnswers, se
 
     return (
         <>
-            <div onAnimationEnd={handleAnimationEnd} className={`flex flex-col items-center justify-start sm:justify-center w-full h-dvh gap-y-4 sm:gap-y-8 max-w-none prose ${animation === "next-exit" || animation === "prev-exit" ? "animate-slide-down" : ""} ${animation === "enter" ? "animate-slide-up" : ""}  overflow-x-hidden overflow-y-auto`}>
+            <div onAnimationEnd={handleAnimationEnd} className={`flex flex-col items-center justify-start sm:justify-center w-full h-dvh gap-y-4 sm:gap-y-8 max-w-none prose ${animation === "next-exit" || animation === "prev-exit" ? "animate-slide-down" : ""} ${animation === "enter" ? "animate-slide-up" : ""} overflow-x-hidden overflow-y-auto`}>
 
                 <h1 className="font-['Cochin'] font-bold text-selago-100 text-3xl sm:text-4xl mx-12 text-center max-w-[1068px]">
                     {questions[questionNo - 1]}

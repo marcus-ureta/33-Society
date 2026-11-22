@@ -99,7 +99,7 @@ function SignUpPage({setPage, formAnswers, setFormAnswers} : SignUpPageProps){
     return(
         <div className={`animate-slide-up w-full h-[82%]`}>
             <div className='flex flex-col items-center justify-center h-full gap-y-4 sm:gap-y-8 max-w-none prose mb-0 mx-[5%]'>
-                <form onSubmit={handleSubmission} className="w-full max-w-[720px] overflow-y-auto">
+                <form onSubmit={handleSubmission} className="w-full max-w-[720px] overflow-y-auto overflow-x-hidden">
                     <FieldGroup className='flex flex-col gap-4 sm:gap-y-9 mt-[32px] sm:mt-[0%]'>
                         
                         {/* First Name & Last Name */}
@@ -120,7 +120,7 @@ function SignUpPage({setPage, formAnswers, setFormAnswers} : SignUpPageProps){
                             </Field>
 
                             <Field>
-                                <Input name='form-birthday' id="form-birthday" type="date" required className="input-field dark:[color-scheme:dark]" defaultValue={formAnswers.birthday}/>
+                                <Input name='form-birthday' id="form-birthday" type="date" required className="w-fit sm:w-full input-field dark:[color-scheme:dark]" defaultValue={formAnswers.birthday}/>
                             </Field>
                         </div>
 
