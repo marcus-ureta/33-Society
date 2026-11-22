@@ -116,7 +116,7 @@ function QuestionnairePage({ setPage, questionNo, setQuestionNo, formAnswers, se
 
     return (
         <>
-            <div onAnimationEnd={handleAnimationEnd} className={`flex flex-col items-center justify-center w-full h-full gap-y-4 sm:gap-y-8 max-w-none prose ${animation === "next-exit" || animation === "prev-exit" ? "animate-slide-down" : ""} ${animation === "enter" ? "animate-slide-up" : ""}`}>
+            <div onAnimationEnd={handleAnimationEnd} className={`flex flex-col items-center justify-start sm:justify-center w-full h-dvh gap-y-4 sm:gap-y-8 max-w-none prose ${animation === "next-exit" || animation === "prev-exit" ? "animate-slide-down" : ""} ${animation === "enter" ? "animate-slide-up" : ""}  overflow-x-hidden overflow-y-auto`}>
 
                 <h1 className="font-['Cochin'] font-bold text-selago-100 text-3xl sm:text-4xl mx-12 text-center max-w-[1068px]">
                     {questions[questionNo - 1]}
@@ -140,17 +140,17 @@ function QuestionnairePage({ setPage, questionNo, setQuestionNo, formAnswers, se
                 )}
 
                 {questionNo === 3 && (
-                    <RadioGroup className="flex flex-col gap-y-4 w-[90%] h-auto sm:h-[42%] max-w-[620px]" value={inputValue ?? ""} onValueChange={saveAnswer}>
+                    <RadioGroup className="flex flex-col gap-y-4 w-[90%] max-w-[620px]" value={inputValue ?? ""} onValueChange={saveAnswer}>
                         {[
                             { id: "option-one", value: "Under $5k", label: "Under $5k" },
                             { id: "option-two", value: "Under $5k - $10k", label: "Under $5k - $10k" },
                             { id: "option-three", value: "Under $10k - $50k", label: "Under $10k - $50k" },
                             { id: "option-four", value: "Above $50k", label: "Above $50k" },
                         ].map((option) => (
-                            <Label key={option.id} htmlFor={option.id} className={`radio-field text-2xl cursor-pointer transition-all duration-200
+                            <Label key={option.id} htmlFor={option.id} className={`radio-field text-2xl cursor-pointer transition-all duration-200 text-center
                                 ${inputValue === option.value ? "border-selago-50! bg-transparent! text-selago-50" : ""}`}>
 
-                            <RadioGroupItem value={option.value} id={option.id} className="sr-only"/>
+                            <RadioGroupItem value={option.value} id={option.id} className="sr-only text-center"/>
                                 {option.label}
                             </Label>
                         ))}
@@ -179,7 +179,7 @@ function QuestionnairePage({ setPage, questionNo, setQuestionNo, formAnswers, se
                 )}
             </div>
 
-            <div className="flex flex-col items-center justify-end w-full h-[25%] gap-y-2.5">
+            <div className="flex flex-col items-center justify-end w-full h-[10%] sm:h-[25%] gap-y-2.5">
                 <div className="pointer-events-auto mb-[32px]">
                     <ArrowLeft onClick={handlePrevQuestion} className="w-6 h-6 hover:text-schiava-blue-light text-selago-0 border-2 rounded-full mt-2 transition-all duration-200 hover:cursor-pointer" />
                 </div>

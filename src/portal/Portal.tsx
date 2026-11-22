@@ -151,7 +151,7 @@ function Portal() {
         <>
             
             {page === Page.introAnim && (
-                <div className="relative w-full h-dvh bg-schiava-blue-dark flex flex-col pt-8 overflow-hidden inset-0 pointer-events-none">
+                <div className="relative w-full h-dvh bg-schiava-blue-dark flex flex-col pt-8 overflow-x-hidden inset-0 pointer-events-none">
                     <div className="w-full h-[90%] flex items-center justify-center">
                         <div className='w-[90%] max-w-[820px] flex flex-col items-center justify-center gap-y-1 text-center'>
                             <div className="animate-intro-logo-popup w-fit h-fit" onAnimationEnd={handleAnimEnd}>
@@ -196,7 +196,7 @@ function Portal() {
 
                                             
                                             <div className="relative w-full">
-                                                <Input name="password" id="password" type="text" placeholder="Input Password" required className="input-field w-full rounded-none! pr-12" onChange={() => setErrorMessage('')}/>
+                                                <Input name="password" id="password" type="text" placeholder="Input Password" required className="input-field w-full rounded-none! pr-12 " onChange={() => setErrorMessage('')}/>
 
                                                 <button type="submit" disabled={isPasswordCheck} className='absolute right-3 top-1/2 -translate-y-1/2'>
                                                     {isPasswordCheck === true && (
